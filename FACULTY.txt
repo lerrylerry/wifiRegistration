@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html>
+   <head>
+   <style>
+       .whole {
+       width:100%;  
+   }
+       .left-side{
+       width:50%;
+       float:left;
+   }
+       .right-side{
+       margin-left:50%;
+   }
+       .print{
+       text-align: right;
+   }
+   </style>
+      <title>Faculty Form</title>
+   </head>
+   <body>
+      <fieldset>
+      <h2 style="text-align:center;">WIFI CONNECTIVITY REGISTRATION</h2>
+      <h5 style="text-align:center;">(for faculty users only)</h5>
+      <div class="whole">
+         <div class="left-side">
+            <form>
+            <label for="name">
+          Name:</label>
+             <input type="text" id="name" placeholder="Enter Name" autofocus="" required=""><br>
+             <br>
+             <label for="department">
+          Department:</label>
+             <input type="text" id="department" placeholder="Enter Department" autofocus="" required=""><br>
+             <br>
+             <label for="designation">
+          Designation:</label>
+             <input type="text" id="designation" placeholder="Enter Designation" autofocus="" required=""><br>
+             <br>
+             <label for="mac address">
+          MAC Address:</label>
+             <input type="text" id="mac address" placeholder="Enter Mac Address" autofocus="" required=""><br>
+             <br>
+             <label for="some text">
+          (Note: To get the MAC address of the laptop, please do the following:<br>
+          Go to Start-&gt;Run. Type cmd and enter. Then at the prompt type: ipconfig /all and<br>
+          Note down the “Physical Address for Wireless LAN Adapter” as a MAC Address.)</label><br><br>
+             <label for="phone">
+          Phone #:</label>
+             <input type="tel" id="phoneno" placeholder="09xxxxxxxxx" autofocus="" required=""><br>
+
+         </form></div>
+         <div class="right-side">
+          
+            System/Device:
+           <select id="system" name="system">
+             <option value="phone">
+           Smartphone</option>
+             <option value="laptop">
+           Laptop</option>
+             <option value="tabpc">
+           Tablet PC</option>
+             <option value="desktop">
+           Desktop</option>
+             <option value="others">
+           Others...</option> 
+           </select><br><br>
+           <br>
+           <br>
+           <label for="others">
+         If others, please specify:</label>
+           <input type="text" disabled="true" placeholder="Specify device..."><br><br>
+           <br>
+           <br>
+           <label for="email">
+           Email Address:</label>
+             <input type="text" id="email add" placeholder="Enter Email Address" autofocus="" required=""><br><br><br>
+          
+         </div>
+       </div>
+       <br>
+       <br>
+       <br>
+       <hr>
+       <p><i>
+       I understand that the Wi-Fi connectivity is provided to me for my academic work only.
+The above mentioned system solely belongs to me. I have gone through the norms and
+Regulation of using the Wi-Fi Connectivity and I abide by it. I will not misuse the facility
+by any means.</i>
+       </p> 
+      <form>
+        <input type="checkbox" id="agree" style="text-align:left;">
+        <label for="agree">
+        Yes, I agree.</label><hr>
+       <p><i>
+      
+      </i></p></form><p><i><i>
+      The 1 hour per day Wifi-Connectivity  given to the user is valid from 
+ November  to March, 2022</i></i></p><i>
+      <div class="whole">
+        <div class="left-side">
+           <form>
+         <label for="faculty name">
+        Faculty Name:</label>
+         <input type="text" id="faculty" placeholder="Enter Faculty Name" autofocus="" required=""><br><br>
+         <label for="date">
+        Date:</label>
+         <input type:"text"="" id="date" placeholder="mm/dd/yyyy" autofocus="" required=""><br><br>
+       </form>
+      </div>
+      <div class="right-side">
+         <form>
+            <label for="signature">
+         Upload image of Signature over printed name:</label>
+            <input type="file" id="signature">
+      <div class="print">
+         <input type="button" value="PRINT PDF">
+      </div>
+     </form></div></div></i></fieldset><i>
+   
+</i></body>
+</html>
