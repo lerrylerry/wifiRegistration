@@ -1,6 +1,8 @@
 body{
     border: 15px double;
     padding: 88px;
+    border-color: greenyellow;
+    border-radius: 10px;
     background-image: url(TUP-LOGO.png);
     background-size: 9in 7in;
     background-position: center center;
