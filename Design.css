@@ -1,0 +1,104 @@
+#name{
+    border-style: solid;
+    border-color: darkblue;
+    border-width: 5px;
+    border-radius: 15px;
+    padding: 5px;
+ }
+ #department{
+    border-style: solid;
+    border-color: darkblue;
+    border-width: 5px;
+    border-radius: 15px;
+    padding: 5px;
+ }
+ #designation{
+    border-style: solid;
+    border-color: darkblue;
+    border-width: 5px;
+    border-radius: 15px;
+    padding: 5px;
+ }
+ #macaddress{
+    border-style: solid;
+    border-color: darkblue;
+    border-width: 5px;
+    border-radius: 15px;
+    padding: 5px;
+ }
+ #phoneno{
+    border-style: solid;
+    border-color: darkblue;
+    border-width: 5px;
+    border-radius: 15px;
+    padding: 5px;
+ }
+ #sys{
+    border-style: solid;
+    border-color: darkblue;
+    border-width: 5px;
+    border-radius: 15px;
+    padding: 5px;
+ }
+ #others{
+    border-style: solid;
+    border-color: darkblue;
+    border-width: 5px;
+    border-radius: 15px;
+    padding: 5px;
+ }
+ #emailadd{
+    border-style: solid;
+    border-color: darkblue;
+    border-width: 5px;
+    border-radius: 15px;
+    padding: 5px;
+ }
+ #agree{
+    border-style: solid;
+    border-color: darkblue;
+    border-width: 5px;
+    border-radius: 15px;
+    padding: 5px;
+ }
+ #faculty{
+    border-style: solid;
+    border-color: darkblue;
+    border-width: 5px;
+    border-radius: 15px;
+    padding: 5px;
+ }
+ #date{
+    border-style: solid;
+    border-color: darkblue;
+    border-width: 5px;
+    border-radius: 15px;
+    padding: 5px;
+ }
+ #signature{
+    border-style: solid;
+    border-color: darkblue;
+    border-width: 5px;
+    border-radius: 15px;
+    padding: 5px;
+ }
+ body{
+    border: 15px double;
+    padding: 88px;
+    border-color: blue;
+    border-radius: 10px;
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+    font-weight: bolder;
+ }
+ .picture{
+    opacity: 0.5;
+    position: absolute;
+    top: 80px;
+    left: 340px;
+ }
+ .left-side{
+    position: relative;
+ }
+ .right-side{
+    position: relative;
+ }

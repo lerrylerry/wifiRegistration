@@ -2,6 +2,7 @@
 <html>
    <head>
       <title>Faculty Form</title>
+      <link rel="stylesheet" href="design.css">
    <style>
        .whole {
        width:100%;  
@@ -16,122 +17,18 @@
        .print{
        text-align: right;
    }
-   #name{
-      border-style: solid;
-      border-color: darkblue;
-      border-width: 5px;
-      border-radius: 15px;
-      padding: 5px;
-   }
-   #department{
-      border-style: solid;
-      border-color: darkblue;
-      border-width: 5px;
-      border-radius: 15px;
-      padding: 5px;
-   }
-   #designation{
-      border-style: solid;
-      border-color: darkblue;
-      border-width: 5px;
-      border-radius: 15px;
-      padding: 5px;
-   }
-   #macaddress{
-      border-style: solid;
-      border-color: darkblue;
-      border-width: 5px;
-      border-radius: 15px;
-      padding: 5px;
-   }
-   #phoneno{
-      border-style: solid;
-      border-color: darkblue;
-      border-width: 5px;
-      border-radius: 15px;
-      padding: 5px;
-   }
-   #sys{
-      border-style: solid;
-      border-color: darkblue;
-      border-width: 5px;
-      border-radius: 15px;
-      padding: 5px;
-   }
-   #others{
-      border-style: solid;
-      border-color: darkblue;
-      border-width: 5px;
-      border-radius: 15px;
-      padding: 5px;
-   }
-   #emailadd{
-      border-style: solid;
-      border-color: darkblue;
-      border-width: 5px;
-      border-radius: 15px;
-      padding: 5px;
-   }
-   #agree{
-      border-style: solid;
-      border-color: darkblue;
-      border-width: 5px;
-      border-radius: 15px;
-      padding: 5px;
-   }
-   #faculty{
-      border-style: solid;
-      border-color: darkblue;
-      border-width: 5px;
-      border-radius: 15px;
-      padding: 5px;
-   }
-   #date{
-      border-style: solid;
-      border-color: darkblue;
-      border-width: 5px;
-      border-radius: 15px;
-      padding: 5px;
-   }
-   #signature{
-      border-style: solid;
-      border-color: darkblue;
-      border-width: 5px;
-      border-radius: 15px;
-      padding: 5px;
-   }
-   body{
-      border: 15px double;
-      padding: 88px;
-      border-color: blue;
-      border-radius: 10px;
-      font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
-      font-weight: bolder;
-   }
-   .picture{
-      opacity: 0.5;
-      position: absolute;
-      top: 80px;
-      left: 340px;
-   }
-   .left-side{
-      position: relative;
-   }
-   .right-side{
-      position: relative;
-   }
    </style>
       <title>Faculty Form</title>
    </head>
    <body>
-      <h2 style="text-align:center;">WIFI CONNECTIVITY REGISTRATION </h2>
+      <h1 title="WiFI" style="text-align:center;">WIFI CONNECTIVITY REGISTRATION </h1>
       <h5 style="text-align:center;">(for faculty users only)</h5>
       <div class="whole">
          <div class="picture">
             <img
                class="logo"
                src="TUP-LOGO.png " width="900" height="800"
-               alt="logo">
+               alt="image">
          </div>
          <div class="left-side">
             <form>
@@ -188,16 +85,17 @@
           
          </div>
        </div>
-       <br><br><br><hr><p><i>
-         I understand that the Wi-Fi connectivity is provided to me for my academic work only.
-The above mentioned system solely belongs to me. I have gone through the norms and
-Regulation of using the Wi-Fi Connectivity and I abide by it. I will not misuse the facility
-by any means.</i>
-       </p> 
+       <br><br><br><hr> 
       <form>
         <input type="checkbox" id="agree" style="text-align:left;">
         <label for="agree">
         Yes, I agree.</label>
+        <p><i>
+         I understand that the Wi-Fi connectivity is provided to me for my academic work only.
+         The above mentioned system solely belongs to me. I have gone through the norms and
+         Regulation of using the Wi-Fi Connectivity and I abide by it. I will not misuse the facility
+         by any means.</i>
+       </p>
         <hr><p><i>
       </i></p></form><p><i><i>
       The 1 hour per day Wifi-Connectivity  given to the user is valid from 
@@ -217,7 +115,7 @@ by any means.</i>
          <form>
             <label for="signature">
          Upload image of Signature over printed name:</label>
-            <input type="file" id="signature">
+            <input type="file" id="signature"><br><br>
       <div class="print">
          <input type="button" value="PRINT PDF">
       </div>
