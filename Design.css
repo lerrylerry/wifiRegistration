@@ -91,7 +91,7 @@
     font-weight: bolder;
  }
  .picture{
-    opacity: 0.5;
+    opacity: 0.4;
     position: absolute;
     top: 80px;
     left: 340px;
@@ -101,4 +101,16 @@
  }
  .right-side{
     position: relative;
+ }
+ .info{
+     position: relative;
+ }
+ .front{
+     position: relative;
+ }
+ h1.Wifi{
+    color: red;
+ }
+ h5.Wifi2{
+    color: red;
  }

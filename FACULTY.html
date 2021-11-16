@@ -5,7 +5,7 @@
       <link rel="stylesheet" href="design.css">
    <style>
        .whole {
-       width:100%;  
+       width:100%;
    }
        .left-side{
        width:50%;
@@ -21,8 +21,8 @@
       <title>Faculty Form</title>
    </head>
    <body>
-      <h1 title="WiFI" style="text-align:center;">WIFI CONNECTIVITY REGISTRATION </h1>
-      <h5 style="text-align:center;">(for faculty users only)</h5>
+      <h1 class="Wifi" style="text-align: center;">WIFI CONNECTIVITY REGISTRATION</h1>
+      <h5 class="Wifi2" style="text-align: center;">(for faculty users only)</h5>
       <div class="whole">
          <div class="picture">
             <img
@@ -55,10 +55,10 @@
              <label for="phone">
           Phone #:</label>
              <input type="tel" id="phoneno" placeholder="09xxxxxxxxx" autofocus="" required=""><br>
+         </form>
+      </div>
 
-         </form></div>
          <div class="right-side">
-          
             System/Device:
            <select id="sys" name="system">
              <option value="phone">
@@ -71,21 +71,18 @@
            Desktop</option>
              <option value="others">
            Others...</option> 
-           </select><br><br>
-           <br>
-           <br>
+           </select><br><br><br><br>
            <label for="others">
          If others, please specify:</label>
-           <input type="text" id="others" placeholder="Specify device..."><br><br>
-           <br>
-           <br>
+           <input type="text" id="others" placeholder="Specify device..."><br><br><br><br>
            <label for="email">
            Email Address:</label>
              <input type="text" id="emailadd" placeholder="Enter Email Address" autofocus="" required=""><br><br><br>
-          
          </div>
        </div>
        <br><br><br><hr> 
+
+      <div class="info"> 
       <form>
         <input type="checkbox" id="agree" style="text-align:left;">
         <label for="agree">
@@ -96,10 +93,11 @@
          Regulation of using the Wi-Fi Connectivity and I abide by it. I will not misuse the facility
          by any means.</i>
        </p>
-        <hr><p><i>
-      </i></p></form><p><i><i>
+        <hr><p><i></i></p>
+      </form><p><i><i>
       The 1 hour per day Wifi-Connectivity  given to the user is valid from 
  November  to March, 2022</i></i></p><i>
+
       <div class="whole">
         <div class="left-side">
            <form>
@@ -111,6 +109,7 @@
          <input type="text" id="date" placeholder="mm/dd/yyyy" autofocus="" required=""><br><br>
        </form>
       </div>
+
       <div class="right-side">
          <form>
             <label for="signature">
@@ -119,7 +118,8 @@
       <div class="print">
          <input type="button" value="PRINT PDF">
       </div>
-     </form></div></div></i><i>
+     </form>
+   </div></div></i><i>
    
 </i></body>
 </html>
