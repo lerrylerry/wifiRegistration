@@ -91,7 +91,7 @@
     font-weight: bolder;
  }
  .picture{
-    opacity: 0.4;
+    opacity: 0.1;
     position: absolute;
     top: 80px;
     left: 340px;
@@ -109,8 +109,8 @@
      position: relative;
  }
  h1.Wifi{
-    color: red;
+    color: green;
  }
  h5.Wifi2{
-    color: red;
+    color: green;
  }
