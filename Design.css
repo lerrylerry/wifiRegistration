@@ -86,27 +86,18 @@
     font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
     font-weight: bolder;
  }
- .picture{
+ .img-fluid mx-auto d-block{
     opacity: 0.1;
     position: absolute;
     top: 80px;
-    left: 340px;
- }
- .left-side{
-    position: relative;
- }
- .right-side{
-    position: relative;
- }
- .info{
-     position: relative;
- }
- .front{
-     position: relative;
+    left: 420px;
  }
  h1.Wifi{
     color: green;
  }
  h5.Wifi2{
     color: green;
+ }
+ .container-fluid{
+    position: relative;
  }
