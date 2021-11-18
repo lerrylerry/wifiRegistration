@@ -86,18 +86,25 @@
     font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
     font-weight: bolder;
  }
- .img-fluid mx-auto d-block{
-    opacity: 0.1;
-    position: absolute;
-    top: 80px;
-    left: 420px;
- }
  h1.Wifi{
     color: green;
  }
  h5.Wifi2{
     color: green;
  }
- .container-fluid{
-    position: relative;
+ .responsive{
+   max-width: 1000px;
+   max-height: 710px;
+   opacity: 0.2;
+ }
+ 
+ .center{
+   position: absolute;
+   top: 55%;
+   left: 50%; 
+   transform: translate(-50%, -50%);
+ }
+ 
+ parent{
+   position: relative;
  }
