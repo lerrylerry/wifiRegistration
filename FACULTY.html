@@ -11,139 +11,139 @@
       <script src="https://maxcdn.bootstrapcdn.com/sbootstrap/4.5.2/js/bootstrap.min.js"></script> 
       <link rel = "stylesheet" href = "Design.css">
    <style>
-    .print{
-       text-align: right;
-   }
-   .container-fluid{
-       border-style: solid;
-       border-color: blue;
-       border-width: 5px;
-       border-radius: 25px;
-       margin-bottom: 5px;
-       position: relative;
-   }
+
    </style>
+
+   <!-- CSS Code in Design.css -->
+
    </head>
    <body>
-    <div class="parent"> 
-        <img class="responsive center" src="TUP-LOGO.png" alt="None">
-    </div>
-    </div>
-       <div class="container-fluid">
-            <div class="row">
-                <div class="col">
-                    <h1 class="Wifi" style="text-align: center;">WIFI CONNECTIVITY REGISTRATION</h1>
-                    <h5 class="Wifi2" style="text-align: center;">(for faculty users only)</h5>
-                </div>
-            </div>
-           
-            <div class="row">
-                <div class="col-sm-6">
-                    <form>
-                    <label for="name">
-                Name:</label>
-                    <input type="text" id="name" placeholder="Enter Name" autofocus="" required=""><br>
-                    <br>
-                    <label for="department">
-                Department:</label>
-                    <input type="text" id="department" placeholder="Enter Department" autofocus="" required=""><br>
-                    <br>
-                    <label for="designation">
-                Designation:</label>
-                    <input type="text" id="designation" placeholder="Enter Designation" autofocus="" required=""><br>
-                    <br>
-                    <label for="mac address">
-                MAC Address:</label>
-                    <input type="text" id="macaddress" placeholder="Enter Mac Address" autofocus="" required=""><br>
-                    <br>
-                    <label for="some text">
-                (Note: To get the MAC address of the laptop, please do the following:<br>
-                Go to Start-&gt;Run. Type cmd and enter. Then at the prompt type: ipconfig /all and<br>
-                Note down the “Physical Address for Wireless LAN Adapter” as a MAC Address.)</label><br><br>
-                    <label for="phone">
-                Phone #:</label>
-                    <input type="tel" id="phoneno" placeholder="09xxxxxxxxx" autofocus="" required=""><br>
-                    </form>
-                </div>
-                <div class="col-sm-6">
-                    <form>
-                    System/Device:
-                <select id="sys" name="system">
-                    <option value="phone">
-                Smartphone</option>
-                    <option value="laptop">
-                Laptop</option>
-                    <option value="tabpc">
-                Tablet PC</option>
-                    <option value="desktop">
-                Desktop</option>
-                    <option value="others">
-                    Others...</option> 
-                    </select><br><br><br><br>
-                    <label for="others">
-                    If others, please specify:</label>
-                    <input type="text" id="others" placeholder="Specify device..."><br><br><br><br>
-                    <label for="email">
-                    Email Address:</label>
-                        <input type="text" id="emailadd" placeholder="Enter Email Address" autofocus="" required=""><br><br><br>
-                        </form>
-                </div>
-            </div>
-            <hr>
+       <div class="container p-3">
             
-            <div class="row">
-                <div class="col-sm-12">
-                    <p><i>
-                        I understand that the Wi-Fi connectivity is provided to me for my academic work only.
-                        The above mentioned system solely belongs to me. I have gone through the norms and
-                        Regulation of using the Wi-Fi Connectivity and I abide by it. I will not misuse the facility
-                        by any means.</i>
-                    </p>
-                    <form>
-                    <input type="checkbox" id="agree" style="text-align:left;">
-                    <label for="agree">
-                    Yes, I agree.</label>
-                    <hr><p><i></i></p>
-                    </form><p><i><i>
-                    The 1 hour per day Wifi-Connectivity  given to the user is valid from 
-                    November  to March, 2022</i></i></p><i>
-                </div>
-            </div>
+                
 
-            <div class="row">
-                <div class="col-sm-6">
-                    <form>
-                    <label for="faculty name">
-                Faculty Name:</label>
-                    <input type="text" id="faculty" placeholder="Enter Faculty Name" autofocus="" required=""><br><br>
-                    </form>
-                </div>
+                <div class="card">
+                    <div class="card-body">
+                        <img class="card-img-top" src="TUP-LOGO.png" alt="Card image">
 
-                <div class="col-sm-6">
-                    <form>
-                    <label for="signature">
-                Upload image of Signature over printed name:</label>
-                    <input type="file" id="signature"><br><br>
-                    </form>
-                </div>
-            </div>
+                            <h2 class="card-title">WIFI CONNECTIVITY REGISTRATION<br>(for faculty users only)</h2>
 
-            <div class="row">
-                <div class="col-sm-6">
-                    <form>
-                        <label for="date">
-                    Date:</label>
-                        <input type="text" id="date" placeholder="mm/dd/yyyy" autofocus="" required=""><br><br>
-                    </form>
-                </div>
+                            <div class="row">
+                                <div class="col-sm-6">
+                                    <div class="form-group">
+                                        <br>
+                                        <br>
+                                        <br>
+                                        <label for="name">Name:</label>
+                                        <input type="text" class="form-control" id="name" placeholder="Enter Name" autofocus="" required="">
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="department">Department:</label>
+                                        <input type="text" class="form-control" id="department" placeholder="Enter Department" autofocus="" required="">
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="designation">Designation:</label>
+                                        <input type="text"class="form-control"  id="designation" placeholder="Enter Designation" autofocus="" required="">
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="mac address">MAC Address:</label>
+                                        <input type="text" class="form-control" id="macaddress" placeholder="Enter Mac Address" autofocus="" required="">
+                                    </div>
+                                        <label for="some text">
+                                    (Note: To get the MAC address of the laptop, please do the following:
+                                    Go to Start-&gt;Run. Type cmd and enter. Then at the prompt type: ipconfig /all and
+                                    Note down the “Physical Address for Wireless LAN Adapter” as a MAC Address.)</label>
+                                    <div class="form-group">
+                                        <label for="phone">Phone #:</label>
+                                        <input type="tel" class="form-control" id="phoneno" placeholder="09xxxxxxxxx" autofocus="" required="">
+                                    </div>
+                                </div>
 
-                <div class="col-sm-6">
-                    <div class="print">
-                        <input type="button" value="PRINT PDF">
+                                <div class="col-sm-6">
+                                    <br>
+                                    <br>
+                                    System/Device:
+                                <select id="sys" name="system">
+                                    <option value="phone">
+                                Smartphone</option>
+                                    <option value="laptop">
+                                Laptop</option>
+                                    <option value="tabpc">
+                                Tablet PC</option>
+                                    <option value="desktop">
+                                Desktop</option>
+                                    <option value="others">
+                                    Others...</option> 
+                                    </select><br><br><br><br>
+                                    <div class="form-group">
+                                        <label for="others">If others, please specify:</label>
+                                        <input type="text" class="form-control" id="others" placeholder="Specify device...">
+                                    </div>
+                                    <br><br><br>
+                                    <div class="form-group">
+                                        <label for="email">Email Address:</label>
+                                        <input type="text" class="form-control" id="emailadd" placeholder="Enter Email Address" autofocus="" required="">
+                                    </div>
+                                    <br><br><br>
+                                </div>
+                            </div>
+                            <hr>
+                            
+                            <div class="row">
+                                <div class="col-sm-12">
+                                    <p><i>
+                                        I understand that the Wi-Fi connectivity is provided to me for my academic work only.
+                                        The above mentioned system solely belongs to me. I have gone through the norms and
+                                        Regulation of using the Wi-Fi Connectivity and I abide by it. I will not misuse the facility
+                                        by any means.</i>
+                                    </p>
+                                    <form>
+                                    <input type="checkbox" id="agree" style="text-align:left;">
+                                    <label for="agree">
+                                    Yes, I agree.</label>
+                                    <hr><p><i></i></p>
+                                    </form><p><i><i>
+                                    The 1 hour per day Wifi-Connectivity  given to the user is valid from 
+                                    November  to March, 2022</i></i></p><i>
+                                </div>
+                            </div>
+
+                            <div class="row">
+                                <div class="col-sm-6">
+                                    <div class="form-group">
+                                        <label for="faculty name">Faculty Name:</label>
+                                        <input type="text" class="form-control" id="faculty" placeholder="Enter Faculty Name" autofocus="" required="">
+                                    </div>
+                                </div>
+
+                                <div class="col-sm-6">
+                                    <div class="form-group">
+                                        <label for="signature">Upload image of Signature over printed name:</label>
+                                        <input type="file" class="form-control" id="signature">
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="row">
+                                <div class="col-sm-6">
+                                    <div class="form-group">
+                                        <label for="date">Date:</label>
+                                        <input type="text" class="form-control" id="date" placeholder="mm/dd/yyyy" autofocus="" required="">
+                                    </div>   
+                                </div>
+
+                                <div class="col-sm-6">
+                                    <div class="print">
+                                        <input type="button" value="PRINT PDF">
+                                    </div>
+                                </div>
+                            </div>
+
                     </div>
-                </div>
-            </div>
+                </div>    
 
+            </div>
+            
        </div>
    </body>
 </html>
