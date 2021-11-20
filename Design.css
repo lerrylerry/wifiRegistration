@@ -90,20 +90,21 @@
    text-align: right;
 }
 .container{
-   border-style: solid;
+   border-style: dashed;
    border-color: blue;
    border-width: 5px;
    border-radius: 25px;
    margin-top: 10px;
    margin-bottom: 10px;
    position: relative;
+   max-width: 1000px;
 }
 .card-img-top{
+   padding-top: 100px;
+   padding-right: 30px;
    opacity: 0.1;
+   position: absolute;
 }
 .card-title{
    text-align: center;
-}
-.card-img-top{
-   position: absolute;
 }
