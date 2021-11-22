@@ -23,9 +23,9 @@
                 <div class="card border-0">
                     <div class="card-body">
                         <img class="card-img-top" src="TUP-LOGO.png" alt="Card image">
+                        <br><br>
 
                             <h2 class="card-title">WIFI CONNECTIVITY REGISTRATION<br>(for faculty users only)</h2>
-                            <h5 class="title" style="font-style: oblique; font-size: 12; text-align: center;">created by: John Lerry Laungayan</h5>
 
                             <div class="row">
                                 <div class="col-sm-6">
@@ -34,54 +34,55 @@
                                         <br>
                                         <br>
                                         <label for="name">Name:</label>
-                                        <input type="text" class="form-control" id="name" placeholder="Enter Name" autofocus="" required="">
+                                        <input type="text" class="form-control" id="name" placeholder="Enter Name">
                                     </div>
                                     <div class="form-group">
                                         <label for="department">Department:</label>
-                                        <input type="text" class="form-control" id="department" placeholder="Enter Department" autofocus="" required="">
+                                        <input type="text" class="form-control" id="department" placeholder="Enter Department" >
                                     </div>
                                     <div class="form-group">
                                         <label for="designation">Designation:</label>
-                                        <input type="text"class="form-control"  id="designation" placeholder="Enter Designation" autofocus="" required="">
+                                        <input type="text"class="form-control"  id="designation" placeholder="Enter Designation">
                                     </div>
                                     <div class="form-group">
                                         <label for="mac address">MAC Address:</label>
-                                        <input type="text" class="form-control" id="macaddress" placeholder="Enter Mac Address" autofocus="" required="">
+                                        <input type="text" class="form-control" id="macaddress" placeholder="Enter Mac Address">
                                     </div>
                                         <label for="some text">
                                     (Note: To get the MAC address of the laptop, please do the following:
                                     Go to Start-&gt;Run. Type cmd and enter. Then at the prompt type: ipconfig /all and
                                     Note down the “Physical Address for Wireless LAN Adapter” as a MAC Address.)</label>
-                                    <div class="form-group">
-                                        <label for="phone">Phone #:</label>
-                                        <input type="tel" class="form-control" id="phoneno" placeholder="09xxxxxxxxx" autofocus="" required="">
-                                    </div>
                                 </div>
 
                                 <div class="col-sm-6">
                                     <br>
                                     <br>
-                                    System/Device:
-                                <select id="sys" name="system">
-                                    <option value="phone">
-                                Smartphone</option>
-                                    <option value="laptop">
-                                Laptop</option>
-                                    <option value="tabpc">
-                                Tablet PC</option>
-                                    <option value="desktop">
-                                Desktop</option>
-                                    <option value="others">
-                                    Others...</option> 
-                                    </select><br><br><br><br>
+                                    <br>
+                                    <form action="/action_page.php">
+                                        System/Device:
+                                        <br>
+                                        <select name="system" class="custom-select">
+                                          <option selected>Choose</option>
+                                          <option value="phone">Smartphone</option>
+                                          <option value="laptop">Laptop</option>
+                                          <option value="tab">Tablet</option>
+                                          <option value="pc">PC</option>
+                                          <option value="desktop">Desktop</option>
+                                          <option value="others">Others...</option>
+                                        </select>
+                                      </form>
+                                    </select><br>
                                     <div class="form-group">
                                         <label for="others">If others, please specify:</label>
                                         <input type="text" class="form-control" id="others" placeholder="Specify device...">
                                     </div>
-                                    <br><br><br>
                                     <div class="form-group">
                                         <label for="email">Email Address:</label>
-                                        <input type="text" class="form-control" id="emailadd" placeholder="Enter Email Address" autofocus="" required="">
+                                        <input type="text" class="form-control" id="emailadd" placeholder="Enter Email Address">
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="phone">Phone #:</label>
+                                        <input type="tel" class="form-control" id="phoneno" placeholder="09xxxxxxxxx">
                                     </div>
                                     <br><br><br>
                                 </div>
@@ -96,12 +97,13 @@
                                         Regulation of using the Wi-Fi Connectivity and I abide by it. I will not misuse the facility
                                         by any means.</i>
                                     </p>
-                                    <form>
-                                    <input type="checkbox" id="agree" style="text-align:left;">
-                                    <label for="agree">
-                                    Yes, I agree.</label>
-                                    <hr><p><i></i></p>
-                                    </form><p><i><i>
+                                    <form action="/action_page.php">
+                                        <div class="custom-control custom-checkbox">
+                                          <input type="checkbox" class="custom-control-input" id="agree" name="Agreement">
+                                          <label class="custom-control-label" for="agree">Yes, I agree.</label>
+                                        </div>
+                                    </form>
+                                    <hr><p><i><i>
                                     The 1 hour per day Wifi-Connectivity  given to the user is valid from 
                                     November  to March, 2022</i></i></p><i>
                                 </div>
@@ -111,7 +113,7 @@
                                 <div class="col-sm-6">
                                     <div class="form-group">
                                         <label for="faculty name">Faculty Name:</label>
-                                        <input type="text" class="form-control" id="faculty" placeholder="Enter Faculty Name" autofocus="" required="">
+                                        <input type="text" class="form-control" id="faculty" placeholder="Enter Faculty Name">
                                     </div>
                                 </div>
 
@@ -127,7 +129,7 @@
                                 <div class="col-sm-6">
                                     <div class="form-group">
                                         <label for="date">Date:</label>
-                                        <input type="text" class="form-control" id="date" placeholder="mm/dd/yyyy" autofocus="" required="">
+                                        <input type="text" class="form-control" id="date" placeholder="mm/dd/yyyy">
                                     </div>   
                                 </div>
 
