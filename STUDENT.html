@@ -1,133 +1,194 @@
-<!DOCTYPE html>
-<html>
+<!DOCTYPE html> 
+<html lang="en">
+    
    <head>
-   <style>
-       .whole {
-       width:100%;  
-   }
-       .left-side{
-       width:50%;
-       float:left;
-   }
-       .right-side{
-       margin-left:50%;
-   }
-       .print{
-       text-align: right;
-   }
-   </style>
       <title>Student Form</title>
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width, initial-scale=1">
+      <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+      <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+      <script src="https://maxcdn.bootstrapcdn.com/sbootstrap/4.5.2/js/bootstrap.min.js"></script> 
       <link rel = "stylesheet" href = "Design.css">
+   <style>
+
+   </style>
+
+   <!-- CSS Code in Design.css -->
+
    </head>
    <body>
-      <fieldset>
-      <h2 style="text-align:center;">WIFI CONNECTIVITY REGISTRATION</h2>
-      <h5 style="text-align:center;">(for student users only)</h5>  
-      <div class="whole">
-        <div class="left-side">
-           <form>
-           <label for="name">
-         Name:</label>
-           <input type="text" id="name" placeholder="Enter Name" autofocus="" required=""><br>
-           <br>
-           <label for="course">
-         Course:</label>
-           <input type="text" id="course" placeholder="Enter Course" autofocus="" required=""><br>
-           <br>
-           <label for="semester">
-         Semester:</label>
-           <input type="text" id="semester" placeholder="S.Y 20XX-20XX" autofocus="" required=""><br>
-           <br>
-           <label for="system">
-         System/Device:</label>
-           <select id="system" name="system">
-             <option value="phone">
-           Smartphone</option>
-             <option value="laptop">
-           Laptop</option>
-             <option value="tabpc">
-           Tablet PC</option>
-             <option value="desktop">
-           Desktop</option>
-             <option value="others">
-           Others...</option> 
-           </select><br><br>
-           <label for="others">
-         If others, please specify:</label>
-           <input type="text" disabled="true" placeholder="Specify device..."><br>
-         
-        </form></div>
-        <div class="right-side">
-         
-           <label for="studentno">
-           Student No:</label>
-           <input type="text" id="studentno" placeholder="TUPC-xx-xxxx" autofocus="" required=""><br>
-           <br>
-           <label for="orno">
-           O.R#:</label>
-           <input type="text" id="orno" autofocus="" required=""><br>
-           <br>
-           <label for="mac">
-           Mac Address:</label>
-           <input type="text" id="mac" autofocus="" required=""><br>
-           <br>
-           <label for="phoneno">
-           Phone #:</label>
-           <input type="tel" id="phoneno" placeholder="09xxxxxxxxx" autofocus="" required=""><br>
-           <br>
-           <label for="email">
-           Email Address:</label>
-           <input type="email" id="email" placeholder="email@yahoo.com" autofocus="" required=""><br>
-             
-        </div>
-      </div>
-      <br>
-      <hr>
-      <p><i>
-      I understand that the Wi-Fi connectivity is provided to me for my academic work only.
-The above mentioned system solely belongs to me. I have gone through the norms and
-Regulation of using the Wi-Fi Connectivity and I abide by it. I will not misuse the facility
-by any means.</i>
-      </p>
-      <form>
-        <input type="checkbox" id="agree" style="text-align:left;">
-        <label for="agree">
-        Yes, I agree.</label><hr>
-        <label for="signature">
-        Upload image of Signature over printed name:</label>
-        <input type="file" id="signature">
-      </form>
-      <h5 style="text-align:left;"><hr>
-      Approved by:</h5>
-      <div class="left-side">
-        <input type="image" id="image1" src="sign1" alt="UITC Coordinator Signature" width="60" height="20"><br>
-        <label for="image1">
-        UITC Coordinator</label><br>
-      </div>
-      <br>
-      <br>
-      <br>
-      <br>
-      <hr>
-      <h5 style="text-align:left"><b>
-      STUDENT ACCOUNT INFORMATION:</b>
-      </h5>
-      <form>
-        <label for="username"><h5><b>
-       USERNAME:</b></h5>
-        </label>
-        <input type="text" id="username" placeholder="surname_firstname">
-        <label for="password"><h5><b>
-        PASSWORD:</b></h5></label>
-        <input type="text" id="password" placeholder="Input password">
-      </form>
-      <p><i>
-      The 1 hour per day Wifi-Connectivity  given to the user is valid from 
- November  to March, 2022</i></p>
-      <div class="print">
-         <input type="button" value="PRINT PDF">
-      </div>
-     </fieldset>         
-     
-</body>
+       <div class="container">
+                <div class="card border-0">
+                    <div class="card-body">
+                        <img class="card-img-top" src="TUP-LOGO.png" alt="Card image">
+                        <br><br>
+
+                            <h2 class="card-title">WIFI CONNECTIVITY REGISTRATION<br>(for students users only)</h2>
+
+                            <div class="row">
+                                <div class="col-sm-6">
+                                    <br>
+                                    <br>
+                                    <br>
+                                    <form>
+                                        <label for="department">Name:</label>
+                                        <div class="input-group mb-3">
+                                          <div class="input-group-prepend">
+                                        </div>
+                                          <input type="text" class="form-control" placeholder="First Name">
+                                          <input type="text" class="form-control" placeholder="Middle Name">
+                                          <input type="text" class="form-control" placeholder="Last Name">
+                                        </div>
+                                      </form>
+                                    <div class="form-group">
+                                        <label for="department">Name:</label>
+                                        <input type="text" class="form-control" id="name" placeholder="Enter Name" >
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="designation">Course:</label>
+                                        <input type="text"class="form-control"  id="course" placeholder="Enter Course">
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="mac address">Semester:</label>
+                                        <input type="text" class="form-control" id="semester" placeholder="Enter Semester">
+                                    </div>
+                                    <form action="/action_page.php">
+                                      System/Device:
+                                      <br>
+                                      <select name="system" class="custom-select mt-2 mb-3">
+                                        <option selected>Choose</option>
+                                        <option value="phone">Smartphone</option>
+                                        <option value="laptop">Laptop</option>
+                                        <option value="tab">Tablet</option>
+                                        <option value="pc">PC</option>
+                                        <option value="desktop">Desktop</option>
+                                        <option value="others">Others...</option>
+                                      </select>
+                                  </form>
+                                  <div class="form-group">
+                                    <label for="others">If others, please specify:</label>
+                                    <input type="text" class="form-control" id="others" placeholder="Specify device...">
+                                  </div>
+                                </div>
+
+                                <div class="col-sm-6">
+                                    <br>
+                                    <br>
+                                    <br>
+                                    <div class="form-group">
+                                        <label for="studentno">Student No:</label>
+                                        <input type="text" class="form-control" id="studentno" placeholder="TUPC-xx-xxxx">
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="orno">O.R#::</label>
+                                        <input type="text" class="form-control" id="emailadd" placeholder="Or Number">
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="macaddress">Mac Address:</label>
+                                        <input type="text" class="form-control" id="macaddress" placeholder="Mac Address">
+                                    </div>
+                                    <div class="form-group">
+                                      <label for="phone">Phone #:</label>
+                                      <input type="tel" class="form-control" id="phoneno" placeholder="09xxxxxxxxx">
+                                  </div>
+                                  <div class="form-group">
+                                    <label for="emailadd">Email Address:</label>
+                                    <input type="text" class="form-control" id="emailadd" placeholder="email@yahoo.com">
+                                  </div>
+                                  <div class="form-group">
+                                    <label for="residenceAdd">Residence Address:</label>
+                                    <input type="text" class="form-control" id="residenceAdd" placeholder="BLK# LOT#...">
+                                  </div>
+                                </div>
+                            </div>
+                            <hr>
+                            
+                            <div class="row">
+                              <div class="col-sm-12">
+                              <p><i>
+                              I understand that the Wi-Fi connectivity is provided to me for my academic work only.
+                            The above mentioned system solely belongs to me. I have gone through the norms and
+                            Regulation of using the Wi-Fi Connectivity and I abide by it. I will not misuse the facility
+                            by any means.</i>
+                              </p>
+                              <hr>
+                              </div>
+                            </div>
+                            
+                            <div class="row">
+                              <div class="col-sm-6">
+                                <label for="signature">Upload image of Signature over printed name:</label>
+                                    <form>
+                                        <div class="custom-file">
+                                          <input type="file" class="custom-file-input" id="Agreement">
+                                          <label class="custom-file-label" for="Agreement">Choose file</label>
+                                        </div>
+                                    </form>
+                              </div>
+                              <div class="col-sm-6">
+                                <h5 style="text-align:left;">
+                                  Approved by:</h5>
+                                    <input type="image" id="image1" src="TUP-LOGO.png" alt="UITC Coordinator Signature" width="400px" height="40px"><br>
+                                    <label for="image1">
+                                      UITC Coordinator</label><br>
+                              </div>
+                            </div>
+
+                            <hr>
+
+                            <div class="row">
+                                <div class="col-sm-6">
+                                  <div class="form-group">
+                                    <label for="name">Name:</label>
+                                    <input type="text" class="form-control" id="name" placeholder="Enter Name">
+                                  </div>
+                                  <div class="form-group">
+                                    <label for="name">Name:</label>
+                                    <input type="text" class="form-control" id="name" placeholder="Enter Name">
+                                  </div>
+                                    <p><i>
+                                    The 1 hour per day Wifi-Connectivity  given to the user is valid from 
+                                  November  to March, 2022</i></p>  
+                                </div>
+
+                                <div class="col-sm-6">  
+                                    <br>
+                                    <br> 
+                                    <br> 
+                                    <br> 
+                                    <br>  
+                                    <div class="print">
+                                        <button type="button" class="btn btn-outline-success" data-toggle="modal" data-target="#own">
+                                            PRINT
+                                        </button>
+
+                                        <div class="modal" id="own">
+                                            <div class="modal-dialog">
+                                                <div class="modal-content">
+                                                    <div class="modal-header">
+                                                        <h4 class="modal-title">Success...</h4>
+                                                        <button type="button" class="close" data-dismiss="modal">x</button>
+                                                    </div>
+                                          
+                                                    <div class="modal-body">
+                                                        In Progress...
+                                                    </div>
+                                        
+                                                    <div class="modal-footer">
+                                                        <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
+                                                    </div>
+                                          
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                    </div>
+                </div>       
+       </div>
+
+   </body>
 </html>
