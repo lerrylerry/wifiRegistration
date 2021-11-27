@@ -58,5 +58,9 @@
    position: relative;
 }
 .customJumboBg{
-   background-image: url(ocean.jpg);
+   background-image: url(wifi.jpg);
+   background-repeat: repeat-x repeat-y;
+   background-size: 1mm 1mm;
+   background-repeat: repeat;
+   opacity: 0.8;
 }
