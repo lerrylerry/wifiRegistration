@@ -18,13 +18,15 @@
 
    </head>
    <body>
-       <div class="container">
+        <div class="container">
                 <div class="card border-0">
                     <div class="card-body">
-                        <img class="card-img-top" src="TUP-LOGO.png" alt="Card image">
-                        <br><br>
-
-                            <h2 class="card-title">WIFI CONNECTIVITY REGISTRATION<br>(for faculty users only)</h2>
+                        <img class="card-img-top" src="TUP-LOGO.png" alt="TUP-LOGO">
+                        <div class="jumbotron jumbotron-fluid customJumboBg">
+                            <div class="container-fluid">
+                                <h2 class="card-title">WIFI CONNECTIVITY REGISTRATION<br>(for faculty users only)</h2>
+                            </div>
+                        </div>
 
                             <div class="row">
                                 <div class="col-sm-6">
@@ -133,49 +135,46 @@
                             </div>
 
                             <div class="row">
-                                <div class="col-sm-6">
+                                <div class="col-sm-6">  
                                     <div class="form-group">
-                                        
-                                        <label for="date">Date:</label>
-                                        <input type="text" class="form-control" id="date" placeholder="mm/dd/yyyy">
-                                    </div>   
+                                        <label for="date">Date:</label><br>
+                                        <input type="date" class="form-control" id="date" name="date">
+                                    </div>  
                                 </div>
 
                                 <div class="col-sm-6">
                                     <br>    
-                                    <div class="print">
-                                        <button type="button" class="btn btn-outline-success" data-toggle="modal" data-target="#own">
-                                            PRINT
-                                        </button>
+                                    <div class="container">
+                                        <div class="text-right">
+                                            <button type="button" class="btn btn-outline-success" data-toggle="modal" data-target="#myModal">PRINT</button>
 
-                                        <div class="modal" id="own">
-                                            <div class="modal-dialog">
-                                                <div class="modal-content">
-                                                    <div class="modal-header">
-                                                        <h4 class="modal-title">Success...</h4>
-                                                        <button type="button" class="close" data-dismiss="modal">x</button>
+                                            <div class="modal" id="myModal">
+                                                <div class="modal-dialog">
+                                                    <div class="modal-content">
+                                                        <div class="modal-header">
+                                                            <h4 class="modal-title">Success...</h4>
+                                                            <button type="button" class="close" data-dismiss="modal">x</button>
+                                                        </div>
+                                            
+                                                        <div class="modal-body">
+                                                            In Progress...
+                                                        </div>
+                                            
+                                                        <div class="modal-footer">
+                                                            <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
+                                                        </div>
+                                            
                                                     </div>
-                                          
-                                                    <div class="modal-body">
-                                                        In Progress...
-                                                    </div>
-                                        
-                                                    <div class="modal-footer">
-                                                        <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
-                                                    </div>
-                                          
                                                 </div>
                                             </div>
                                         </div>
+                                        
                                     </div>
                                 </div>
                             </div>
 
                     </div>
                 </div>    
-
-            </div>
-            
        </div>
 
    </body>
