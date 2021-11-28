@@ -1,0 +1,139 @@
+ body{
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+    font-weight: bolder;
+    background-image: url(background.jpg);
+    background-size: cover;
+    background-repeat: no-repeat;
+    position: relative;
+ }
+.container{
+   margin-top: 10px;
+   margin-bottom: 10px;
+   position: relative;
+   max-width: 1000px;
+
+}
+.card-img-top{
+   padding-top: 250px;
+   padding-right: 80px;
+   height: 1000px;
+   opacity: 0.1;
+   position: absolute;
+}
+.card-title{
+   text-align: center;
+}
+.card-body{
+   background-color: whitesmoke;
+   border-style: groove;
+   border-width: 25px;
+}
+.custom-select{
+   border-style: solid;
+   border-color: darkslateblue;
+   border-width: 5px;
+   border-radius: 25px;
+   padding: 5px;
+   font-style: oblique;
+}
+#department{
+   border-style: solid;
+   border-color: darkslateblue;
+   border-width: 5px;
+   border-radius: 25px;
+   padding: 5px;
+}
+#designation{
+   border-style: solid;
+   border-color: darkslateblue;
+   border-width: 5px;
+   border-radius: 25px;
+   padding: 5px;
+}
+#macaddress{
+   border-style: solid;
+   border-color: darkslateblue;
+   border-width: 5px;
+   border-radius: 25px;
+   padding: 5px;
+}
+#others{
+   border-style: solid;
+   border-color: darkslateblue;
+   border-width: 5px;
+   border-radius: 25px;
+   padding: 5px;
+}
+#emailadd{
+   border-style: solid;
+   border-color: darkslateblue;
+   border-width: 5px;
+   border-radius: 25px;
+   padding: 5px;
+}
+#phoneno{
+   border-style: solid;
+   border-color: darkslateblue;
+   border-width: 5px;
+   border-radius: 25px;
+   padding: 5px;
+}
+#faculty{
+   border-style: solid;
+   border-color: darkslateblue;
+   border-width: 5px;
+   border-radius: 25px;
+   padding: 5px;
+}
+#agreement{
+   border-style: solid;
+   border-color: darkslateblue;
+   border-width: 5px;
+   border-radius: 25px;
+   padding: 5px;
+}
+#date{
+   border-style: solid;
+   border-color: darkslateblue;
+   border-width: 5px;
+   border-radius: 25px;
+   padding: 5px;
+}
+.customJumboBg{
+   background-image: url(wifi.jpg);
+   background-repeat: repeat-x repeat-y;
+   background-size: 8mm 8mm;
+   background-repeat: repeat;
+   opacity: 0.8;
+}
+.name-group{
+   border-style: solid;
+   border-color: darkslateblue;
+   border-width: 5px;
+   border-radius: 25px;
+   padding: 5px;
+}
+#first{
+   border-style: solid;
+   border-color: darkslateblue;
+   border-width: 5px;
+   border-right-style: hidden;
+   border-top-left-radius: 25px;
+   border-bottom-left-radius: 25px;
+   padding: 5px;
+}
+#second{
+   border-style: solid;
+   border-color: darkslateblue;
+   border-width: 5px;
+   padding: 5px;
+}
+#third{
+   border-style: solid;
+   border-color: darkslateblue;
+   border-width: 5px;
+   border-left-style: hidden;
+   border-top-right-radius: 25px;
+   border-bottom-right-radius: 25px;
+   padding: 5px;
+}

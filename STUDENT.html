@@ -9,7 +9,7 @@
       <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
       <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
       <script src="https://maxcdn.bootstrapcdn.com/sbootstrap/4.5.2/js/bootstrap.min.js"></script> 
-      <link rel = "stylesheet" href = "Design.css">
+      <link rel = "stylesheet" href = "ST-Design.css">
    <style>
 
    </style>
@@ -22,37 +22,47 @@
                 <div class="card border-0">
                     <div class="card-body">
                         <img class="card-img-top" src="TUP-LOGO.png" alt="TUP-LOGO">
-                        <br><br>
-
-                            <h2 class="card-title">WIFI CONNECTIVITY REGISTRATION<br>(for students users only)</h2>
+                        <div class="jumbotron jumbotron-fluid customJumboBg">
+                          <div class="container-fluid">
+                            <h2 class="card-title text-primary">WIFI CONNECTIVITY REGISTRATION<br>(for students users only)</h2>
+                          </div>
+                        </div>
 
                             <div class="row">
                                 <div class="col-sm-6">
-                                    <br>
-                                    <br>
-                                    <br>
                                     <form>
-                                        <label for="department">Name:</label>
+                                        <label for="name">Name:</label>
                                         <div class="input-group mb-3">
                                           <div class="input-group-prepend">
+                                            <input type="text" class="form-control" id="first" placeholder="First Name">
+                                            <input type="text" class="form-control" id="second" placeholder="Middle Name">
+                                            <input type="text" class="form-control" id="third" placeholder="Last Name">
+                                          </div>
                                         </div>
-                                          <input type="text" class="form-control" placeholder="First Name">
-                                          <input type="text" class="form-control" placeholder="Middle Name">
-                                          <input type="text" class="form-control" placeholder="Last Name">
-                                        </div>
-                                      </form>
+                                    </form>
                                     <div class="form-group">
-                                        <label for="department">Name:</label>
-                                        <input type="text" class="form-control" id="name" placeholder="Enter Name" >
-                                    </div>
-                                    <div class="form-group">
-                                        <label for="designation">Course:</label>
+                                        <label for="course">Course:</label>
                                         <input type="text"class="form-control"  id="course" placeholder="Enter Course">
                                     </div>
                                     <div class="form-group">
-                                        <label for="mac address">Semester:</label>
+                                        <label for="semester">Semester:</label>
                                         <input type="text" class="form-control" id="semester" placeholder="Enter Semester">
                                     </div>
+                                    <div class="form-group">
+                                        <label for="studentno">Student No:</label>
+                                        <input type="text" class="form-control" id="studentno" placeholder="TUPC-xx-xxxx">
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="orno">O.R#::</label>
+                                        <input type="text" class="form-control" id="orno" placeholder="Or Number">
+                                    </div>
+                                  <div class="form-group">
+                                    <label for="others">If others, please specify:</label>
+                                    <input type="text" class="form-control" id="others" placeholder="Specify device...">
+                                  </div>
+                                </div>
+
+                                <div class="col-sm-6">
                                     <form action="/action_page.php">
                                       System/Device:
                                       <br>
@@ -66,24 +76,6 @@
                                         <option value="others">Others...</option>
                                       </select>
                                   </form>
-                                  <div class="form-group">
-                                    <label for="others">If others, please specify:</label>
-                                    <input type="text" class="form-control" id="others" placeholder="Specify device...">
-                                  </div>
-                                </div>
-
-                                <div class="col-sm-6">
-                                    <br>
-                                    <br>
-                                    <br>
-                                    <div class="form-group">
-                                        <label for="studentno">Student No:</label>
-                                        <input type="text" class="form-control" id="studentno" placeholder="TUPC-xx-xxxx">
-                                    </div>
-                                    <div class="form-group">
-                                        <label for="orno">O.R#::</label>
-                                        <input type="text" class="form-control" id="emailadd" placeholder="Or Number">
-                                    </div>
                                     <div class="form-group">
                                         <label for="macaddress">Mac Address:</label>
                                         <input type="text" class="form-control" id="macaddress" placeholder="Mac Address">
@@ -129,7 +121,7 @@
                               <div class="col-sm-6">
                                 <h5 style="text-align:left;">
                                   Approved by:</h5>
-                                    <input type="image" id="image1" src="TUP-LOGO.png" alt="UITC Coordinator Signature" width="400px" height="40px"><br>
+                                    <input type="image" id="image1" src="white.jpg" alt="UITC Coordinator Signature" width="400px" height="40px"><br>
                                     <label for="image1">
                                       UITC Coordinator</label><br>
                               </div>
@@ -143,22 +135,23 @@
                                     <label for="name">Name:</label>
                                     <input type="text" class="form-control" id="name" placeholder="Enter Name">
                                   </div>
+                                </div>
+
+                                <div class="col-sm-6">
                                   <div class="form-group">
-                                    <label for="name">Name:</label>
-                                    <input type="text" class="form-control" id="name" placeholder="Enter Name">
+                                    <label for="password">Password:</label>
+                                    <input type="text" class="form-control" id="password" placeholder="Enter Password">
                                   </div>
+                                </div>
                                     <p><i>
                                     The 1 hour per day Wifi-Connectivity  given to the user is valid from 
                                   November  to March, 2022</i></p>  
-                                </div>
+                            </div>
 
-                                <div class="col-sm-6">  
-                                    <br>
-                                    <br> 
-                                    <br> 
-                                    <br> 
-                                    <br>  
-                                    <div class="print">
+                            <div class="row">
+                                <div class="col-sm-12">
+                                  <div class="container">
+                                    <div class="text-right">
                                         <button type="button" class="btn btn-outline-success" data-toggle="modal" data-target="#own">
                                             PRINT
                                         </button>
@@ -183,6 +176,8 @@
                                             </div>
                                         </div>
                                     </div>
+                                  </div>
+                                    
                                 </div>
                             </div>
 
