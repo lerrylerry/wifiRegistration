@@ -1,14 +1,82 @@
-body{
-    margin: 0;
-    padding: 0;
-    font-family: 'Raleway', sans-serif;
-}
-.banner{
-    height: 100vh;
-    width: 100%;
-    background-image:url(wifihome.jpg);
+header {
+    background-image: url("wifibg.jpg");
     background-position: center;
+    background-color: #747070;
     background-size: cover;
     background-repeat: no-repeat;
+    height: 100vh;
+}
+.banner-text {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    text-align: center;
 
+}
+.nav-link {
+    font-family: monospace;
+    text-transform: uppercase;
+}
+.banner-text p {
+    font-family: Impact;
+    text-transform: capitalize;
+}
+.banner-btn a{
+    border: 1px solid black;
+    border-radius: 50px;
+    text-transform: uppercase;
+    text-decoration: none;
+    padding: 10px 50px;
+    display: inline-block;
+    margin-top: 15px;
+    color: rgb(0, 0, 0);
+    background-color: rgb(236, 225, 222);
+}
+.text-area{
+    font-size: 70px;
+    font-family: impact;
+    text-transform: uppercase;
+    font-weight: bold;
+}
+.text-area span{
+    color: rgb(29, 28, 28);
+    opacity: 0;
+    transform: translate(0, -100px) rotate(360deg) scale(0);
+    animation: animate 5s forwards;
+}
+.text-area span{
+    display: inline-block;
+}
+.text-area span:nth-of-type(2){
+    animation-delay: .1s;
+}
+.text-area span:nth-of-type(3){
+    animation-delay: .2s;
+}
+.text-area span:nth-of-type(4){
+    animation-delay: .3s;
+}
+
+@keyframes animate{
+    30%{
+        transform: translate(0, -50px) rotate(180deg) scale(1);
+    }
+    60%{
+        transform: translate(0, 20px) rotate(0deg) scale(.8);
+    }
+    100%{
+        transform: translate(0) rotate(0deg) scale(1);
+        opacity: 1;
+    }
+}
+
+@media (max-width:500px){
+    
+    .navbar-light{
+        background-color: rgb(233, 229, 229);
+    }
+    .text-area{
+        font-size: 35px;
+    }
 }
