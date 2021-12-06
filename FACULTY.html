@@ -62,7 +62,6 @@
 
                                 <div class="col-sm-6">
                                     <div class="form-group">System/Device:<label id="red">*</label>
-                                          <option value="">Choose</option>
                                         <select name="system" class="custom-select" id="system" required>
                                           <option value="">Choose</option>
                                           <option value="phone">Smartphone</option>
@@ -93,12 +92,17 @@
                             
                             <div class="row">
                                 <div class="col-sm-12">
-                                    <p><i>
-                                        I understand that the Wi-Fi connectivity is provided to me for my academic work only.
-                                        The above mentioned system solely belongs to me. I have gone through the norms and
-                                        Regulation of using the Wi-Fi Connectivity and I abide by it. I will not misuse the facility
-                                        by any means.</i>
-                                    </p>
+                                        <a class="card-link" data-toggle="collapse" href="#terms">
+                                            [Terms and Condition]
+                                        </a>
+                                        <div class="collapse show" id="terms" data-parent="#accordion">
+                                            <p><i>
+                                    I understand that the Wi-Fi connectivity is provided to me for my academic work only.
+                                    The above mentioned system solely belongs to me. I have gone through the norms and
+                                    Regulation of using the Wi-Fi Connectivity and I abide by it. I will not misuse the facility
+                                    by any means.</i></p>
+                                        </div>
+
                                     <form action="/action_page.php">
                                         <div class="custom-control custom-checkbox">
                                           <input type="checkbox" class="custom-control-input" id="agree" name="Agreement" required>
@@ -131,18 +135,21 @@
                             </div>
 
                             <div class="row was-validated">
-                                <div class="col-sm-6">  
+                                <div class="col-sm-3">  
                                     <div class="form-group">
                                         <label for="date">Date:</label><label id="red">*</label>
                                         <input type="date" class="form-control" id="date" name="date" required>
                                     </div>  
                                 </div>
 
-                                <div class="col-sm-6">
+                                <div class="col-sm-9">
                                     <br>    
                                     <div class="container">
                                         <div class="text-right">
-                                            <button type="button" class="btn btn-outline-success" data-toggle="modal" data-target="#myModal">PRINT</button>
+                                            <button type="button" class="btn btn-outline-success" data-toggle="modal" data-target="#myModal">
+                                                <span class="spinner-border spinner-border-sm"></span>
+                                                PRINT
+                                            </button>
 
                                             <div class="modal" id="myModal">
                                                 <div class="modal-dialog">

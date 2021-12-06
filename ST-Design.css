@@ -28,6 +28,9 @@
 .sub{
    text-align: center;
 }
+.btn{
+   padding: 10px;
+}
 .card-body{
    background-color: lightgray;
    border-style: groove;
@@ -315,7 +318,7 @@
 }
 .customJumboBg{
    background-image: url(background.jpg);
-   background-size: 50% 100%;
+   background-size: 100% 100%;
    background-repeat: repeat;
 }
 .name-group{
