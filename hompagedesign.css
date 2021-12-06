@@ -71,12 +71,3 @@ header {
     }
 }
 
-@media (max-width:500px){
-    
-    .navbar-light{
-        background-color: rgb(233, 229, 229);
-    }
-    .text-area{
-        font-size: 35px;
-    }
-}
