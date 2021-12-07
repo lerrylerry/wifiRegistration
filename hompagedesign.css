@@ -1,7 +1,7 @@
 header {
     background-image: url("wifibg.jpg");
     background-position: center;
-    background-color: #747070;
+    background-color: #CCCCCC;
     background-size: cover;
     background-repeat: no-repeat;
     height: 100vh;
@@ -14,9 +14,19 @@ header {
     text-align: center;
 
 }
+.navbar{
+    padding: .6rem;
+}
+.navbar-nav li{
+    padding: 10px;
+}
 .nav-link {
     font-family: monospace;
     text-transform: uppercase;
+    font-size: 1.1em;
+}
+.nav-link:active{
+    color: maroon;
 }
 .banner-text p {
     font-family: Impact;
@@ -33,11 +43,20 @@ header {
     color: rgb(0, 0, 0);
     background-color: rgb(236, 225, 222);
 }
+.banner-btn a:active{
+    background-color: maroon;
+    color: white;
+    border: 1px solid white;
+}
 .text-area{
-    font-size: 70px;
+    font-size: 500%;
     font-family: impact;
     text-transform: uppercase;
     font-weight: bold;
+    text-shadow: 1px 1px 10px white;
+}
+.sub-text{
+    text-shadow: 1px 1px 10px white;
 }
 .text-area span{
     color: rgb(29, 28, 28);
