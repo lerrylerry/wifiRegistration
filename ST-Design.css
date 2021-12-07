@@ -1,7 +1,8 @@
  body{
     font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
     font-weight: bolder;
-    background-image: url(background.jpg);
+    background-image: url(binary.jpg);
+    background-attachment: fixed;
     background-size: cover;
     background-repeat: no-repeat;
     position: relative;
@@ -22,146 +23,401 @@
 }
 .card-title{
    text-align: center;
+   font-size: 40px;
+}
+.sub{
+   text-align: center;
+}
+.btn{
+   padding: 10px;
 }
 .card-body{
-   background-color: whitesmoke;
+   background-color: lightgray;
    border-style: groove;
    border-width: 25px;
 }
 .custom-select{
    border-style: solid;
-   border-color: darkslateblue;
-   border-width: 5px;
+   border-width: 3px;
    border-radius: 25px;
    padding: 5px;
    font-style: oblique;
 }
 #course{
    border-style: solid;
-   border-color: darkslateblue;
-   border-width: 5px;
+   border-width: 3px;
    border-radius: 25px;
+   border-color: blue;
    padding: 5px;
+}
+#course:hover{
+   border-color: whitesmoke;
+}
+#course:focus:required:invalid{
+   border-color: red;
+   background-color: black;
+}
+#course:required:valid{
+   color: whitesmoke;
+   border-color: green;
+   background-color: black;
+   font-family: cursive;
+   font-weight: bold;
 }
 #semester{
    border-style: solid;
-   border-color: darkslateblue;
-   border-width: 5px;
+   border-width: 3px;
    border-radius: 25px;
+   border-color: blue;
    padding: 5px;
+}
+#semester:hover{
+   border-color: whitesmoke;
+}
+#semester:focus:required:invalid{
+   border-color: red;
+   background-color: black;
+}
+#semester:required:valid{
+   color: whitesmoke;
+   border-color: green;
+   background-color: black;
+   font-family: cursive;
+   font-weight: bold;
 }
 #studentno{
    border-style: solid;
-   border-color: darkslateblue;
-   border-width: 5px;
+   border-width: 3px;
    border-radius: 25px;
+   border-color: blue;
    padding: 5px;
+}
+#studentno:hover{
+   border-color: whitesmoke;
+}
+#studentno:focus:required:invalid{
+   border-color: red;
+   background-color: black;
+}
+#studentno:required:valid{
+   color: whitesmoke;
+   border-color: green;
+   background-color: black;
+   font-family: cursive;
+   font-weight: bold;
 }
 #orno{
    border-style: solid;
-   border-color: darkslateblue;
-   border-width: 5px;
+   border-width: 3px;
    border-radius: 25px;
+   border-color: blue;
    padding: 5px;
+}
+#orno:hover{
+   border-color: whitesmoke;
+}
+#orno:focus:required:invalid{
+   border-color: red;
+   background-color: black;
+}
+#orno:required:valid{
+   color: whitesmoke;
+   border-color: green;
+   background-color: black;
+   font-family: cursive;
+   font-weight: bold;
 }
 #macaddress{
    border-style: solid;
-   border-color: darkslateblue;
-   border-width: 5px;
+   border-width: 3px;
    border-radius: 25px;
+   border-color: blue;
    padding: 5px;
+}
+#macaddress:hover{
+   border-color: whitesmoke;
+}
+#macaddress:focus:required:invalid{
+   border-color: red;
+   background-color: black;
+}
+#macaddress:required:valid{
+   color: whitesmoke;
+   border-color: green;
+   background-color: black;
+   font-family: cursive;
+   font-weight: bold;
 }
 #others{
    border-style: solid;
-   border-color: darkslateblue;
-   border-width: 5px;
+   border-width: 3px;
    border-radius: 25px;
+   border-color: blue;
    padding: 5px;
+}
+#others:hover{
+   border-color: whitesmoke;
+}
+#others:focus:required:invalid{
+   border-color: red;
+   background-color: black;
+}
+#others:required:valid{
+   color: whitesmoke;
+   border-color: green;
+   background-color: black;
+   font-family: cursive;
+   font-weight: bold;
 }
 #emailadd{
    border-style: solid;
-   border-color: darkslateblue;
-   border-width: 5px;
+   border-width: 3px;
    border-radius: 25px;
+   border-color: blue;
    padding: 5px;
+}
+#emailadd:hover{
+   border-color: whitesmoke;
+}
+#emailadd:focus:required:invalid{
+   border-color: red;
+   background-color: black;
+}
+#emailadd:required:valid{
+   color: whitesmoke;
+   border-color: green;
+   background-color: black;
+   font-family: cursive;
+   font-weight: bold;
 }
 #phoneno{
    border-style: solid;
-   border-color: darkslateblue;
-   border-width: 5px;
+   border-width: 3px;
    border-radius: 25px;
+   border-color: blue;
    padding: 5px;
+}
+#phoneno:hover{
+   border-color: whitesmoke;
+}
+#phoneno:focus:required:invalid{
+   border-color: red;
+   background-color: black;
+}
+#phoneno:required:valid{
+   color: whitesmoke;
+   border-color: green;
+   background-color: black;
+   font-family: cursive;
+   font-weight: bold;
 }
 #residenceAdd{
    border-style: solid;
-   border-color: darkslateblue;
-   border-width: 5px;
+   border-width: 3px;
    border-radius: 25px;
+   border-color: blue;
    padding: 5px;
+}
+#residenceAdd:hover{
+   border-color: whitesmoke;
+}
+#residenceAdd:focus:required:invalid{
+   border-color: red;
+   background-color: black;
+}
+#residenceAdd:required:valid{
+   color: whitesmoke;
+   border-color: green;
+   background-color: black;
+   font-family: cursive;
+   font-weight: bold;
 }
 #agreement{
    border-style: solid;
-   border-color: darkslateblue;
-   border-width: 5px;
+   border-width: 3px;
    border-radius: 25px;
+   border-color: blue;
    padding: 5px;
+}
+#agreement:hover{
+   border-color: whitesmoke;
+}
+#agreement:focus:required:invalid{
+   border-color: red;
+   background-color: black;
+}
+#agreement:required:valid{
+   color: whitesmoke;
+   border-color: green;
+   background-color: black;
+   font-family: cursive;
+   font-weight: bold;
 }
 #date{
    border-style: solid;
-   border-color: darkslateblue;
-   border-width: 5px;
+   border-width: 3px;
    border-radius: 25px;
+   border-color: blue;
    padding: 5px;
+}
+#date:hover{
+   border-color: whitesmoke;
+}
+#date:focus:required:invalid{
+   border-color: red;
+   background-color: black;
+}
+#date:required:valid{
+   color: whitesmoke;
+   border-color: green;
+   background-color: black;
+   font-family: cursive;
+   font-weight: bold;
 }
 #name{
    border-style: solid;
-   border-color: darkslateblue;
-   border-width: 5px;
+   border-width: 3px;
    border-radius: 25px;
+   border-color: blue;
    padding: 5px;
+}
+#name:hover{
+   border-color: whitesmoke;
+}
+#name:focus:required:invalid{
+   border-color: red;
+   background-color: black;
+}
+#name:required:valid{
+   color: whitesmoke;
+   border-color: green;
+   background-color: black;
+   font-family: cursive;
+   font-weight: bold;
 }
 #password{
    border-style: solid;
-   border-color: darkslateblue;
-   border-width: 5px;
+   border-width: 3px;
    border-radius: 25px;
+   border-color: blue;
    padding: 5px;
 }
+#password:hover{
+   border-color: whitesmoke;
+}
+#password:focus:required:invalid{
+   border-color: red;
+   background-color: black;
+}
+#password:required:valid{
+   color: whitesmoke;
+   border-color: green;
+   background-color: black;
+   font-family: cursive;
+   font-weight: bold;
+}
 .customJumboBg{
-   background-image: url(wifi.jpg);
-   background-repeat: repeat-x repeat-y;
-   background-size: 8mm 8mm;
+   background-image: url(background.jpg);
+   background-size: 100% 100%;
    background-repeat: repeat;
-   opacity: 0.8;
 }
 .name-group{
    border-style: solid;
-   border-color: darkslateblue;
-   border-width: 5px;
+   border-width: 3px;
    border-radius: 25px;
    padding: 5px;
 }
 #first{
    border-style: solid;
-   border-color: darkslateblue;
-   border-width: 5px;
+   border-width: 3px;
+   border-color: blue;
    border-right-style: hidden;
    border-top-left-radius: 25px;
    border-bottom-left-radius: 25px;
    padding: 5px;
 }
+#first:hover{
+   border-color: whitesmoke;
+}
+#first:focus:required:invalid{
+   border-color: red;
+   background-color: black;
+}
+#first:required:valid{
+   color: whitesmoke;
+   border-color: green;
+   background-color: black;
+   font-family: cursive;
+   font-weight: bold;
+}
 #second{
    border-style: solid;
-   border-color: darkslateblue;
-   border-width: 5px;
+   border-width: 3px;
+   border-color: blue;
    padding: 5px;
+}
+#second:hover{
+   border-color: whitesmoke;
+}
+#second:focus:required:invalid{
+   border-color: red;
+   background-color: black;
+}
+#second:required:valid{
+   color: whitesmoke;
+   border-color: green;
+   background-color: black;
+   font-family: cursive;
+   font-weight: bold;
 }
 #third{
    border-style: solid;
-   border-color: darkslateblue;
-   border-width: 5px;
+   border-width: 3px;
+   border-color: blue;
    border-left-style: hidden;
    border-top-right-radius: 25px;
    border-bottom-right-radius: 25px;
    padding: 5px;
+}
+#third:hover{
+   border-color: whitesmoke;
+}
+#third:focus:required:invalid{
+   border-color: red;
+   background-color: black;
+}
+#third:required:valid{
+   color: whitesmoke;
+   border-color: green;
+   background-color: black;
+   font-family: cursive;
+   font-weight: bold;
+}
+#system{
+   border-style: solid;
+   border-width: 3px;
+   border-radius: 25px;
+   border-color: blue;
+   padding: 5px;
+}
+#system:hover{
+   border-color: whitesmoke;
+}
+#system:focus:required:invalid{
+   color: whitesmoke;
+   border-color: red;
+   background-color: black;
+}
+#system:required:valid{
+   color: whitesmoke;
+   border-color: green;
+   background-color: black;
+   font-family: cursive;
+   font-weight: bold;
+}
+.custom-file-label{
+   background-color: lightgrey;
+}
+#red{
+   color: red;
 }

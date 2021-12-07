@@ -9,6 +9,7 @@
       <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
       <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
       <script src="https://maxcdn.bootstrapcdn.com/sbootstrap/4.5.2/js/bootstrap.min.js"></script> 
+      <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.bundle.min.js"></script>
       <link rel = "stylesheet" href = "F-Design.css">
    <style>
 
@@ -24,33 +25,34 @@
                         <img class="card-img-top" src="TUP-LOGO.png" alt="TUP-LOGO">
                         <div class="jumbotron jumbotron-fluid customJumboBg">
                             <div class="container-fluid">
-                                <h2 class="card-title text-primary">WIFI CONNECTIVITY REGISTRATION<br>(for faculty users only)</h2>
+                                <h2 class="card-title text-primary">WIFI CONNECTIVITY REGISTRATION</h2>
+                                <h4 class="sub text-warning">(for faculty users only)</h4>
                             </div>
                         </div>
 
-                            <div class="row">
+                            <div class="row was-validated">
                                 <div class="col-sm-6">
                                     <form>
-                                        <label for="name">Name:</label>
+                                        <label for="name">Name:</label><label id="red">*</label>
                                         <div class="input-group mb-3">
                                           <div class="input-group-prepend">
-                                            <input type="text" class="form-control" id="first" placeholder="First Name">
-                                            <input type="text" class="form-control" id="second" placeholder="Middle Name">
-                                            <input type="text" class="form-control" id="third" placeholder="Last Name">
+                                            <input type="text" class="form-control" id="first" placeholder="First Name" required>
+                                            <input type="text" class="form-control" id="second" placeholder="Middle Name" required>
+                                            <input type="text" class="form-control" id="third" placeholder="Last Name" required>
                                           </div>                                          
                                         </div>
                                     </form>
                                     <div class="form-group">
-                                        <label for="department">Department:</label>
-                                        <input type="text" class="form-control" id="department" placeholder="Enter Department" >
+                                        <label for="department">Department:</label><label id="red">*</label>
+                                        <input type="text" class="form-control" id="department" placeholder="Enter Department" required>
                                     </div>
                                     <div class="form-group">
-                                        <label for="designation">Designation:</label>
-                                        <input type="text"class="form-control"  id="designation" placeholder="Enter Designation">
+                                        <label for="designation">Designation:</label><label id="red">*</label>
+                                        <input type="text"class="form-control"  id="designation" placeholder="Enter Designation" required>
                                     </div>
                                     <div class="form-group">
-                                        <label for="mac address">MAC Address:</label>
-                                        <input type="text" class="form-control" id="macaddress" placeholder="Enter Mac Address">
+                                        <label for="mac address">MAC Address:</label><label id="red">*</label>
+                                        <input type="text" class="form-control" id="macaddress" placeholder="Enter Mac Address" required>
                                     </div>
                                         <label for="some text">
                                     (Note: To get the MAC address of the laptop, please do the following:
@@ -59,11 +61,9 @@
                                 </div>
 
                                 <div class="col-sm-6">
-                                    <form action="/action_page.php">
-                                        System/Device:
-                                        <br>
-                                        <select name="system" class="custom-select mt-2 mb-3">
-                                          <option selected>Choose</option>
+                                    <div class="form-group">System/Device:<label id="red">*</label>
+                                        <select name="system" class="custom-select" id="system" required>
+                                          <option value="">Choose</option>
                                           <option value="phone">Smartphone</option>
                                           <option value="laptop">Laptop</option>
                                           <option value="tab">Tablet</option>
@@ -71,18 +71,19 @@
                                           <option value="desktop">Desktop</option>
                                           <option value="others">Others...</option>
                                         </select>
-                                      </form>
+                                    </div>
+                                        
                                     <div class="form-group">
-                                        <label for="others">If others, please specify:</label>
-                                        <input type="text" class="form-control" id="others" placeholder="Specify device...">
+                                        <label for="others">If others, please specify:</label><label id="red">*</label>
+                                        <input type="text" class="form-control" id="others" placeholder="Specify device..." required>
                                     </div>
                                     <div class="form-group">
-                                        <label for="email">Email Address:</label>
-                                        <input type="text" class="form-control" id="emailadd" placeholder="Enter Email Address">
+                                        <label for="email">Email Address:</label><label id="red">*</label>
+                                        <input type="text" class="form-control" id="emailadd" placeholder="Enter Email Address" required>
                                     </div>
                                     <div class="form-group">
-                                        <label for="phone">Phone #:</label>
-                                        <input type="tel" class="form-control" id="phoneno" placeholder="09xxxxxxxxx">
+                                        <label for="phone">Phone #:</label><label id="red">*</label>
+                                        <input type="tel" class="form-control" id="phoneno" placeholder="09xxxxxxxxx" required>
                                     </div>
                                     <br><br><br>
                                 </div>
@@ -91,15 +92,20 @@
                             
                             <div class="row">
                                 <div class="col-sm-12">
-                                    <p><i>
-                                        I understand that the Wi-Fi connectivity is provided to me for my academic work only.
-                                        The above mentioned system solely belongs to me. I have gone through the norms and
-                                        Regulation of using the Wi-Fi Connectivity and I abide by it. I will not misuse the facility
-                                        by any means.</i>
-                                    </p>
+                                        <a class="card-link" data-toggle="collapse" href="#terms">
+                                            [Terms and Condition]
+                                        </a>
+                                        <div class="collapse show" id="terms" data-parent="#accordion">
+                                            <p><i>
+                                    I understand that the Wi-Fi connectivity is provided to me for my academic work only.
+                                    The above mentioned system solely belongs to me. I have gone through the norms and
+                                    Regulation of using the Wi-Fi Connectivity and I abide by it. I will not misuse the facility
+                                    by any means.</i></p>
+                                        </div>
+
                                     <form action="/action_page.php">
                                         <div class="custom-control custom-checkbox">
-                                          <input type="checkbox" class="custom-control-input" id="agree" name="Agreement">
+                                          <input type="checkbox" class="custom-control-input" id="agree" name="Agreement" required>
                                           <label class="custom-control-label" for="agree">Yes, I agree.</label>
                                         </div>
                                     </form>
@@ -109,11 +115,11 @@
                                 </div>
                             </div>
 
-                            <div class="row">
+                            <div class="row was-validated">
                                 <div class="col-sm-6">
                                     <div class="form-group">
-                                        <label for="faculty name">Faculty Name:</label>
-                                        <input type="text" class="form-control" id="faculty" placeholder="Enter Faculty Name">
+                                        <label for="faculty name">Faculty Name:</label><label id="red">*</label>
+                                        <input type="text" class="form-control" id="faculty" placeholder="Enter Faculty Name" required>
                                     </div>
                                 </div>
 
@@ -121,32 +127,35 @@
                                     <label for="signature">Upload image of Signature over printed name:</label>
                                     <form>
                                         <div class="custom-file">
-                                          <input type="file" class="custom-file-input" id="Agreement">
+                                          <input type="file" class="custom-file-input" id="Agreement" required>
                                           <label class="custom-file-label" for="Agreement">Choose file</label>
                                         </div>
                                     </form>
                                 </div>
                             </div>
 
-                            <div class="row">
-                                <div class="col-sm-6">  
+                            <div class="row was-validated">
+                                <div class="col-sm-3">  
                                     <div class="form-group">
-                                        <label for="date">Date:</label><br>
-                                        <input type="date" class="form-control" id="date" name="date">
+                                        <label for="date">Date:</label><label id="red">*</label>
+                                        <input type="date" class="form-control" id="date" name="date" required>
                                     </div>  
                                 </div>
 
-                                <div class="col-sm-6">
+                                <div class="col-sm-9">
                                     <br>    
                                     <div class="container">
                                         <div class="text-right">
-                                            <button type="button" class="btn btn-outline-success" data-toggle="modal" data-target="#myModal">PRINT</button>
+                                            <button type="button" class="btn btn-outline-success" data-toggle="modal" data-target="#myModal">
+                                                <span class="spinner-border spinner-border-sm"></span>
+                                                PRINT
+                                            </button>
 
                                             <div class="modal" id="myModal">
                                                 <div class="modal-dialog">
                                                     <div class="modal-content">
                                                         <div class="modal-header">
-                                                            <h4 class="modal-title">Success...</h4>
+                                                            <h4 class="modal-title">Success</h4>
                                                             <button type="button" class="close" data-dismiss="modal">x</button>
                                                         </div>
                                             
