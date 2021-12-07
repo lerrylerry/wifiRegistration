@@ -1,5 +1,5 @@
  body{
-    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+    font-family: Arial, Helvetica, sans-serif;
     font-weight: bolder;
     background-image: url(binary.jpg);
     background-attachment: fixed;
@@ -32,7 +32,7 @@
    padding: 10px;
 }
 .card-body{
-   background-color: lightgray;
+   background-color: whitesmoke;
    border-style: groove;
    border-width: 25px;
 }
@@ -226,27 +226,6 @@
    background-color: black;
 }
 #residenceAdd:required:valid{
-   color: whitesmoke;
-   border-color: green;
-   background-color: black;
-   font-family: cursive;
-   font-weight: bold;
-}
-#agreement{
-   border-style: solid;
-   border-width: 3px;
-   border-radius: 25px;
-   border-color: blue;
-   padding: 5px;
-}
-#agreement:hover{
-   border-color: whitesmoke;
-}
-#agreement:focus:required:invalid{
-   border-color: red;
-   background-color: black;
-}
-#agreement:required:valid{
    color: whitesmoke;
    border-color: green;
    background-color: black;

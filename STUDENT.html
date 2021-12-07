@@ -32,17 +32,17 @@
 
                             <div class="row was-validated">
                                 <div class="col-sm-6">
-                                    <form">
+                                    <div class="form-group">
                                         <label for="name">Name:</label><label id="red">*</label>
                                         <div class="input-group mb-3">
                                           <div class="input-group-prepend">
-                                            <input type="text" class="form-control" id="first" placeholder="First Name" required>
+                                            <input type="text" class="form-control" id="first"  placeholder="First Name" required>
                                             <input type="text" class="form-control" id="second" placeholder="Middle Name" required>
                                             <input type="text" class="form-control" id="third" placeholder="Last Name" required>
                                           </div>
                                         </div>
-                                    </form>
-                                      <div class="form-group" action="login.php">
+                                      </div>
+                                      <div class="form-group">
                                           <label for="course">Course:</label><label id="red">*</label>
                                           <input type="text"class="form-control"  id="course" placeholder="Enter Course" required>
                                       </div>
@@ -196,6 +196,12 @@
                     </div>
                 </div>       
        </div>
+
+<script>
+  $(function () {
+  $('[data-toggle="tooltip"]').tooltip()
+})
+</script>
 
    </body>
 </html>
