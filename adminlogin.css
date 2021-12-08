@@ -21,12 +21,24 @@
 .form-container h4{
     text-align: center;
 }
-
-.btn-design {
-    padding: 20px 50px;
-    border-radius: 10px;
-
+.form-container .banner-btn a{
+    border: 1px solid black;
+    border-radius: 50px;
+    text-transform: uppercase;
+    text-decoration: none;
+    padding: 10px 50px;
+    display: inline-block;
+    color: rgb(255, 255, 255);
+    background-color: rgb(13, 88, 201);
+    margin-left: 45px;
+    margin-bottom: 10px;
 }
+.form-container .banner-btn a:active{
+    background-color: rgb(1, 156, 34);
+    color: white;
+    border: 1px solid white;
+}
+
 @media (max-width:500px){
     .form-container{
         margin: 75px;
