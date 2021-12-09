@@ -42,6 +42,7 @@
                                           </div>
                                         </div>
                                       </div>
+                                      <br>
                                       <div class="form-group">
                                           <label for="course">Course:</label><label id="red">*</label>
                                           <input type="text"class="form-control"  id="course" placeholder="Enter Course" required>
@@ -163,7 +164,7 @@
                                 <div class="col-sm-12">
                                   <div class="container">
                                     <div class="text-right">
-                                        <button type="button" class="btn btn-outline-success" data-toggle="modal" data-target="#own">
+                                        <button type="button" class="btn btn-outline-success" id="print" data-toggle="modal" data-target="#own">
                                           <span class="spinner-border spinner-border-sm"></span>
                                                 PRINT
                                         </button>
@@ -198,9 +199,22 @@
        </div>
 
 <script>
-  $(function () {
-  $('[data-toggle="tooltip"]').tooltip()
-})
+    $('#first').tooltip({title: "Please fill out this field", placement:"bottom",  trigger: "hover"});
+    $('#second').tooltip({title: "Please fill out this field", placement:"bottom",  trigger: "hover"});
+    $('#third').tooltip({title: "Please fill out this field", placement:"bottom",  trigger: "hover"});
+    $('#course').tooltip({title: "Please fill out this field", placement:"bottom",  trigger: "hover"});
+    $('#semester').tooltip({title: "Please fill out this field", placement:"bottom",  trigger: "hover"});
+    $('#orno').tooltip({title: "Please fill out this field", placement:"bottom",  trigger: "hover"});
+    $('#phoneno').tooltip({title: "Please fill out this field", placement:"bottom",  trigger: "hover"});
+    $('#studentno').tooltip({title: "Please fill out this field", placement:"bottom",  trigger: "hover"});
+    $('#system').tooltip({title: "Please select item in the list", placement:"bottom",  trigger: "hover"});
+    $('#others').tooltip({title: "Please fill out this field", placement:"bottom",  trigger: "hover"});
+    $('#macaddress').tooltip({title: "Please fill out this field", placement:"bottom",  trigger: "hover"});
+    $('#emailadd').tooltip({title: "Please fill out this field", placement:"bottom",  trigger: "hover"});
+    $('#residenceAdd').tooltip({title: "Please fill out this field", placement:"bottom",  trigger: "hover"});
+    $('#name').tooltip({title: "Please fill out this field", placement:"bottom",  trigger: "hover"});
+    $('#password').tooltip({title: "Please fill out this field", placement:"bottom",  trigger: "hover"});
+    $('#print').tooltip({title: "PDF Format", placement:"bottom",  trigger: "hover"});
 </script>
 
    </body>
