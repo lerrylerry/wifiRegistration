@@ -16,7 +16,7 @@
 }
 .card-img-top{
    padding-top: 250px;
-   padding-right: 80px;
+   padding-right: 60px;
    height: 1000px;
    opacity: 0.1;
    position: absolute;
@@ -28,13 +28,19 @@
 .sub{
    text-align: center;
 }
+hr {
+   height: 4px;
+   background-color: cornsilk;
+   border: none;
+}
 .btn{
    padding: 10px;
 }
 .card-body{
-   background-color: whitesmoke;
-   border-style: groove;
-   border-width: 25px;
+   background-color: #16110d;
+   border-style: solid;
+   border-color: black;
+   border-width: 10px;
 }
 .custom-select{
    border-style: solid;
@@ -42,6 +48,14 @@
    border-radius: 25px;
    padding: 5px;
    font-style: oblique;
+}
+.tooltip.bs-tooltip-bottom .tooltip-inner {
+   background:#ec3a3d !important;
+}
+
+.tooltip .arrow:before {
+border-bottom-color:#ec3a3d !important;
+border-top-color:#ec3a3d !important;
 }
 #department{
    border-style: solid;
