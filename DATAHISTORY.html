@@ -9,13 +9,13 @@
       <script src="https://maxcdn.bootstrapcdn.com/sbootstrap/4.5.2/js/bootstrap.min.js"></script>
       <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
       <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
-      <link rel="stylesheet" href="">
+      <link rel="stylesheet" href="tablecss.css">
    </head>
    <body>
     <div class="container-fluid">
      <nav class="navbar navbar-expand-sm navbar-light bg-light sticky-top">
          <div class="container-fluid">
-             <a class="navbar-brand" href="#"><img src="TUP-LOGO.png" height="75px" width="75px">ADMIN HOMEPAGE</a>
+             <a class="navbar-brand" href="#"><img src="TUP-LOGO.png" height="75px" width="75px"><span style="margin-left: 10px;">ADMIN HOMEPAGE</span></a>
              <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive">
                  <span class="navbar-toggler-icon"></span>
              </button>    
@@ -27,15 +27,34 @@
                      <li class="nav-item">
                         <a class="nav-link" href="DATAHISTORY.html">HISTORY</a>
                     </li class="nav-item">
-                        <a class="nav-link" href="#">LOGOUT</a>
+                        <a class="nav-link" href="ADMINLOGIN.html">LOGOUT</a>
                     </li>
                  </ul>
              </div>
          </div>
        </nav>
-       <div class="jumbotron">
+       <div class="jumbotron table-responsive">
           <div class="card-body">
-            <h5 class="card-title">HISTORY OF APPROVAL</h5>
+            <h5 class="card-title" style="margin-bottom: 50px;">HISTORY OF APPROVAL</h5>
+            <div class="search-sort row g-3">
+                <div class="col-md-4">
+                    <label class="form-check-label" for="search">Search Name:</label>
+                    <input type="text" class="form-control" id="search" placeholder="Search name">
+                </div>
+                <div class="col-md-2">
+                 <button class="btn btn-primary" type="submit" style="padding: 10px 24px;">Search</button>
+                </div>
+                <div class="col-md-3">
+                    <label for="sort" class="form-check-label">Sort by:</label>
+                    <select id="inputState" class="form-control form-control">
+                       <option selected>Choose...</option>
+                       <option>Name (A-Z)</option>
+                       <option>Name (Z-A)</option>
+                       <option>Type (S-F)</option>
+                       <option>Type (F-S)</option>
+                    </select> 
+                </div>
+            </div>
             <table class="table table-striped">
                <thead class="table-danger">
                   <tr>
