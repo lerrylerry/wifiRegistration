@@ -45,7 +45,6 @@ hr {
 .custom-select{
    border-style: solid;
    border-width: 3px;
-   border-radius: 25px;
    padding: 5px;
    font-style: oblique;
 }
@@ -60,7 +59,6 @@ border-top-color:#ec3a3d !important;
 #course{
    border-style: solid;
    border-width: 3px;
-   border-radius: 25px;
    border-color: blue;
    padding: 5px;
 }
@@ -76,12 +74,12 @@ border-top-color:#ec3a3d !important;
    border-color: green;
    background-color: black;
    font-family: cursive;
+   border-radius: 25px;
    font-weight: bold;
 }
 #semester{
    border-style: solid;
    border-width: 3px;
-   border-radius: 25px;
    border-color: blue;
    padding: 5px;
 }
@@ -97,12 +95,12 @@ border-top-color:#ec3a3d !important;
    border-color: green;
    background-color: black;
    font-family: cursive;
+   border-radius: 25px;
    font-weight: bold;
 }
 #studentno{
    border-style: solid;
    border-width: 3px;
-   border-radius: 25px;
    border-color: blue;
    padding: 5px;
 }
@@ -118,12 +116,12 @@ border-top-color:#ec3a3d !important;
    border-color: green;
    background-color: black;
    font-family: cursive;
+   border-radius: 25px;
    font-weight: bold;
 }
 #orno{
    border-style: solid;
    border-width: 3px;
-   border-radius: 25px;
    border-color: blue;
    padding: 5px;
 }
@@ -139,12 +137,12 @@ border-top-color:#ec3a3d !important;
    border-color: green;
    background-color: black;
    font-family: cursive;
+   border-radius: 25px;
    font-weight: bold;
 }
 #macaddress{
    border-style: solid;
    border-width: 3px;
-   border-radius: 25px;
    border-color: blue;
    padding: 5px;
 }
@@ -160,12 +158,12 @@ border-top-color:#ec3a3d !important;
    border-color: green;
    background-color: black;
    font-family: cursive;
+   border-radius: 25px;
    font-weight: bold;
 }
 #others{
    border-style: solid;
    border-width: 3px;
-   border-radius: 25px;
    border-color: blue;
    padding: 5px;
 }
@@ -181,12 +179,12 @@ border-top-color:#ec3a3d !important;
    border-color: green;
    background-color: black;
    font-family: cursive;
+   border-radius: 25px;
    font-weight: bold;
 }
 #emailadd{
    border-style: solid;
    border-width: 3px;
-   border-radius: 25px;
    border-color: blue;
    padding: 5px;
 }
@@ -202,12 +200,12 @@ border-top-color:#ec3a3d !important;
    border-color: green;
    background-color: black;
    font-family: cursive;
+   border-radius: 25px;
    font-weight: bold;
 }
 #phoneno{
    border-style: solid;
    border-width: 3px;
-   border-radius: 25px;
    border-color: blue;
    padding: 5px;
 }
@@ -223,12 +221,12 @@ border-top-color:#ec3a3d !important;
    border-color: green;
    background-color: black;
    font-family: cursive;
+   border-radius: 25px;
    font-weight: bold;
 }
 #residenceAdd{
    border-style: solid;
    border-width: 3px;
-   border-radius: 25px;
    border-color: blue;
    padding: 5px;
 }
@@ -244,12 +242,12 @@ border-top-color:#ec3a3d !important;
    border-color: green;
    background-color: black;
    font-family: cursive;
+   border-radius: 25px;
    font-weight: bold;
 }
 #date{
    border-style: solid;
    border-width: 3px;
-   border-radius: 25px;
    border-color: blue;
    padding: 5px;
 }
@@ -265,12 +263,12 @@ border-top-color:#ec3a3d !important;
    border-color: green;
    background-color: black;
    font-family: cursive;
+   border-radius: 25px;
    font-weight: bold;
 }
 #name{
    border-style: solid;
    border-width: 3px;
-   border-radius: 25px;
    border-color: blue;
    padding: 5px;
 }
@@ -286,12 +284,12 @@ border-top-color:#ec3a3d !important;
    border-color: green;
    background-color: black;
    font-family: cursive;
+   border-radius: 25px;
    font-weight: bold;
 }
 #password{
    border-style: solid;
    border-width: 3px;
-   border-radius: 25px;
    border-color: blue;
    padding: 5px;
 }
@@ -307,6 +305,7 @@ border-top-color:#ec3a3d !important;
    border-color: green;
    background-color: black;
    font-family: cursive;
+   border-radius: 25px;
    font-weight: bold;
 }
 .customJumboBg{
@@ -325,8 +324,6 @@ border-top-color:#ec3a3d !important;
    border-width: 3px;
    border-color: blue;
    border-right-style: hidden;
-   border-top-left-radius: 25px;
-   border-bottom-left-radius: 25px;
    padding: 5px;
 }
 #first:hover{
@@ -341,6 +338,8 @@ border-top-color:#ec3a3d !important;
    border-color: green;
    background-color: black;
    font-family: cursive;
+   border-top-left-radius: 25px;
+   border-bottom-left-radius: 25px;
    font-weight: bold;
 }
 #second{
@@ -368,8 +367,6 @@ border-top-color:#ec3a3d !important;
    border-width: 3px;
    border-color: blue;
    border-left-style: hidden;
-   border-top-right-radius: 25px;
-   border-bottom-right-radius: 25px;
    padding: 5px;
 }
 #third:hover{
@@ -384,12 +381,13 @@ border-top-color:#ec3a3d !important;
    border-color: green;
    background-color: black;
    font-family: cursive;
+   border-top-right-radius: 25px;
+   border-bottom-right-radius: 25px;
    font-weight: bold;
 }
 #system{
    border-style: solid;
    border-width: 3px;
-   border-radius: 25px;
    border-color: blue;
    padding: 5px;
 }
@@ -406,6 +404,7 @@ border-top-color:#ec3a3d !important;
    border-color: green;
    background-color: black;
    font-family: cursive;
+   border-radius: 25px;
    font-weight: bold;
 }
 .custom-file-label{
