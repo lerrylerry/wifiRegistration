@@ -8,8 +8,9 @@
       <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
       <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
       <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
-      <script src="https://maxcdn.bootstrapcdn.com/sbootstrap/4.5.2/js/bootstrap.min.js"></script> 
+      <script src="https://maxcdn.bootstrapcdn.com/sbootstrap/4.5.2/js/bootstrap.min.js"></script>
       <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.bundle.min.js"></script>
+      <script src="faculty.js"></script>
       <link rel = "stylesheet" href = "F-Design.css">
    <style>
 
@@ -25,8 +26,8 @@
                         <img class="card-img-top" src="TUP-LOGO.png" alt="TUP-LOGO">
                         <div class="jumbotron jumbotron-fluid customJumboBg">
                             <div class="container-fluid">
-                                <h2 class="card-title text-primary">WIFI CONNECTIVITY REGISTRATION</h2>
-                                <h4 class="sub text-warning">(for faculty users only)</h4>
+                                <h2 class="card-title" style="color: #7575FF;">WIFI CONNECTIVITY REGISTRATION</h2>
+                                <h4 class="sub" style="color: yellow;">(for faculty users only)</h4>
                             </div>
                         </div>
 
@@ -148,54 +149,36 @@
                                     <br>    
                                     <div class="container">
                                         <div class="text-right">
-                                            <button type="button" class="btn btn-outline-success" id="print" data-toggle="modal" data-target="#myModal">
-                                                <span class="spinner-border spinner-border-sm"></span>
+                                            <button type="submit" class="btn btn-outline-success" onclick="display()">
                                                 PRINT
                                             </button>
-
-                                            <div class="modal" id="myModal">
-                                                <div class="modal-dialog">
-                                                    <div class="modal-content">
-                                                        <div class="modal-header">
-                                                            <h4 class="modal-title">Success</h4>
-                                                            <button type="button" class="close" data-dismiss="modal">x</button>
-                                                        </div>
-                                            
-                                                        <div class="modal-body">
-                                                            In Progress...
-                                                        </div>
-                                            
-                                                        <div class="modal-footer">
-                                                            <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
-                                                        </div>
-                                            
-                                                    </div>
-                                                </div>
-                                            </div>
                                         </div>
                                         
                                     </div>
+                                    
                                 </div>
                             </div>
 
                     </div>
                 </div>    
        </div>
-<script>
+   </body>
+   <script>
     $('#first').tooltip({title: "Please fill out this field", placement:"bottom",  trigger: "hover"});
     $('#second').tooltip({title: "Please fill out this field", placement:"bottom",  trigger: "hover"});
     $('#third').tooltip({title: "Please fill out this field", placement:"bottom",  trigger: "hover"});
-    $('#department').tooltip({title: "Please fill out this field", placement:"bottom",  trigger: "hover"});
-    $('#designation').tooltip({title: "Please fill out this field", placement:"bottom",  trigger: "hover"});
-    $('#faculty').tooltip({title: "Please fill out this field", placement:"bottom",  trigger: "hover"});
+    $('#course').tooltip({title: "Please fill out this field", placement:"bottom",  trigger: "hover"});
+    $('#semester').tooltip({title: "Please fill out this field", placement:"bottom",  trigger: "hover"});
+    $('#orno').tooltip({title: "Please fill out this field", placement:"bottom",  trigger: "hover"});
     $('#phoneno').tooltip({title: "Please fill out this field", placement:"bottom",  trigger: "hover"});
-    $('#date').tooltip({title: "Please fill out this field", placement:"bottom",  trigger: "hover"});
+    $('#studentno').tooltip({title: "Please fill out this field", placement:"bottom",  trigger: "hover"});
     $('#system').tooltip({title: "Please select item in the list", placement:"bottom",  trigger: "hover"});
     $('#others').tooltip({title: "Please fill out this field", placement:"bottom",  trigger: "hover"});
     $('#macaddress').tooltip({title: "Please fill out this field", placement:"bottom",  trigger: "hover"});
     $('#emailadd').tooltip({title: "Please fill out this field", placement:"bottom",  trigger: "hover"});
+    $('#residenceAdd').tooltip({title: "Please fill out this field", placement:"bottom",  trigger: "hover"});
+    $('#name').tooltip({title: "Please fill out this field", placement:"bottom",  trigger: "hover"});
+    $('#password').tooltip({title: "Please fill out this field", placement:"bottom",  trigger: "hover"});
     $('#print').tooltip({title: "PDF Format", placement:"bottom",  trigger: "hover"});
-</script>
-
-   </body>
+   </script>
 </html>
