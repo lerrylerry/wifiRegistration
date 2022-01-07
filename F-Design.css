@@ -64,6 +64,7 @@ border-top-color:#ec3a3d !important;
    border-width: 3px;
    border-color: blue;
    padding: 5px;
+   text-transform: capitalize;
 }
 #department:hover{
    border-color: whitesmoke;
@@ -85,6 +86,7 @@ border-top-color:#ec3a3d !important;
    border-width: 3px;
    border-color: blue;
    padding: 5px;
+   text-transform: capitalize;
 }
 #designation:hover{
    border-color: whitesmoke;
@@ -106,6 +108,7 @@ border-top-color:#ec3a3d !important;
    border-width: 3px;
    border-color: blue;
    padding: 5px;
+   text-transform: capitalize;
 }
 #macaddress:hover{
    border-color: whitesmoke;
@@ -127,6 +130,7 @@ border-top-color:#ec3a3d !important;
    border-width: 3px;
    border-color: blue;
    padding: 5px;
+   text-transform: capitalize;
 }
 #others:hover{
    border-color: whitesmoke;
@@ -169,6 +173,7 @@ border-top-color:#ec3a3d !important;
    border-width: 3px;
    border-color: blue;
    padding: 5px;
+   text-transform: capitalize;
 }
 #phoneno:hover{
    border-color: whitesmoke;
@@ -190,6 +195,7 @@ border-top-color:#ec3a3d !important;
    border-width: 3px;
    border-color: blue;
    padding: 5px;
+   text-transform: capitalize;
 }
 #faculty:hover{
    border-color: whitesmoke;
@@ -244,6 +250,7 @@ border-top-color:#ec3a3d !important;
    border-color: blue;
    border-right-style: hidden;
    padding: 5px;
+   text-transform: capitalize;
 }
 #first:hover{
    border-color: whitesmoke;
@@ -266,6 +273,7 @@ border-top-color:#ec3a3d !important;
    border-width: 3px;
    border-color: blue;
    padding: 5px;
+   text-transform: capitalize;
 }
 #second:hover{
    border-color: whitesmoke;
@@ -287,6 +295,7 @@ border-top-color:#ec3a3d !important;
    border-color: blue;
    border-left-style: hidden;
    padding: 5px;
+   text-transform: capitalize;
 }
 #third:hover{
    border-color: whitesmoke;

@@ -5,6 +5,7 @@
       <title>Faculty Form</title>
       <meta charset="utf-8">
       <meta name="viewport" content="width=device-width, initial-scale=1">
+      <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
       <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
       <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
       <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
@@ -31,29 +32,29 @@
                             </div>
                         </div>
 
-                            <div class="row was-validated">
+                            <div class="row">
                                 <div class="col-sm-6">
                                     <form>
                                         <label for="name" style="color: #0061c8;">Name:</label><label id="red">*</label>
                                         <div class="input-group mb-3">
                                           <div class="input-group-prepend">
-                                            <input type="text" class="form-control" id="first" placeholder="First Name" required>
-                                            <input type="text" class="form-control" id="second" placeholder="Middle Name" required>
-                                            <input type="text" class="form-control" id="third" placeholder="Last Name" required>
+                                            <input type="text" class="form-control" maxlength="20" onblur="empty('first')" onkeyup="nameLength()" id="first" placeholder="First Name" required>
+                                            <input type="text" class="form-control" maxlength="15" onblur="empty('second')" onkeyup="nameLength2()" id="second" placeholder="Middle Name" required>
+                                            <input type="text" class="form-control" maxlength="15" onblur="empty('third')" onkeyup="nameLength3()" id="third" placeholder="Last Name" required>
                                           </div>                                          
                                         </div>
                                     </form>
                                     <div class="form-group">
                                         <label for="department" style="color: #0061c8">Department:</label><label id="red">*</label>
-                                        <input type="text" class="form-control" id="department" placeholder="Enter Department" required>
+                                        <input type="text" class="form-control" maxlength="20" onblur="empty('department')" onkeyup="dept()" id="department" placeholder="Enter Department" required>
                                     </div>
                                     <div class="form-group">
                                         <label for="designation" style="color: #0061c8;">Designation:</label><label id="red">*</label>
-                                        <input type="text"class="form-control"  id="designation" placeholder="Enter Designation" required>
+                                        <input type="text"class="form-control" maxlength="20" onblur="empty('designation')" onkeyup="design()" id="designation" placeholder="Enter Designation" required>
                                     </div>
                                     <div class="form-group">
-                                        <label for="mac address" style="color: #0061c8;">MAC Address:</label><label id="red">*</label>
-                                        <input type="text" class="form-control" id="macaddress" placeholder="Enter Mac Address" required>
+                                        <label for="macadd" style="color: #0061c8;">MAC Address:</label><label id="red">*</label>
+                                        <input type="text" class="form-control" maxlength="20" onblur="empty('macaddress')" onkeyup="mac()" id="macaddress" placeholder="Enter Mac Address" required>
                                     </div>
                                         <label for="some text" style="color: cornsilk;">  
                                     (Note: To get the MAC address of the laptop, please do the following:
@@ -63,28 +64,28 @@
 
                                 <div class="col-sm-6">
                                     <div class="form-group" style="color: #0061c8;">System/Device:<label id="red">*</label>
-                                        <select name="system" class="custom-select" id="system" required>
+                                        <select name="system" class="custom-select" onblur="empty('system')" onclick="device('system')" id="system" required>
                                           <option value="">Choose</option>
-                                          <option value="phone">Smartphone</option>
-                                          <option value="laptop">Laptop</option>
-                                          <option value="tab">Tablet</option>
-                                          <option value="pc">PC</option>
-                                          <option value="desktop">Desktop</option>
-                                          <option value="others">Others...</option>
+                                          <option value="Smartphone">Smartphone</option>
+                                          <option value="Laptop">Laptop</option>
+                                          <option value="Tablet">Tablet</option>
+                                          <option value="PC">PC</option>
+                                          <option value="Desktop">Desktop</option>
+                                          <option value="Others">Others...</option>
                                         </select>
                                     </div>
                                         
                                     <div class="form-group">
                                         <label for="others" style="color: #0061c8;">If others, please specify:</label><label id="red">*</label>
-                                        <input type="text" class="form-control" id="others" placeholder="Specify device..." required>
+                                        <input type="text" class="form-control" maxlength="10" onkeyup="Specify()" id="others" placeholder="Specify device..." disabled="">
                                     </div>
                                     <div class="form-group">
                                         <label for="email" style="color: #0061c8;">Email Address:</label><label id="red">*</label>
-                                        <input type="text" class="form-control" id="emailadd" placeholder="Enter Email Address" required>
+                                        <input type="text" class="form-control" maxlength="50" onblur="empty('emailadd')" onkeyup="ValidateEmail()" id="emailadd" placeholder="Enter Email Address" required>
                                     </div>
                                     <div class="form-group">
                                         <label for="phone" style="color: #0061c8;">Phone #:</label><label id="red">*</label>
-                                        <input type="tel" class="form-control" id="phoneno" placeholder="09xxxxxxxxx" required>
+                                        <input type="tel" class="form-control" maxlength="11" onblur="empty('phoneno')" onkeypress="return(restrictAlphabets(event))" onkeyup="cellNo()" id="phoneno" placeholder="09xxxxxxxxx" required>
                                     </div>
                                     <br><br><br>
                                 </div>
@@ -104,9 +105,9 @@
                                     by any means.</i></p>
                                         </div>
 
-                                    <form action="/action_page.php">
+                                    <form>
                                         <div class="custom-control custom-checkbox">
-                                          <input type="checkbox" class="custom-control-input" id="agree" name="Agreement" required>
+                                          <input type="checkbox" class="custom-control-input" onclick="agreed()" id="agree" name="Agreement" required>
                                           <label class="custom-control-label" for="agree" style="color: #0061c8;">Yes, I agree.</label>
                                         </div>
                                     </form>
@@ -116,32 +117,30 @@
                                 </div>
                             </div>
 
-                            <div class="row was-validated">
+                            <div class="row">
                                 <div class="col-sm-6">
                                     <div class="form-group">
-                                        <label for="faculty name" style="color: #0061c8;">Faculty Name:</label><label id="red">*</label>
-                                        <input type="text" class="form-control" id="faculty" placeholder="Enter Faculty Name" required>
+                                        <label for="facultyName" style="color: #0061c8;">Faculty Name:</label><label id="red">*</label>
+                                        <input type="text" class="form-control" maxlength="25" onblur="empty('faculty')"  onkeyup="facname()" id="faculty" placeholder="Enter Faculty Name" required>
                                     </div>
                                 </div>
 
-                                
-
-                                <div class="col-sm-6">
+                                <div class="col-sm-6 was-validated">
                                     <label for="signature" style="color: #0061c8;">Upload image of Signature over printed name:</label><label id="red">*</label><br>
                                     <form>
                                         <div class="custom-file">
-                                          <input type="file" class="custom-file-input" id="Agreement" required>
+                                          <input type="file" class="custom-file-input" onchange="validateFileupload()" id="Agreement" required>
                                           <label class="custom-file-label" for="Agreement">Choose file</label>
                                         </div>
                                     </form>
                                 </div>
                             </div>
 
-                            <div class="row was-validated">
+                            <div class="row">
                                 <div class="col-sm-3">  
                                     <div class="form-group">
                                         <label for="date" style="color: #0061c8;">Date:</label><label id="red">*</label>
-                                        <input type="date" class="form-control" id="date" name="date" required>
+                                        <input type="date" class="form-control" onblur="times()" id="date" name="date" required>
                                     </div>  
                                 </div>
 
@@ -149,7 +148,7 @@
                                     <br>    
                                     <div class="container">
                                         <div class="text-right">
-                                            <button type="submit" class="btn btn-outline-success" onclick="display()">
+                                            <button type="submit" id="nothing" class="btn btn-outline-success">
                                                 PRINT
                                             </button>
                                         </div>
@@ -180,5 +179,14 @@
     $('#name').tooltip({title: "Please fill out this field", placement:"bottom",  trigger: "hover"});
     $('#password').tooltip({title: "Please fill out this field", placement:"bottom",  trigger: "hover"});
     $('#print').tooltip({title: "PDF Format", placement:"bottom",  trigger: "hover"});
+   </script>
+   <script>
+        $("input[type='file']").click(function () {
+           $("input[id='Agreement']").click();
+    });
+        $("input[id='Agreement']").change(function (e) {
+            var $this = $(this);
+            $this.next().html($this.val().split('\\').pop());
+    });
    </script>
 </html>
