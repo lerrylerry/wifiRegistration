@@ -21,7 +21,7 @@
 .form-container h4{
     text-align: center;
 }
-.form-container .banner-btn a{
+.form-container button {
     border: 1px solid black;
     border-radius: 50px;
     text-transform: uppercase;
@@ -29,19 +29,31 @@
     padding: 10px 50px;
     display: inline-block;
     color: rgb(255, 255, 255);
-    background-color: rgb(13, 88, 201);
+    background-color: rgb(10, 73, 167);
     margin-left: 45px;
     margin-bottom: 10px;
 }
-.form-container .banner-btn a:active{
+.form-container button:hover{
+    background-color: rgb(3, 157, 196);
+    color: white;
+    border: 1px solid white;
+}
+.form-container button:active{
     background-color: rgb(1, 156, 34);
     color: white;
     border: 1px solid white;
 }
-
+.form-container #user_error, 
+.form-container #pass_error{
+    color: red;
+    text-align: center;
+    font-size: 14px;
+    display: none;
+}
 @media (max-width:500px){
     .form-container{
         margin: 75px;
         top: 20px;
     }
 }
+
