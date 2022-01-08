@@ -38,23 +38,23 @@
                                         <label for="name" style="color: #0061c8;">Name:</label><label id="red">*</label>
                                         <div class="input-group mb-3">
                                           <div class="input-group-prepend">
-                                            <input type="text" class="form-control" maxlength="20" onkeyup="nameLength()" id="first" placeholder="First Name" required>
-                                            <input type="text" class="form-control" maxlength="15" onkeyup="nameLength2()" id="second" placeholder="Middle Name" required>
-                                            <input type="text" class="form-control" maxlength="15" onkeyup="nameLength3()" id="third" placeholder="Last Name" required>
+                                            <input type="text" class="form-control" maxlength="20" onkeyup="nameLength()" id="first" placeholder="First Name" name="first" required>
+                                            <input type="text" class="form-control" maxlength="15" onkeyup="nameLength2()" id="second" placeholder="Middle Name" name="second" required>
+                                            <input type="text" class="form-control" maxlength="15" onkeyup="nameLength3()" id="third" placeholder="Last Name" name="third" required>
                                           </div>                                          
                                         </div>
                                     </div>
                                     <div class="form-group">
                                         <label for="department" style="color: #0061c8">Department:</label><label id="red">*</label>
-                                        <input type="text" class="form-control" maxlength="20" onkeyup="dept()" id="department" placeholder="Enter Department" required>
+                                        <input type="text" class="form-control" maxlength="20" onkeyup="dept()" id="department" placeholder="Enter Department" name="department" required>
                                     </div>
                                     <div class="form-group">
                                         <label for="designation" style="color: #0061c8;">Designation:</label><label id="red">*</label>
-                                        <input type="text"class="form-control" maxlength="20" onkeyup="design()" id="designation" placeholder="Enter Designation" required>
+                                        <input type="text"class="form-control" maxlength="20" onkeyup="design()" id="designation" placeholder="Enter Designation" name="designation" required>
                                     </div>
                                     <div class="form-group">
                                         <label for="macadd" style="color: #0061c8;">MAC Address:</label><label id="red">*</label>
-                                        <input type="text" class="form-control" maxlength="17" onkeyup="mac()" id="macaddress" placeholder="xx-xx-xx-xx-xx" required>
+                                        <input type="text" class="form-control" maxlength="17" onkeyup="mac()" id="macaddress" placeholder="xx-xx-xx-xx-xx" name="macaddress" required>
                                     </div>
                                         <label for="some text" style="color: cornsilk;">  
                                     (Note: To get the MAC address of the laptop, please do the following:
@@ -81,11 +81,11 @@
                                     </div>
                                     <div class="form-group">
                                         <label for="email" style="color: #0061c8;">Email Address:</label><label id="red">*</label>
-                                        <input type="text" class="form-control" maxlength="50" onkeyup="ValidateEmail()" id="emailadd" placeholder="Enter Email Address" required>
+                                        <input type="text" class="form-control" maxlength="50" onkeyup="ValidateEmail()" id="emailadd" placeholder="Enter Email Address" name="emailadd" required>
                                     </div>
                                     <div class="form-group">
                                         <label for="phone" style="color: #0061c8;">Phone #:</label><label id="red">*</label>
-                                        <input type="tel" class="form-control" maxlength="11" onkeypress="return(restrictAlphabets(event))" onkeyup="cellNo()" id="phoneno" placeholder="09xxxxxxxxx" required>
+                                        <input type="tel" class="form-control" maxlength="11" onkeypress="return(restrictAlphabets(event))" onkeyup="cellNo()" id="phoneno" placeholder="09xxxxxxxxx" name="phoneno" required>
                                     </div>
                                     <br><br><br>
                                 </div>
@@ -148,9 +148,7 @@
                                     <br>    
                                     <div class="container">
                                         <div class="text-right">
-                                            <button type="submit" id="nothing" class="btn btn-outline-success" onclick="window.print()">
-                                                PRINT
-                                            </button>
+                                            <input type="button" id="nothing" class="btn btn-outline-success" onclick="AddRow()" value="PRINT">   
                                         </div>
                                         
                                     </div>
@@ -161,6 +159,21 @@
                     </div>
                 </div>    
        </div>
+       <table id="tfaculty">
+        <thead class="table-danger">
+           <tr>
+              <th scope="col" style="text-align: center;">Last Name</th>
+              <th scope="col" style="text-align: center;">First Name</th>
+              <th scope="col" style="text-align: center;">Middle Name</th>
+              <th scope="col" style="text-align: center;">Department</th>
+              <th scope="col" style="text-align: center;">Designation</th>
+              <th scope="col" style="text-align: center;">Mac Address</th>
+              <th scope="col" style="text-align: center;">Email</th>
+              <th scope="col" style="text-align: center;">Phone No.#</th>
+              <th scope="col" style="text-align: center;">Approval</th>
+           </tr>
+        </thead>
+     </table>
    </body>
    <script>
     $('#first').tooltip({title: "Please fill out this field", placement:"bottom",  trigger: "hover"});
@@ -188,5 +201,62 @@
             var $this = $(this);
             $this.next().html($this.val().split('\\').pop());
     });
+   </script>
+   <script>
+        var list1 = [];
+        var list2 = [];
+        var list3 = [];
+        var list4 = [];
+        var list5 = [];
+        var list6 = [];
+        var list7 = [];
+        var list8 = [];
+        var list9 = [];
+        var n = 1;
+        var x = 0;
+
+        function AddRow() {
+
+            var AddRown = document.getElementById('tfaculty');
+            var NewRow = AddRown.insertRow(n)
+
+            list1 [x] = document.getElementById("third").value;
+            list2 [x] = document.getElementById("first").value;
+            list3 [x] = document.getElementById("second").value;
+            list4 [x] = document.getElementById("department").value;
+            list5 [x] = document.getElementById("designation").value;
+            list6 [x] = document.getElementById("macaddress").value;
+            list7 [x] = document.getElementById("emailadd").value;
+            list8 [x] = document.getElementById("phoneno").value;
+            list9 [x] = '<button class="btn btn-success" type="submit" style="padding: 10px 24px;">Approve</button>','<button class="btn btn-danger" type="submit" style="padding: 10px 32px;">Reject</button>';
+    
+            var cel1 = NewRow.InsertCell(0);
+            var cel2 = NewRow.InsertCell(1);
+            var cel3 = NewRow.InsertCell(2);
+            var cel4 = NewRow.InsertCell(3);
+            var cel5 = NewRow.InsertCell(4);
+            var cel6 = NewRow.InsertCell(5);
+            var cel7 = NewRow.InsertCell(6);
+            var cel8 = NewRow.InsertCell(6);
+            var cel9 = NewRow.InsertCell(6);
+    
+    
+    
+            cel1.innerHTML = list1 [x];
+            cel2.innerHTML = list2 [x];
+            cel3.innerHTML = list3 [x];
+            cel4.innerHTML = list4 [x];
+            cel5.innerHTML = list5 [x];
+            cel6.innerHTML = list6 [x];
+            cel7.innerHTML = list7 [x];
+            cel8.innerHTML = list8 [x];
+            cel9.innerHTML = list9 [x];
+
+            n++;
+            x++;
+
+
+
+        }
    </script>
 </html>

@@ -340,3 +340,16 @@ border-top-color:#ec3a3d !important;
 #red{
    color: red;
 }
+
+table{
+   width: 100%;
+   border-collapse: collapse;
+   padding: 12px, 15px;
+   border: 1px solid black;
+   margin-top: 50px;
+}
+
+.table td, .table th{
+   padding: 12px, 15px;
+   border: 1px solid black;
+}
