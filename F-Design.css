@@ -108,7 +108,6 @@ border-top-color:#ec3a3d !important;
    border-width: 3px;
    border-color: blue;
    padding: 5px;
-   text-transform: capitalize;
 }
 #macaddress:hover{
    border-color: whitesmoke;

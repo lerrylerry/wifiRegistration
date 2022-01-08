@@ -10,6 +10,7 @@
       <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
       <script src="https://maxcdn.bootstrapcdn.com/sbootstrap/4.5.2/js/bootstrap.min.js"></script> 
       <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.bundle.min.js"></script>
+      <script src="student.js"></script>
       <link rel = "stylesheet" href = "ST-Design.css">
    <style>
 
@@ -25,73 +26,72 @@
                         <img class="card-img-top" src="TUP-LOGO.png" alt="TUP-LOGO">
                         <div class="jumbotron jumbotron-fluid customJumboBg">
                           <div class="container-fluid">
-                            <h2 class="card-title text-primary">WIFI CONNECTIVITY REGISTRATION</h2>
-                            <h4 class="sub text-warning">(for students users only)</h4>
+                            <h2 class="card-title text-primary" style="color: #7575FF;">WIFI CONNECTIVITY REGISTRATION</h2>
+                            <h4 class="sub text-warning" style="color: yellow;">(for students users only)</h4>
                           </div>
                         </div>
 
-                            <div class="row was-validated">
+                            <div class="row">
                                 <div class="col-sm-6">
                                     <div class="form-group">
                                         <label for="name" style="color: #0061c8;">Name:</label><label id="red">*</label>
                                         <div class="input-group mb-3">
                                           <div class="input-group-prepend">
-                                            <input type="text" class="form-control" id="first"  placeholder="First Name" required>
-                                            <input type="text" class="form-control" id="second" placeholder="Middle Name" required>
-                                            <input type="text" class="form-control" id="third" placeholder="Last Name" required>
+                                            <input type="text" class="form-control" onkeyup="nameLength()" id="first"  placeholder="First Name" required>
+                                            <input type="text" class="form-control" onkeyup="nameLength2()" id="second" placeholder="Middle Name" required>
+                                            <input type="text" class="form-control" onkeyup="nameLength3()" id="third" placeholder="Last Name" required>
                                           </div>
                                         </div>
                                       </div>
-                                      <br>
                                       <div class="form-group">
                                           <label for="course" style="color: #0061c8;">Course:</label><label id="red">*</label>
-                                          <input type="text"class="form-control"  id="course" placeholder="Enter Course" required>
+                                          <input type="text"class="form-control" maxlength="20" onkeyup="course()"   id="course" placeholder="Enter Course" required>
                                       </div>
                                     <div class="form-group">
                                         <label for="semester" style="color: #0061c8;">Semester:</label><label id="red">*</label>
-                                        <input type="text" class="form-control" id="semester" placeholder="Enter Semester" required>
+                                        <input type="text" class="form-control" maxlength="15" onkeyup="sem()"  id="semester" placeholder="Enter Semester" required>
                                     </div>
                                     <div class="form-group">
                                         <label for="studentno" style="color: #0061c8;">Student No:</label><label id="red">*</label>
-                                        <input type="text" class="form-control" id="studentno" placeholder="TUPC-xx-xxxx" required>
+                                        <input type="text" class="form-control" maxlength="15" onkeyup="tupcnum()" id="studentno" placeholder="TUPC-xx-xxxx" required>
                                     </div>
                                     <div class="form-group">
                                         <label for="orno" style="color: #0061c8;">O.R#:</label><label id="red">*</label>
-                                        <input type="text" class="form-control" id="orno" placeholder="Or Number" required>
+                                        <input type="text" class="form-control" maxlength="10" onkeypress="return(restrictAlphabets(event))" onkeyup="OR()" id="orno" placeholder="Or Number" required>
                                     </div>
                                     <div class="form-group">
                                       <label for="phone" style="color: #0061c8;">Phone #:</label><label id="red">*</label>
-                                      <input type="tel" class="form-control" id="phoneno" placeholder="09xxxxxxxxx" required>
+                                      <input type="tel" class="form-control" maxlength="11" onkeypress="return(restrictAlphabets(event))" onkeyup="cellNo()" id="phoneno" placeholder="09xxxxxxxxx" required>
                                   </div>
                                 </div>
 
                                 <div class="col-sm-6">
                                     <div class="form-group" style="color: #0061c8;">System/Device:<label id="red">*</label>
-                                      <select name="system" class="custom-select" id="system" required>
+                                      <select name="system" class="custom-select" onblur="empty('system')" onclick="device('system')" id="system" required>
                                         <option value="">Choose</option>
-                                        <option value="phone">Smartphone</option>
-                                        <option value="laptop">Laptop</option>
-                                        <option value="tab">Tablet</option>
-                                        <option value="pc">PC</option>
-                                        <option value="desktop">Desktop</option>
-                                        <option value="others">Others...</option>
+                                        <option value="Smartphone">Smartphone</option>
+                                        <option value="Laptop">Laptop</option>
+                                        <option value="Tablet">Tablet</option>
+                                        <option value="PC">PC</option>
+                                        <option value="Desktop">Desktop</option>
+                                        <option value="Others">Others...</option>
                                       </select>
                                     </div>
                                     <div class="form-group">
                                       <label for="others" style="color: #0061c8;">If others, please specify:</label><label id="red">*</label>
-                                      <input type="text" class="form-control" id="others" placeholder="Specify device..." required>
+                                      <input type="text" class="form-control" maxlength="10" onkeyup="Specify()" id="others" placeholder="Specify device..." required>
                                     </div>
                                     <div class="form-group">
                                         <label for="macaddress" style="color: #0061c8;">Mac Address:</label><label id="red">*</label>
-                                        <input type="text" class="form-control" id="macaddress" placeholder="Mac Address" required>
+                                        <input type="text" class="form-control" maxlength="17" onkeyup="mac()" id="macaddress" placeholder="xx-xx-xx-xx-xx" required>
                                     </div>
                                   <div class="form-group">
                                     <label for="emailadd" style="color: #0061c8;">Email Address:</label><label id="red">*</label>
-                                    <input type="text" class="form-control" id="emailadd" placeholder="email@yahoo.com" required>
+                                    <input type="text" class="form-control" maxlength="50" onkeyup="ValidateEmail()" id="emailadd" placeholder="email@yahoo.com" required>
                                   </div>
                                   <div class="form-group">
                                     <label for="residenceAdd" style="color: #0061c8;">Residence Address:</label><label id="red">*</label>
-                                    <input type="text" class="form-control" id="residenceAdd" placeholder="BLK# LOT#..." required>
+                                    <input type="text" class="form-control" maxlength="50" onkeyup="home()" id="residenceAdd" placeholder="BLK# LOT#..." required>
                                   </div>
                                 </div>
                             </div>
@@ -110,9 +110,9 @@
                               by any means.</i></p>
                                 </div>
                               
-                              <form action="/action_page.php">
+                              <form>
                                 <div class="custom-control custom-checkbox">
-                                  <input type="checkbox" class="custom-control-input" id="agree" name="Agreement" required>
+                                  <input type="checkbox" class="custom-control-input" onclick="agreed()" id="agree" name="Agreement" required>
                                   <label class="custom-control-label" for="agree" style="color: #0061c8;">Yes, I agree.</label>
                                 </div>
                               </form>
@@ -120,12 +120,12 @@
                               </div>
                             </div>
                             
-                            <div class="row was-validated">
+                            <div class="row">
                               <div class="col-sm-6">
                                 <label for="signature" style="color: #0061c8;">Upload image of Signature over printed name:</label><label id="red">*</label>
                                     <form>
                                         <div class="custom-file">
-                                          <input type="file" class="custom-file-input" id="Agreement" required>
+                                          <input type="file" class="custom-file-input" onchange="validateFileupload()" id="Agreement" required>
                                           <label class="custom-file-label" for="Agreement">Choose file</label>
                                         </div>
                                     </form>
@@ -134,88 +134,75 @@
                                 <h5 style="text-align:left; color: #0061c8;">
                                   Approved by:</h5>
                                     <input type="image" id="image1" src="white.jpg" alt="UITC Coordinator Signature" width="100%" height="40px"><br>
-                                    <label for="image1">
-                                      UITC Coordinator</label><br>
+                                    <label for="image1" style="color: #0061c8;">UITC Coordinator</label><br>
                               </div>
                             </div>
 
                             <hr>
 
-                            <div class="row was-validated">
-                                <div class="col-sm-6">
-                                  <div class="form-group">
-                                    <label for="name" style="color: #0061c8;">Name:</label><label id="red">*</label>
-                                    <input type="text" class="form-control" id="name" placeholder="Enter Name" required>
-                                  </div>
+                            <div class="row">
+                              <div class="col-sm-6">
+                                <div class="form-group">
+                                  <label for="name" style="color: #0061c8;">Name:</label><label id="red">*</label>
+                                  <input type="text" class="form-control" maxlength="10" onkeyup="uname()" id="name" placeholder="Enter Name" required>
                                 </div>
+                              </div>
 
-                                <div class="col-sm-6">
-                                  <div class="form-group">
-                                    <label for="password" style="color: #0061c8;">Password:</label><label id="red">*</label>
-                                    <input type="text" class="form-control" id="password" placeholder="Enter Password" required>
-                                  </div>
+                              <div class="col-sm-6">
+                                <div class="form-group">
+                                  <label for="password" style="color: #0061c8;">Password:</label><label id="red">*</label>
+                                  <input type="text" class="form-control" maxlength="8" onkeyup="upass()" id="password" placeholder="Enter Password" required>
                                 </div>
+                              </div>
                                     <p><i>><i style="color: cornsilk;">
                                     The 1 hour per day Wifi-Connectivity  given to the user is valid from 
                                   November  to March, 2022</i></i</p>  
                             </div>
 
                             <div class="row">
-                                <div class="col-sm-12">
-                                  <div class="container">
-                                    <div class="text-right">
-                                        <button type="button" class="btn btn-outline-success" id="print" data-toggle="modal" data-target="#own">
-                                          <span class="spinner-border spinner-border-sm"></span>
-                                                PRINT
-                                        </button>
-
-                                        <div class="modal" id="own">
-                                            <div class="modal-dialog">
-                                                <div class="modal-content">
-                                                    <div class="modal-header">
-                                                        <h4 class="modal-title">Success</h4>
-                                                        <button type="button" class="close" data-dismiss="modal">x</button>
-                                                    </div>
-                                          
-                                                    <div class="modal-body">
-                                                        In Progress...
-                                                    </div>
-                                        
-                                                    <div class="modal-footer">
-                                                        <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
-                                                    </div>
-                                          
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
+                              <br>
+                              <div class="col-sm-12">
+                                <div class="container">
+                                  <div class="text-right">
+                                    <button type="submit" class="btn btn-outline-success" id="print" onclick="window.print()">
+                                      PRINT
+                                    </button>
                                   </div>
-                                    
                                 </div>
+                                    
+                              </div>
                             </div>
 
                     </div>
                 </div>       
        </div>
 
-<script>
-    $('#first').tooltip({title: "Please fill out this field", placement:"bottom",  trigger: "hover"});
-    $('#second').tooltip({title: "Please fill out this field", placement:"bottom",  trigger: "hover"});
-    $('#third').tooltip({title: "Please fill out this field", placement:"bottom",  trigger: "hover"});
-    $('#course').tooltip({title: "Please fill out this field", placement:"bottom",  trigger: "hover"});
-    $('#semester').tooltip({title: "Please fill out this field", placement:"bottom",  trigger: "hover"});
-    $('#orno').tooltip({title: "Please fill out this field", placement:"bottom",  trigger: "hover"});
-    $('#phoneno').tooltip({title: "Please fill out this field", placement:"bottom",  trigger: "hover"});
-    $('#studentno').tooltip({title: "Please fill out this field", placement:"bottom",  trigger: "hover"});
-    $('#system').tooltip({title: "Please select item in the list", placement:"bottom",  trigger: "hover"});
-    $('#others').tooltip({title: "Please fill out this field", placement:"bottom",  trigger: "hover"});
-    $('#macaddress').tooltip({title: "Please fill out this field", placement:"bottom",  trigger: "hover"});
-    $('#emailadd').tooltip({title: "Please fill out this field", placement:"bottom",  trigger: "hover"});
-    $('#residenceAdd').tooltip({title: "Please fill out this field", placement:"bottom",  trigger: "hover"});
-    $('#name').tooltip({title: "Please fill out this field", placement:"bottom",  trigger: "hover"});
-    $('#password').tooltip({title: "Please fill out this field", placement:"bottom",  trigger: "hover"});
-    $('#print').tooltip({title: "PDF Format", placement:"bottom",  trigger: "hover"});
-</script>
-
+  <script>
+      $('#first').tooltip({title: "Please fill out this field", placement:"bottom",  trigger: "hover"});
+      $('#second').tooltip({title: "Please fill out this field", placement:"bottom",  trigger: "hover"});
+      $('#third').tooltip({title: "Please fill out this field", placement:"bottom",  trigger: "hover"});
+      $('#course').tooltip({title: "Please fill out this field", placement:"bottom",  trigger: "hover"});
+      $('#semester').tooltip({title: "Please fill out this field", placement:"bottom",  trigger: "hover"});
+      $('#orno').tooltip({title: "Please fill out this field", placement:"bottom",  trigger: "hover"});
+      $('#phoneno').tooltip({title: "Please fill out this field", placement:"bottom",  trigger: "hover"});
+      $('#studentno').tooltip({title: "Please fill out this field", placement:"bottom",  trigger: "hover"});
+      $('#system').tooltip({title: "Please select item in the list", placement:"bottom",  trigger: "hover"});
+      $('#others').tooltip({title: "Please fill out this field", placement:"bottom",  trigger: "hover"});
+      $('#macaddress').tooltip({title: "Please fill out this field", placement:"bottom",  trigger: "hover"});
+      $('#emailadd').tooltip({title: "Please fill out this field", placement:"bottom",  trigger: "hover"});
+      $('#residenceAdd').tooltip({title: "Please fill out this field", placement:"bottom",  trigger: "hover"});
+      $('#name').tooltip({title: "Please fill out this field", placement:"bottom",  trigger: "hover"});
+      $('#password').tooltip({title: "Please fill out this field", placement:"bottom",  trigger: "hover"});
+      $('#print').tooltip({title: "PDF Format", placement:"bottom",  trigger: "hover"});
+  </script>
+  <script>
+          $("input[type='file']").click(function () {
+            $("input[id='Agreement']").click();
+      });
+          $("input[id='Agreement']").change(function (e) {
+              var $this = $(this);
+              $this.next().html($this.val().split('\\').pop());
+      });
+    </script>
    </body>
 </html>

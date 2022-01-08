@@ -74,33 +74,33 @@ function nameLength3(){
     
 }
 
-// Department
-function dept(){
-    var x = document.getElementById("department").value;
+// Semester
+function sem(){
+    var x = document.getElementById("semester").value;
     var regex = /^[a-z][a-z\s]*$/;
 
-    if(!x.match(regex) || x.length < 4){
-        document.getElementById("department").addEventListener(invalid("department"));
+    if(!x.match(regex) || x.length < 3){
+        document.getElementById("semester").addEventListener(invalid("semester"));
         return false;
 
     }else{
-        document.getElementById("department").addEventListener(valid("department"));
+        document.getElementById("semester").addEventListener(valid("semester"));
         return true;
     }
     
 }
 
-// Designation
-function design(){
-    var x = document.getElementById("designation").value;
+// course
+function course(){
+    var x = document.getElementById("course").value;
     var regex = /^[a-z][a-z\s]*$/;
 
-    if(!x.match(regex) || x.length < 4){
-        document.getElementById("designation").addEventListener(invalid("designation"));
+    if(!x.match(regex)){
+        document.getElementById("course").addEventListener(invalid("course"));
         return false;
 
     }else{
-        document.getElementById("designation").addEventListener(valid("designation"));
+        document.getElementById("course").addEventListener(valid("course"));
         return true;
     }
     
@@ -119,6 +119,20 @@ function mac(){
 		document.getElementById("macaddress").addEventListener(invalid("macaddress"));
         return false;
 	}
+}
+
+// tupc-id
+function tupcnum(){
+    var x = document.getElementById("studentno").value;
+    var regex = /[T][U][P][C]-[0-9]{2}-[0-9]{4}/;
+
+    if(x.match(regex)){
+        document.getElementById("studentno").addEventListener(valid("studentno"));
+        return true;
+
+    }
+        document.getElementById("studentno").addEventListener(invalid("studentno"));
+        return false;
 }
 
 // unfinished
@@ -194,28 +208,10 @@ function facname(){
         return false;
 
     }else{
-        document.getElementById("faculty").addEventListener(valid("faculty"));
+        document.getElementById("faculty").addEventListener(empty("faculty"));
         return true;
     }
     
-}
-
-// date
-function times(){
-    let currentDate = new Date();
-    let cDay = currentDate.getDate();
-    let cMonth = currentDate.getMonth() + 1;
-    let cYear = currentDate.getFullYear();
-    var tdate = cYear + "-" + "0" + cMonth + "-" + "0" + cDay;
-    const date1 = document.getElementById("date");
-
-    if (date1.value != tdate)
-    {
-        document.getElementById("date").addEventListener(invalid("date"))
-        return false;
-    }
-        document.getElementById("date").addEventListener(valid("date"))
-        return true;
 }
 
 // Only letters
@@ -284,6 +280,54 @@ function validateFileupload(){
         fileInput.value = '';
         return false;
     }
+        return true;
+}
+
+// home address
+function home(){
+    var x = document.getElementById("residenceAdd").value;
+
+    if (x.length == 0 || x.length < 20 || x.length == ""){
+        document.getElementById("residenceAdd").addEventListener(invalid("residenceAdd"));
+        return false;
+    }
+        document.getElementById("residenceAdd").addEventListener(valid("residenceAdd"));
+        return true;
+}
+
+// OR
+function OR(){
+    var x = document.getElementById("orno").value;
+
+    if (x.length < 6){
+        document.getElementById("orno").addEventListener(invalid("orno"));
+        return false;
+    }
+        document.getElementById("orno").addEventListener(valid("orno"));
+        return true;
+}
+
+// uname
+function uname(){
+    var x = document.getElementById("name").value;
+
+    if (x.length < 6){
+        document.getElementById("name").addEventListener(invalid("name"));
+        return false;
+    }
+        document.getElementById("name").addEventListener(valid("name"));
+        return true;
+}
+
+// upass
+function upass(){
+    var x = document.getElementById("password").value;
+
+    if (x.length < 6){
+        document.getElementById("password").addEventListener(invalid("password"));
+        return false;
+    }
+        document.getElementById("password").addEventListener(valid("password"));
         return true;
 }
 
