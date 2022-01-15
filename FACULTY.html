@@ -1,262 +1,204 @@
-<!DOCTYPE html> 
+<!DOCTYPE html>
 <html lang="en">
+    <head>
+        <title>FACULTY FORM</title>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.bundle.min.js"></script>
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet">
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
+        <script src="https://kit.fontawesome.com/1a77318452.js" crossorigin="anonymous"></script>
     
-   <head>
-      <title>Faculty Form</title>
-      <meta charset="utf-8">
-      <meta name="viewport" content="width=device-width, initial-scale=1">
-      <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-      <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
-      <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-      <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
-      <script src="https://maxcdn.bootstrapcdn.com/sbootstrap/4.5.2/js/bootstrap.min.js"></script>
-      <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.bundle.min.js"></script>
-      <script src="faculty.js"></script>
-      <link rel = "stylesheet" href = "F-Design.css">
-   <style>
+        <link rel="stylesheet" href="F-Design.css">
+    </head>
 
-   </style>
-
-   <!-- CSS Code in Design.css -->
-
-   </head>
-   <body>
+    <body>
         <div class="container">
-                <div class="card border-0">
-                    <div class="card-body">
-                        <img class="card-img-top" src="TUP-LOGO.png" alt="TUP-LOGO">
-                        <div class="jumbotron jumbotron-fluid customJumboBg">
-                            <div class="container-fluid">
-                                <h2 class="card-title" style="color: #7575FF;">WIFI CONNECTIVITY REGISTRATION</h2>
-                                <h4 class="sub" style="color: yellow;">(for faculty users only)</h4>
-                            </div>
+            <div class="header">
+                <h2 class="design">WIFI CONNECTIVITY REGISTRATION</h2>
+                <h4 class="design2">for faculty users only</h4>
+            </div>
+            <form class="form" id="form">
+                <div class="row">
+                <!-- left-side -->
+                    <div class="col-sm-6">
+                        <div class="form-group">
+                            <label>Name:</label><label id="red">*</label>
+                            <input type="text" class="form-control" placeholder="Enter Full Name" id="names" onkeyup="a()">
+                            <i class="fas fa-check-circle"></i>
+                            <i class="fas fa-exclamation-circle"></i>
+                            <small>Error Message!</small>
                         </div>
-
-                            <div class="row">
-                                <div class="col-sm-6">
-                                    <div class="form-group">
-                                        <label for="name" style="color: #0061c8;">Name:</label><label id="red">*</label>
-                                        <div class="input-group mb-3">
-                                          <div class="input-group-prepend">
-                                            <input type="text" class="form-control" maxlength="20" onkeyup="nameLength()" id="first" placeholder="First Name" name="first" required>
-                                            <input type="text" class="form-control" maxlength="15" onkeyup="nameLength2()" id="second" placeholder="Middle Name" name="second" required>
-                                            <input type="text" class="form-control" maxlength="15" onkeyup="nameLength3()" id="third" placeholder="Last Name" name="third" required>
-                                          </div>                                          
-                                        </div>
-                                    </div>
-                                    <div class="form-group">
-                                        <label for="department" style="color: #0061c8">Department:</label><label id="red">*</label>
-                                        <input type="text" class="form-control" maxlength="20" onkeyup="dept()" id="department" placeholder="Enter Department" name="department" required>
-                                    </div>
-                                    <div class="form-group">
-                                        <label for="designation" style="color: #0061c8;">Designation:</label><label id="red">*</label>
-                                        <input type="text"class="form-control" maxlength="20" onkeyup="design()" id="designation" placeholder="Enter Designation" name="designation" required>
-                                    </div>
-                                    <div class="form-group">
-                                        <label for="macadd" style="color: #0061c8;">MAC Address:</label><label id="red">*</label>
-                                        <input type="text" class="form-control" maxlength="17" onkeyup="mac()" id="macaddress" placeholder="xx-xx-xx-xx-xx" name="macaddress" required>
-                                    </div>
-                                        <label for="some text" style="color: cornsilk;">  
-                                    (Note: To get the MAC address of the laptop, please do the following:
-                                    Go to Start-&gt;Run. Type cmd and enter. Then at the prompt type: ipconfig /all and
-                                    Note down the “Physical Address for Wireless LAN Adapter” as a MAC Address.)</label>
-                                </div>
-
-                                <div class="col-sm-6">
-                                    <div class="form-group" style="color: #0061c8;">System/Device:<label id="red">*</label>
-                                        <select name="system" class="custom-select" onblur="empty('system')" onclick="device('system')" id="system" required>
-                                          <option value="">Choose</option>
-                                          <option value="Smartphone">Smartphone</option>
-                                          <option value="Laptop">Laptop</option>
-                                          <option value="Tablet">Tablet</option>
-                                          <option value="PC">PC</option>
-                                          <option value="Desktop">Desktop</option>
-                                          <option value="Others">Others...</option>
-                                        </select>
-                                    </div>
-                                        
-                                    <div class="form-group">
-                                        <label for="others" style="color: #0061c8;">If others, please specify:</label><label id="red">*</label>
-                                        <input type="text" class="form-control" maxlength="10" onkeyup="Specify()" id="others" placeholder="Specify device..." disabled="">
-                                    </div>
-                                    <div class="form-group">
-                                        <label for="email" style="color: #0061c8;">Email Address:</label><label id="red">*</label>
-                                        <input type="text" class="form-control" maxlength="50" onkeyup="ValidateEmail()" id="emailadd" placeholder="Enter Email Address" name="emailadd" required>
-                                    </div>
-                                    <div class="form-group">
-                                        <label for="phone" style="color: #0061c8;">Phone #:</label><label id="red">*</label>
-                                        <input type="tel" class="form-control" maxlength="11" onkeypress="return(restrictAlphabets(event))" onkeyup="cellNo()" id="phoneno" placeholder="09xxxxxxxxx" name="phoneno" required>
-                                    </div>
-                                    <br><br><br>
-                                </div>
-                            </div>
-                            <hr>
-                            
-                            <div class="row">
-                                <div class="col-sm-12">
-                                        <a class="card-link" data-toggle="collapse" href="#terms">
-                                            [Terms and Condition]
-                                        </a>
-                                        <div class="collapse show" id="terms" data-parent="#accordion" style="color: cornsilk;">
-                                            <p><i>
-                                    I understand that the Wi-Fi connectivity is provided to me for my academic work only.
-                                    The above mentioned system solely belongs to me. I have gone through the norms and
-                                    Regulation of using the Wi-Fi Connectivity and I abide by it. I will not misuse the facility
-                                    by any means.</i></p>
-                                        </div>
-
-                                    <form>
-                                        <div class="custom-control custom-checkbox">
-                                          <input type="checkbox" class="custom-control-input" onclick="agreed()" id="agree" name="Agreement" required>
-                                          <label class="custom-control-label" for="agree" style="color: #0061c8;">Yes, I agree.</label>
-                                        </div>
-                                    </form>
-                                    <hr><p><i><i style="color: cornsilk;">
-                                    The 1 hour per day Wifi-Connectivity  given to the user is valid from 
-                                    November  to March, 2022</i></i></p><i>
-                                </div>
-                            </div>
-
-                            <div class="row">
-                                <div class="col-sm-6">
-                                    <div class="form-group">
-                                        <label for="facultyName" style="color: #0061c8;">Faculty Name:</label><label id="red">*</label>
-                                        <input type="text" class="form-control" maxlength="25" onkeyup="facname()" id="faculty" placeholder="Enter Faculty Name" required>
-                                    </div>
-                                </div>
-
-                                <div class="col-sm-6 was-validated">
-                                    <label for="signature" style="color: #0061c8;">Upload image of Signature over printed name:</label><label id="red">*</label><br>
-                                    <form>
-                                        <div class="custom-file">
-                                          <input type="file" class="custom-file-input" onchange="validateFileupload()" id="Agreement" required>
-                                          <label class="custom-file-label" for="Agreement">Choose file</label>
-                                        </div>
-                                    </form>
-                                </div>
-                            </div>
-
-                            <div class="row">
-                                <div class="col-sm-3">  
-                                    <div class="form-group">
-                                        <label for="date" style="color: #0061c8;">Date:</label><label id="red">*</label>
-                                        <input type="date" class="form-control" onblur="times()" id="date" name="date" required>
-                                    </div>  
-                                </div>
-
-                                <div class="col-sm-9">
-                                    <br>    
-                                    <div class="container">
-                                        <div class="text-right">
-                                            <input type="button" id="nothing" class="btn btn-outline-success" onclick="AddRow()" value="PRINT">   
-                                        </div>
-                                        
-                                    </div>
-                                    
-                                </div>
-                            </div>
-
+                        <div class="form-group">
+                            <label>Department:</label><label id="red">*</label>
+                            <input type="text" class="form-control" placeholder="Enter Department" id="department" onkeyup="b()">
+                            <i class="fas fa-check-circle"></i>
+                            <i class="fas fa-exclamation-circle"></i>
+                            <small>Error Message!</small>
+                        </div>
+                        <div class="form-group">
+                            <label>Designation:</label><label id="red">*</label>
+                            <input type="text" class="form-control" placeholder="Enter Designation" id="designation" onkeyup="c()">
+                            <i class="fas fa-check-circle"></i>
+                            <i class="fas fa-exclamation-circle"></i>
+                            <small>Error Message!</small>
+                        </div>
+                        <div class="form-group">
+                            <label>MAC Address:</label><label id="red">*</label>
+                            <input type="text" class="form-control" placeholder="xx-xx-xx-xx-xx" id="macadd" onkeyup="d()">
+                            <i class="fas fa-check-circle"></i>
+                            <i class="fas fa-exclamation-circle"></i>
+                            <small>Error Message!</small>
+                        </div>
+                        <p>
+                        <i>
+                            I understand that the Wi-Fi connectivity is provided to me for my academic work only.
+                            The above mentioned system solely belongs to me. I have gone through the norms and
+                            Regulation of using the Wi-Fi Connectivity and I abide by it. I will not misuse the facility
+                            by any means.
+                        </i>
+                        </p>
                     </div>
-                </div>    
-       </div>
-       <table id="tfaculty">
-        <thead class="table-danger">
-           <tr>
-              <th scope="col" style="text-align: center;">Last Name</th>
-              <th scope="col" style="text-align: center;">First Name</th>
-              <th scope="col" style="text-align: center;">Middle Name</th>
-              <th scope="col" style="text-align: center;">Department</th>
-              <th scope="col" style="text-align: center;">Designation</th>
-              <th scope="col" style="text-align: center;">Mac Address</th>
-              <th scope="col" style="text-align: center;">Email</th>
-              <th scope="col" style="text-align: center;">Phone No.#</th>
-              <th scope="col" style="text-align: center;">Approval</th>
-           </tr>
-        </thead>
-     </table>
-   </body>
-   <script>
-    $('#first').tooltip({title: "Please fill out this field", placement:"bottom",  trigger: "hover"});
-    $('#second').tooltip({title: "Please fill out this field", placement:"bottom",  trigger: "hover"});
-    $('#third').tooltip({title: "Please fill out this field", placement:"bottom",  trigger: "hover"});
-    $('#course').tooltip({title: "Please fill out this field", placement:"bottom",  trigger: "hover"});
-    $('#semester').tooltip({title: "Please fill out this field", placement:"bottom",  trigger: "hover"});
-    $('#orno').tooltip({title: "Please fill out this field", placement:"bottom",  trigger: "hover"});
-    $('#phoneno').tooltip({title: "Please fill out this field", placement:"bottom",  trigger: "hover"});
-    $('#studentno').tooltip({title: "Please fill out this field", placement:"bottom",  trigger: "hover"});
-    $('#system').tooltip({title: "Please select item in the list", placement:"bottom",  trigger: "hover"});
-    $('#others').tooltip({title: "Please fill out this field", placement:"bottom",  trigger: "hover"});
-    $('#macaddress').tooltip({title: "Please fill out this field", placement:"bottom",  trigger: "hover"});
-    $('#emailadd').tooltip({title: "Please fill out this field", placement:"bottom",  trigger: "hover"});
-    $('#residenceAdd').tooltip({title: "Please fill out this field", placement:"bottom",  trigger: "hover"});
-    $('#name').tooltip({title: "Please fill out this field", placement:"bottom",  trigger: "hover"});
-    $('#password').tooltip({title: "Please fill out this field", placement:"bottom",  trigger: "hover"});
-    $('#print').tooltip({title: "PDF Format", placement:"bottom",  trigger: "hover"});
-   </script>
-   <script>
-        $("input[type='file']").click(function () {
-           $("input[id='Agreement']").click();
-    });
-        $("input[id='Agreement']").change(function (e) {
-            var $this = $(this);
-            $this.next().html($this.val().split('\\').pop());
-    });
-   </script>
-   <script>
-        var list1 = [];
-        var list2 = [];
-        var list3 = [];
-        var list4 = [];
-        var list5 = [];
-        var list6 = [];
-        var list7 = [];
-        var list8 = [];
-        var list9 = [];
-        var n = 1;
-        var x = 0;
 
-        function AddRow() {
+                    <!-- right side -->
+                    <div class="col-sm-6">
+                        <div class="form-group">
+                            <label>System/Device:</label><label id="red">*</label>
+                            <select class="custom-select" id="system" onchange="e()">
+                                <option value="">Choose</option>
+                                <option value="Smartphone">Smartphone</option>
+                                <option value="Laptop">Laptop</option>
+                                <option value="Tablet">Tablet</option>
+                                <option value="PC">PC</option>
+                                <option value="Desktop">Desktop</option>
+                                <option value="Others">Others...</option>
+                              </select>
+                            <i class="fas fa-check-circle"></i>
+                            <i class="fas fa-exclamation-circle"></i>
+                            <small>Error Message!</small>
+                        </div>
+                        <div class="form-group">
+                            <label>Others:</label><label id="red">*</label>
+                            <input type="text" class="form-control" placeholder="Others..." id="others" onkeyup="f()" disabled="">
+                            <i class="fas fa-check-circle"></i>
+                            <i class="fas fa-exclamation-circle"></i>
+                            <small>Error Message!</small>
+                        </div>
+                        <div class="form-group">
+                            <label>Email Address:</label><label id="red">*</label>
+                            <input type="email" class="form-control" placeholder="...@gmail.com" id="email" onkeyup="g()">
+                            <i class="fas fa-check-circle"></i>
+                            <i class="fas fa-exclamation-circle"></i>
+                            <small>Error Message!</small>
+                        </div>
+                        <div class="form-group">
+                            <label>Phone #:</label><label id="red">*</label>
+                            <input type="number" class="form-control" placeholder="09xxxxxxxxx" id="phone" onkeyup="h()">
+                            <i class="fas fa-check-circle"></i>
+                            <i class="fas fa-exclamation-circle"></i>
+                            <small>Error Message!</small>
+                        </div>
+                    </div>
+                </div>
+                <hr>
 
-            var AddRown = document.getElementById('tfaculty');
-            var NewRow = AddRown.insertRow(n)
+                <div class="row">
+                    <div class="col-sm-12">
+                        <a class="card-link" data-toggle="collapse" href="#terms">
+                            [Terms and Condition]
+                        </a>
+                        <div class="collapse show" id="terms" data-parent="#accordion">
+                            <p>
+                            <i>
+                                I understand that the Wi-Fi connectivity is provided to me for my academic work only.
+                                The above mentioned system solely belongs to me. I have gone through the norms and
+                                Regulation of using the Wi-Fi Connectivity and I abide by it. I will not misuse the facility
+                                by any means.
+                            </i>
+                            </p>
+                        </div>
+                        <div class="custom-control custom-checkbox">
+                            <input type="checkbox" class="custom-control-input" id="agree">
+                            <label class="custom-control-label" for="agree" style="color: #0061c8;">Yes, I agree.</label><label id="red">*</label>
+                        </div>
+                    </div>
+                </div>
+                <hr>
+                <p>
+                <i>
+                    The 1 hour per day Wifi-Connectivity  given to the user is valid from 
+                    November  to March, 2022
+                </i>
+                </p>
 
-            list1 [x] = document.getElementById("third").value;
-            list2 [x] = document.getElementById("first").value;
-            list3 [x] = document.getElementById("second").value;
-            list4 [x] = document.getElementById("department").value;
-            list5 [x] = document.getElementById("designation").value;
-            list6 [x] = document.getElementById("macaddress").value;
-            list7 [x] = document.getElementById("emailadd").value;
-            list8 [x] = document.getElementById("phoneno").value;
-            list9 [x] = '<button class="btn btn-success" type="submit" style="padding: 10px 24px;">Approve</button>','<button class="btn btn-danger" type="submit" style="padding: 10px 32px;">Reject</button>';
-    
-            var cel1 = NewRow.InsertCell(0);
-            var cel2 = NewRow.InsertCell(1);
-            var cel3 = NewRow.InsertCell(2);
-            var cel4 = NewRow.InsertCell(3);
-            var cel5 = NewRow.InsertCell(4);
-            var cel6 = NewRow.InsertCell(5);
-            var cel7 = NewRow.InsertCell(6);
-            var cel8 = NewRow.InsertCell(6);
-            var cel9 = NewRow.InsertCell(6);
-    
-    
-    
-            cel1.innerHTML = list1 [x];
-            cel2.innerHTML = list2 [x];
-            cel3.innerHTML = list3 [x];
-            cel4.innerHTML = list4 [x];
-            cel5.innerHTML = list5 [x];
-            cel6.innerHTML = list6 [x];
-            cel7.innerHTML = list7 [x];
-            cel8.innerHTML = list8 [x];
-            cel9.innerHTML = list9 [x];
+                <div class="row">
+                    <div class="col-sm-6">
+                        <div class="form-group">
+                            <label>Faculty Name:</label><label id="red">*</label>
+                            <input type="text" class="form-control" maxlength="25" placeholder="Enter Faculty Name" id="faculty" onkeyup="i()">
+                            <i class="fas fa-check-circle"></i>
+                            <i class="fas fa-exclamation-circle"></i>
+                            <small>Error Message!</small>
+                        </div>   
+                    </div>
+                    <div class="col-sm-6">
+                        <div class="form-group">
+                            <label>Upload image of Signature over printed name:</label><label id="red">*</label>
+                            <div class="custom-file">
+                                <input type="file" class="form-control custom-file-input" id="upload" onchange="j()">
+                                <label class="custom-file-label">Choose file</label>
+                                <i class="fas fa-check-circle"></i>
+                                <i class="fas fa-exclamation-circle"></i>
+                                <small>Error Message!</small>
+                            </div>      
+                        </div>
+                    </div>
+                </div>
 
-            n++;
-            x++;
-
-
-
-        }
-   </script>
+                <div class="row">
+                    <div class="col-sm-3">
+                        <div class="form-group">
+                            <label>Date:</label><label id="red">*</label>
+                            <input type="date" class="form-control" id="date" onchange="k()">
+                            <i class="fas fa-check-circle"></i>
+                            <i class="fas fa-exclamation-circle"></i>
+                            <small>Error Message!</small>
+                        </div>
+                    </div>
+                    <div class="col-sm-7"></div>
+                    <div class="col">
+                        <br>
+                        <button class="btn btn-outline-success" id="confirm">SUBMIT</button>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </body>
+    <script src="faculty.js"></script>
+    <script>
+        $('#names').tooltip({title: "Please fill out this field", placement:"top",  trigger: "hover"});
+        $('#department').tooltip({title: "Please fill out this field", placement:"top",  trigger: "hover"});
+        $('#designation').tooltip({title: "Please fill out this field", placement:"top",  trigger: "hover"});
+        $('#macadd').tooltip({title: "Please fill out this field", placement:"top",  trigger: "hover"});
+        $('#system').tooltip({title: "Please fill out this field", placement:"top",  trigger: "hover"});
+        $('#others').tooltip({title: "Please fill out this field", placement:"top",  trigger: "hover"});
+        $('#email').tooltip({title: "Please fill out this field", placement:"top",  trigger: "hover"});
+        $('#phone').tooltip({title: "Please fill out this field", placement:"top",  trigger: "hover"});
+        $('#system').tooltip({title: "Please select item in the list", placement:"top",  trigger: "hover"});
+        $('#others').tooltip({title: "Please fill out this field", placement:"top",  trigger: "hover"});
+        $('#faculty').tooltip({title: "Please fill out this field", placement:"top",  trigger: "hover"});
+        $('#date').tooltip({title: "Please fill out this field", placement:"top",  trigger: "hover"});
+       </script>
+       <script>
+            $("input[type='file']").click(function () {
+               $("input[id='upload']").click();
+        });
+            $("input[id='upload']").change(function (e) {
+                var $this = $(this);
+                $this.next().html($this.val().split('\\').pop());
+        });
+       </script>
 </html>

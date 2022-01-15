@@ -1,355 +1,167 @@
- body{
-    font-family: Arial, Helvetica, sans-serif;
-    font-weight: bolder;
-    background-image: url(binary.jpg);
-    background-attachment: fixed;
-    background-size: cover;
-    background-repeat: no-repeat;
-    position: relative;
- }
-.container{
-   margin-top: 10px;
-   margin-bottom: 10px;
-   position: relative;
-   max-width: 1000px;
+@import url('https://fonts.googleapis.com/css2?family=Roboto+Slab:wght@400;700&family=Ubuntu&display=swap');
 
+body{
+   background-color: #6667AB;
+   display: flex;
+   margin: 0;
 }
-.card-img-top{
-   padding-top: 250px;
-   padding-right: 60px;
-   height: 1000px;
-   opacity: 0.1;
-   position: absolute;
-}
-.card-title{
-   text-align: center;
-   font-size: 40px;
-}
-.sub{
-   text-align: center;
-}
-hr {
+hr{
    height: 4px;
-   background-color: cornsilk;
+   background-color: #6667AB;
    border: none;
 }
-.btn{
+.container {
+   margin-top: 20px;
+   background-color: #fff;
+   border-radius: 5px;
+   overflow: hidden;
+   box-shadow: 0 2px 5px rgba(0, 0, 0, 0);
+   margin-bottom: 20px;
+}
+.header{
+   background-color: #f7f7f7;
+   border-bottom: 1px solid #f0f0f0;
+   padding: 20px 40px;
+}
+.header h2{
+   font-family: 'Roboto Slab', serif;
+   font-weight: 700;
+   margin: 0;
+}
+.header h4{
+   font-family: 'Roboto Slab', serif;
+   font-weight: 500;
+   margin: 0;
+}
+.form{
+   padding: 30px 40px;
+}
+.form-group{
+   margin-bottom: 10px;
+   padding-bottom: 20px;
+   position: relative;
+}
+.form-control{
+   border-top: hidden;
+   border-right: hidden;
+   border-left: hidden;
+}
+.custom-select{
+   border-top: hidden;
+   border-right: hidden;
+   border-left: hidden;
+}
+.form-group label{
+   font-family: 'Ubuntu', sans-serif;
+   font-weight: 500;
+   display: inline-block;
+}
+.form-group i{
+   position: absolute;
+   top: 48px;
+   right: 16px;
+   visibility: hidden;
+}
+.form-group small{
+   visibility: hidden;
+   position: absolute;
+}
+.form button{
+   background-color: #6667AB;
+   border: 2px solid #6667AB;
+   border-radius: 4px;
+   color: #fff;
+   display: block;
+   font-family: inherit;
+   font-size: 16px;
+   padding: 10px;
+   width: 100%;
+}
+.form-group.success input{
+   border-color: #2ecc71;
+}
+.form-group.error input{
+   border-color: #e74c3c;
+}
+.form-group.success i.fa-check-circle{
+   color: #2ecc71;
+   visibility: visible;
+}
+.form-group.error i.fa-exclamation-circle{
+   color: #e74c3c;
+   visibility: visible;
+}
+.form-group.error small{
+   color: #e74c3c;
+   visibility: visible;
+
+}
+#confirm{
    padding: 10px;
 }
-.card-body{
-   background-color: #16110d;
-   border-style: solid;
-   border-color: black;
-   border-width: 10px;
+#red{
+   color: #e74c3c;
 }
-.custom-select{
-   border-style: solid;
-   border-width: 3px;
-   padding: 5px;
-   font-style: oblique;
-}
-.custom-select{
-   border-color: whitesmoke;
-}
-.tooltip.bs-tooltip-bottom .tooltip-inner {
-   background:#ec3a3d !important;
+.design
+{
+   text-transform: uppercase;
+  background-image: linear-gradient(
+    -225deg,
+    #231557 0%,
+    #44107a 29%,
+    #ff1361 67%,
+    #fff800 100%
+  );
+  background-size: auto auto;
+  background-clip: border-box;
+  background-size: 200% auto;
+  color: #fff;
+  background-clip: text;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  animation: textclip 5s linear infinite;
+  display: inline-block;
 }
 
-.tooltip .arrow:before {
-border-bottom-color:#ec3a3d !important;
-border-top-color:#ec3a3d !important;
+@keyframes textclip {
+  to {
+    background-position: 200% center;
+  }
 }
-#department{
-   border-style: solid;
-   border-width: 3px;
-   border-color: blue;
-   padding: 5px;
-   text-transform: capitalize;
+
+.design2{
+   background-image: linear-gradient(
+    -225deg,
+    #231557 0%,
+    #44107a 29%,
+    #ff1361 67%,
+    #fff800 100%
+  );
+  background-size: auto auto;
+  background-clip: border-box;
+  background-size: 200% auto;
+  color: #fff;
+  background-clip: text;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  animation: textclip 5s linear reverse infinite;
 }
-#department:hover{
-   border-color: whitesmoke;
-}
-#department:focus:required:invalid{
-   border-color: red;
-   background-color: black;
-}
-#department:required:valid{
-   color: whitesmoke;
-   border-color: green;
-   background-color: black;
-   font-family: cursive;
-   border-radius: 25px;
-   font-weight: bold;
-}
-#designation{
-   border-style: solid;
-   border-width: 3px;
-   border-color: blue;
-   padding: 5px;
-   text-transform: capitalize;
-}
-#designation:hover{
-   border-color: whitesmoke;
-}
-#designation:focus:required:invalid{
-   border-color: red;
-   background-color: black;
-}
-#designation:required:valid{
-   color: whitesmoke;
-   border-color: green;
-   background-color: black;
-   font-family: cursive;
-   border-radius: 25px;
-   font-weight: bold;
-}
-#macaddress{
-   border-style: solid;
-   border-width: 3px;
-   border-color: blue;
-   padding: 5px;
-}
-#macaddress:hover{
-   border-color: whitesmoke;
-}
-#macaddress:focus:required:invalid{
-   border-color: red;
-   background-color: black;
-}
-#macaddress:required:valid{
-   color: whitesmoke;
-   border-color: green;
-   background-color: black;
-   font-family: cursive;
-   border-radius: 25px;
-   font-weight: bold;
-}
-#others{
-   border-style: solid;
-   border-width: 3px;
-   border-color: blue;
-   padding: 5px;
-   text-transform: capitalize;
-}
-#others:hover{
-   border-color: whitesmoke;
-}
-#others:focus:required:invalid{
-   border-color: red;
-   background-color: black;
-}
-#others:required:valid{
-   color: whitesmoke;
-   border-color: green;
-   background-color: black;
-   font-family: cursive;
-   border-radius: 25px;
-   font-weight: bold;
-}
-#emailadd{
-   border-style: solid;
-   border-width: 3px;
-   border-color: blue;
-   padding: 5px;
-}
-#emailadd:hover{
-   border-color: whitesmoke;
-}
-#emailadd:focus:required:invalid{
-   border-color: red;
-   background-color: black;
-}
-#emailadd:required:valid{
-   color: whitesmoke;
-   border-color: green;
-   background-color: black;
-   font-family: cursive;
-   border-radius: 25px;
-   font-weight: bold;
-}
-#phoneno{
-   border-style: solid;
-   border-width: 3px;
-   border-color: blue;
-   padding: 5px;
-   text-transform: capitalize;
-}
-#phoneno:hover{
-   border-color: whitesmoke;
-}
-#phoneno:focus:required:invalid{
-   border-color: red;
-   background-color: black;
-}
-#phoneno:required:valid{
-   color: whitesmoke;
-   border-color: green;
-   background-color: black;
-   font-family: cursive;
-   border-radius: 25px;
-   font-weight: bold;
-}
-#faculty{
-   border-style: solid;
-   border-width: 3px;
-   border-color: blue;
-   padding: 5px;
-   text-transform: capitalize;
-}
-#faculty:hover{
-   border-color: whitesmoke;
-}
-#faculty:focus:required:invalid{
-   border-color: red;
-   background-color: black;
-}
-#faculty:required:valid{
-   color: whitesmoke;
-   border-color: green;
-   background-color: black;
-   font-family: cursive;
-   border-radius: 25px;
-   font-weight: bold;
-}
-#date{
-   border-style: solid;
-   border-width: 3px;
-   border-color: blue;
-   padding: 5px;
-}
-#datehover{
-   border-color: whitesmoke;
-}
-#date:focus:required:invalid{
-   border-color: red;
-   background-color: black;
-}
-#date:required:valid{
-   color: whitesmoke;
-   border-color: green;
-   background-color: black;
-   font-family: cursive;
-   border-radius: 25px;
-   font-weight: bold;
-}
-.customJumboBg{
-   background-image: url(background.jpg);
-   background-repeat: repeat;
-   background-size: 100% 100%;
-}
-.name-group{
-   border-style: solid;
-   border-width: 3px;
-   border-radius: 25px;
-   padding: 5px;
-}
-#first{
-   border-style: solid;
-   border-width: 3px;
-   border-color: blue;
-   border-right-style: hidden;
-   padding: 5px;
-   text-transform: capitalize;
-}
-#first:hover{
-   border-color: whitesmoke;
-}
-#first:focus:required:invalid{
-   border-color: red;
-   background-color: black;
-}
-#first:required:valid{
-   color: whitesmoke;
-   border-color: green;
-   background-color: black;
-   font-family: cursive;
-   border-top-left-radius: 25px;
-   border-bottom-left-radius: 25px;
-   font-weight: bold;
-}
-#second{
-   border-style: solid;
-   border-width: 3px;
-   border-color: blue;
-   padding: 5px;
-   text-transform: capitalize;
-}
-#second:hover{
-   border-color: whitesmoke;
-}
-#second:focus:required:invalid{
-   border-color: red;
-   background-color: black;
-}
-#second:required:valid{
-   color: whitesmoke;
-   border-color: green;
-   background-color: black;
-   font-family: cursive;
-   font-weight: bold;
-}
-#third{
-   border-style: solid;
-   border-width: 3px;
-   border-color: blue;
-   border-left-style: hidden;
-   padding: 5px;
-   text-transform: capitalize;
-}
-#third:hover{
-   border-color: whitesmoke;
-}
-#third:focus:required:invalid{
-   border-color: red;
-   background-color: black;
-}
-#third:required:valid{
-   color: whitesmoke;
-   border-color: green;
-   background-color: black;
-   font-family: cursive;
-   border-top-right-radius: 25px;
-   border-bottom-right-radius: 25px;
-   font-weight: bold;
-}
-#system{
-   border-style: solid;
-   border-width: 3px;
-   border-color: blue;
-   padding: 5px;
-}
-#system:hover{
-   border-color: whitesmoke;
-}
-#system:focus:required:invalid{
-   color: whitesmoke;
-   border-color: red;
-   background-color: black;
-}
-#system:required:valid{
-   color: whitesmoke;
-   border-color: green;
-   background-color: black;
-   font-family: cursive;
-   border-radius: 25px;
-   font-weight: bold;
+
+@keyframes textclip {
+  to {
+    background-position: 200% center;
+  }
 }
 .custom-file-label{
-   background-color: lightgrey;
+   border-top: hidden;
+   border-left: hidden;
+   border-right: hidden;
 }
-#red{
-   color: red;
+label{
+   color: #44107a;
+   font-size: 20px;
+   border-color: black;
 }
-
-table{
-   width: 100%;
-   border-collapse: collapse;
-   padding: 12px, 15px;
-   border: 1px solid black;
-   margin-top: 50px;
-}
-
-.table td, .table th{
-   padding: 12px, 15px;
-   border: 1px solid black;
+p{
+   color: gray;
 }

@@ -1,293 +1,344 @@
-// valid
-function valid(add){
-    document.getElementById(add).style.color = "whitesmoke";
-    document.getElementById(add).style.borderColor = "green";
-    document.getElementById(add).style.backgroundColor = "black";
-    document.getElementById(add).style.fontFamily = "cursive";
-    document.getElementById(add).style.fontWeight = "bold";
-}
+const form = document.getElementById('form');
+const names = document.getElementById('names');
+const depart = document.getElementById('department');
+const design = document.getElementById('designation');
+const macadd = document.getElementById('macadd');
+const select = document.getElementById('system');
+const specify = document.getElementById('others');
+const mail = document.getElementById('email');
+const cell = document.getElementById('phone');
+const agreed = document.getElementById('agree');
+const faculty = document.getElementById('faculty');
+const image = document.getElementById('upload');
+const time = document.getElementById('date');
+const patternAlpha = /^[a-zA-Z ]*$/g;
+const patternMac = /^([0-9a-f]{2}([:-]|$)){6}$|([0-9a-f]{4}([.]|$)){3}$/gi;
+const patternEmail = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/;
+const allowedExtensions = /(\.jpg|\.jpeg|\.png)$/i;
+var total = 0;
 
-// invalid
-function invalid(add){
-    document.getElementById(add).style.borderColor = "red";
-    document.getElementById(add).style.backgroundColor = "black";
-}
+let currentDate = new Date();
+let cDay = currentDate.getDate();
+let cMonth = currentDate.getMonth() + 1;
+let cYear = currentDate.getFullYear();
+const tdate = cYear + "-" + "0" + cMonth + "-" + cDay;
 
-// empty field
-function empty(add){
-    var check = document.getElementById(add).value;
+const tip = document.getElementById('display');
 
-    if (check.length == 0 || check.length < 3 || check == ""){
-        document.getElementById(add).addEventListener(invalid(add));
-        
+form.addEventListener('submit', (e) => {
+    e.preventDefault();
+
+    checkInputs();
+});
+function a(){
+    const nameValue = names.value.trim();
+
+    if (nameValue === ''){
+        setInvalid(names, '');
+    }else if(nameValue.length < 9){
+        setInvalid(names, 'Too short!😭');
+    }else if(!nameValue.match(patternAlpha)){
+        setInvalid(names, 'Invalid input!😭');   
     }else{
-        document.getElementById(add).addEventListener(valid(add));
+        setValid(names);
     }
-        
 }
 
-// First Name
-function nameLength(){
-    var fname = document.getElementById("first").value;
-    var regex = /^[a-z][a-z\s]*$/;
+function b(){
+    const departValue = depart.value.trim();
 
-    if(!fname.match(regex) || fname.length < 3){
-        document.getElementById("first").addEventListener(invalid("first"));
-        return false;
-
+    if (departValue === ''){
+        setInvalid(depart, '');
+    }else if(departValue.length < 5){
+        setInvalid(depart, 'Too short!😭');
+    }else if(!departValue.match(patternAlpha)){
+        setInvalid(depart, 'Invalid input!😭');
     }else{
-        document.getElementById("first").addEventListener(valid("first"));
-        return true;
+        setValid(depart);
     }
-    
 }
 
-// Middle Name
-function nameLength2(){
-    var mname = document.getElementById("second").value;
-    var regex = /^[a-z][a-z\s]*$/;
+function c(){
+    const designValue = design.value.trim();
 
-    if(!mname.match(regex) || mname.length < 3){
-        document.getElementById("second").addEventListener(invalid("second"));
-        return false;
-
+    if (designValue === ''){
+        setInvalid(design, '');
+    }else if(designValue.length < 5){
+        setInvalid(design, 'Too short!😭');
+    }else if(!designValue.match(patternAlpha)){
+        setInvalid(design, 'Invalid input!😭');
     }else{
-        document.getElementById("second").addEventListener(valid("second"));
-        return true;
+        setValid(design);
     }
-    
 }
 
-// Last Name
-function nameLength3(){
-    var lname = document.getElementById("third").value;
-    var regex = /^[a-z][a-z\s]*$/;
+function d(){
+    const macValue = macadd.value.trim();
 
-    if(!lname.match(regex) || lname.length < 3){
-        document.getElementById("third").addEventListener(invalid("third"));
-        return false;
-
+    if (macValue === ''){
+        setInvalid(macadd, '');
+    }else if(!macValue.match(patternMac)){
+        setInvalid(macadd, 'Invalid input!😭');
     }else{
-        document.getElementById("third").addEventListener(valid("third"));
-        return true;
+        setValid(macadd);
     }
-    
 }
 
-// Department
-function dept(){
-    var x = document.getElementById("department").value;
-    var regex = /^[a-z][a-z\s]*$/;
+function e(){
+    const selectValue = select.value.trim();
 
-    if(!x.match(regex) || x.length < 4){
-        document.getElementById("department").addEventListener(invalid("department"));
-        return false;
-
+    if (selectValue == ''){
+        sysNotSelected();
+    }else if(selectValue == 'Others'){
+        sysSelected();
+        specify.disabled = '';
     }else{
-        document.getElementById("department").addEventListener(valid("department"));
-        return true;
+        setValid(select);
+        specify.value = '';
+        sysSelected();
     }
-    
 }
 
-// Designation
-function design(){
-    var x = document.getElementById("designation").value;
-    var regex = /^[a-z][a-z\s]*$/;
+function f(){
+    const specifyValue = specify.value.trim();
 
-    if(!x.match(regex) || x.length < 4){
-        document.getElementById("designation").addEventListener(invalid("designation"));
-        return false;
-
+    if (specifyValue === ''){
+        setInvalid(specify, '');
+    }else if(specifyValue.length < 3){
+        setInvalid(specify, 'Too short!😭');
     }else{
-        document.getElementById("designation").addEventListener(valid("designation"));
-        return true;
+        setValid(specify);
     }
-    
 }
 
-// mac address
-function mac(){
-    var x = document.getElementById("macaddress").value;
-	
-	
-	if (pattern.test(x)){
-        document.getElementById("macaddress").addEventListener(valid("macaddress"));
-        return true;
-	}
-	else{
-		document.getElementById("macaddress").addEventListener(invalid("macaddress"));
-        return false;
-	}
-}
+function g(){
+    const mailValue = mail.value.trim();
 
-// unfinished
-function autoTextgmail(){
-    var x = document.getElementById("emailadd").value;
-    var search = /\b@gsfe.tupcavite.edu.ph\b/g;
-    var y = x.match(search);
-
-    alert(x);
-    alert("Found Text/s: " + y);
-
-    if (y.length != 0 || y.length <= 22){
-
-        alert("too short gmail");
-        return false;
-    }
-        alert("Correct");
-        return true;
-    
-}
-
-// Specify, Others
-function Specify(){
-    var x = document.getElementById("others").value;
-    let pattern = /[a-zA-z]/g; 
-    let result = x.match(pattern);
-
-    if (result.length < 3)
-    {
-        document.getElementById("others").addEventListener(invalid("others"))
-        return false;        
-
-    }
-        document.getElementById("others").addEventListener(valid("others"))
-        return true;
-    
-}
-
-// email address
-function ValidateEmail(){
-    var mail = document.getElementById("emailadd").value;
-    var regex = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/;
-    
-    if (mail.match(regex)){
-        document.getElementById("emailadd").addEventListener(valid("emailadd"));
-        return true;
-    }
-        document.getElementById("emailadd").addEventListener(invalid("emailadd"));
-        return false;
-}
-
-// cellphone number
-function cellNo(){
-    var x = document.getElementById("phoneno").value;
-    var regex = /[0][9][0-9]{9}/g;
-
-    if (x.match(regex)){
-        document.getElementById("phoneno").addEventListener(valid("phoneno"));
-        return true;
-
-    }
-        document.getElementById("phoneno").addEventListener(invalid("phoneno"));
-        return false;
-}
-
-// Faculty Name
-function facname(){
-    var fname = document.getElementById("faculty").value;
-    var regex = /^[a-z][a-z\s]*$/;
-
-    if(!fname.match(regex)){
-        document.getElementById("faculty").addEventListener(invalid("faculty"));
-        return false;
-
+    if (mailValue === ''){
+        setInvalid(mail, '');
+    }else if(!mailValue.match(patternEmail)){
+        setInvalid(mail, 'Wrong format!😭');
     }else{
-        document.getElementById("faculty").addEventListener(valid("faculty"));
-        return true;
+        setValid(mail);
+    }
+}
+
+function h(){
+    const cellValue = cell.value.trim();
+
+    if (cellValue === ''){
+        setInvalid(cell, '');
+    }else if(cellValue.length < 11){
+        setInvalid(cell, 'Wrong format!😭');
+    }else{
+        setValid(cell);
+    }
+}
+
+function i(){
+    const facultyValue = faculty.value.trim();
+
+    if (facultyValue === ''){
+        setInvalid(faculty, '');
+    }else if(facultyValue.length < 9){
+        setInvalid(faculty, 'Too short!😭');
+    }else if(!facultyValue.match(patternAlpha)){
+        setInvalid(faculty, 'Invalid input!😭');   
+    }else{
+        setValid(faculty);
+    }
+}
+
+function j(){
+    const imageValue = image.value.trim();
+
+    if (!allowedExtensions.exec(imageValue)) {
+        image.value = '';
+        image.classList.add('is-invalid');
+    }else{
+        image.classList.replace('is-invalid' , 'is-valid');
+    }
+}
+
+function k(){
+    const timeValue = time.value.trim();
+
+    if (timeValue === ''){
+        setInvalid(time, '');
+    }else if (time.value != tdate){
+        setInvalid(time, 'Invalid time😭');
+        //alert(time.value + " == " + tdate);
+    }else{
+        setValid(time);
+    }
+}
+
+function checkInputs(){
+    const nameValue = names.value.trim();
+    const departValue = depart.value.trim();
+    const designValue = design.value.trim();
+    const macValue = macadd.value.trim();
+    const selectValue = select.value.trim();
+    const specifyValue = specify.value.trim();
+    const mailValue = mail.value.trim();
+    const cellValue = cell.value.trim();
+    const facultyValue = faculty.value.trim();
+    const imageValue = image.value.trim();
+    const timeValue = time.value.trim();
+
+    
+    if (nameValue === ''){
+        setInvalid(names, '');
+    }else if(nameValue.length < 9){
+        setInvalid(names, 'Too short!😭');
+    }else if(!nameValue.match(patternAlpha)){
+        setInvalid(names, 'Invalid input!😭');   
+    }else{
+        setValid(names);
+        check();
+    }
+
+    if (departValue === ''){
+        setInvalid(depart, '');
+    }else if(departValue.length < 5){
+        setInvalid(depart, 'Too short!😭');
+    }else if(!departValue.match(patternAlpha)){
+        setInvalid(depart, 'Invalid input!😭');
+    }else{
+        setValid(depart);
+        check();
+    }
+
+    if (designValue === ''){
+        setInvalid(design, '');
+    }else if(designValue.length < 5){
+        setInvalid(design, 'Too short!😭');
+    }else if(!designValue.match(patternAlpha)){
+        setInvalid(design, 'Invalid input!😭');
+    }else{
+        setValid(design);
+        check();
+    }
+
+    if (macValue === ''){
+        setInvalid(macadd, '');
+    }else if(!macValue.match(patternMac)){
+        setInvalid(macadd, 'Invalid input!😭');
+    }else{
+        setValid(macadd);
+        check();
+    }
+    
+    if (selectValue == ''){
+        sysNotSelected();
+    }else if(selectValue == 'Others'){
+        sysSelected();
+        specify.disabled = '';
+    }else{
+        setValid(select);
+        specify.value = '';
+        sysSelected();
+        check();
+    }
+
+    if (specifyValue === ''){
+        setInvalid(specify, '');
+    }else if(specifyValue.length < 3){
+        setInvalid(specify, 'Too short!😭');
+    }else{
+        setValid(specify);
+        check();
+    }
+    
+    if (mailValue === ''){
+        setInvalid(mail, '');
+    }else if(!mailValue.match(patternEmail)){
+        setInvalid(mail, 'Wrong format!😭');
+    }else{
+        setValid(mail);
+        check();
+    }
+
+    if (cellValue === ''){
+        setInvalid(cell, '');
+    }else if(cellValue.length < 11){
+        setInvalid(cell, 'Wrong format!😭');
+    }else{
+        setValid(cell);
+        check();
+    }
+
+    if (agreed.checked){
+        check();
+    }else{
+        agreed.focus();
+    }
+
+    if (facultyValue === ''){
+        setInvalid(faculty, '');
+    }else if(facultyValue.length < 9){
+        setInvalid(faculty, 'Too short!😭');
+    }else if(!facultyValue.match(patternAlpha)){
+        setInvalid(faculty, 'Invalid input!😭');   
+    }else{
+        setValid(faculty);
+        check();
+    }
+
+    if (!allowedExtensions.exec(imageValue)) {
+        image.value = '';
+        image.classList.add('is-invalid');
+    }else{
+        image.classList.replace('is-invalid' , 'is-valid');
+        check();
+    }
+
+    if (timeValue === ''){
+        setInvalid(time, '');
+    }else if (time.value != tdate){
+        setInvalid(time, 'Invalid time😭');
+        //alert(time.value + " == " + tdate);
+    }else{
+        setValid(time);
+        check();
+    }
+    
+    if (nameValue != '' && departValue != '' && designValue != '' && macValue != '' && selectValue != '' || specifyValue != ''
+     && mailValue != '' && cellValue != '' && facultyValue != '' && imageValue != '' && timeValue != ''){
+    }if (total == 11){
+        alert("You Have Successfully Submitted The Form✨🥳🎉");
+        total = 0;
+    }else{
+        alert("Please leave no blank spaces and enter correct details!😭😭😭")
+        total = 0;
     }
     
 }
+    
+function setInvalid(input,message){
+    const formGroup = input.parentElement;
+    const small = formGroup.querySelector('small');
 
-// date
-function times(){
-    let currentDate = new Date();
-    let cDay = currentDate.getDate();
-    let cMonth = currentDate.getMonth() + 1;
-    let cYear = currentDate.getFullYear();
-    var tdate = cYear + "-" + "0" + cMonth + "-" + "0" + cDay;
-    const date1 = document.getElementById("date");
+    small.innerText = message;
 
-    if (date1.value != tdate)
-    {
-        document.getElementById("date").addEventListener(invalid("date"))
-        return false;
-    }
-        document.getElementById("date").addEventListener(valid("date"))
-        return true;
+    formGroup.className = 'form-group error';
 }
 
-// Only letters
-function restrictAlphabets(e){
-    var x = e.which || e.keycode;
-    if((x>=48 && x<=57))
-        return true;
-    else
-        return false;
+function setValid(input){
+    const formGroup = input.parentElement;
+    formGroup.className = 'form-group success';
 }
 
-// only alphabets
-function onlyAlphabets(e){
-    var x = e.which || e.keycode;
-    if((x>=65 && x<=90)||(x>=97 && x<=122))
-        return true;
-    else
-        return false;
+function check(){
+    total = total + 1;
 }
 
-// system/device
-function device(){
-    var x = document.getElementById("system").value;
-    var g = document.getElementById("others");
-
-    if (x == "Smartphone" || x == "Laptop" || x == "Tablet" || x == "PC" || x == "Desktop"){
-        g.value = "";
-        document.getElementById("others").style.borderStyle = "solid";
-        document.getElementById("others").style.borderWidth = "3px";
-        document.getElementById("others").style.borderColor = "blue";
-        document.getElementById("others").style.padding = "5px";
-        document.getElementById("others").style.backgroundColor = "whitesmoke";
-        document.getElementById("others").disabled = "true";
-        document.getElementById("system").addEventListener(valid("system"));
-        
-
-    }if (x == "Others"){
-        document.getElementById("others").disabled = "";
-        document.getElementById("system").addEventListener(valid("system"));
-        
-    }if (x == ""){
-        g.value = "";
-        document.getElementById("others").disabled = "true";   
-    }
-
+function sysSelected(){
+    select.style.borderColor = '#2ecc71';
+    specify.disabled = 'true';
 }
 
-// checkbox
-function agreed(){
-    if(document.getElementById("agree").checked == true){
-        return true;
-    }
-        return false;   
+function sysNotSelected(){
+    select.style.borderColor = '#e74c3c';
+    setInvalid(select, '');
 }
-
-// file upload validation
-function validateFileupload(){
-    var fileInput = document.getElementById("Agreement");
-              
-    var filePath = fileInput.value;
-          
-    var allowedExtensions = /(\.jpg|\.jpeg|\.png)$/i;
-              
-    if (!allowedExtensions.exec(filePath)) {
-        alert('Invalid file type');
-        fileInput.value = '';
-        return false;
-    }
-        return true;
-}
-
-// Confirm Form Submission
-
-// Table for Faculty
-
