@@ -1,208 +1,222 @@
-<!DOCTYPE html> 
+<!DOCTYPE html>
 <html lang="en">
+    <head>
+        <title>STUDENT FORM</title>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.bundle.min.js"></script>
+        <script src="https://kit.fontawesome.com/1a77318452.js" crossorigin="anonymous"></script>
     
-   <head>
-      <title>Student Form</title>
-      <meta charset="utf-8">
-      <meta name="viewport" content="width=device-width, initial-scale=1">
-      <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
-      <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-      <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
-      <script src="https://maxcdn.bootstrapcdn.com/sbootstrap/4.5.2/js/bootstrap.min.js"></script> 
-      <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.bundle.min.js"></script>
-      <script src="transferdata.js"></script>
-      <link rel = "stylesheet" href = "ST-Design.css">
-   <style>
+        <link rel="stylesheet" href="ST-Design.css">
+    </head>
 
-   </style>
-
-   <!-- CSS Code in ST-Design.css -->
-
-   </head>
-   <body>
-       <div class="container">
-                <div class="card border-0">
-                    <div class="card-body">
-                        <img class="card-img-top" src="TUP-LOGO.png" alt="TUP-LOGO">
-                        <div class="jumbotron jumbotron-fluid customJumboBg">
-                          <div class="container-fluid">
-                            <h2 class="card-title text-primary" style="color: #7575FF;">WIFI CONNECTIVITY REGISTRATION</h2>
-                            <h4 class="sub text-warning" style="color: yellow;">(for students users only)</h4>
-                          </div>
+    <body>
+        <div class="container">
+            <div class="header">
+                <h2 class="design">WIFI CONNECTIVITY REGISTRATION</h2>
+                <h4 class="design2">for student users only</h4>
+            </div>
+            <form class="form" id="form">
+                <div class="row">
+                <!-- left-side -->
+                    <div class="col-sm-6">
+                        <div class="form-group">
+                            <label><strong>Name:</strong></label><label id="red">*</label>
+                            <input type="text" class="form-control" maxlength="30" placeholder="Enter Full Name" id="names" onkeyup="a()">
+                            <i class="fas fa-check-circle"></i>
+                            <i class="fas fa-exclamation-circle"></i>
+                            <small>Error Message!</small>
                         </div>
-
-                            <div class="row">
-                                <div class="col-sm-6">
-                                    <div class="form-group">
-                                        <label for="name" style="color: #0061c8;">Name:</label><label id="red">*</label>
-                                        <div class="input-group mb-3">
-                                          <div class="input-group-prepend">
-                                            <input type="text" class="form-control" onkeyup="nameLength()" id="first"  placeholder="First Name" required>
-                                            <input type="text" class="form-control" onkeyup="nameLength2()" id="second" placeholder="Middle Name" required>
-                                            <input type="text" class="form-control" onkeyup="nameLength3()" id="third" placeholder="Last Name" required>
-                                          </div>
-                                        </div>
-                                      </div>
-                                      <div class="form-group">
-                                          <label for="course" style="color: #0061c8;">Course:</label><label id="red">*</label>
-                                          <input type="text"class="form-control" maxlength="20" onkeyup="course()"   id="course" placeholder="Enter Course" required>
-                                      </div>
-                                    <div class="form-group">
-                                        <label for="semester" style="color: #0061c8;">Semester:</label><label id="red">*</label>
-                                        <input type="text" class="form-control" maxlength="15" onkeyup="sem()"  id="semester" placeholder="Enter Semester" required>
-                                    </div>
-                                    <div class="form-group">
-                                        <label for="studentno" style="color: #0061c8;">Student No:</label><label id="red">*</label>
-                                        <input type="text" class="form-control" maxlength="15" onkeyup="tupcnum()" id="studentno" placeholder="TUPC-xx-xxxx" required>
-                                    </div>
-                                    <div class="form-group">
-                                        <label for="orno" style="color: #0061c8;">O.R#:</label><label id="red">*</label>
-                                        <input type="text" class="form-control" maxlength="10" onkeypress="return(restrictAlphabets(event))" onkeyup="OR()" id="orno" placeholder="Or Number" required>
-                                    </div>
-                                    <div class="form-group">
-                                      <label for="phone" style="color: #0061c8;">Phone #:</label><label id="red">*</label>
-                                      <input type="tel" class="form-control" maxlength="11" onkeypress="return(restrictAlphabets(event))" onkeyup="cellNo()" id="phoneno" placeholder="09xxxxxxxxx" required>
-                                  </div>
-                                </div>
-
-                                <div class="col-sm-6">
-                                    <div class="form-group" style="color: #0061c8;">System/Device:<label id="red">*</label>
-                                      <select name="system" class="custom-select" onblur="empty('system')" onclick="device('system')" id="system" required>
-                                        <option value="">Choose</option>
-                                        <option value="Smartphone">Smartphone</option>
-                                        <option value="Laptop">Laptop</option>
-                                        <option value="Tablet">Tablet</option>
-                                        <option value="PC">PC</option>
-                                        <option value="Desktop">Desktop</option>
-                                        <option value="Others">Others...</option>
-                                      </select>
-                                    </div>
-                                    <div class="form-group">
-                                      <label for="others" style="color: #0061c8;">If others, please specify:</label><label id="red">*</label>
-                                      <input type="text" class="form-control" maxlength="10" onkeyup="Specify()" id="others" placeholder="Specify device..." required>
-                                    </div>
-                                    <div class="form-group">
-                                        <label for="macaddress" style="color: #0061c8;">Mac Address:</label><label id="red">*</label>
-                                        <input type="text" class="form-control" maxlength="17" onkeyup="mac()" id="macaddress" placeholder="xx-xx-xx-xx-xx" required>
-                                    </div>
-                                  <div class="form-group">
-                                    <label for="emailadd" style="color: #0061c8;">Email Address:</label><label id="red">*</label>
-                                    <input type="text" class="form-control" maxlength="50" onkeyup="ValidateEmail()" id="emailadd" placeholder="email@yahoo.com" required>
-                                  </div>
-                                  <div class="form-group">
-                                    <label for="residenceAdd" style="color: #0061c8;">Residence Address:</label><label id="red">*</label>
-                                    <input type="text" class="form-control" maxlength="50" onkeyup="home()" id="residenceAdd" placeholder="BLK# LOT#..." required>
-                                  </div>
-                                </div>
-                            </div>
-                            <hr>
-                            
-                            <div class="row">
-                              <div class="col-sm-12">
-                                <a class="card-link" data-toggle="collapse" href="#terms">
-                                  [Terms and Condition]
-                                </a>
-                                <div class="collapse show" id="terms" data-parent="#accordion" style="color: cornsilk;">
-                                      <p><i>
-                                I understand that the Wi-Fi connectivity is provided to me for my academic work only.
-                              The above mentioned system solely belongs to me. I have gone through the norms and
-                              Regulation of using the Wi-Fi Connectivity and I abide by it. I will not misuse the facility
-                              by any means.</i></p>
-                                </div>
-                              
-                              <form>
-                                <div class="custom-control custom-checkbox">
-                                  <input type="checkbox" class="custom-control-input" onclick="agreed()" id="agree" name="Agreement" required>
-                                  <label class="custom-control-label" for="agree" style="color: #0061c8;">Yes, I agree.</label>
-                                </div>
-                              </form>
-                              <hr>
-                              </div>
-                            </div>
-                            
-                            <div class="row">
-                              <div class="col-sm-6">
-                                <label for="signature" style="color: #0061c8;">Upload image of Signature over printed name:</label><label id="red">*</label>
-                                    <form>
-                                        <div class="custom-file">
-                                          <input type="file" class="custom-file-input" onchange="validateFileupload()" id="Agreement" required>
-                                          <label class="custom-file-label" for="Agreement">Choose file</label>
-                                        </div>
-                                    </form>
-                              </div>
-                              <div class="col-sm-6">
-                                <h5 style="text-align:left; color: #0061c8;">
-                                  Approved by:</h5>
-                                    <input type="image" id="image1" src="white.jpg" alt="UITC Coordinator Signature" width="100%" height="40px"><br>
-                                    <label for="image1" style="color: #0061c8;">UITC Coordinator</label><br>
-                              </div>
-                            </div>
-
-                            <hr>
-
-                            <div class="row">
-                              <div class="col-sm-6">
-                                <div class="form-group">
-                                  <label for="name" style="color: #0061c8;">Name:</label><label id="red">*</label>
-                                  <input type="text" class="form-control" maxlength="10" onkeyup="uname()" id="name" placeholder="Enter Name" required>
-                                </div>
-                              </div>
-
-                              <div class="col-sm-6">
-                                <div class="form-group">
-                                  <label for="password" style="color: #0061c8;">Password:</label><label id="red">*</label>
-                                  <input type="text" class="form-control" maxlength="8" onkeyup="upass()" id="password" placeholder="Enter Password" required>
-                                </div>
-                              </div>
-                                    <p><i>><i style="color: cornsilk;">
-                                    The 1 hour per day Wifi-Connectivity  given to the user is valid from 
-                                  November  to March, 2022</i></i</p>  
-                            </div>
-
-                            <div class="row">
-                              <br>
-                              <div class="col-sm-12">
-                                <div class="container">
-                                  <div class="text-right">
-                                    <button type="submit" class="btn btn-outline-success" id="print" onclick="window.print()">
-                                      PRINT
-                                    </button>
-                                  </div>
-                                </div>
-                                    
-                              </div>
-                            </div>
-
+                        <div class="form-group">
+                            <label><strong>Course:</strong></label><label id="red">*</label>
+                            <input type="text" class="form-control" maxlength="30" placeholder="Enter Course" id="course" onkeyup="b()">
+                            <i class="fas fa-check-circle"></i>
+                            <i class="fas fa-exclamation-circle"></i>
+                            <small>Error Message!</small>
+                        </div>
+                        <div class="form-group">
+                            <label><strong>Semester:</strong></label><label id="red">*</label>
+                            <input type="text" class="form-control" maxlength="15" placeholder="Enter Semester" id="semester" onkeyup="c()">
+                            <i class="fas fa-check-circle"></i>
+                            <i class="fas fa-exclamation-circle"></i>
+                            <small>Error Message!</small>
+                        </div>
+                        <div class="form-group">
+                            <label><strong>Student No:</strong></label><label id="red">*</label>
+                            <input type="text" class="form-control" maxlength="12" placeholder="TUPC-xx-xxxx" id="tupcnum" onkeyup="d()">
+                            <i class="fas fa-check-circle"></i>
+                            <i class="fas fa-exclamation-circle"></i>
+                            <small>Error Message!</small>
+                        </div>
+                        <div class="form-group">
+                            <label><strong>O.R#:</strong></label><label id="red">*</label>
+                            <input type="number" class="form-control" maxlength="12" placeholder="Enter O.R#" id="orno" onkeyup="e()">
+                            <i class="fas fa-check-circle"></i>
+                            <i class="fas fa-exclamation-circle"></i>
+                            <small>Error Message!</small>
+                        </div>
+                        <div class="form-group">
+                            <label><strong>Phone #:</strong></label><label id="red">*</label>
+                            <input type="text" class="form-control" maxlength="11" placeholder="09xxxxxxxxx" id="phone" onkeyup="f()">
+                            <i class="fas fa-check-circle"></i>
+                            <i class="fas fa-exclamation-circle"></i>
+                            <small>Error Message!</small>
+                        </div>
                     </div>
-                </div>       
-       </div>
 
-  <script>
-      $('#first').tooltip({title: "Please fill out this field", placement:"bottom",  trigger: "hover"});
-      $('#second').tooltip({title: "Please fill out this field", placement:"bottom",  trigger: "hover"});
-      $('#third').tooltip({title: "Please fill out this field", placement:"bottom",  trigger: "hover"});
-      $('#course').tooltip({title: "Please fill out this field", placement:"bottom",  trigger: "hover"});
-      $('#semester').tooltip({title: "Please fill out this field", placement:"bottom",  trigger: "hover"});
-      $('#orno').tooltip({title: "Please fill out this field", placement:"bottom",  trigger: "hover"});
-      $('#phoneno').tooltip({title: "Please fill out this field", placement:"bottom",  trigger: "hover"});
-      $('#studentno').tooltip({title: "Please fill out this field", placement:"bottom",  trigger: "hover"});
-      $('#system').tooltip({title: "Please select item in the list", placement:"bottom",  trigger: "hover"});
-      $('#others').tooltip({title: "Please fill out this field", placement:"bottom",  trigger: "hover"});
-      $('#macaddress').tooltip({title: "Please fill out this field", placement:"bottom",  trigger: "hover"});
-      $('#emailadd').tooltip({title: "Please fill out this field", placement:"bottom",  trigger: "hover"});
-      $('#residenceAdd').tooltip({title: "Please fill out this field", placement:"bottom",  trigger: "hover"});
-      $('#name').tooltip({title: "Please fill out this field", placement:"bottom",  trigger: "hover"});
-      $('#password').tooltip({title: "Please fill out this field", placement:"bottom",  trigger: "hover"});
-      $('#print').tooltip({title: "PDF Format", placement:"bottom",  trigger: "hover"});
-  </script>
-  <script>
-          $("input[type='file']").click(function () {
-            $("input[id='Agreement']").click();
-      });
-          $("input[id='Agreement']").change(function (e) {
-              var $this = $(this);
-              $this.next().html($this.val().split('\\').pop());
-      });
-    </script>
-   </body>
+                    <!-- right side -->
+                    <div class="col-sm-6">
+                        <div class="form-group">
+                            <label><strong>Device:</strong></label><label id="red">*</label>
+                            <select class="custom-select" id="system" onchange="g()">
+                                <option value="">Choose</option>
+                                <option value="Smartphone">Smartphone</option>
+                                <option value="Laptop">Laptop</option>
+                                <option value="Tablet">Tablet</option>
+                                <option value="PC">PC</option>
+                                <option value="Desktop">Desktop</option>
+                                <option value="Others">Others...</option>
+                              </select>
+                            <i class="fas fa-check-circle"></i>
+                            <i class="fas fa-exclamation-circle"></i>
+                            <small>Error Message!</small>
+                        </div>
+                        <div class="form-group">
+                            <label><strong>Others:</strong></label><label id="red">*</label>
+                            <input type="text" class="form-control" maxlength="15" placeholder="Others..." id="others" onkeyup="h()" disabled="">
+                            <i class="fas fa-check-circle"></i>
+                            <i class="fas fa-exclamation-circle"></i>
+                            <small>Error Message!</small>
+                        </div>
+                        <div class="form-group">
+                            <label><strong>Mac Address:</strong></label><label id="red">*</label>
+                            <input type="text" class="form-control" placeholder="xx-xx-xx-xx-xx" id="macadd" onkeyup="i()">
+                            <i class="fas fa-check-circle"></i>
+                            <i class="fas fa-exclamation-circle"></i>
+                            <small>Error Message!</small>
+                        </div>
+                        <div class="form-group">
+                            <label><strong>Email:</strong></label><label id="red">*</label>
+                            <input type="email" class="form-control" maxlength="30" placeholder="...@gmail.com" id="email" onkeyup="j()">
+                            <i class="fas fa-check-circle"></i>
+                            <i class="fas fa-exclamation-circle"></i>
+                            <small>Error Message!</small>
+                        </div>
+                        <div class="form-group">
+                            <label><strong>Residence Address:</strong></label><label id="red">*</label>
+                            <input type="text" class="form-control" maxlength="50" placeholder="Enter Address" id="resid" onkeyup="k()">
+                            <i class="fas fa-check-circle"></i>
+                            <i class="fas fa-exclamation-circle"></i>
+                            <small>Error Message!</small>
+                        </div>
+                    </div>
+                </div>
+                <hr>
+
+                <div class="row">
+                    <div class="col-sm-12">
+                        <a class="card-link" data-toggle="collapse" href="#terms">
+                            [Terms and Condition]
+                        </a>
+                        <div class="collapse show" id="terms" data-parent="#accordion">
+                            <p>
+                            <i>
+                                I understand that the Wi-Fi connectivity is provided to me for my academic work only.
+                                The above mentioned system solely belongs to me. I have gone through the norms and
+                                Regulation of using the Wi-Fi Connectivity and I abide by it. I will not misuse the facility
+                                by any means.
+                            </i>
+                            </p>
+                        </div>
+                        <div class="custom-control custom-checkbox">
+                            <input type="checkbox" class="custom-control-input" id="agree">
+                            <label class="custom-control-label" for="agree" style="color: #0061c8;"><strong>Yes, I agree.</strong></label><label id="red">*</label>
+                        </div>
+                    </div>
+                </div>
+                <hr>
+                <p>
+                <i>
+                    The 1 hour per day Wifi-Connectivity  given to the user is valid from 
+                    November  to March, 2022
+                </i>
+                </p>
+
+                <div class="row">
+                    <div class="col-sm-6">
+                        <h5>Approved by:</h5>
+                            <input type="image" id="image1" src="white.jpg" alt="UITC Coordinator Signature" width="100%" height="40px"><br>
+                            <label for="image1">UITC Coordinator</label><br>
+                      </div>
+                      <div class="col-sm-6">
+                        <div class="form-group">
+                            <label><strong>Upload image of Signature over printed name:</strong></label><label id="red">*</label>
+                            <div class="custom-file">
+                                <input type="file" class="form-control custom-file-input" id="upload" onchange="l()">
+                                <label class="custom-file-label">Choose file</label>
+                                <i class="fas fa-check-circle"></i>
+                                <i class="fas fa-exclamation-circle"></i>
+                                <small>Error Message!</small>
+                            </div>      
+                        </div>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="col-sm-6">
+                        <div class="form-group">
+                            <label><strong>Name:</strong></label><label id="red">*</label>
+                            <input type="text" class="form-control" maxlength="12" placeholder="Enter Name" id="uname" onkeyup="m()">
+                            <i class="fas fa-check-circle"></i>
+                            <i class="fas fa-exclamation-circle"></i>
+                            <small>Error Message!</small>
+                        </div>   
+                    </div>
+                    <div class="col-sm-6">
+                        <div class="form-group">
+                            <label><strong>Password:</strong></label><label id="red">*</label>
+                            <input type="text" class="form-control" maxlength="12" placeholder="Enter Password" id="pass" onkeyup="n()">
+                            <i class="fas fa-check-circle"></i>
+                            <i class="fas fa-exclamation-circle"></i>
+                            <small>Error Message!</small>
+                        </div>   
+                    </div>
+                </div>
+                
+                <div class="row">
+                    <div class="col-sm-10"></div>
+                    <div class="col-sm-2">
+                        <button class="btn btn-outline-success" id="confirm">SUBMIT</button>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </body>
+    <script src="student.js"></script>
+    <script>
+        $('#names').tooltip({title: "Please fill out this field", placement:"top",  trigger: "hover"});
+        $('#department').tooltip({title: "Please fill out this field", placement:"top",  trigger: "hover"});
+        $('#designation').tooltip({title: "Please fill out this field", placement:"top",  trigger: "hover"});
+        $('#macadd').tooltip({title: "Please fill out this field", placement:"top",  trigger: "hover"});
+        $('#system').tooltip({title: "Please fill out this field", placement:"top",  trigger: "hover"});
+        $('#others').tooltip({title: "Please fill out this field", placement:"top",  trigger: "hover"});
+        $('#email').tooltip({title: "Please fill out this field", placement:"top",  trigger: "hover"});
+        $('#phone').tooltip({title: "Please fill out this field", placement:"top",  trigger: "hover"});
+        $('#system').tooltip({title: "Please select item in the list", placement:"top",  trigger: "hover"});
+        $('#others').tooltip({title: "Please fill out this field", placement:"top",  trigger: "hover"});
+        $('#faculty').tooltip({title: "Please fill out this field", placement:"top",  trigger: "hover"});
+        $('#date').tooltip({title: "Please fill out this field", placement:"top",  trigger: "hover"});
+       </script>
+       <script>
+            $("input[type='file']").click(function () {
+               $("input[id='upload']").click();
+        });
+            $("input[id='upload']").change(function (e) {
+                var $this = $(this);
+                $this.next().html($this.val().split('\\').pop());
+        });
+       </script>
 </html>

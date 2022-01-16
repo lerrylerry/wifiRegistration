@@ -11,6 +11,7 @@ const agreed = document.getElementById('agree');
 const faculty = document.getElementById('faculty');
 const image = document.getElementById('upload');
 const time = document.getElementById('date');
+
 const patternAlpha = /^[a-zA-Z ]*$/g;
 const patternMac = /^([0-9a-f]{2}([:-]|$)){6}$|([0-9a-f]{4}([.]|$)){3}$/gi;
 const patternEmail = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/;
@@ -303,9 +304,9 @@ function checkInputs(){
         check();
     }
     
-    if (nameValue != '' && departValue != '' && designValue != '' && macValue != '' && selectValue != '' || specifyValue != ''
-     && mailValue != '' && cellValue != '' && facultyValue != '' && imageValue != '' && timeValue != ''){
-    }if (total == 11){
+    //if (nameValue != '' && departValue != '' && designValue != '' && macValue != '' && selectValue != '' || specifyValue != ''
+    //&& mailValue != '' && cellValue != '' && facultyValue != '' && imageValue != '' && timeValue != ''){}
+    if (total == 11){
         alert("You Have Successfully Submitted The Form✨🥳🎉");
         total = 0;
     }else{

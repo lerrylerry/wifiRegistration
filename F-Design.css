@@ -26,7 +26,7 @@ hr{
    background-repeat: no-repeat;
    background-size: 10% 80%;
    background-position: 95%;
-   animation: example 10s linear infinite;
+   animation: example 10s linear infinite alternate-reverse;
    animation-fill-mode: forwards;
 }
 .header h2{
