@@ -22,6 +22,12 @@ hr{
    background-color: #f7f7f7;
    border-bottom: 1px solid #f0f0f0;
    padding: 20px 40px;
+   background-image: url(wifi-signal.png);
+   background-repeat: no-repeat;
+   background-size: 10% 80%;
+   background-position: 95%;
+   animation: example 10s linear infinite;
+   animation-fill-mode: forwards;
 }
 .header h2{
    font-family: 'Roboto Slab', serif;
@@ -94,7 +100,6 @@ hr{
 .form-group.error small{
    color: #e74c3c;
    visibility: visible;
-
 }
 #confirm{
    padding: 10px;
@@ -159,9 +164,13 @@ hr{
 }
 label{
    color: #44107a;
-   font-size: 20px;
+   font-size: 16px;
    border-color: black;
 }
 p{
    color: gray;
 }
+@keyframes example {
+   from {left: 0px;}
+   to {left: 500px; background-color: black;}
+ }
