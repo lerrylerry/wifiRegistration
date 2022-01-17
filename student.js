@@ -20,6 +20,7 @@ const patternAlpha = /^[a-zA-Z ]*$/g;
 const patternMac = /^([0-9a-f]{2}([:-]|$)){6}$|([0-9a-f]{4}([.]|$)){3}$/gi;
 const patternEmail = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/;
 const allowedExtensions = /(\.jpg|\.jpeg|\.png)$/i;
+//const regex = /[0][9][0-9]{9}/g;
 var total = 0;
 
 let currentDate = new Date();
