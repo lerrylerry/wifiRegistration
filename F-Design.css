@@ -4,6 +4,15 @@ body{
    background-color: #6667AB;
    display: flex;
    margin: 0;
+   background-image: url(wifi-signal.png);
+   background-size: 4in 4in;
+   background-repeat: no-repeat;
+   animation: side 10s ease-in-out 2s infinite alternate;
+   background-position: center;
+}
+@keyframes side {
+   from {background-position: left;}
+   to {background-position: right; background-color: black;}
 }
 hr{
    height: 4px;
