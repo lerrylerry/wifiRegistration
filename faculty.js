@@ -308,10 +308,9 @@ function checkInputs(){
     //if (nameValue != '' && departValue != '' && designValue != '' && macValue != '' && selectValue != '' || specifyValue != ''
     //&& mailValue != '' && cellValue != '' && facultyValue != '' && imageValue != '' && timeValue != ''){}
     if (total == 11){
-        alert("You Have Successfully Submitted The Form✨🥳🎉");
-        form.reset();
-        window.location.href="success.html";
-        total = 0;
+        form.reset();//reset the form upon submission
+        window.location.href="success.html";//show success page
+        window.location.replace("success.html")//once submitted no return
     }else{
         alert("Please leave no blank spaces and enter correct details!😭😭😭")
         total = 0;

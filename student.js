@@ -92,7 +92,7 @@ function d(){
 }
 
 function e(){
-    const orValue = or.trim();
+    const orValue = or.value.trim();
 
     if (orValue === ''){
         setInvalid(or, '');
@@ -381,10 +381,9 @@ function checkInputs(){
     // && mailValue != '' && cellValue != '' && passwordValue != '' && imageValue != '' && usernameValue != '' && passwordValue != ''
     // && residenceValue != '' && orValue != '' ){}
     if (total == 14){
-        alert("You Have Successfully Submitted The Form✨🥳🎉");
-        form.reset();
-        window.location.href="success.html";
-        total = 0;
+        form.reset();//reset the form upon submission
+        window.location.href="success.html";//show success page
+        window.location.replace("success.html")//once submitted no return
     }else{
         alert("Please leave no blank spaces and enter correct details!😭😭😭")
         total = 0;
