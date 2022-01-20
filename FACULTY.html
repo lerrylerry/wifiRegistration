@@ -175,29 +175,5 @@
             </form>
         </div>
     </body>
-    <script src="faculty.js"></script>
-    <script>
-        $('#names').tooltip({title: "Please fill out this field👍", placement:"top",  trigger: "hover"});
-        $('#department').tooltip({title: "Please fill out this field👍", placement:"top",  trigger: "hover"});
-        $('#designation').tooltip({title: "Please fill out this field👍", placement:"top",  trigger: "hover"});
-        $('#macadd').tooltip({title: "Please fill out this field👍", placement:"top",  trigger: "hover"});
-        $('#system').tooltip({title: "Please fill out this field👍", placement:"top",  trigger: "hover"});
-        $('#others').tooltip({title: "Please fill out this field👍", placement:"top",  trigger: "hover"});
-        $('#email').tooltip({title: "Please fill out this field👍", placement:"top",  trigger: "hover"});
-        $('#phone').tooltip({title: "Please fill out this field👍", placement:"top",  trigger: "hover"});
-        $('#system').tooltip({title: "Please select item in the list👍", placement:"top",  trigger: "hover"});
-        $('#others').tooltip({title: "Please fill out this field👍", placement:"top",  trigger: "hover"});
-        $('#faculty').tooltip({title: "Please fill out this field👍", placement:"top",  trigger: "hover"});
-        $('#date').tooltip({title: "Enter current date👍", placement:"top",  trigger: "hover"});
-        $('#upload').tooltip({title: "Submit image file('png','jpg','jpg')👍", placement:"top",  trigger: "hover"});
-       </script>
-       <script>
-            $("input[type='file']").click(function () {
-               $("input[id='upload']").click();
-        });
-            $("input[id='upload']").change(function (e) {
-                var $this = $(this);
-                $this.next().html($this.val().split('\\').pop());
-        });
-       </script>
+    <script src="faculty.js" defer></script>
 </html>

@@ -418,3 +418,28 @@ function sysNotSelected(){
     select.style.borderColor = '#e74c3c';
     setInvalid(select, '');
 }
+
+$('#names').tooltip({title: "Please fill out this field👍", placement:"top",  trigger: "hover"});
+$('#course').tooltip({title: "Please fill out this field👍", placement:"top",  trigger: "hover"});
+$('#semester').tooltip({title: "Please fill out this field👍", placement:"top",  trigger: "hover"});
+$('#tupcnum').tooltip({title: "Please fill out this field👍", placement:"top",  trigger: "hover"});
+$('#orno').tooltip({title: "Please fill out this field👍", placement:"top",  trigger: "hover"});
+$('#macadd').tooltip({title: "Please fill out this field👍", placement:"top",  trigger: "hover"});
+$('#system').tooltip({title: "Please fill out this field👍", placement:"top",  trigger: "hover"});
+$('#others').tooltip({title: "Please fill out this field👍", placement:"top",  trigger: "hover"});
+$('#email').tooltip({title: "Please fill out this field👍", placement:"top",  trigger: "hover"});
+$('#phone').tooltip({title: "Please fill out this field👍", placement:"top",  trigger: "hover"});
+$('#system').tooltip({title: "Please select item in the list👍", placement:"top",  trigger: "hover"});
+$('#others').tooltip({title: "Please fill out this field👍", placement:"top",  trigger: "hover"});
+$('#uname').tooltip({title: "Please fill out this field👍", placement:"top",  trigger: "hover"});
+$('#pass').tooltip({title: "Please fill out this field👍", placement:"top",  trigger: "hover"});
+$('#resid').tooltip({title: "Please fill out this field👍", placement:"top",  trigger: "hover"});
+$('#upload').tooltip({title: "Submit image file('png','jpg','jpg')👍", placement:"top",  trigger: "hover"});
+
+$("input[type='file']").click(function () {
+    $("input[id='upload']").click();
+});
+ $("input[id='upload']").change(function (e) {
+     var $this = $(this);
+     $this.next().html($this.val().split('\\').pop());
+});

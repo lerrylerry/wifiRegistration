@@ -64,8 +64,8 @@ hr{
 }
 .form-group i{
    position: absolute;
-   top: 48px;
-   right: 16px;
+   top: 44px;
+   right: 10px;
    visibility: hidden;
 }
 .form-group small{
