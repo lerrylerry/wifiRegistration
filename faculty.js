@@ -309,6 +309,8 @@ function checkInputs(){
     //&& mailValue != '' && cellValue != '' && facultyValue != '' && imageValue != '' && timeValue != ''){}
     if (total == 11){
         alert("You Have Successfully Submitted The Form✨🥳🎉");
+        form.reset();
+        window.location.href="success.html";
         total = 0;
     }else{
         alert("Please leave no blank spaces and enter correct details!😭😭😭")

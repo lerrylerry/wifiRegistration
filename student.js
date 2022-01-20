@@ -382,6 +382,8 @@ function checkInputs(){
     // && residenceValue != '' && orValue != '' ){}
     if (total == 14){
         alert("You Have Successfully Submitted The Form✨🥳🎉");
+        form.reset();
+        window.location.href="success.html";
         total = 0;
     }else{
         alert("Please leave no blank spaces and enter correct details!😭😭😭")
