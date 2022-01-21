@@ -28,10 +28,10 @@ hr{
    margin-bottom: 20px;
 }
 .header{
-   background-color: #f7f7f7;
+   background-color: #00ad43;
    border-bottom: 1px solid #f0f0f0;
    padding: 20px 40px;
-   background-image: url(wifi-signal.png);
+   background-image: url(no-wifi.png);
    background-repeat: no-repeat;
    background-size: 10% 80%;
    background-position: 95%;
@@ -181,5 +181,5 @@ p{
 }
 @keyframes example {
    from {left: 0px;}
-   to {left: 500px; background-color: black;}
+   to {left: 500px; background-color: #ed2939;}
  }

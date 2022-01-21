@@ -54,13 +54,11 @@ function a(){
 function b(){
     const corValue = cor.value.trim();
 
-    if (corValue === ''){
+    if (corValue == ''){
+        cor.style.borderColor = '#e74c3c';
         setInvalid(cor, '');
-    }else if(corValue.length < 5){
-        setInvalid(cor, 'Too short!😭');
-    }else if(!corValue.match(patternAlpha)){
-        setInvalid(cor, 'Invalid input!😭');
     }else{
+        cor.style.borderColor = '#2ecc71';
         setValid(cor);
     }
 }
@@ -68,13 +66,11 @@ function b(){
 function c(){
     const semesValue = semes.value.trim();
 
-    if (semesValue === ''){
+    if (semesValue == ''){
+        semes.style.borderColor = '#e74c3c';
         setInvalid(semes, '');
-    }else if(semesValue.length < 5){
-        setInvalid(semes, 'Too short!😭');
-    }else if(!semesValue.match(patternAlpha)){
-        setInvalid(semes, 'Invalid input!😭');
     }else{
+        semes.style.borderColor = '#2ecc71';
         setValid(semes);
     }
 }
@@ -244,26 +240,22 @@ function checkInputs(){
         check();
     }
 
-    if (corValue === ''){
+    if (corValue == ''){
+        cor.style.borderColor = '#e74c3c';
         setInvalid(cor, '');
-    }else if(corValue.length < 5){
-        setInvalid(cor, 'Too short!😭');
-    }else if(!corValue.match(patternAlpha)){
-        setInvalid(cor, 'Invalid input!😭');
     }else{
+        cor.style.borderColor = '#2ecc71';
         setValid(cor);
-        check();
+        check()
     }
 
     if (semesValue === ''){
+        semes.style.borderColor = '#e74c3c';
         setInvalid(semes, '');
-    }else if(semesValue.length < 5){
-        setInvalid(semes, 'Too short!😭');
-    }else if(!semesValue.match(patternAlpha)){
-        setInvalid(semes, 'Invalid input!😭');
     }else{
+        semes.style.borderColor = '#2ecc71';
         setValid(semes);
-        check();
+        check()
     }
 
     if (tupIdValue === ''){
