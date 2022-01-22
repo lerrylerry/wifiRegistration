@@ -1,334 +1,437 @@
-// valid
-function valid(add){
-    document.getElementById(add).style.color = "whitesmoke";
-    document.getElementById(add).style.borderColor = "green";
-    document.getElementById(add).style.backgroundColor = "black";
-    document.getElementById(add).style.fontFamily = "cursive";
-    document.getElementById(add).style.fontWeight = "bold";
-}
+const form = document.getElementById('form');
+const names = document.getElementById('names');
+const cor = document.getElementById('course');
+const semes = document.getElementById('semester');
+const tupId = document.getElementById('tupcnum');
+const or = document.getElementById('orno');
+const cell = document.getElementById('phone');
+const select = document.getElementById('system');
+const specify = document.getElementById('others');
+const macadd = document.getElementById('macadd');
+const mail = document.getElementById('email');
+const residence = document.getElementById('resid');
+const agreed = document.getElementById('agree');
+const image = document.getElementById('upload');
+const username = document.getElementById('uname');
+const password = document.getElementById('pass');
 
-// invalid
-function invalid(add){
-    document.getElementById(add).style.borderColor = "red";
-    document.getElementById(add).style.backgroundColor = "black";
-}
+const patternTupId = /[T][U][P][C]-[0-9]{2}-[0-9]{4}/;
+const patternAlpha = /^[a-zA-Z ]*$/g;
+const patternMac = /^([0-9a-f]{2}([:-]|$)){6}$|([0-9a-f]{4}([.]|$)){3}$/gi;
+const patternEmail = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/;
+const allowedExtensions = /(\.jpg|\.jpeg|\.png)$/i;
+//const regex = /[0][9][0-9]{9}/g;
+var total = 0;
 
-// empty field
-function empty(add){
-    var check = document.getElementById(add).value;
+let currentDate = new Date();
+let cDay = currentDate.getDate();
+let cMonth = currentDate.getMonth() + 1;
+let cYear = currentDate.getFullYear();
+const tdate = cYear + "-" + "0" + cMonth + "-" + cDay;
 
-    if (check.length == 0 || check.length < 3 || check == ""){
-        document.getElementById(add).addEventListener(invalid(add));
-        
+const tip = document.getElementById('display');
+
+form.addEventListener('submit', (e) => {
+    e.preventDefault();
+
+    checkInputs();
+});
+
+function a(){
+    const nameValue = names.value.trim();
+
+    if (nameValue === ''){
+        setInvalid(names, '');
+    }else if(nameValue.length < 9){
+        setInvalid(names, 'Too short!😭');
+    }else if(!nameValue.match(patternAlpha)){
+        setInvalid(names, 'Invalid input!😭');   
     }else{
-        document.getElementById(add).addEventListener(valid(add));
+        setValid(names);
     }
-        
 }
 
-// First Name
-function nameLength(){
-    var fname = document.getElementById("first").value;
-    var regex = /^[a-z][a-z\s]*$/;
+function b(){
+    const corValue = cor.value.trim();
 
-    if(!fname.match(regex) || fname.length < 3){
-        document.getElementById("first").addEventListener(invalid("first"));
-        return false;
-
+    if (corValue == ''){
+        cor.style.borderColor = '#e74c3c';
+        setInvalid(cor, '');
     }else{
-        document.getElementById("first").addEventListener(valid("first"));
-        return true;
+        cor.style.borderColor = '#2ecc71';
+        setValid(cor);
     }
-    
 }
 
-// Middle Name
-function nameLength2(){
-    var mname = document.getElementById("second").value;
-    var regex = /^[a-z][a-z\s]*$/;
+function c(){
+    const semesValue = semes.value.trim();
 
-    if(!mname.match(regex) || mname.length < 3){
-        document.getElementById("second").addEventListener(invalid("second"));
-        return false;
-
+    if (semesValue == ''){
+        semes.style.borderColor = '#e74c3c';
+        setInvalid(semes, '');
     }else{
-        document.getElementById("second").addEventListener(valid("second"));
-        return true;
+        semes.style.borderColor = '#2ecc71';
+        setValid(semes);
     }
-    
 }
 
-// Last Name
-function nameLength3(){
-    var lname = document.getElementById("third").value;
-    var regex = /^[a-z][a-z\s]*$/;
+function d(){
+    const tupIdValue = tupId.value.trim();
 
-    if(!lname.match(regex) || lname.length < 3){
-        document.getElementById("third").addEventListener(invalid("third"));
-        return false;
-
+    if (tupIdValue === ''){
+        setInvalid(tupId, '');
+    }else if(!tupIdValue.match(patternTupId)){
+        setInvalid(tupId, 'Invalid format!😭');
     }else{
-        document.getElementById("third").addEventListener(valid("third"));
-        return true;
+        setValid(tupId);
     }
-    
 }
 
-// Semester
-function sem(){
-    var x = document.getElementById("semester").value;
-    var regex = /^[a-z][a-z\s]*$/;
+function e(){
+    const orValue = or.value.trim();
 
-    if(!x.match(regex) || x.length < 3){
-        document.getElementById("semester").addEventListener(invalid("semester"));
-        return false;
-
+    if (orValue === ''){
+        setInvalid(or, '');
+    }else if(orValue.length < 6){
+        setInvalid(or, 'Too short!😭');
     }else{
-        document.getElementById("semester").addEventListener(valid("semester"));
-        return true;
+        setValid(or);
     }
-    
 }
 
-// course
-function course(){
-    var x = document.getElementById("course").value;
-    var regex = /^[a-z][a-z\s]*$/;
+function f(){
+    const cellValue = cell.value.trim();
 
-    if(!x.match(regex)){
-        document.getElementById("course").addEventListener(invalid("course"));
-        return false;
-
+    if (cellValue === ''){
+        setInvalid(cell, '');
+    }else if(cellValue.length < 11){
+        setInvalid(cell, 'Wrong format!😭');
     }else{
-        document.getElementById("course").addEventListener(valid("course"));
-        return true;
+        setValid(cell);
     }
-    
 }
 
-// mac address
-function mac(){
-    var x = document.getElementById("macaddress").value;
-	var pattern = /^([0-9a-f]{2}([:-]|$)){6}$|([0-9a-f]{4}([.]|$)){3}$/i;
-	
-	if (pattern.test(x)){
-        document.getElementById("macaddress").addEventListener(valid("macaddress"));
-        return true;
-	}
-	else{
-		document.getElementById("macaddress").addEventListener(invalid("macaddress"));
-        return false;
-	}
-}
+function g(){
+    const selectValue = select.value.trim();
 
-// tupc-id
-function tupcnum(){
-    var x = document.getElementById("studentno").value;
-    var regex = /[T][U][P][C]-[0-9]{2}-[0-9]{4}/;
-
-    if(x.match(regex)){
-        document.getElementById("studentno").addEventListener(valid("studentno"));
-        return true;
-
-    }
-        document.getElementById("studentno").addEventListener(invalid("studentno"));
-        return false;
-}
-
-// unfinished
-function autoTextgmail(){
-    var x = document.getElementById("emailadd").value;
-    var search = /\b@gsfe.tupcavite.edu.ph\b/g;
-    var y = x.match(search);
-
-    alert(x);
-    alert("Found Text/s: " + y);
-
-    if (y.length != 0 || y.length <= 22){
-
-        alert("too short gmail");
-        return false;
-    }
-        alert("Correct");
-        return true;
-    
-}
-
-// Specify, Others
-function Specify(){
-    var x = document.getElementById("others").value;
-    let pattern = /[a-zA-z]/g; 
-    let result = x.match(pattern);
-
-    if (result.length < 3)
-    {
-        document.getElementById("others").addEventListener(invalid("others"))
-        return false;        
-
-    }
-        document.getElementById("others").addEventListener(valid("others"))
-        return true;
-    
-}
-
-// email address
-function ValidateEmail(){
-    var mail = document.getElementById("emailadd").value;
-    var regex = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/;
-    
-    if (mail.match(regex)){
-        document.getElementById("emailadd").addEventListener(valid("emailadd"));
-        return true;
-    }
-        document.getElementById("emailadd").addEventListener(invalid("emailadd"));
-        return false;
-}
-
-// cellphone number
-function cellNo(){
-    var x = document.getElementById("phoneno").value;
-    var regex = /[0][9][0-9]{9}/g;
-
-    if (x.match(regex)){
-        document.getElementById("phoneno").addEventListener(valid("phoneno"));
-        return true;
-
-    }
-        document.getElementById("phoneno").addEventListener(invalid("phoneno"));
-        return false;
-}
-
-// Faculty Name
-function facname(){
-    var fname = document.getElementById("faculty").value;
-    var regex = /^[a-z][a-z\s]*$/;
-
-    if(!fname.match(regex)){
-        document.getElementById("faculty").addEventListener(invalid("faculty"));
-        return false;
-
+    if (selectValue == ''){
+        sysNotSelected();
+    }else if(selectValue == 'Others'){
+        sysSelected();
+        specify.disabled = '';
     }else{
-        document.getElementById("faculty").addEventListener(empty("faculty"));
-        return true;
+        setValid(select);
+        specify.value = '';
+        sysSelected();
+    }
+}
+
+function h(){
+    const specifyValue = specify.value.trim();
+
+    if (specifyValue === ''){
+        setInvalid(specify, '');
+    }else if(specifyValue.length < 3){
+        setInvalid(specify, 'Too short!😭');
+    }else{
+        setValid(specify);
+    }
+}
+
+function i(){
+    const macValue = macadd.value.trim();
+
+    if (macValue === ''){
+        setInvalid(macadd, '');
+    }else if(!macValue.match(patternMac)){
+        setInvalid(macadd, 'Invalid input!😭');
+    }else{
+        setValid(macadd);
+    }
+}
+
+function j(){
+    const mailValue = mail.value.trim();
+
+    if (mailValue === ''){
+        setInvalid(mail, '');
+    }else if(!mailValue.match(patternEmail)){
+        setInvalid(mail, 'Wrong format!😭');
+    }else{
+        setValid(mail);
+    }
+}
+
+function k(){
+    const residenceValue = residence.value.trim();
+
+    if (residenceValue === ''){
+        setInvalid(residence, '')
+    }else if (residenceValue.length < 20){
+        setInvalid(residence, 'Too short!😭')
+    }else{
+        setValid(residence);
+    }
+}
+
+function l(){
+    const imageValue = image.value.trim();
+
+    if (!allowedExtensions.exec(imageValue)) {
+        image.value = '';
+        image.classList.add('is-invalid');
+    }else{
+        image.classList.replace('is-invalid' , 'is-valid');
+    }
+}
+
+function m(){
+    const usernameValue = username.value.trim();
+
+    if (usernameValue === ''){
+        setInvalid(username, '');
+    }else if(usernameValue.length < 8){
+        setInvalid(username, 'Too short!😭');
+    }else if(!usernameValue.match(patternAlpha)){
+        setInvalid(username, 'Invalid input!😭');   
+    }else{
+        setValid(username);
+    }
+}
+
+function n(){
+    const passwordValue = password.value.trim();
+
+    if (passwordValue === ''){
+        setInvalid(password, '');
+    }else if(passwordValue.length < 8){
+        setInvalid(password, 'Too short!😭');
+    }else if(!passwordValue.match(patternAlpha)){
+        setInvalid(password, 'Invalid input!😭');   
+    }else{
+        setValid(password);
+    }
+}
+
+function checkInputs(){
+    const nameValue = names.value.trim();
+    const corValue = cor.value.trim();
+    const semesValue = semes.value.trim();
+    const tupIdValue = tupId.value.trim();
+    const orValue = or.value.trim();
+    const cellValue = cell.value.trim();
+    const selectValue = select.value.trim();
+    const specifyValue = specify.value.trim();
+    const macValue = macadd.value.trim();
+    const mailValue = mail.value.trim();
+    const residenceValue = residence.value.trim();
+    const imageValue = image.value.trim();
+    const usernameValue = username.value.trim();
+    const passwordValue = password.value.trim();
+    
+    if (nameValue === ''){
+        setInvalid(names, '');
+    }else if(nameValue.length < 9){
+        setInvalid(names, 'Too short!😭');
+    }else if(!nameValue.match(patternAlpha)){
+        setInvalid(names, 'Invalid input!😭');   
+    }else{
+        setValid(names);
+        check();
+    }
+
+    if (corValue == ''){
+        cor.style.borderColor = '#e74c3c';
+        setInvalid(cor, '');
+    }else{
+        cor.style.borderColor = '#2ecc71';
+        setValid(cor);
+        check()
+    }
+
+    if (semesValue === ''){
+        semes.style.borderColor = '#e74c3c';
+        setInvalid(semes, '');
+    }else{
+        semes.style.borderColor = '#2ecc71';
+        setValid(semes);
+        check()
+    }
+
+    if (tupIdValue === ''){
+        setInvalid(tupId, '');
+    }else if(!tupIdValue.match(patternTupId)){
+        setInvalid(tupId, 'Invalid format!😭');
+    }else{
+        setValid(tupId);
+        check();
+    }
+
+    if (orValue === ''){
+        setInvalid(or, '');
+    }else if(orValue.length < 6){
+        setInvalid(or, 'Too short!😭');
+    }else{
+        setValid(or);
+        check();
+    }
+
+    if (cellValue === ''){
+        setInvalid(cell, '');
+    }else if(cellValue.length < 11){
+        setInvalid(cell, 'Wrong format!😭');
+    }else{
+        setValid(cell);
+        check();
+    }
+
+    if (selectValue == ''){
+        sysNotSelected();
+    }else if(selectValue == 'Others'){
+        sysSelected();
+        specify.disabled = '';
+    }else{
+        setValid(select);
+        specify.value = '';
+        sysSelected();
+        check();
+    }
+
+    if (specifyValue === ''){
+        setInvalid(specify, '');
+    }else if(specifyValue.length < 3){
+        setInvalid(specify, 'Too short!😭');
+    }else{
+        setValid(specify);
+        check();
+    }
+
+    if (macValue === ''){
+        setInvalid(macadd, '');
+    }else if(!macValue.match(patternMac)){
+        setInvalid(macadd, 'Invalid input!😭');
+    }else{
+        setValid(macadd);
+        check();
+    }
+    
+    if (mailValue === ''){
+        setInvalid(mail, '');
+    }else if(!mailValue.match(patternEmail)){
+        setInvalid(mail, 'Wrong format!😭');
+    }else{
+        setValid(mail);
+        check();
+    }
+
+    if (residenceValue === ''){
+        setInvalid(residence, '')
+    }else if (residenceValue.length < 20){
+        setInvalid(residence, 'Too short!😭')
+    }else{
+        setValid(residence);
+        check();
+    }
+
+    if (agreed.checked){
+        check();
+    }else{
+        agreed.focus();
+    }
+
+    if (!allowedExtensions.exec(imageValue)) {
+        image.value = '';
+        image.classList.add('is-invalid');
+    }else{
+        image.classList.replace('is-invalid' , 'is-valid');
+        check();
+    }
+
+    if (usernameValue === ''){
+        setInvalid(username, '');
+    }else if(usernameValue.length < 8){
+        setInvalid(username, 'Too short!😭');
+    }else if(!usernameValue.match(patternAlpha)){
+        setInvalid(username, 'Invalid input!😭');   
+    }else{
+        setValid(username);
+        check();
+    }
+
+    if (passwordValue === ''){
+        setInvalid(password, '');
+    }else if(passwordValue.length < 8){
+        setInvalid(password, 'Too short!😭');
+    }else if(!passwordValue.match(patternAlpha)){
+        setInvalid(password, 'Invalid input!😭');   
+    }else{
+        setValid(password);
+        check();
+    }
+  
+    //if (nameValue != '' && departValue != '' && designValue != '' && macValue != '' && selectValue != '' || specifyValue != ''
+    // && mailValue != '' && cellValue != '' && passwordValue != '' && imageValue != '' && usernameValue != '' && passwordValue != ''
+    // && residenceValue != '' && orValue != '' ){}
+    if (total == 14){
+        form.reset();//reset the form upon submission
+        window.location.href="success.html";//show success page
+        window.location.replace("success.html")//once submitted no return
+    }else{
+        alert("Please leave no blank spaces and enter correct details!😭😭😭")
+        total = 0;
     }
     
 }
+    
+function setInvalid(input,message){
+    const formGroup = input.parentElement;
+    const small = formGroup.querySelector('small');
 
-// Only letters
-function restrictAlphabets(e){
-    var x = e.which || e.keycode;
-    if((x>=48 && x<=57))
-        return true;
-    else
-        return false;
+    small.innerText = message;
+
+    formGroup.className = 'form-group error';
 }
 
-// only alphabets
-function onlyAlphabets(e){
-    var x = e.which || e.keycode;
-    if((x>=65 && x<=90)||(x>=97 && x<=122))
-        return true;
-    else
-        return false;
+function setValid(input){
+    const formGroup = input.parentElement;
+    formGroup.className = 'form-group success';
 }
 
-// system/device
-function device(){
-    var x = document.getElementById("system").value;
-    var g = document.getElementById("others");
-
-    if (x == "Smartphone" || x == "Laptop" || x == "Tablet" || x == "PC" || x == "Desktop"){
-        g.value = "";
-        document.getElementById("others").style.borderStyle = "solid";
-        document.getElementById("others").style.borderWidth = "3px";
-        document.getElementById("others").style.borderColor = "blue";
-        document.getElementById("others").style.padding = "5px";
-        document.getElementById("others").style.backgroundColor = "whitesmoke";
-        document.getElementById("others").disabled = "true";
-        document.getElementById("system").addEventListener(valid("system"));
-        
-
-    }if (x == "Others"){
-        document.getElementById("others").disabled = "";
-        document.getElementById("system").addEventListener(valid("system"));
-        
-    }if (x == ""){
-        g.value = "";
-        document.getElementById("others").disabled = "true";   
-    }
-
+function check(){
+    total = total + 1;
 }
 
-// checkbox
-function agreed(){
-    if(document.getElementById("agree").checked == true){
-        return true;
-    }
-        return false;   
+function sysSelected(){
+    select.style.borderColor = '#2ecc71';
+    specify.disabled = 'true';
 }
 
-// file upload validation
-function validateFileupload(){
-    var fileInput = document.getElementById("Agreement");
-              
-    var filePath = fileInput.value;
-          
-    var allowedExtensions = /(\.jpg|\.jpeg|\.png)$/i;
-              
-    if (!allowedExtensions.exec(filePath)) {
-        alert('Invalid file type');
-        fileInput.value = '';
-        return false;
-    }
-        return true;
+function sysNotSelected(){
+    select.style.borderColor = '#e74c3c';
+    setInvalid(select, '');
 }
 
-// home address
-function home(){
-    var x = document.getElementById("residenceAdd").value;
+$('#names').tooltip({title: "Please fill out this field👍", placement:"top",  trigger: "hover"});
+$('#course').tooltip({title: "Please fill out this field👍", placement:"top",  trigger: "hover"});
+$('#semester').tooltip({title: "Please fill out this field👍", placement:"top",  trigger: "hover"});
+$('#tupcnum').tooltip({title: "Please fill out this field👍", placement:"top",  trigger: "hover"});
+$('#orno').tooltip({title: "Please fill out this field👍", placement:"top",  trigger: "hover"});
+$('#macadd').tooltip({title: "Please fill out this field👍", placement:"top",  trigger: "hover"});
+$('#system').tooltip({title: "Please fill out this field👍", placement:"top",  trigger: "hover"});
+$('#others').tooltip({title: "Please fill out this field👍", placement:"top",  trigger: "hover"});
+$('#email').tooltip({title: "Please fill out this field👍", placement:"top",  trigger: "hover"});
+$('#phone').tooltip({title: "Please fill out this field👍", placement:"top",  trigger: "hover"});
+$('#system').tooltip({title: "Please select item in the list👍", placement:"top",  trigger: "hover"});
+$('#others').tooltip({title: "Please fill out this field👍", placement:"top",  trigger: "hover"});
+$('#uname').tooltip({title: "Please fill out this field👍", placement:"top",  trigger: "hover"});
+$('#pass').tooltip({title: "Please fill out this field👍", placement:"top",  trigger: "hover"});
+$('#resid').tooltip({title: "Please fill out this field👍", placement:"top",  trigger: "hover"});
+$('#upload').tooltip({title: "Submit image file('png','jpg','jpg')👍", placement:"top",  trigger: "hover"});
 
-    if (x.length == 0 || x.length < 20 || x.length == ""){
-        document.getElementById("residenceAdd").addEventListener(invalid("residenceAdd"));
-        return false;
-    }
-        document.getElementById("residenceAdd").addEventListener(valid("residenceAdd"));
-        return true;
-}
-
-// OR
-function OR(){
-    var x = document.getElementById("orno").value;
-
-    if (x.length < 6){
-        document.getElementById("orno").addEventListener(invalid("orno"));
-        return false;
-    }
-        document.getElementById("orno").addEventListener(valid("orno"));
-        return true;
-}
-
-// uname
-function uname(){
-    var x = document.getElementById("name").value;
-
-    if (x.length < 6){
-        document.getElementById("name").addEventListener(invalid("name"));
-        return false;
-    }
-        document.getElementById("name").addEventListener(valid("name"));
-        return true;
-}
-
-// upass
-function upass(){
-    var x = document.getElementById("password").value;
-
-    if (x.length < 6){
-        document.getElementById("password").addEventListener(invalid("password"));
-        return false;
-    }
-        document.getElementById("password").addEventListener(valid("password"));
-        return true;
-}
-
-// Confirm Form Submission
+$("input[type='file']").click(function () {
+    $("input[id='upload']").click();
+});
+ $("input[id='upload']").change(function (e) {
+     var $this = $(this);
+     $this.next().html($this.val().split('\\').pop());
+});

@@ -1,421 +1,189 @@
- body{
-    font-family: Arial, Helvetica, sans-serif;
-    font-weight: bolder;
-    background-image: url(binary.jpg);
-    background-attachment: fixed;
-    background-size: cover;
-    background-repeat: no-repeat;
-    position: relative;
- }
-.container{
-   margin-top: 10px;
-   margin-bottom: 10px;
-   position: relative;
-   max-width: 1000px;
+@import url('https://fonts.googleapis.com/css2?family=Roboto+Slab:wght@400;700&family=Ubuntu&display=swap');
 
+body{
+   background-color: #6667AB;
+   display: flex;
+   margin: 0;
+   background-image: url(wifi-signal.png);
+   background-size: 4in 4in;
+   background-repeat: no-repeat;
+   animation: side 10s ease-in-out 2s infinite alternate;
+   background-position: center;
 }
-.card-img-top{
-   padding-top: 250px;
-   padding-right: 60px;
-   height: 1000px;
-   opacity: 0.1;
-   position: absolute;
+@keyframes side {
+   from {background-position: right;}
+   to {background-position: left; background-color: black;}
 }
-.card-title{
-   text-align: center;
-   font-size: 40px;
-}
-.sub{
-   text-align: center;
-}
-hr {
+hr{
    height: 4px;
-   background-color: cornsilk;
+   background-color: #6667AB;
    border: none;
 }
-.btn{
-   padding: 10px;
+.container {
+   margin-top: 20px;
+   background-color: #fff;
+   border-radius: 5px;
+   overflow: hidden;
+   box-shadow: 0 2px 5px rgba(0, 0, 0, 0);
+   margin-bottom: 20px;
 }
-.card-body{
-   background-color: #16110d;
-   border-style: solid;
-   border-color: black;
-   border-width: 10px;
+.header{
+   background-color: #f7f7f7;
+   border-bottom: 1px solid #f0f0f0;
+   padding: 20px 40px;
+   background-image: url(no-wifi.png);
+   background-repeat: no-repeat;
+   background-size: 10% 80%;
+   background-position: 95%;
+   animation: example 10s linear infinite alternate-reverse;
+   animation-fill-mode: forwards;
+}
+.header h2{
+   font-family: 'Roboto Slab', serif;
+   font-weight: 700;
+   margin: 0;
+}
+.header h4{
+   font-family: 'Roboto Slab', serif;
+   font-weight: 500;
+   margin: 0;
+}
+.form{
+   padding: 30px 40px;
+}
+.form-group{
+   margin-bottom: 10px;
+   padding-bottom: 20px;
+   position: relative;
+}
+.form-control{
+   border-top: hidden;
+   border-right: hidden;
+   border-left: hidden;
 }
 .custom-select{
-   border-style: solid;
-   border-width: 3px;
-   padding: 5px;
-   font-style: oblique;
-}
-.tooltip.bs-tooltip-bottom .tooltip-inner {
-   background:#ec3a3d !important;
-}
-
-.tooltip .arrow:before {
-border-bottom-color:#ec3a3d !important;
-border-top-color:#ec3a3d !important;
-}
-#course{
-   border-style: solid;
-   border-width: 3px;
-   border-color: blue;
-   padding: 5px;
-   text-transform: capitalize;
-}
-#course:hover{
-   border-color: whitesmoke;
-}
-#course:focus:required:invalid{
-   border-color: red;
-   background-color: black;
-}
-#course:required:valid{
-   color: whitesmoke;
-   border-color: green;
-   background-color: black;
-   font-family: cursive;
-   border-radius: 25px;
-   font-weight: bold;
-}
-#semester{
-   border-style: solid;
-   border-width: 3px;
-   border-color: blue;
-   padding: 5px;
-   text-transform: capitalize;
-}
-#semester:hover{
-   border-color: whitesmoke;
-}
-#semester:focus:required:invalid{
-   border-color: red;
-   background-color: black;
-}
-#semester:required:valid{
-   color: whitesmoke;
-   border-color: green;
-   background-color: black;
-   font-family: cursive;
-   border-radius: 25px;
-   font-weight: bold;
-}
-#studentno{
-   border-style: solid;
-   border-width: 3px;
-   border-color: blue;
-   padding: 5px;
-}
-#studentno:hover{
-   border-color: whitesmoke;
-}
-#studentno:focus:required:invalid{
-   border-color: red;
-   background-color: black;
-}
-#studentno:required:valid{
-   color: whitesmoke;
-   border-color: green;
-   background-color: black;
-   font-family: cursive;
-   border-radius: 25px;
-   font-weight: bold;
-}
-#orno{
-   border-style: solid;
-   border-width: 3px;
-   border-color: blue;
-   padding: 5px;
-}
-#orno:hover{
-   border-color: whitesmoke;
-}
-#orno:focus:required:invalid{
-   border-color: red;
-   background-color: black;
-}
-#orno:required:valid{
-   color: whitesmoke;
-   border-color: green;
-   background-color: black;
-   font-family: cursive;
-   border-radius: 25px;
-   font-weight: bold;
-}
-#macaddress{
-   border-style: solid;
-   border-width: 3px;
-   border-color: blue;
-   padding: 5px;
-}
-#macaddress:hover{
-   border-color: whitesmoke;
-}
-#macaddress:focus:required:invalid{
-   border-color: red;
-   background-color: black;
-}
-#macaddress:required:valid{
-   color: whitesmoke;
-   border-color: green;
-   background-color: black;
-   font-family: cursive;
-   border-radius: 25px;
-   font-weight: bold;
-}
-#others{
-   border-style: solid;
-   border-width: 3px;
-   border-color: blue;
-   padding: 5px;
-   text-transform: capitalize;
-}
-#others:hover{
-   border-color: whitesmoke;
-}
-#others:focus:required:invalid{
-   border-color: red;
-   background-color: black;
-}
-#others:required:valid{
-   color: whitesmoke;
-   border-color: green;
-   background-color: black;
-   font-family: cursive;
-   border-radius: 25px;
-   font-weight: bold;
-}
-#emailadd{
-   border-style: solid;
-   border-width: 3px;
-   border-color: blue;
-   padding: 5px;
-}
-#emailadd:hover{
-   border-color: whitesmoke;
-}
-#emailadd:focus:required:invalid{
-   border-color: red;
-   background-color: black;
-}
-#emailadd:required:valid{
-   color: whitesmoke;
-   border-color: green;
-   background-color: black;
-   font-family: cursive;
-   border-radius: 25px;
-   font-weight: bold;
-}
-#phoneno{
-   border-style: solid;
-   border-width: 3px;
-   border-color: blue;
-   padding: 5px;
-}
-#phoneno:hover{
-   border-color: whitesmoke;
-}
-#phoneno:focus:required:invalid{
-   border-color: red;
-   background-color: black;
-}
-#phoneno:required:valid{
-   color: whitesmoke;
-   border-color: green;
-   background-color: black;
-   font-family: cursive;
-   border-radius: 25px;
-   font-weight: bold;
-}
-#residenceAdd{
-   border-style: solid;
-   border-width: 3px;
-   border-color: blue;
-   padding: 5px;
-}
-#residenceAdd:hover{
-   border-color: whitesmoke;
-}
-#residenceAdd:focus:required:invalid{
-   border-color: red;
-   background-color: black;
-}
-#residenceAdd:required:valid{
-   color: whitesmoke;
-   border-color: green;
-   background-color: black;
-   font-family: cursive;
-   border-radius: 25px;
-   font-weight: bold;
-}
-#date{
-   border-style: solid;
-   border-width: 3px;
-   border-color: blue;
-   padding: 5px;
-}
-#date:hover{
-   border-color: whitesmoke;
-}
-#date:focus:required:invalid{
-   border-color: red;
-   background-color: black;
-}
-#date:required:valid{
-   color: whitesmoke;
-   border-color: green;
-   background-color: black;
-   font-family: cursive;
-   border-radius: 25px;
-   font-weight: bold;
-}
-#name{
-   border-style: solid;
-   border-width: 3px;
-   border-color: blue;
-   padding: 5px;
-}
-#name:hover{
-   border-color: whitesmoke;
-}
-#name:focus:required:invalid{
-   border-color: red;
-   background-color: black;
-}
-#name:required:valid{
-   color: whitesmoke;
-   border-color: green;
-   background-color: black;
-   font-family: cursive;
-   border-radius: 25px;
-   font-weight: bold;
-}
-#password{
-   border-style: solid;
-   border-width: 3px;
-   border-color: blue;
-   padding: 5px;
-}
-#password:hover{
-   border-color: whitesmoke;
-}
-#password:focus:required:invalid{
-   border-color: red;
-   background-color: black;
-}
-#password:required:valid{
-   color: whitesmoke;
-   border-color: green;
-   background-color: black;
-   font-family: cursive;
-   border-radius: 25px;
-   font-weight: bold;
-}
-.customJumboBg{
-   background-image: url(background.jpg);
-   background-size: 100% 100%;
-   background-repeat: repeat;
-}
-.name-group{
-   border-style: solid;
-   border-width: 3px;
-   border-radius: 25px;
-   padding: 5px;
-}
-#first{
-   border-style: solid;
-   border-width: 3px;
-   border-color: blue;
-   border-right-style: hidden;
-   padding: 5px;
-   text-transform: capitalize;
-}
-#first:hover{
-   border-color: whitesmoke;
-}
-#first:focus:required:invalid{
-   border-color: red;
-   background-color: black;
-}
-#first:required:valid{
-   color: whitesmoke;
-   border-color: green;
-   background-color: black;
-   font-family: cursive;
-   border-top-left-radius: 25px;
-   border-bottom-left-radius: 25px;
-   font-weight: bold;
-}
-#second{
-   border-style: solid;
-   border-width: 3px;
-   border-color: blue;
-   padding: 5px;
-   text-transform: capitalize;
-}
-#second:hover{
-   border-color: whitesmoke;
-}
-#second:focus:required:invalid{
-   border-color: red;
-   background-color: black;
-}
-#second:required:valid{
-   color: whitesmoke;
-   border-color: green;
-   background-color: black;
-   font-family: cursive;
-   font-weight: bold;
-}
-#third{
-   border-style: solid;
-   border-width: 3px;
-   border-color: blue;
-   border-left-style: hidden;
-   padding: 5px;
-   text-transform: capitalize;
-}
-#third:hover{
-   border-color: whitesmoke;
-}
-#third:focus:required:invalid{
-   border-color: red;
-   background-color: black;
-}
-#third:required:valid{
-   color: whitesmoke;
-   border-color: green;
-   background-color: black;
-   font-family: cursive;
-   border-top-right-radius: 25px;
-   border-bottom-right-radius: 25px;
-   font-weight: bold;
-}
-#system{
-   border-style: solid;
-   border-width: 3px;
-   border-color: blue;
-   padding: 5px;
-}
-#system:hover{
-   border-color: whitesmoke;
-}
-#system:focus:required:invalid{
-   color: whitesmoke;
-   border-color: red;
-   background-color: black;
-}
-#system:required:valid{
-   color: whitesmoke;
-   border-color: green;
-   background-color: black;
-   font-family: cursive;
-   border-radius: 25px;
-   font-weight: bold;
-}
-.custom-file-label{
-   background-color: lightgrey;
+   border-top: hidden;
+   border-right: hidden;
+   border-left: hidden;
+}
+.form-group label{
+   font-family: 'Ubuntu', sans-serif;
+   font-weight: 500;
+   display: inline-block;
+}
+.form-group i{
+   position: absolute;
+   top: 44px;
+   right: 10px;
+   visibility: hidden;
+}
+.form-group small{
+   visibility: hidden;
+   position: absolute;
+}
+.form button{
+   background-color: #6667AB;
+   border: 2px solid #6667AB;
+   border-radius: 4px;
+   color: #fff;
+   display: block;
+   font-family: inherit;
+   font-size: 16px;
+   padding: 10px;
+   width: 100%;
+}
+.form-group.success input{
+   border-color: #2ecc71;
+}
+.form-group.error input{
+   border-color: #e74c3c;
+}
+.form-group.success i.fa-check-circle{
+   color: #2ecc71;
+   visibility: visible;
+}
+.form-group.error i.fa-exclamation-circle{
+   color: #e74c3c;
+   visibility: visible;
+}
+.form-group.error small{
+   color: #e74c3c;
+   visibility: visible;
+}
+#confirm{
+   padding: 10px;
 }
 #red{
-   color: red;
+   color: #e74c3c;
 }
+.design
+{
+   text-transform: uppercase;
+  background-image: linear-gradient(
+    -225deg,
+    #231557 0%,
+    #44107a 29%,
+    #ff1361 67%,
+    #fff800 100%
+  );
+  background-size: auto auto;
+  background-clip: border-box;
+  background-size: 200% auto;
+  color: #fff;
+  background-clip: text;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  animation: textclip 5s linear infinite;
+  display: inline-block;
+}
+
+@keyframes textclip {
+  to {
+    background-position: 200% center;
+  }
+}
+
+.design2{
+   background-image: linear-gradient(
+    -225deg,
+    #231557 0%,
+    #44107a 29%,
+    #ff1361 67%,
+    #fff800 100%
+  );
+  background-size: auto auto;
+  background-clip: border-box;
+  background-size: 200% auto;
+  color: #fff;
+  background-clip: text;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  animation: textclip 5s linear reverse infinite;
+}
+
+@keyframes textclip {
+  to {
+    background-position: 200% center;
+  }
+}
+.custom-file-label{
+   border-top: hidden;
+   border-left: hidden;
+   border-right: hidden;
+}
+label{
+   color: #44107a;
+   font-size: 16px;
+   border-color: black;
+}
+p{
+   color: gray;
+}
+@keyframes example {
+   from {left: 0px;}
+   to {left: 500px; background-color: black;}
+ }
+ h5{
+    font-size: 16px;
+    color: #44107a;
+ }
