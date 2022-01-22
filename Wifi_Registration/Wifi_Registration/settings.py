@@ -57,7 +57,7 @@ ROOT_URLCONF = 'Wifi_Registration.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [],
+        'DIRS': [os.path.join(BASE_DIR, 'templates/Wifi_App')],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
