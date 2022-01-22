@@ -346,6 +346,25 @@ function sysNotSelected(){
     setInvalid(select, '');
 }
 
+// file upload validation
+function validateFileupload(){
+    var fileInput = document.getElementById("Agreement");
+              
+    var filePath = fileInput.value;
+          
+    var allowedExtensions = /(\.jpg|\.jpeg|\.png)$/i;
+              
+    if (!allowedExtensions.exec(filePath)) {
+        alert('Invalid file type');
+        fileInput.value = '';
+        return false;
+    }
+        return true;
+}
+
+// Confirm Form Submission
+
+
 $('#names').tooltip({title: "Please fill out this field👍", placement:"top",  trigger: "hover"});
 $('#department').tooltip({title: "Please fill out this field👍", placement:"top",  trigger: "hover"});
 $('#designation').tooltip({title: "Please fill out this field👍", placement:"top",  trigger: "hover"});
