@@ -74,6 +74,10 @@ def studentDB(Model):
     mac = models.CharField(max_length=14)
     email = models.EmailField(max_length=50, unique=True)
     residAdd = models.CharField(max_length=200)
+    check = models.BooleanField()
+    uname = models.CharField(max_length=10)
+    upass = models.CharField(max_length=10)
+
 
     def login(Model):
         pass
