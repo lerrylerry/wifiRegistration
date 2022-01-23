@@ -2,7 +2,7 @@ from django.shortcuts import render
 from django.http import HttpResponse
 
 def index(request):
-    return render(request, 'Wifi_App.HOMEPAGE.html')
+    return render(request, 'Wifi_App/HOMEPAGE.html')
 
 def faculty(request):
     return render(request, 'Wifi_App/FACULTY.html')
@@ -18,6 +18,9 @@ def dataReq(request):
 
 def dataFac(request):
     return render(request, 'Wifi_App/DATAFACULTY.html')
+
+def dataHis(request):
+    return render(request, 'Wifi_App/DATAHISTORY.html')
 
 def success(request):
     return render(request, 'Wifi_App/success.html')
