@@ -2,7 +2,7 @@ from django.shortcuts import render
 from django.http import HttpResponse
 
 def index(request):
-    return render(request, 'Wifi_App/BaseTemplate.html')
+    return render(request, 'Wifi_App/FACULTY.html')
 
 def faculty(request):
     return render(request, 'Wifi_App/index.html')

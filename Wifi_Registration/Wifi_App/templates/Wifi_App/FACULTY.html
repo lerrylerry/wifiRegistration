@@ -15,11 +15,10 @@
 
     <body>
         <div class="container">
-            {% block content %}<!-- nasa BaseTemplate.html -->
-            {% endblock %}
+            {% include 'Wifi_App/temp.html' %}
             <form class="form" id="form" action="" method="post">
                 <div class="row">
-                <!-- left-side -->
+                <!-- left-side -->          
                     <div class="col-sm-6">
                         <div class="form-group">
                             <label><strong>Name:</strong></label><label id="red">*</label>
