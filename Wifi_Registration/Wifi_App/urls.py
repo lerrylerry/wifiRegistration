@@ -10,6 +10,6 @@ urlpatterns = [
     path('dr/', views.dataReq, name='datarequest'),
     path('df/', views.dataFac, name='datafaculty'),
     path('dh/', views.dataHis, name='datahistory'),
-    path('success/', views.success, name='success'),
-    
+    path('faculty/success.html', views.success, name='success'),
+    path('student/success.html', views.success, name='success'),
 ]

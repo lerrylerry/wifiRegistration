@@ -374,8 +374,8 @@ function checkInputs(){
     // && residenceValue != '' && orValue != '' ){}
     if (total == 14){
         form.reset();//reset the form upon submission
-        window.location.href="success.html";//show success page
         window.location.replace("success.html")//once submitted no return
+        window.location.href="success.html";//show success page
     }else{
         alert("Please leave no blank spaces and enter correct details!😭😭😭")
         total = 0;

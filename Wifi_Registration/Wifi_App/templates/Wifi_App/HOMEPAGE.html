@@ -27,13 +27,13 @@
             <div class="collapse navbar-collapse" id="navbarResponsive">
                 <ul class="navbar-nav ml-auto">
                     <li class="nav-item">
-                        <a class="nav-link dropdown" href="FACULTY.html">FACULTY</a>
+                        <a class="nav-link dropdown" href="{% url 'faculty' %}">FACULTY</a>
                     </li>
                     <li class="nav-item">
-                       <a class="nav-link" href="STUDENT.html">STUDENT</a>
+                       <a class="nav-link" href="{% url 'student' %}">STUDENT</a>
                    </li>
                    <li class="nav-item">
-                       <a class="nav-link" href="ADMINLOGIN.html">ADMIN LOGIN</a>
+                       <a class="nav-link" href="{% url 'adminL' %}">ADMIN LOGIN</a>
                    </li>
                    <li class="nav-item">
                        <a class="nav-link" href="#">CONTACT US</a>
@@ -55,8 +55,8 @@
 
                   <p class="sub-text">Welcome to the online wifi registration of TUP-Cavite</p>
                   <p class="banner-btn">
-                      <a href="STUDENT.html" >STUDENT</a>
-                      <a href="FACULTY.html" >FACULTY</a>
+                      <a href="{% url 'student' %}" >STUDENT</a>
+                      <a href="{% url 'faculty' %}" >FACULTY</a>
                   </p>
               </div>
           </div>

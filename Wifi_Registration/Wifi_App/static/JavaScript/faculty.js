@@ -309,8 +309,8 @@ function checkInputs(){
     //&& mailValue != '' && cellValue != '' && facultyValue != '' && imageValue != '' && timeValue != ''){}
     if (total == 11){
         form.reset();//reset the form upon submission
+        window.location.replace("success")//once submitted no return
         window.location.href="success.html";//show success page
-        window.location.replace("success.html")//once submitted no return
     }else{
         alert("Please leave no blank spaces and enter correct details!😭😭😭")
         total = 0;
