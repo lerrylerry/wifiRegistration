@@ -4,7 +4,6 @@ body{
    background-color: #6667AB;
    display: flex;
    margin: 0;
-   background-image: url(wifi-signal.png);
    background-size: 4in 4in;
    background-repeat: no-repeat;
    animation: side 10s ease-in-out 2s infinite alternate;
@@ -31,7 +30,6 @@ hr{
    background-color: #f7f7f7;
    border-bottom: 1px solid #f0f0f0;
    padding: 20px 40px;
-   background-image: url(no-wifi.png);
    background-repeat: no-repeat;
    background-size: 10% 80%;
    background-position: 95%;

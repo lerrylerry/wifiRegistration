@@ -1,3 +1,5 @@
+{% load static %}
+
 <!DOCTYPE html>
 <html lang="en">
     <head>
@@ -10,12 +12,12 @@
         <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.bundle.min.js"></script>
         <script src="https://kit.fontawesome.com/1a77318452.js" crossorigin="anonymous"></script>
 
-        <link rel="stylesheet" href="F-Design.css">
+        <link rel="stylesheet" href="{% static 'CSS/F-Design.css' %}">
     </head>
 
-    <body>
+    <body style="background-image: url({% static 'Media/wifi-signal.png' %});">
         <div class="container">
-            <div class="header">
+            <div class="header" style="background-image: url({% static 'Media/no-wifi.png' %});">
                 <h2 class="design">WIFI CONNECTIVITY REGISTRATION</h2>
                 <h4 class="design2">for faculty users only</h4>
             </div>
@@ -175,4 +177,4 @@
             </form>
         </div>
     </body>
-    <script src="faculty.js" defer></script>
+    <script src="{% static 'JavaScript/faculty.js' %}" defer></script>

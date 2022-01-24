@@ -1,3 +1,5 @@
+{% load static %}
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -10,11 +12,11 @@
       <script src="https://maxcdn.bootstrapcdn.com/sbootstrap/4.5.2/js/bootstrap.min.js"></script>
       <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
       <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
-      <link rel="stylesheet" href="adminlogin.css">
+      <link rel="stylesheet" href="{% static 'CSS/adminlogin.css' %}">
     </head>
     <body>
-        <script src="login.js"></script>
-        <section class="container-fluid bg">
+        <script src="{% static 'JavaScript/login.js' %}"></script>
+        <section class="container-fluid bg" style="background-image: url({% static 'Media/loginbg.jpg' %});">
             <section class="row justify-content-center">
                 <section class="col-12 col-sm-6 col-md-3">
                     <form class="form-container" action="DATAFACULTY.html" method="post" name="login" onsubmit="return interactiveAdmin()">

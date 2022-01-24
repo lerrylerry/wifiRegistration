@@ -1,6 +1,3 @@
-
-
-
 function interactiveAdmin() {
     
     var user = document.forms['login']['user'];
@@ -21,8 +18,7 @@ function interactiveAdmin() {
         password.focus();
         return false;
     }
-
-    
+ 
 }
 user.addEventListener('textInput', user_Verify);
 password.addEventListener('textInput', password_Verify);
@@ -34,6 +30,7 @@ function user_Verify() {
         user.focus();
         return true;
     }}
+    
 function password_Verify() {
     if (password.value.length >= 4) {
         password.style.border = "2px solid rgb(4, 35,80)";
