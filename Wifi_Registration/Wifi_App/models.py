@@ -5,11 +5,11 @@ from statistics import mode
 from django.db import models
 
 # Create your models here.
-def faculty(Model):
-    fullname = models.CharField(max_length=50)
-    dept = models.CharField(max_length=50)
-    design = models.CharField(max_length=50)
-    mac = models.CharField(max_length=14)
+class faculty(models.Model):
+    fullname = models.CharField(max_length=50, verbose_name='Name')
+    dept = models.CharField(max_length=50, verbose_name='Department')
+    design = models.CharField(max_length=50, verbose_name='Designation')
+    mac = models.CharField(max_length=14, verbose_name='Mac Address')
     device = [
                 ('Smartphone' , 'Smartphone'),
                 ('Laptop' , 'Laptop'),
@@ -18,11 +18,12 @@ def faculty(Model):
                 ('Desktop' , 'Desktop')
             ]
 
-    device = models.CharField(max_length=15, choices=device, default='')
-    others = models.CharField(max_length=15, null=True, blank=True)
-    email = models.EmailField(primary_key=True, max_length=50, unique=True)
-    phone = models.DecimalField(max_digits=11, decimal_places=0, unique=True)
-    check = models.BooleanField()
-    facname = models.CharField(max_length=10)
-    upload = models.ImageField(height_field=None, width_field=None)
+    device = models.CharField(max_length=15, choices=device, verbose_name='Device')
+    others = models.CharField(max_length=15, null=True, blank=True, verbose_name='Specify')
+    email = models.EmailField(primary_key=True, max_length=50, unique=True, verbose_name='Email')
+    phone = models.DecimalField(max_digits=11, decimal_places=0, unique=True, verbose_name='Phone No')
+    facname = models.CharField(max_length=10, verbose_name='Faculty Name')
+    upload = models.ImageField(height_field=None, width_field=None, verbose_name='Signature')
     date = models.DateField()
+    class meta():
+        db_table = "staff"

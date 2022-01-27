@@ -15,8 +15,11 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path, include
+from staff import views
 
 urlpatterns = [
     path('', include('Wifi_App.urls')),
     path('admin/', admin.site.urls),
+    path('fac', views.fac),
+    path('show', views.show),
 ]
