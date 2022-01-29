@@ -16,7 +16,7 @@ const patternAlpha = /^[a-zA-Z ]*$/g;
 const patternMac = /^([0-9a-f]{2}([:-]|$)){6}$|([0-9a-f]{4}([.]|$)){3}$/gi;
 const patternEmail = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/;
 const allowedExtensions = /(\.jpg|\.jpeg|\.png)$/i;
-//const regex = /[0][9][0-9]{9}/g;
+const regex = /[0][9][0-9]{9}/g;
 var total = 0;
 
 let currentDate = new Date();
@@ -130,7 +130,7 @@ function h(){
 
     if (cellValue === ''){
         setInvalid(cell, '');
-    }else if(cellValue.length < 11){
+    }else if(!cellValue.match(regex)){
         setInvalid(cell, 'Wrong format!😭');
     }else{
         setValid(cell);
@@ -263,7 +263,7 @@ function checkInputs(){
 
     if (cellValue === ''){
         setInvalid(cell, '');
-    }else if(cellValue.length < 11){
+    }else if(!cellValue.match(regex)){
         setInvalid(cell, 'Wrong format!😭');
     }else{
         setValid(cell);
@@ -308,9 +308,9 @@ function checkInputs(){
     //if (nameValue != '' && departValue != '' && designValue != '' && macValue != '' && selectValue != '' || specifyValue != ''
     //&& mailValue != '' && cellValue != '' && facultyValue != '' && imageValue != '' && timeValue != ''){}
     if (total == 11){
-        form.reset();//reset the form upon submission
-        window.location.replace("success")//once submitted no return
-        window.location.href="success.html";//show success page
+        //form.reset();//reset the form upon submission
+        //window.location.replace("success")//once submitted no return
+        window.location.href="/faculty/success.html/";//show success page
     }else{
         alert("Please leave no blank spaces and enter correct details!😭😭😭")
         total = 0;

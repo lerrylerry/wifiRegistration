@@ -1,9 +1,12 @@
+{% extends 'Wifi_App/head.html' %}
 {% load static %}
-{% include 'Wifi_App/head.html' %}
-   <head>
-      <title>WIFIHOMEPAGE</title>
-      <link rel="stylesheet" href="{% static 'CSS/hompagedesign.css' %}">
-   </head>
+
+{% block title %}
+<title>WIFIHOMEPAGE</title>
+<link rel="stylesheet" href="{% static 'CSS/hompagedesign.css' %}">
+{% endblock title %}
+      
+{% block content %}
    <body>
        <!--- NAVIGATION BAR -->
       <nav class="navbar navbar-expand-sm navbar-light bg-light sticky-top">
@@ -49,5 +52,5 @@
               </div>
           </div>
       </header>
-      
    </body>
+{% endblock content %}
