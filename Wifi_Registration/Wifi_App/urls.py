@@ -12,5 +12,4 @@ urlpatterns = [
     path('dh/', views.dataHis, name='datahistory'),
     path('faculty/success.html/', views.success, name='success'),
     path('student/success.html/', views.success, name='success'),
-    
 ]

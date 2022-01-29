@@ -1,9 +1,10 @@
 from multiprocessing import context
 from django.shortcuts import render, redirect
-from .models import *
+from .models import Faculty
+from .form import FacultyForm
 
 def index(request):
-    return render(request, 'Wifi_App/HOMEPAGE.html')
+    return render(request, 'Wifi_App/create.html')
 
 def faculty(request):
     return render(request, 'Wifi_App/FACULTY.html')
@@ -26,24 +27,13 @@ def dataHis(request):
 def success(request):
     return render(request, 'Wifi_App/success.html')
 
-def createFaculty(request):
-    f_name = request.POST['fullname'],
-    f_dept = request.POST['dept'],
-    f_design = request.POST['design'],
-    f_mac = request.POST['mac'],
-    f_device = request.POST['device'],
-    f_others = request.POST['others'],
-    f_email = request.POST['email'],
-    f_phone = request.POST['phone'],
-    f_facname =request.POST['facname'],
-    f_upload = request.POST['upload'],
-    f_date = request.POST['date'],
-    person = Faculty(f_name = f_name, f_dept = f_dept, f_design = f_design, f_mac = f_mac, f_device = f_device, f_others = f_others, f_email = f_email
-                    , f_phone = f_phone, f_facname = f_facname, f_upload = f_upload, f_date = f_date)
-    person.save()
+def create_view(request):
 
-    faculties = Faculty.objects.all()
-    context = {
-        'faculties' : faculties
-    }
-    return render(request, 'Wifi_App/DATAHISTORY.html', context)
+    context = {}
+
+    form = FacultyForm(request.POST or None)
+    if form.is_valid():
+        form.save()
+
+    context['form']=form
+    return render(request, 'Wifi_App/faculty.html', context)
