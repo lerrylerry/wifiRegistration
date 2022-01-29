@@ -17,14 +17,14 @@
                     <div class="col-sm-6">
                         <div class="form-group">
                             <label><strong>Name:</strong></label><label id="red">*</label>
-                            <input type="text" class="form-control" maxlength="30" placeholder="Enter Full Name" id="names" onkeyup="a()">
+                            <input type="text" class="form-control" maxlength="30" placeholder="Enter Full Name" name="sname" id="names" onkeyup="a()">
                             <i class="fas fa-check-circle"></i>
                             <i class="fas fa-exclamation-circle"></i>
                             <small>Error Message!</small>
                         </div>
                         <div class="form-group">
                             <label><strong>Course:</strong></label><label id="red">*</label>
-                            <select class="custom-select" id="course" onchange="b()">
+                            <select class="custom-select" name="stcourse" id="course" onchange="b()">
                                 <option value="">Choose</option>
                                 <option value="BSCE">BSCE</option>
                                 <option value="BSEE">BSEE</option>
@@ -50,11 +50,10 @@
                         </div>
                         <div class="form-group">
                             <label><strong>Semester:</strong></label><label id="red">*</label>
-                            <select class="custom-select" id="semester" onchange="c()">
+                            <select class="custom-select" name="stsem" id="semester" onchange="c()">
                                 <option value="">Choose</option>
                                 <option value="1st Sem">First Semester</option>
                                 <option value="2nd Sem">Second Semester</option>
-                                <option value="Others">Others...</option>
                             </select>
                             <i class="fas fa-check-circle"></i>
                             <i class="fas fa-exclamation-circle"></i>
@@ -62,21 +61,21 @@
                         </div>
                         <div class="form-group">
                             <label><strong>Student No:</strong></label><label id="red">*</label>
-                            <input type="text" class="form-control" maxlength="12" placeholder="TUPC-xx-xxxx" id="tupcnum" onkeyup="d()">
+                            <input type="text" class="form-control" maxlength="12" placeholder="TUPC-xx-xxxx" name="studentno" id="tupcnum" onkeyup="d()">
                             <i class="fas fa-check-circle"></i>
                             <i class="fas fa-exclamation-circle"></i>
                             <small>Error Message!</small>
                         </div>
                         <div class="form-group">
                             <label><strong>O.R #:</strong></label><label id="red">*</label>
-                            <input type="number" class="form-control" maxlength="12" placeholder="Enter O.R#" id="orno" onkeyup="e()">
+                            <input type="number" class="form-control" maxlength="12" placeholder="Enter O.R#" name="ornum" id="orno" onkeyup="e()">
                             <i class="fas fa-check-circle"></i>
                             <i class="fas fa-exclamation-circle"></i>
                             <small>Error Message!</small>
                         </div>
                         <div class="form-group">
                             <label><strong>Phone #:</strong></label><label id="red">*</label>
-                            <input type="number" class="form-control" maxlength="11" placeholder="09xxxxxxxxx" id="phone" onkeyup="f()">
+                            <input type="number" class="form-control" maxlength="11" placeholder="09xxxxxxxxx" name="phonenum" id="phone" onkeyup="f()">
                             <i class="fas fa-check-circle"></i>
                             <i class="fas fa-exclamation-circle"></i>
                             <small>Error Message!</small>
@@ -87,7 +86,7 @@
                     <div class="col-sm-6">
                         <div class="form-group">
                             <label><strong>Device:</strong></label><label id="red">*</label>
-                            <select class="custom-select" id="system" onchange="g()">
+                            <select class="custom-select" name="stdevice" id="system" onchange="g()">
                                 <option value="">Choose</option>
                                 <option value="Smartphone">Smartphone</option>
                                 <option value="Laptop">Laptop</option>
@@ -102,28 +101,28 @@
                         </div>
                         <div class="form-group">
                             <label><strong>Others:</strong></label><label id="red">*</label>
-                            <input type="text" class="form-control" maxlength="15" placeholder="Others..." id="others" onkeyup="h()" disabled="">
+                            <input type="text" class="form-control" maxlength="15" placeholder="Others..." name="stspecify" id="others" onkeyup="h()" disabled="">
                             <i class="fas fa-check-circle"></i>
                             <i class="fas fa-exclamation-circle"></i>
                             <small>Error Message!</small>
                         </div>
                         <div class="form-group">
                             <label><strong>Mac Address:</strong></label><label id="red">*</label>
-                            <input type="text" class="form-control" maxlength="17" placeholder="xx-xx-xx-xx-xx" id="macadd" onkeyup="i()">
+                            <input type="text" class="form-control" maxlength="17" placeholder="xx-xx-xx-xx-xx" name="stmac" id="macadd" onkeyup="i()">
                             <i class="fas fa-check-circle"></i>
                             <i class="fas fa-exclamation-circle"></i>
                             <small>Error Message!</small>
                         </div>
                         <div class="form-group">
                             <label><strong>Email:</strong></label><label id="red">*</label>
-                            <input type="email" class="form-control" maxlength="30" placeholder="...@gmail.com" id="email" onkeyup="j()">
+                            <input type="email" class="form-control" maxlength="30" placeholder="...@gmail.com" name="stemail" id="email" onkeyup="j()">
                             <i class="fas fa-check-circle"></i>
                             <i class="fas fa-exclamation-circle"></i>
                             <small>Error Message!</small>
                         </div>
                         <div class="form-group">
                             <label><strong>Residence Address:</strong></label><label id="red">*</label>
-                            <input type="text" class="form-control" maxlength="50" placeholder="Enter Address" id="resid" onkeyup="k()">
+                            <input type="text" class="form-control" maxlength="50" placeholder="Enter Address" name="stresid" id="resid" onkeyup="k()">
                             <i class="fas fa-check-circle"></i>
                             <i class="fas fa-exclamation-circle"></i>
                             <small>Error Message!</small>
@@ -148,7 +147,7 @@
                             </p>
                         </div>
                         <div class="custom-control custom-checkbox">
-                            <input type="checkbox" class="custom-control-input" id="agree">
+                            <input type="checkbox" name="stcheck" class="custom-control-input" id="agree">
                             <label class="custom-control-label" for="agree" style="color: #0061c8;"><strong>Yes, I agree.</strong></label><label id="red">*</label>
                         </div>
                     </div>
@@ -171,7 +170,7 @@
                         <div class="form-group">
                             <label><strong>Upload image of Signature over printed name:</strong></label><label id="red">*</label>
                             <div class="custom-file">
-                                <input type="file" class="form-control custom-file-input" id="upload" onchange="l()">
+                                <input type="file" class="form-control custom-file-input" name="stupload" id="upload" onchange="l()">
                                 <label class="custom-file-label">Choose file</label>
                                 <i class="fas fa-check-circle"></i>
                                 <i class="fas fa-exclamation-circle"></i>
@@ -185,7 +184,7 @@
                     <div class="col-sm-6">
                         <div class="form-group">
                             <label><strong>Name:</strong></label><label id="red">*</label>
-                            <input type="text" class="form-control" maxlength="12" placeholder="Enter Name" id="uname" onkeyup="m()">
+                            <input type="text" class="form-control" maxlength="12" placeholder="Enter Name" name="stuname" id="uname" onkeyup="m()">
                             <i class="fas fa-check-circle"></i>
                             <i class="fas fa-exclamation-circle"></i>
                             <small>Error Message!</small>
@@ -194,7 +193,7 @@
                     <div class="col-sm-6">
                         <div class="form-group">
                             <label><strong>Password:</strong></label><label id="red">*</label>
-                            <input type="text" class="form-control" maxlength="12" placeholder="Enter Password" id="pass" onkeyup="n()">
+                            <input type="text" class="form-control" maxlength="12" placeholder="Enter Password" name="stpass" id="pass" onkeyup="n()">
                             <i class="fas fa-check-circle"></i>
                             <i class="fas fa-exclamation-circle"></i>
                             <small>Error Message!</small>
