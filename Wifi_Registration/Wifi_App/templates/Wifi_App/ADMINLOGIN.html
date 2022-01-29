@@ -1,10 +1,12 @@
+{% extends 'Wifi_App/head.html' %}
 {% load static %}
-{% include 'Wifi_App/head.html' %}
-    <head>
-        <title>ADMINLOGIN</title>
-        <link rel="stylesheet" href="{% static 'CSS/adminlogin.css' %}">
-    </head>
 
+{% block title %}
+<title>ADMINLOGIN</title>
+<link rel="stylesheet" href="{% static 'CSS/adminlogin.css' %}">
+{% endblock title %}
+
+{% block content %}
     <body>
         <script src="{% static 'JavaScript/login.js' %}"></script>
         <section class="container-fluid bg" style="background-image: url({% static 'Media/loginbg.jpg' %});">
@@ -35,3 +37,4 @@
             </section>
         </section>
     </body>
+{% endblock content %}

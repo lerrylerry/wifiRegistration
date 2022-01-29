@@ -1,12 +1,20 @@
+{% extends 'Wifi_App/head2.html' %}
 {% load static %}
-{% include 'Wifi_App/head.html' %}
-   <head>
-      <title>DATA REQUEST</title>
-      <link rel="stylesheet" href="{% static 'CSS/tablecss.css' %}">
-   </head>
-    <body>
-       <div class="container-fluid">
-        {% include 'Wifi_App/temp.html' %}
+
+{% block title %}DATA REQUEST{% endblock title %}
+
+{% block content %}
+<li class="nav-item">
+   <a class="nav-link dropdown" href="{% url 'datarequest' %}">REQUEST</a>
+</li>
+<li class="nav-item">
+   <a class="nav-link" href="{% url 'datahistory' %}">HISTORY</a>
+</li class="nav-item">
+   <a class="nav-link" href="{% url 'adminL' %}">LOGOUT</a>
+</li>
+{% endblock content %}
+
+{% block body %}
           <div class="jumbotron table-responsive">
              <div class="card-body">
                <h5 class="card-title" style="margin-bottom: 50px;">WIFI REQUEST</h5>
@@ -52,48 +60,8 @@
                           </span>
                       </td>
                     </tr>
-                    <tr>
-                      <th scope="row" style="text-align: center;">Laungayan, John Lerry B.</th>
-                      <td style="text-align: center;">STUDENT</td>
-                      <td style="text-align: center;">74:4C:A1:7F:45:9B</td>
-                      <td style="text-align: center;">
-                        <span >
-                            <button class="btn btn-success" type="submit" style="padding: 10px 24px;">Approve</button>
-                        </span>
-                        <span>
-                            <button class="btn btn-danger" type="submit" style="padding: 10px 32px;">Reject</button>
-                        </span>
-                    </td>
-                  </tr>
-                  <tr>
-                      <th scope="row" style="text-align: center;">Ladrera, Jairus R.</th>
-                      <td style="text-align: center;">FACULTY</td>
-                      <td style="text-align: center;">74:4C:A1:7F:45:9B</td>
-                      <td style="text-align: center;">
-                        <span >
-                            <button class="btn btn-success" type="submit" style="padding: 10px 24px;">Approve</button>
-                        </span>
-                        <span>
-                            <button class="btn btn-danger" type="submit" style="padding: 10px 32px;">Reject</button>
-                        </span>
-                    </td>
-                  </tr>
-                  <tr>
-                    <th scope="row" style="text-align: center;">Zuckerberg, Mark</th>
-                    <td style="text-align: center;">FACULTY</td>
-                    <td style="text-align: center;">74:4C:A1:7F:45:9B</td>
-                    <td style="text-align: center;">
-                      <span >
-                          <button class="btn btn-success" type="submit" style="padding: 10px 24px;">Approve</button>
-                      </span>
-                      <span>
-                          <button class="btn btn-danger" type="submit" style="padding: 10px 32px;">Reject</button>
-                      </span>
-                  </td>
-                </tr>
                 </tbody>
              </table>
             </div>
           </div>
-       </div>
-    </body>
+{% endblock body %}

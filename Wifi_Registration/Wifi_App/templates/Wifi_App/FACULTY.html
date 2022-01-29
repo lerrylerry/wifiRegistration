@@ -1,18 +1,21 @@
+{% extends 'Wifi_App/head.html' %}
 {% load static %}
-{% include 'Wifi_App/head.html' %}
-    <head>
-        <title>FACULTY FORM</title>
-        <link rel="stylesheet" href="{% static 'CSS/F-Design.css' %}">
-    </head>
 
+{% block title %}
+<title>FACULTY FORM</title>
+<link rel="stylesheet" href="{% static 'CSS/F-Design.css' %}">
+<script src="{% static 'JavaScript/faculty.js' %}" defer></script>
+{% endblock title %}
+
+    {% block content %}
     <body style="background-image: url({% static 'Media/wifi-signal.png' %});">
         <div class="container">
             <div class="header" style="background-image: url({% static 'Media/no-wifi.png' %});">
                 <h2 class="design">WIFI CONNECTIVITY REGISTRATION</h2>
                 <h4 class="design2">for faculty users only</h4>
             </div>
-            {% csrf token %}
             <form class="form" id="form" action="" method="post">
+                {% csrf_token %}
                 <div class="row">
                 <!-- left-side -->          
                     <div class="col-sm-6">
@@ -87,7 +90,7 @@
                         </div>
                         <div class="form-group">
                             <label><strong>Phone #:</strong></label><label id="red">*</label>
-                            <input type="number" class="form-control" maxlength="11" placeholder="09xxxxxxxxx" name="facphone"  id="phone" onkeyup="h()">
+                            <input type="number" class="form-control" oninput="javascript: if (this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);" maxlength="11" placeholder="09xxxxxxxxx" name="facphone"  id="phone" onkeyup="h()">
                             <i class="fas fa-check-circle"></i>
                             <i class="fas fa-exclamation-circle"></i>
                             <small>Error Message!</small>
@@ -103,6 +106,7 @@
                         </a>
                         <div class="collapse show" id="terms" data-parent="#accordion">
                             <p>
+
                             <i>
                                 I understand that the Wi-Fi connectivity is provided to me for my academic work only.
                                 The above mentioned system solely belongs to me. I have gone through the norms and
@@ -162,10 +166,10 @@
                     <div class="col-sm-7"></div>
                     <div class="col">
                         <br>
-                        {% include 'Wifi_App/showsuccess.html' %}
+                        <button class="btn btn-outline-success" onclick="windows.location.href = '{% url 'success' %}'" id="confirm">SUBMIT</button>
                     </div>
                 </div>
             </form>
         </div>
     </body>
-    <script src="{% static 'JavaScript/faculty.js' %}" defer></script>
+    {% endblock content %}

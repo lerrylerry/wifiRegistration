@@ -1,39 +1,59 @@
+{% extends 'Wifi_App/head2.html' %}
 {% load static %}
-{% include 'Wifi_App/head.html' %}
-    <head>
-      <title>DATA HISTORY</title>
-      <link rel="stylesheet" href="{% static 'CSS/tablecss.css' %}">
-   </head>
-   <body>
-    <div class="container-fluid">
-        {% include 'Wifi_App/temp.html' %}
-       <div class="jumbotron table-responsive table-sortable">
-          <div class="card-body">
-            <h5 class="card-title" style="margin-bottom: 50px;">HISTORY OF APPROVAL</h5>
-        </div>
-            <script src="{% static 'JavaScript/history.js' %}"></script>
-            <table id="historydata" class="table table-striped table-bordered">
-               <thead class="table-danger">
-                  <tr>
-                     <th scope="col" style="text-align: center;">Name</th>
-                     <th scope="col" style="text-align: center;">Type</th>
-                     <th scope="col" style="text-align: center;">Mac Address</th>
-                     <th scope="col" style="text-align: center;">Date of Approval</th>
-                     <th scope="col" style="text-align: center;">Time of Approval</th>
-                  </tr>
-               </thead>
-               <tbody>
-                   {% for staff in faculties %}alisin mo muna if ever//
-                   <tr>
-                       <th scope="row" style="text-align: center;">Galano, George Louis</th>
-                       <td style="text-align: center;">STUDENT</td>
-                       <td style="text-align: center;">74:4C:A1:7F:45:9B</td>
-                       <td style="text-align: center;">12-09-2021</td>
-                       <td style="text-align: center;">03:45:46 PM</td>
-                   </tr>
-               </tbody>
-            </table>
-         </div>
-       </div>
-    </div>
- </body>
+
+{% block title %}DATA HISTORY{% endblock title %}
+      
+{% block content %}
+<li class="nav-item">
+   <a class="nav-link dropdown" href="{% url 'datarequest' %}">REQUEST</a>
+</li>
+<li class="nav-item">
+   <a class="nav-link" href="{% url 'datahistory' %}">HISTORY</a>
+</li class="nav-item">
+   <a class="nav-link" href="{% url 'adminL' %}">LOGOUT</a>
+</li>
+{% endblock content %}
+
+{% block body %}
+   <div class="jumbotron table-responsive table-sortable">
+      <div class="card-body">
+         <h5 class="card-title" style="margin-bottom: 50px;">HISTORY OF APPROVAL</h5>
+      </div>
+      <script src="{% static 'JavaScript/history.js' %}"></script>
+      <table id="historydata" class="table table-striped table-bordered">
+         <thead class="table-danger">
+            <tr>
+               <th scope="col" style="text-align: center;">Name</th>
+               <th scope="col" style="text-align: center;">Department</th>
+               <th scope="col" style="text-align: center;">Designation</th>
+               <th scope="col" style="text-align: center;">Mac Address</th>
+               <th scope="col" style="text-align: center;">Device</th>
+               <th scope="col" style="text-align: center;">Others</th>
+               <th scope="col" style="text-align: center;">Email</th>
+               <th scope="col" style="text-align: center;">Phone No.</th>
+               <th scope="col" style="text-align: center;">Faculty Name</th>
+               <th scope="col" style="text-align: center;">Upload</th>
+               <th scope="col" style="text-align: center;">Time of Approval</th>
+            </tr>
+         </thead>
+         <tbody>
+            {% for i in faculties %}
+            <tr>
+               <th scope="row" style="text-align: center;">{{ i.fullname }}</th>
+               <td style="text-align: center;">{{ i.dept }}</td>
+               <td style="text-align: center;">{{ i.design }}</td>
+               <td style="text-align: center;">{{ i.mac }}</td>
+               <td style="text-align: center;">{{ i.device }}</td>
+               <td style="text-align: center;">{{ i.others }}</td>
+               <td style="text-align: center;">{{ i.email }}</td>
+               <td style="text-align: center;">{{ i.phone }}</td>
+               <td style="text-align: center;">{{ i.facname }}</td>
+               <td style="text-align: center;">{{ i.upload }}</td>
+               <td style="text-align: center;">{{ i.date }}</td>
+            </tr>
+            {% endfor %}
+         </tbody>
+      </table>
+      <a href="/fac" class="btn btn-primary">Add Record</a>
+   </div>
+{% endblock body %}

@@ -1,10 +1,13 @@
+{% extends 'Wifi_App/head.html' %}
 {% load static %}
-{% include 'Wifi_App/head.html' %}
-    <head>
-        <title>STUDENT FORM</title>
-        <link rel="stylesheet" href="{% static 'CSS/ST-Design.css' %}">
-    </head>
 
+{% block title %}
+<title>STUDENT FORM</title>
+<link rel="stylesheet" href="{% static 'CSS/ST-Design.css' %}">
+<script src="{% static 'JavaScript/student.js' %}" defer></script>
+{% endblock title %}
+        
+{% block content %}
     <body style="background-image: url({% static 'Media/wifi-signal.png' %});">
         <div class="container">
             <div class="header" style="background-image: url({% static 'Media/no-wifi.png' %});">
@@ -26,23 +29,23 @@
                             <label><strong>Course:</strong></label><label id="red">*</label>
                             <select class="custom-select" name="stcourse" id="course" onchange="b()">
                                 <option value="">Choose</option>
-                                <option value="BSCE">BSCE</option>
-                                <option value="BSEE">BSEE</option>
-                                <option value="BSME">BSME</option>
-                                <option value="BET-ET">BET-ET</option>
-                                <option value="BET-ESET">BET-ESET</option>
-                                <option value="BET-COET">BET-COET</option>
-                                <option value="BET-CT">BET-CT</option>
-                                <option value="BET-AT">BET-AT</option>
-                                <option value="BET-MT">BET-MT</option>
-                                <option value="BET-PPT">BET-PPT</option>
-                                <option value="BSIE-ICT">BSIE-ICT</option>
-                                <option value="BSIE-HE">BSIE-HE</option>
-                                <option value="BTTE-AU">BTTE-AU</option>
-                                <option value="BTTE-EI">BTTE-EI</option>
-                                <option value="BTTE-E">BTTE-E</option>
-                                <option value="BTTE-HVACT">BTTE-HVACT</option>
-                                <option value="BTTE-CP">BTTE-CP</option>
+                                <option value="BACHELOR OF SCIENCE IN CIVIL ENGINEERING">BSCE</option>
+                                <option value="BACHELOR OF SCIENCE IN ELECTRICAL ENGINEERING">BSEE</option>
+                                <option value="BACHELOR OF SCIENCE IN MECHANICAL ENGINEERING">BSME</option>
+                                <option value="BET-ELECTRICAL TECHNOLOGY">BET-ET</option>
+                                <option value="BET-INDUSTRIAL AUTOMATION TECHNOLOGY">BET-ESET</option>
+                                <option value="BET-COMPUTER ENGINEERING TECHNOLOGY">BET-COET</option>
+                                <option value="BET-CIVIL TECHNOLOGY">BET-CT</option>
+                                <option value="BET-AUTOMOTIVE TECHNOLOGY">BET-AT</option>
+                                <option value="BET-MECHANICAL ENGINEERING TECHNOLOGY">BET-MT</option>
+                                <option value="BET-POWER PLANT TECHNOLOGY">BET-PPT</option>
+                                <option value="BSIE-INFORMATION COMPUTER TECHNOLOGY">BSIE-ICT</option>
+                                <option value="BSIE-HOME ECONOMICS">BSIE-HE</option>
+                                <option value="BTTE-AUTOMOTIVE">BTTE-AU</option>
+                                <option value="BTTE-ELECTRICAL">BTTE-EI</option>
+                                <option value="BTTE-ELECTRONICS">BTTE-E</option>
+                                <option value="BTTE-AIR CONDITIONING">BTTE-HVACT</option>
+                                <option value="BTTE-COMPUTER PROGRAMMING">BTTE-CP</option>
                             </select>
                             <i class="fas fa-check-circle"></i>
                             <i class="fas fa-exclamation-circle"></i>
@@ -68,14 +71,22 @@
                         </div>
                         <div class="form-group">
                             <label><strong>O.R #:</strong></label><label id="red">*</label>
+<<<<<<< HEAD
                             <input type="number" class="form-control" maxlength="12" placeholder="Enter O.R#" name="ornum" id="orno" onkeyup="e()">
+=======
+                            <input type="number" class="form-control" oninput="javascript: if (this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);" maxlength="12" placeholder="Enter O.R#" id="orno" onkeyup="e()">
+>>>>>>> 0ccfff4cc0928459c0149fb60ccd953b73824335
                             <i class="fas fa-check-circle"></i>
                             <i class="fas fa-exclamation-circle"></i>
                             <small>Error Message!</small>
                         </div>
                         <div class="form-group">
                             <label><strong>Phone #:</strong></label><label id="red">*</label>
+<<<<<<< HEAD
                             <input type="number" class="form-control" maxlength="11" placeholder="09xxxxxxxxx" name="phonenum" id="phone" onkeyup="f()">
+=======
+                            <input type="number" class="form-control" oninput="javascript: if (this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);" maxlength="11" placeholder="09xxxxxxxxx" id="phone" onkeyup="f()">
+>>>>>>> 0ccfff4cc0928459c0149fb60ccd953b73824335
                             <i class="fas fa-check-circle"></i>
                             <i class="fas fa-exclamation-circle"></i>
                             <small>Error Message!</small>
@@ -204,12 +215,10 @@
                 <div class="row">
                     <div class="col-sm-10"></div>
                     <div class="col-sm-2">
-                        {% include 'Wifi_App/showsuccess.html' %}
+                        <button class="btn btn-outline-success" onclick="windows.location.href = '{% url 'success' %}'" id="confirm">SUBMIT</button>
                     </div>
                 </div>
             </form>
         </div>
     </body>
-    <script src="{% static 'JavaScript/student.js' %}" defer></script>
-   </body>
-</html>
+    {% endblock content %}
