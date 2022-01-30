@@ -1,7 +1,7 @@
 from multiprocessing import context
 from django.shortcuts import render, redirect
-from .models import Faculty
-from .form import FacultyForm
+from Wifi_App.models import Faculty
+from Wifi_App.form import FacultyForm
 
 def index(request):
     return render(request, 'Wifi_App/create.html')
@@ -27,13 +27,37 @@ def dataHis(request):
 def success(request):
     return render(request, 'Wifi_App/success.html')
 
-def create_view(request):
+def fac(request):
+    if request.method == "POST":
+        form = FacultyForm(request.POST)
+        if form.is_valid():
+            try:
+                form.save()
+                return redirect("/")
+            except:
+                pass
+    else:
+        form = FacultyForm()
+    return render(request, '', {'form' , form})
 
-    context = {}
+def show(request):
+    person = Faculty.objects.all()
+    return render(request, 'show.html', {'person' , person})
 
-    form = FacultyForm(request.POST or None)
+def edit(request,id):
+    person = Faculty.objects.get(id=id)
+    return render(request, 'edit.html', {'person' , person})
+
+def update(request,id):
+    person = Faculty.objects.get(id=id)
+    form = FacultyForm(request.POST,instance=person)
     if form.is_valid():
         form.save()
+        return redirect("/show")
 
-    context['form']=form
-    return render(request, 'Wifi_App/faculty.html', context)
+    return render(request, 'edit.html', {'person' , person})
+
+def delete(request,id):
+    person = Faculty.objects.get(id=id)
+    person.delete()
+    return redirect("/show")

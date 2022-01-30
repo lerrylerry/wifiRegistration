@@ -15,8 +15,13 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path, include
+from Wifi_Registration import views
 
 urlpatterns = [
-    path('admin/', admin.site.urls),
     path('', include('Wifi_App.urls')),
+    path('fac',views.fac),
+    path('show',views.show),
+    path('edit/<int:id>',views.edit),
+    path('update/<int:id>',views.update),
+    path('delete/<int:id>',views.delete),
 ]
