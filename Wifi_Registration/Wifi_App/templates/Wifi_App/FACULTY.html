@@ -14,7 +14,7 @@
                 <h2 class="design">WIFI CONNECTIVITY REGISTRATION</h2>
                 <h4 class="design2">for faculty users only</h4>
             </div>
-            <form class="form" id="form" action="" method="post">
+            <form class="form" id="form" action="/fac" method="post">
                 {% csrf_token %}
                 <div class="row">
                 <!-- left-side -->          
@@ -90,7 +90,8 @@
                         </div>
                         <div class="form-group">
                             <label><strong>Phone #:</strong></label><label id="red">*</label>
-                            <input type="number" class="form-control" oninput="javascript: if (this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);" maxlength="11" placeholder="09xxxxxxxxx" name="facphone"  id="phone" onkeyup="h()">
+                            <input type="number" class="form-control" oninput="javascript: if (this.value.length > this.maxLength) this.value = 
+                                    this.value.slice(0, this.maxLength);" maxlength="11" placeholder="09xxxxxxxxx" name="facphone"  id="phone" onkeyup="h()">
                             <i class="fas fa-check-circle"></i>
                             <i class="fas fa-exclamation-circle"></i>
                             <small>Error Message!</small>
@@ -133,7 +134,7 @@
                     <div class="col-sm-6">
                         <div class="form-group">
                             <label><strong>Faculty Name:</strong></label><label id="red">*</label>
-                            <input type="text" class="form-control" maxlength="30" placeholder="Enter Faculty Name" name="facfname"  id="faculty" onkeyup="i()">
+                            <input type="text" class="form-control" maxlength="30" placeholder="Enter Faculty Name" name="facfname"  id="facultys" onkeyup="i()">
                             <i class="fas fa-check-circle"></i>
                             <i class="fas fa-exclamation-circle"></i>
                             <small>Error Message!</small>

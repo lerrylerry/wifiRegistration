@@ -4,7 +4,7 @@ from Wifi_App.models import Faculty
 from Wifi_App.form import FacultyForm
 
 def index(request):
-    return render(request, 'Wifi_App/create.html')
+    return render(request, 'Wifi_App/HOMEPAGE.html')
 
 def faculty(request):
     return render(request, 'Wifi_App/FACULTY.html')

@@ -8,7 +8,7 @@ const specify = document.getElementById('others');
 const mail = document.getElementById('email');
 const cell = document.getElementById('phone');
 const agreed = document.getElementById('agree');
-const faculty = document.getElementById('faculty');
+const faculty = document.getElementById('facultys');
 const image = document.getElementById('upload');
 const time = document.getElementById('date');
 
@@ -375,7 +375,7 @@ $('#email').tooltip({title: "Please fill out this field👍", placement:"top",  
 $('#phone').tooltip({title: "Please fill out this field👍", placement:"top",  trigger: "hover"});
 $('#system').tooltip({title: "Please select item in the list👍", placement:"top",  trigger: "hover"});
 $('#others').tooltip({title: "Please fill out this field👍", placement:"top",  trigger: "hover"});
-$('#faculty').tooltip({title: "Please fill out this field👍", placement:"top",  trigger: "hover"});
+$('#facultys').tooltip({title: "Please fill out this field👍", placement:"top",  trigger: "hover"});
 $('#date').tooltip({title: "Enter current date👍", placement:"top",  trigger: "hover"});
 $('#upload').tooltip({title: "Submit image file('png','jpg','jpg')👍", placement:"top",  trigger: "hover"});
 

@@ -1,4 +1,4 @@
-"""Wifi_Registration URL Configuration
+"""Wifi_Registration Configuration
 
 The `urlpatterns` list routes URLs to views. For more information please see:
     https://docs.djangoproject.com/en/4.0/topics/http/urls/
@@ -15,7 +15,7 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path, include
-from Wifi_Registration import views
+from Wifi_App import views
 
 urlpatterns = [
     path('', include('Wifi_App.urls')),
