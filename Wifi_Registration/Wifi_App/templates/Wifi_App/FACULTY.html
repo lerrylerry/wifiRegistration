@@ -14,21 +14,21 @@
                 <h2 class="design">WIFI CONNECTIVITY REGISTRATION</h2>
                 <h4 class="design2">for faculty users only</h4>
             </div>
-            <form class="form" id="form" action="/fac" method="post">
+            <form class="form" id="form" method="POST" action="/createFaculty/">
                 {% csrf_token %}
                 <div class="row">
                 <!-- left-side -->          
                     <div class="col-sm-6">
                         <div class="form-group">
                             <label><strong>Name:</strong></label><label id="red">*</label>
-                            <input type="text" class="form-control" maxlength="30" placeholder="Enter Full Name" name="facname" id="names" onkeyup="a()">
+                            <input type="text" class="form-control" maxlength="30" placeholder="Enter Full Name" name="names" id="names" onkeyup="a()">
                             <i class="fas fa-check-circle"></i>
                             <i class="fas fa-exclamation-circle"></i>
                             <small>Error Message!</small>
                         </div>
                         <div class="form-group">
                             <label><strong>Department:</strong></label><label id="red">*</label>
-                            <input type="text" class="form-control" maxlength="30" placeholder="Enter Department" name="facdept" id="department" onkeyup="b()">
+                            <input type="text" class="form-control" maxlength="30" placeholder="Enter Department" name="dept" id="department" onkeyup="b()">
                             <i class="fas fa-check-circle"></i>
                             <i class="fas fa-exclamation-circle"></i>
                             <small>Error Message!</small>

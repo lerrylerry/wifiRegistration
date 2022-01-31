@@ -1,5 +1,5 @@
 from django import forms
-from .models import Faculty
+from Wifi_App.models import Faculty
 
 class FacultyForm(forms.ModelForm):
 

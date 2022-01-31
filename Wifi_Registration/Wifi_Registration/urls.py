@@ -19,9 +19,4 @@ from Wifi_App import views
 
 urlpatterns = [
     path('', include('Wifi_App.urls')),
-    path('fac',views.fac),
-    path('show',views.show),
-    path('edit/<int:id>',views.edit),
-    path('update/<int:id>',views.update),
-    path('delete/<int:id>',views.delete),
 ]

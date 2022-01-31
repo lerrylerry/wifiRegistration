@@ -32,24 +32,23 @@
                <th scope="col" style="text-align: center;">Email</th>
                <th scope="col" style="text-align: center;">Phone No.</th>
                <th scope="col" style="text-align: center;">Faculty Name</th>
-               <th scope="col" style="text-align: center;">Upload</th>
                <th scope="col" style="text-align: center;">Time of Approval</th>
             </tr>
          </thead>
          <tbody>
-            {% for i in faculties %}
+            {% for staff in persons %}
             <tr>
-               <th scope="row" style="text-align: center;">{{ i.fullname }}</th>
-               <td style="text-align: center;">{{ i.dept }}</td>
-               <td style="text-align: center;">{{ i.design }}</td>
-               <td style="text-align: center;">{{ i.mac }}</td>
-               <td style="text-align: center;">{{ i.device }}</td>
-               <td style="text-align: center;">{{ i.others }}</td>
-               <td style="text-align: center;">{{ i.email }}</td>
-               <td style="text-align: center;">{{ i.phone }}</td>
-               <td style="text-align: center;">{{ i.facname }}</td>
-               <td style="text-align: center;">{{ i.upload }}</td>
-               <td style="text-align: center;">{{ i.date }}</td>
+               <th scope="row" style="text-align: center;">{{ staff.names }}</th>
+               <td style="text-align: center;">{{ staff.department }}</td>
+               <td style="text-align: center;">{{ staff.designation }}</td>
+               <td style="text-align: center;">{{ staff.macadd }}</td>
+               <td style="text-align: center;">{{ staff.system }}</td>
+               <td style="text-align: center;">{{ staff.others }}</td>
+               <td style="text-align: center;">{{ staff.email }}</td>
+               <td style="text-align: center;">{{ staff.phone }}</td>
+               <td style="text-align: center;">{{ staff.facultys }}</td>
+               <td style="text-align: center;">{{ staff.upload }}</td>
+               <td style="text-align: center;">{{ staff.date }}</td>
             </tr>
             {% endfor %}
          </tbody>

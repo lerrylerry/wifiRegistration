@@ -73,3 +73,23 @@ def studentDB(Model):
 
     def login(Model):
         pass
+
+    def createFaculty(request):
+    person = Faculty.objects.create(
+        names = request.POST['names'],
+        department = request.POST['department'],
+        designation = request.POST['designation'],
+        macadd = request.POST['macadd'],
+        system = request.POST['system'],
+        others = request.POST['others'],
+        email = request.POST['email'],
+        phone = request.POST['phone'],
+        facultys = request.POST['facultys'],
+        upload = request.POST['upload'],
+        date = request.POST['date'],
+    )
+    return render('Wifi_App/faculty.html', {'person':person})
+        
+def show(request):
+    persons = Faculty.objects.all()
+    return render(request, "Wifi_App/show.html", {'persons':persons})

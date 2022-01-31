@@ -20,5 +20,6 @@ class Faculty(models.Model):
     email = models.EmailField(primary_key=True, max_length=50, unique=True, verbose_name='Email')
     phone = models.DecimalField(max_digits=11, decimal_places=0, unique=True, verbose_name='Phone No')
     facultys = models.CharField(max_length=10, verbose_name='Faculty Name')
-    upload = models.ImageField(height_field=None, width_field=None, verbose_name='Signature')
-    date = models.DateTimeField(auto_now_add=True)
+
+    class Meta():
+        db_table = "staff"

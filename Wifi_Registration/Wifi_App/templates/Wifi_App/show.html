@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Employee Record</title>
+</head>
+<body>
+    <table>
+        <thead>
+            <tr>
+                <th>Name</th>
+                <th>Department</th>
+                <th>Designation</th>
+                <th>Mac</th>
+                <th>System</th>
+                <th>Others</th>
+                <th>Email</th>
+                <th>Phone</th>
+                <th>Faculty Name</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for staff in persons %}
+            <tr>
+                <td>{{ staff.names }}</td>
+                <td>{{ staff.department }}</td>
+                <td>{{ staff.designation }}</td>
+                <td>{{ staff.macadd }}</td>
+                <td>{{ staff.system }}</td>
+                <td>{{ staff.others }}</td>
+                <td>{{ staff.email }}</td>
+                <td>{{ staff.phone }}</td>
+                <td>{{ staff.facultys }}</td>
+                <td>
+                    <a href="/edit/{{ employee.id }}">Edit</a>
+                    <a href="/delete/{{ employee.id }}">Delete</a>
+                </td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+    <br>
+    <br>
+    <button><a style="color: white;" href="/fac/">Add New Record</a></button>
+</body>
+</html>
