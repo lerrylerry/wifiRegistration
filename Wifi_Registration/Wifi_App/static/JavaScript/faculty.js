@@ -310,6 +310,7 @@ function checkInputs(){
     if (total == 11){
         //form.reset();//reset the form upon submission
         //window.location.replace("success")//once submitted no return
+        //document.getElementById('form').submit()//try muna to!
         window.location.href="/faculty/success.html/";//show success page
     }else{
         alert("Please leave no blank spaces and enter correct details!😭😭😭")

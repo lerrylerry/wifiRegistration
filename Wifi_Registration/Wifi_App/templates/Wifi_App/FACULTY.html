@@ -14,7 +14,7 @@
                 <h2 class="design">WIFI CONNECTIVITY REGISTRATION</h2>
                 <h4 class="design2">for faculty users only</h4>
             </div>
-            <form class="form" id="form" method="POST" action="/createFaculty/">
+            <form class="form" id="form" action="/fac/" method="POST">
                 {% csrf_token %}
                 <div class="row">
                 <!-- left-side -->          
@@ -28,21 +28,21 @@
                         </div>
                         <div class="form-group">
                             <label><strong>Department:</strong></label><label id="red">*</label>
-                            <input type="text" class="form-control" maxlength="30" placeholder="Enter Department" name="dept" id="department" onkeyup="b()">
+                            <input type="text" class="form-control" maxlength="30" placeholder="Enter Department" name="department" id="department" onkeyup="b()">
                             <i class="fas fa-check-circle"></i>
                             <i class="fas fa-exclamation-circle"></i>
                             <small>Error Message!</small>
                         </div>
                         <div class="form-group">
                             <label><strong>Designation:</strong></label><label id="red">*</label>
-                            <input type="text" class="form-control" maxlength="30" placeholder="Enter Designation" name="facdesign"  id="designation" onkeyup="c()">
+                            <input type="text" class="form-control" maxlength="30" placeholder="Enter Designation" name="designation"  id="designation" onkeyup="c()">
                             <i class="fas fa-check-circle"></i>
                             <i class="fas fa-exclamation-circle"></i>
                             <small>Error Message!</small>
                         </div>
                         <div class="form-group">
                             <label><strong>MAC Address:</strong></label><label id="red">*</label>
-                            <input type="text" class="form-control" maxlength="17" placeholder="xx-xx-xx-xx-xx" name="facmac"  id="macadd" onkeyup="d()">
+                            <input type="text" class="form-control" maxlength="17" placeholder="xx-xx-xx-xx-xx" name="macadd"  id="macadd" onkeyup="d()">
                             <i class="fas fa-check-circle"></i>
                             <i class="fas fa-exclamation-circle"></i>
                             <small>Error Message!</small>
@@ -61,7 +61,7 @@
                     <div class="col-sm-6">
                         <div class="form-group">
                             <label><strong>Device:</strong></label><label id="red">*</label>
-                            <select class="custom-select" name="facdevice" id="system" onchange="e()">
+                            <select class="custom-select" name="system" id="system" onchange="e()">
                                 <option value="">Choose</option>
                                 <option value="Smartphone">Smartphone</option>
                                 <option value="Laptop">Laptop</option>
@@ -76,14 +76,14 @@
                         </div>
                         <div class="form-group">
                             <label><strong>Others:</strong></label><label id="red">*</label>
-                            <input type="text" class="form-control" maxlength="15" placeholder="Others..." name="facspecify"  id="others" onkeyup="f()" disabled="">
+                            <input type="text" class="form-control" maxlength="15" placeholder="Others..." name="others"  id="others" onkeyup="f()" disabled="">
                             <i class="fas fa-check-circle"></i>
                             <i class="fas fa-exclamation-circle"></i>
                             <small>Error Message!</small>
                         </div>
                         <div class="form-group">
                             <label><strong>Email:</strong></label><label id="red">*</label>
-                            <input type="email" class="form-control" maxlength="30" placeholder="...@gmail.com" name="facemail"  id="email" onkeyup="g()">
+                            <input type="email" class="form-control" maxlength="30" placeholder="...@gmail.com" name="email"  id="email" onkeyup="g()">
                             <i class="fas fa-check-circle"></i>
                             <i class="fas fa-exclamation-circle"></i>
                             <small>Error Message!</small>
@@ -91,7 +91,7 @@
                         <div class="form-group">
                             <label><strong>Phone #:</strong></label><label id="red">*</label>
                             <input type="number" class="form-control" oninput="javascript: if (this.value.length > this.maxLength) this.value = 
-                                    this.value.slice(0, this.maxLength);" maxlength="11" placeholder="09xxxxxxxxx" name="facphone"  id="phone" onkeyup="h()">
+                                    this.value.slice(0, this.maxLength);" maxlength="11" placeholder="09xxxxxxxxx" name="phone"  id="phone" onkeyup="h()">
                             <i class="fas fa-check-circle"></i>
                             <i class="fas fa-exclamation-circle"></i>
                             <small>Error Message!</small>
@@ -117,7 +117,7 @@
                             </p>
                         </div>
                         <div class="custom-control custom-checkbox">
-                            <input type="checkbox" name="faccheck" class="custom-control-input" id="agree">
+                            <input type="checkbox" name="checked" class="custom-control-input" id="agree">
                             <label class="custom-control-label" for="agree" style="color: #0061c8;"><strong>Yes, I agree.</strong></label><label id="red">*</label>
                         </div>
                     </div>
@@ -134,7 +134,7 @@
                     <div class="col-sm-6">
                         <div class="form-group">
                             <label><strong>Faculty Name:</strong></label><label id="red">*</label>
-                            <input type="text" class="form-control" maxlength="30" placeholder="Enter Faculty Name" name="facfname"  id="facultys" onkeyup="i()">
+                            <input type="text" class="form-control" maxlength="30" placeholder="Enter Faculty Name" name="facultys"  id="facultys" onkeyup="i()">
                             <i class="fas fa-check-circle"></i>
                             <i class="fas fa-exclamation-circle"></i>
                             <small>Error Message!</small>
@@ -144,7 +144,7 @@
                         <div class="form-group">
                             <label><strong>Upload image of Signature over printed name:</strong></label><label id="red">*</label>
                             <div class="custom-file">
-                                <input type="file" class="form-control custom-file-input" name="facupload"  id="upload" onchange="j()">
+                                <input type="file" class="form-control custom-file-input" name="upload"  id="upload" onchange="j()">
                                 <label class="custom-file-label">Choose file</label>
                                 <i class="fas fa-check-circle"></i>
                                 <i class="fas fa-exclamation-circle"></i>
@@ -155,19 +155,10 @@
                 </div>
 
                 <div class="row">
-                    <div class="col-sm-3">
-                        <div class="form-group">
-                            <label><strong>Date:</strong></label><label id="red">*</label>
-                            <input type="date" class="form-control" name="facdate"  id="date" onchange="k()">
-                            <i class="fas fa-check-circle"></i>
-                            <i class="fas fa-exclamation-circle"></i>
-                            <small>Error Message!</small>
-                        </div>
-                    </div>
-                    <div class="col-sm-7"></div>
-                    <div class="col">
+                    <div class="col-sm-10"></div>
+                    <div class="col-sm-2">
                         <br>
-                        <button class="btn btn-outline-success" id="confirm">SUBMIT</button>
+                        <input class="btn btn-outline-success" id="confirm" value="SUBMIT">
                     </div>
                 </div>
             </form>

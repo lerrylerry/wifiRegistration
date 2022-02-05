@@ -74,22 +74,35 @@ def studentDB(Model):
     def login(Model):
         pass
 
-    def createFaculty(request):
-    person = Faculty.objects.create(
-        names = request.POST['names'],
-        department = request.POST['department'],
-        designation = request.POST['designation'],
-        macadd = request.POST['macadd'],
-        system = request.POST['system'],
-        others = request.POST['others'],
-        email = request.POST['email'],
-        phone = request.POST['phone'],
-        facultys = request.POST['facultys'],
-        upload = request.POST['upload'],
-        date = request.POST['date'],
-    )
-    return render('Wifi_App/faculty.html', {'person':person})
-        
-def show(request):
-    persons = Faculty.objects.all()
-    return render(request, "Wifi_App/show.html", {'persons':persons})
+                <div class="row">
+                    <div class="col-sm-3">
+                        <div class="form-group">
+                            <label><strong>Date:</strong></label><label id="red">*</label>
+                            <input type="date" class="form-control" name="idate"  id="date" onchange="k()">
+                            <i class="fas fa-check-circle"></i>
+                            <i class="fas fa-exclamation-circle"></i>
+                            <small>Error Message!</small>
+                        </div>
+                    </div>
+
+
+                                    <div class="row">
+                    <div class="col-sm-6">
+                        <div class="form-group">
+                            <label><strong>Name:</strong></label><label id="red">*</label>
+                            <input type="text" class="form-control" maxlength="12" placeholder="Enter Name" name="stuname" id="uname" onkeyup="m()">
+                            <i class="fas fa-check-circle"></i>
+                            <i class="fas fa-exclamation-circle"></i>
+                            <small>Error Message!</small>
+                        </div>   
+                    </div>
+                    <div class="col-sm-6">
+                        <div class="form-group">
+                            <label><strong>Password:</strong></label><label id="red">*</label>
+                            <input type="text" class="form-control" maxlength="12" placeholder="Enter Password" name="stpass" id="pass" onkeyup="n()">
+                            <i class="fas fa-check-circle"></i>
+                            <i class="fas fa-exclamation-circle"></i>
+                            <small>Error Message!</small>
+                        </div>   
+                    </div>
+                </div>
