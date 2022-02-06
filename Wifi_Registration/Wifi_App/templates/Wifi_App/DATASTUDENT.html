@@ -39,28 +39,45 @@
                </div>
                <table class="table">
                 <thead class="table-danger">
-                   <tr>
-                      <th scope="col" style="text-align: center;">Name</th>
-                      <th scope="col" style="text-align: center;">Type</th>
-                      <th scope="col" style="text-align: center;">Mac Address</th>
-                      <th scope="col" style="text-align: center;">Approval</th>
-                   </tr>
-                </thead>
-                <tbody>
                     <tr>
-                        <th scope="row" style="text-align: center;">Galano, George Louis</th>
-                        <td style="text-align: center;">STUDENT</td>
-                        <td style="text-align: center;">74:4C:A1:7F:45:9B</td>
-                        <td style="text-align: center;">
-                          <span >
-                              <button class="btn btn-success" type="submit" style="padding: 10px 24px;">Approve</button>
-                          </span>
-                          <span>
-                              <button class="btn btn-danger" type="submit" style="padding: 10px 32px;">Reject</button>
-                          </span>
-                      </td>
+                       <th scope="col" style="text-align: center;">Name</th>
+                       <th scope="col" style="text-align: center;">Course</th>
+                       <th scope="col" style="text-align: center;">Semester</th>
+                       <th scope="col" style="text-align: center;">TUPC-ID</th>
+                       <th scope="col" style="text-align: center;">Or No.</th>
+                       <th scope="col" style="text-align: center;">Phone No.</th>
+                       <th scope="col" style="text-align: center;">System</th>
+                       <th scope="col" style="text-align: center;">Others</th>
+                       <th scope="col" style="text-align: center;">Mac Address</th>
+                       <th scope="col" style="text-align: center;">Email</th>
+                       <th scope="col" style="text-align: center;">Home Address</th>
+                       <th scope="col" style="text-align: center;">Approval</th>
                     </tr>
-                </tbody>
+                 </thead>
+                 <tbody>
+                   {% for i in data2 %}
+                   <tr>
+                       <th scope="row" style="text-align: center;">{{ i.snames }}</th>
+                       <td style="text-align: center;">{{ i.scourse }}</td>
+                       <td style="text-align: center;">{{ i.ssemester }}</td>
+                       <td style="text-align: center;">{{ i.stupid }}</td>
+                       <td style="text-align: center;">{{ i.sornum }}</td>
+                       <td style="text-align: center;">{{ i.sphone }}</td>
+                       <td style="text-align: center;">{{ i.ssystem }}</td>
+                       <td style="text-align: center;">{{ i.sothers }}</td>
+                       <td style="text-align: center;">{{ i.smacadd }}</td>
+                       <td style="text-align: center;">{{ i.semail }}</td>
+                       <td style="text-align: center;">{{ i.sresidAdd }}</td>
+                       <td style="text-align: center;">
+                         <span >
+                             <a href="/acceptStudent/{{ add.id }}" class="btn btn-success" style="padding: 10px 24px;">Approve</a>
+                         </span>
+                         <span>
+                             <a href="/rejectStudent/{{ add.id }}" class="btn btn-danger" style="padding: 10px 32px;">Reject</a>
+                         </span>
+                     </td>
+                   </tr>
+               </tbody>
              </table>
             </div>
           </div>

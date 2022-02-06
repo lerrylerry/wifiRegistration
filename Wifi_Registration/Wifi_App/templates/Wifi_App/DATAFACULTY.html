@@ -38,18 +38,45 @@
                        </select> 
                    </div>
                </div>
-               <table class="table" id="tfaculty">
+               <table class="table">
                 <thead class="table-danger">
                    <tr>
                       <th scope="col" style="text-align: center;">Name</th>
                       <th scope="col" style="text-align: center;">Department</th>
                       <th scope="col" style="text-align: center;">Designation</th>
                       <th scope="col" style="text-align: center;">Mac Address</th>
+                      <th scope="col" style="text-align: center;">System</th>
+                      <th scope="col" style="text-align: center;">Others</th>
                       <th scope="col" style="text-align: center;">Email</th>
-                      <th scope="col" style="text-align: center;">Phone No.#</th>
+                      <th scope="col" style="text-align: center;">Phone No.</th>
+                      <th scope="col" style="text-align: center;">Faculty Name</th>
+                      <th scope="col" style="text-align: center;">Time</th>
                       <th scope="col" style="text-align: center;">Approval</th>
                    </tr>
                 </thead>
+                <tbody>
+                  {% for i in data %}
+                  <tr>
+                      <th scope="row" style="text-align: center;">{{ i.fnames }}</th>
+                      <td style="text-align: center;">{{ i.fdepartment }}</td>
+                      <td style="text-align: center;">{{ i.fdesignation }}</td>
+                      <td style="text-align: center;">{{ i.fmacadd }}</td>
+                      <td style="text-align: center;">{{ i.fsystem }}</td>
+                      <td style="text-align: center;">{{ i.fothers }}</td>
+                      <td style="text-align: center;">{{ i.femail }}</td>
+                      <td style="text-align: center;">{{ i.fphone }}</td>
+                      <td style="text-align: center;">{{ i.ffacultys }}</td>
+                      <td style="text-align: center;">{{ i.fdate }}</td>
+                      <td style="text-align: center;">
+                        <span >
+                            <a href="/acceptFaculty/{{ add.id }}" class="btn btn-success" style="padding: 10px 24px;">Approve</a>
+                        </span>
+                        <span>
+                            <a href="/rejectFaculty/{{ add.id }}" class="btn btn-danger" style="padding: 10px 32px;">Reject</a>
+                        </span>
+                    </td>
+                  </tr>
+              </tbody>
              </table>
             </div>
           </div>

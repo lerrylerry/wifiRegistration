@@ -23,14 +23,14 @@ def readFaculty(request):
 
 # request view of student
 def readStudent(request):
-    data = Student.objects.all()
-    context = {"student_request" : data}
+    data2 = Student.objects.all()
+    context = {"student_request" : data2}
     return render(request, 'Wifi_App/DATASTUDENT.html', context)
 
 # data history view
 def readHistory(request):
-    data = History.objects.all()
-    context = {"history" : data}
+    data3 = History.objects.all()
+    context = {"history" : data3}
     return render(request, 'Wifi_App/DATAHISTORY.html', context)
 
 def success(request):

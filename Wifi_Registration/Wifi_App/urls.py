@@ -1,3 +1,4 @@
+from unicodedata import name
 from django.urls import path
 
 from  . import views
@@ -12,5 +13,9 @@ urlpatterns = [
     path('dh/', views.readHistory, name='datahistory'),
     path('faculty/success.html/', views.success, name='success'),
     path('student/success.html/', views.success, name='success'),
-    path('createFaculty/', views.createFaculty),
+    path('createFaculty/<int:id>', views.createFaculty, name='createFaculty'),
+    path('acceptFaculty/<int:id>', views.acceptFaculty, name='acceptFaculty'),
+    path('acceptStudent/<int:id>', views.acceptStudent, name='acceptStudent'),
+    path('rejectFaculty/<int:id>', views.rejectFaculty, name='rejectFaculty'),
+    path('rejectStudent/<int:id>', views.readStudent, name='rejectStudent'),
 ]
