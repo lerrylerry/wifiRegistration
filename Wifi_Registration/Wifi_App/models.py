@@ -74,6 +74,7 @@ class Student(models.Model):
     smacadd = models.CharField(max_length=14)
     semail = models.EmailField(max_length=50, unique=True)
     sresidAdd = models.CharField(max_length=200)
+    supload = models.ImageField()
     schecked = models.BooleanField()
     stype = models.CharField(max_length=10)
     smark = models.CharField(max_length=10, blank=True, null=True ,default="Pending")
