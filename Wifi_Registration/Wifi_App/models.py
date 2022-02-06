@@ -5,10 +5,10 @@ from django.core.exceptions import ValidationError
 # Create your models here.
 
 class Faculty(models.Model):
-    names = models.CharField(max_length=50)
-    department = models.CharField(max_length=50)
-    designation = models.CharField(max_length=50)
-    macadd = models.CharField(max_length=14)
+    fnames = models.CharField(max_length=50)
+    fdepartment = models.CharField(max_length=50)
+    fdesignation = models.CharField(max_length=50)
+    fmacadd = models.CharField(max_length=14)
     Device = [
                 ('Smartphone' , 'Smartphone'),
                 ('Laptop' , 'Laptop'),
@@ -17,17 +17,19 @@ class Faculty(models.Model):
                 ('Desktop' , 'Desktop')
             ]
 
-    system = models.CharField(max_length=15, choices=Device)
-    others = models.CharField(max_length=15, null=True, blank=True, default="None")
-    email = models.EmailField(primary_key=True, max_length=50, unique=True)
-    phone = models.DecimalField(max_digits=11, decimal_places=0, unique=True, verbose_name='Phone No')
-    checked = models.BooleanField()
-    facultys = models.CharField(max_length=10)
-    upload = models.ImageField()
-    date = models.DateTimeField(auto_now_add=True)
+    fsystem = models.CharField(max_length=15, choices=Device)
+    fothers = models.CharField(max_length=15, null=True, blank=True, default="None")
+    femail = models.EmailField(primary_key=True, max_length=50, unique=True)
+    fphone = models.DecimalField(max_digits=11, decimal_places=0, unique=True, verbose_name='Phone No')
+    fchecked = models.BooleanField()
+    ffacultys = models.CharField(max_length=10)
+    fupload = models.ImageField()
+    fdate = models.DateTimeField(auto_now_add=True)
+    ftype = models.CharField(max_length=10)
+    fmark = models.CharField(max_length=10, blank=True, null=True ,default="Pending")
 
 class Student(models.Model):
-    names = models.CharField(max_length=50)
+    snames = models.CharField(max_length=50)
     Course = [
                 ('BSCE','BSCE'),
                 ('BSEE','BSEE'),
@@ -48,17 +50,17 @@ class Student(models.Model):
                 ('BET-CP','BET-CP')
     ]
 
-    course = models.CharField(max_length=50, choices=Course)
+    scourse = models.CharField(max_length=50, choices=Course)
     Semester = [
                 ('First Semester','First Semester'),
                 ('Second Semester','Second Semester'),
                 ('Others...','Others...')
     ]
 
-    semester = models.CharField(max_length=20, choices=Semester)
-    tupid = models.IntegerField(primary_key=True)
-    ornum = models.IntegerField()
-    phone = models.DecimalField(max_digits=11, decimal_places=0, unique=True)
+    ssemester = models.CharField(max_length=20, choices=Semester)
+    stupid = models.IntegerField(primary_key=True)
+    sornum = models.IntegerField()
+    sphone = models.DecimalField(max_digits=11, decimal_places=0, unique=True)
     Device = [
                 ('Smartphone' , 'Smartphone'),
                 ('Laptop' , 'Laptop'),
@@ -67,12 +69,22 @@ class Student(models.Model):
                 ('Desktop' , 'Desktop')
             ]
 
-    system = models.CharField(max_length=15, choices=Device, default='')
-    others = models.CharField(max_length=15, null=True, blank=True)
-    macadd = models.CharField(max_length=14)
-    email = models.EmailField(max_length=50, unique=True)
-    residAdd = models.CharField(max_length=200)
-    checked = models.BooleanField()
+    ssystem = models.CharField(max_length=15, choices=Device, default='')
+    sothers = models.CharField(max_length=15, null=True, blank=True)
+    smacadd = models.CharField(max_length=14)
+    semail = models.EmailField(max_length=50, unique=True)
+    sresidAdd = models.CharField(max_length=200)
+    schecked = models.BooleanField()
+    stype = models.CharField(max_length=10)
+    smark = models.CharField(max_length=10, blank=True, null=True ,default="Pending")
+    
+class History(models.Model):
+    names2 = models.CharField(max_length=50)
+    email2 = models.EmailField(max_length=50, unique=True)
+    macadd2 = models.CharField(max_length=14)
+    kind = models.CharField(max_length=8)
+    marked = models.CharField(max_length=8)
+    timed = models.DateTimeField(auto_now_add=True)
 
 class adminlogin(models.Model):
     pass

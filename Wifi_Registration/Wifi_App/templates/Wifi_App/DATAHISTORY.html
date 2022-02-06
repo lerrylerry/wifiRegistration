@@ -24,31 +24,23 @@
          <thead class="table-danger">
             <tr>
                <th scope="col" style="text-align: center;">Name</th>
-               <th scope="col" style="text-align: center;">Department</th>
-               <th scope="col" style="text-align: center;">Designation</th>
-               <th scope="col" style="text-align: center;">Mac Address</th>
-               <th scope="col" style="text-align: center;">Device</th>
-               <th scope="col" style="text-align: center;">Others</th>
                <th scope="col" style="text-align: center;">Email</th>
-               <th scope="col" style="text-align: center;">Phone No.</th>
-               <th scope="col" style="text-align: center;">Faculty Name</th>
+               <th scope="col" style="text-align: center;">Mac Address</th>
+               <th scope="col" style="text-align: center;">Type</th>
+               <th scope="col" style="text-align: center;">Status</th>
+               <th scope="col" style="text-align: center;">Time of Request</th>
                <th scope="col" style="text-align: center;">Time of Approval</th>
             </tr>
          </thead>
          <tbody>
-            {% for staff in persons %}
+            {% for i in data %}
             <tr>
-               <th scope="row" style="text-align: center;">{{ staff.names }}</th>
-               <td style="text-align: center;">{{ staff.department }}</td>
-               <td style="text-align: center;">{{ staff.designation }}</td>
-               <td style="text-align: center;">{{ staff.macadd }}</td>
-               <td style="text-align: center;">{{ staff.system }}</td>
-               <td style="text-align: center;">{{ staff.others }}</td>
-               <td style="text-align: center;">{{ staff.email }}</td>
-               <td style="text-align: center;">{{ staff.phone }}</td>
-               <td style="text-align: center;">{{ staff.facultys }}</td>
-               <td style="text-align: center;">{{ staff.upload }}</td>
-               <td style="text-align: center;">{{ staff.date }}</td>
+               <th scope="row" style="text-align: center;">{{ i.names2}}</th>
+               <td style="text-align: center;">{{ i.email2 }}</td>
+               <td style="text-align: center;">{{ i.macadd2 }}</td>
+               <td style="text-align: center;">{{ i.kind }}</td>
+               <td style="text-align: center;">{{ i.marked }}</td>
+               <td style="text-align: center;">{{ i.timed }}</td>
             </tr>
             {% endfor %}
          </tbody>

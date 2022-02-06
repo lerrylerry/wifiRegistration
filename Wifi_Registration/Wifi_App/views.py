@@ -1,7 +1,7 @@
 from django.shortcuts import render, redirect
-from Wifi_App.models import Faculty, Student
+from Wifi_App.models import Faculty, Student, History
 
-# Buttons
+# Buttons===============
 
 def index(request):
     return render(request, 'Wifi_App/HOMEPAGE.html')
@@ -15,19 +15,28 @@ def student(request):
 def admin(request):
     return render(request, 'Wifi_App/ADMINLOGIN.html')
 
-def dataReq(request):
-    return render(request, 'Wifi_App/DATA REQUEST.html')
+# request view of faculty
+def readFaculty(request):
+    data = Faculty.objects.all()
+    context = {"faculty_request" : data}
+    return render(request, 'Wifi_App/DATAFACULTY.html', context)
 
-def dataFac(request):
-    return render(request, 'Wifi_App/DATAFACULTY.html')
+# request view of student
+def readStudent(request):
+    data = Student.objects.all()
+    context = {"student_request" : data}
+    return render(request, 'Wifi_App/DATASTUDENT.html', context)
 
-def dataHis(request):
-    return render(request, 'Wifi_App/DATAHISTORY.html')
+# data history view
+def readHistory(request):
+    data = History.objects.all()
+    context = {"history" : data}
+    return render(request, 'Wifi_App/DATAHISTORY.html', context)
 
 def success(request):
     return render(request, 'Wifi_App/success.html')
 
-# CRUD/OTHERS
+# CRUD/OTHERS================
 
 # Create a faculty request
 def createFaculty(request):
@@ -51,6 +60,17 @@ def createFaculty(request):
                 submit.facultys = request.POST.get('facultys')
 
                 submit.save()
+
+                # for the faculty history
+                history = History()
+                history.names2 = request.POST.get('fname')
+                history.email2 = request.POST.get('femail')
+                history.macadd2 = request.POST.get('fmacadd')
+                history.marked = 'Pending'
+                history.kind = 'Faculty'
+
+                history.save()
+
                 return redirect('/faculty/success.html/')
 
             else:
@@ -72,20 +92,31 @@ def createStudent(request):
                 and request.POST.get('email') and request.POST.get('residAdd') and request.POST.get('checked'):
 
                 submit = Student()
-                submit.names = request.POST.get('names')
-                submit.course = request.POST.get('course')
-                submit.semester = request.POST.get('semester')
-                submit.tupid = request.POST.get('tupid')
-                submit.ornum = request.POST.get('ornum')
-                submit.phone = request.POST.get('phone')
-                submit.system = request.POST.get('system')
-                submit.others = request.POST.get('others')
-                submit.macadd = request.POST.get('macadd')
-                submit.email = request.POST.get('email')
-                submit.residAdd = request.POST.get('residAdd')
-                submit.checked = request.POST.get('checked')
+                submit.snames = request.POST.get('snames')
+                submit.scourse = request.POST.get('scourse')
+                submit.ssemester = request.POST.get('ssemester')
+                submit.stupid = request.POST.get('stupid')
+                submit.sornum = request.POST.get('sornum')
+                submit.sphone = request.POST.get('sphone')
+                submit.ssystem = request.POST.get('ssystem')
+                submit.sothers = request.POST.get('sothers')
+                submit.smacadd = request.POST.get('smacadd')
+                submit.semail = request.POST.get('semail')
+                submit.sresidAdd = request.POST.get('sresidAdd')
+                #submit.schecked = request.POST.get('schecked')
 
                 submit.save()
+
+                # for the student history
+                history = History()
+                history.names2 = request.POST.get('sname')
+                history.email2 = request.POST.get('semail')
+                history.macadd2 = request.POST.get('smacadd')
+                history.marked = 'Pending'
+                history.kind = 'Student'
+
+                history.save()
+
                 return redirect('/faculty/success.html/')
 
             else:
@@ -96,23 +127,40 @@ def createStudent(request):
     else:
         return render(request, 'Wifi_App/STUDENT.html')
 
-def acceptFaculty():
-    pass
+# accept faculty
+def acceptFaculty(request, faculty_pk):
+    add = Faculty.objects.get(pk = faculty_pk)
+    add.delete()
+    add.fmark = 'Accepted' # changing pending status to 'Accepted'
+    add.save()
 
-def acceptStudent():
-    pass
+    # remove this if the creation works
+    history = History.objects.all() # getting data for history
+    context = {"history":history}
 
-def rejectFaculty():
-    pass
+    return render(request, 'Wifi/DATAHISTORY.html', context)
 
-def rejectStudent():
-    pass
+#accept student
+def acceptStudent(request, student_pk):
+    add = Student.objects.get(pk = student_pk)
+    add.delete()
+    add.smark = 'Accepted' # changing pending status to 'Accepted'
+    add.save()
 
-def readFaculty():
-    pass
+    # remove this if the creation works
+    history = History.objects.all() # getting data for student
+    context = {"history":history}
 
-def readStudent():
-    pass
+    return render(request, 'Wifi/DATAHISTORY.html', context)
 
-def readHistory():
-    pass
+# reject faculty
+def rejectFaculty(request, faculty_pk):
+    remove = Faculty.objects.get(pk = faculty_pk)
+    remove.delete()
+    return redirect('/df')
+
+# reject student
+def rejectStudent(request, student_pk):
+    remove = Student.objects.get(pk = student_pk)
+    remove.delete()
+    return redirect('/dr')
