@@ -89,4 +89,5 @@ class History(models.Model):
     #last = models.ForeignKey(Student, on_delete=models.CASCADE, blank=True, null=True)
 
 class adminlogin(models.Model):
-    pass
+    username = models.CharField(max_length=50)
+    adminpw = models.CharField(max_length=20)
