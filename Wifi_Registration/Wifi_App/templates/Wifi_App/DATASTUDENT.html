@@ -55,7 +55,7 @@
                     </tr>
                  </thead>
                  <tbody>
-                   {% for i in data2 %}
+                   {% for i in student_request %}
                    <tr>
                        <th scope="row" style="text-align: center;">{{ i.snames }}</th>
                        <td style="text-align: center;">{{ i.scourse }}</td>
@@ -70,13 +70,14 @@
                        <td style="text-align: center;">{{ i.sresidAdd }}</td>
                        <td style="text-align: center;">
                          <span >
-                             <a href="/acceptStudent/{{ add.id }}" class="btn btn-success" style="padding: 10px 24px;">Approve</a>
+                             <a href="/acceptStudent/{{ i.semail }}" class="btn btn-success" style="padding: 10px 24px;">Approve</a>
                          </span>
                          <span>
-                             <a href="/rejectStudent/{{ add.id }}" class="btn btn-danger" style="padding: 10px 32px;">Reject</a>
+                             <a href="/rejectStudent/{{ i.semail }}" class="btn btn-danger" style="padding: 10px 32px;">Reject</a>
                          </span>
                      </td>
                    </tr>
+                   {% endfor %}
                </tbody>
              </table>
             </div>

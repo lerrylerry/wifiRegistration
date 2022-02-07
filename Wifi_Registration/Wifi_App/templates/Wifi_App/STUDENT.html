@@ -4,7 +4,6 @@
 {% block title %}
 <title>STUDENT FORM</title>
 <link rel="stylesheet" href="{% static 'CSS/ST-Design.css' %}">
-<script src="{% static 'JavaScript/student.js' %}" defer></script>
 {% endblock title %}
         
 {% block content %}
@@ -14,7 +13,8 @@
                 <h2 class="design">WIFI CONNECTIVITY REGISTRATION</h2>
                 <h4 class="design2">for student users only</h4>
             </div>
-            <form class="form" id="form" name="student_form" method="POST"  action="/createStudent/" onsubmit="return checkInputs();">
+            <form class="form" id="form" name="student_form" method="POST"  action="/student/" onsubmit="return checkInputs();">
+                {% csrf_token %}
                 <div class="row">
                 <!-- left-side -->
                     <div class="col-sm-6">
@@ -106,7 +106,7 @@
                         </div>
                         <div class="form-group">
                             <label><strong>Others:</strong></label><label id="red">*</label>
-                            <input type="text" class="form-control" maxlength="15" placeholder="Others..." name="sothers" id="others" onkeyup="h()" disabled="">
+                            <input type="text" class="form-control" maxlength="15" placeholder="Others..." name="sothers" id="others" onkeyup="h()">
                             <i class="fas fa-check-circle"></i>
                             <i class="fas fa-exclamation-circle"></i>
                             <small>Error Message!</small>
@@ -152,7 +152,7 @@
                             </p>
                         </div>
                         <div class="custom-control custom-checkbox">
-                            <input type="checkbox" name="schecked" class="custom-control-input" id="agree">
+                            <input type="checkbox" name="schecked" class="custom-control-input" id="agree" required>
                             <label class="custom-control-label" for="agree" style="color: #0061c8;"><strong>Yes, I agree.</strong></label><label id="red">*</label>
                         </div>
                     </div>
@@ -194,4 +194,47 @@
             </form>
         </div>
     </body>
+    <script type="text/javascript">
+        const patternMac = /^([0-9a-f]{2}([:-]|$)){6}$|([0-9a-f]{4}([.]|$)){3}$/gi;
+        const patternEmail = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/;
+        
+        function checkInputs(){
+            if (document.student_form.names.value == "" || document.student_form.course.value == "" ||
+                document.student_form.semester.value == "" || document.student_form.tupcnum.value == "" ||
+                document.student_form.orno.value == "" || document.student_form.phone.value == "" || document.student_form.system.value == "" &&
+                document.student_form.others.value == "" || document.student_form.macadd.value == "" || 
+                document.student_form.email.value == "" || document.student_form.residAdd.value == "" ||
+                document.student_form.upload.value == ""
+                ){
+                    alert("Please complete the form!");
+                }else{
+                    alert("Nice one!");
+                    window.location.href="/student/success.html/";
+                }
+            
+        }
+    </script>
+    <script>
+        $('#names').tooltip({title: "Please fill out this field👍", placement:"top",  trigger: "hover"});
+        $('#department').tooltip({title: "Please fill out this field👍", placement:"top",  trigger: "hover"});
+        $('#designation').tooltip({title: "Please fill out this field👍", placement:"top",  trigger: "hover"});
+        $('#macadd').tooltip({title: "Please fill out this field👍", placement:"top",  trigger: "hover"});
+        $('#system').tooltip({title: "Please fill out this field👍", placement:"top",  trigger: "hover"});
+        $('#others').tooltip({title: "Please fill out this field👍", placement:"top",  trigger: "hover"});
+        $('#email').tooltip({title: "Please fill out this field👍", placement:"top",  trigger: "hover"});
+        $('#phone').tooltip({title: "Please fill out this field👍", placement:"top",  trigger: "hover"});
+        $('#system').tooltip({title: "Please select item in the list👍", placement:"top",  trigger: "hover"});
+        $('#others').tooltip({title: "Please fill out this field👍", placement:"top",  trigger: "hover"});
+        $('#facultys').tooltip({title: "Please fill out this field👍", placement:"top",  trigger: "hover"});
+        $('#date').tooltip({title: "Enter current date👍", placement:"top",  trigger: "hover"});
+        $('#upload').tooltip({title: "Submit image file('png','jpg','jpg')👍", placement:"top",  trigger: "hover"});
+
+        $("input[type='file']").click(function () {
+            $("input[id='upload']").click();
+        });
+        $("input[id='upload']").change(function (e) {
+            var $this = $(this);
+            $this.next().html($this.val().split('\\').pop());
+        });
+    </script>
     {% endblock content %}

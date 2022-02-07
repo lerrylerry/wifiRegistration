@@ -1,4 +1,3 @@
-from tabnanny import check
 from django.db import models
 from django.core.exceptions import ValidationError
 
@@ -19,14 +18,14 @@ class Faculty(models.Model):
 
     fsystem = models.CharField(max_length=15, choices=Device)
     fothers = models.CharField(max_length=15, null=True, blank=True, default="None")
-    femail = models.EmailField(primary_key=True, max_length=50, unique=True)
-    fphone = models.DecimalField(max_digits=11, decimal_places=0, unique=True, verbose_name='Phone No')
-    fchecked = models.BooleanField()
+    femail = models.EmailField(max_length=50, unique=True, primary_key=True)
+    fphone = models.IntegerField(unique=True)
+    #fchecked = models.BooleanField()
     ffacultys = models.CharField(max_length=10)
     fupload = models.ImageField()
     fdate = models.DateTimeField(auto_now_add=True)
     ftype = models.CharField(max_length=10)
-    fmark = models.CharField(max_length=10, blank=True, null=True ,default="Pending")
+    fmark = models.CharField(max_length=10)
 
 class Student(models.Model):
     snames = models.CharField(max_length=50)
@@ -58,9 +57,9 @@ class Student(models.Model):
     ]
 
     ssemester = models.CharField(max_length=20, choices=Semester)
-    stupid = models.IntegerField(primary_key=True)
+    stupid = models.CharField(max_length=12)
     sornum = models.IntegerField()
-    sphone = models.DecimalField(max_digits=11, decimal_places=0, unique=True)
+    sphone = models.IntegerField(unique=True)
     Device = [
                 ('Smartphone' , 'Smartphone'),
                 ('Laptop' , 'Laptop'),
@@ -69,15 +68,15 @@ class Student(models.Model):
                 ('Desktop' , 'Desktop')
             ]
 
-    ssystem = models.CharField(max_length=15, choices=Device, default='')
+    ssystem = models.CharField(max_length=15, choices=Device)
     sothers = models.CharField(max_length=15, null=True, blank=True)
     smacadd = models.CharField(max_length=14)
-    semail = models.EmailField(max_length=50, unique=True)
+    semail = models.EmailField(max_length=50, unique=True, primary_key=True)
     sresidAdd = models.CharField(max_length=200)
     supload = models.ImageField()
-    schecked = models.BooleanField()
+    #schecked = models.BooleanField()
     stype = models.CharField(max_length=10)
-    smark = models.CharField(max_length=10, blank=True, null=True ,default="Pending")
+    smark = models.CharField(max_length=10)
     
 class History(models.Model):
     names2 = models.CharField(max_length=50)
@@ -86,6 +85,8 @@ class History(models.Model):
     kind = models.CharField(max_length=8)
     marked = models.CharField(max_length=8)
     timed = models.DateTimeField(auto_now_add=True)
+    #start = models.ForeignKey(Faculty, on_delete=models.CASCADE, blank=True, null=True)
+    #last = models.ForeignKey(Student, on_delete=models.CASCADE, blank=True, null=True)
 
 class adminlogin(models.Model):
     pass

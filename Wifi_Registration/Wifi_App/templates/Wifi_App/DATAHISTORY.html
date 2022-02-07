@@ -5,7 +5,7 @@
       
 {% block content %}
 <li class="nav-item">
-   <a class="nav-link dropdown" href="{% url 'datarequest' %}">REQUEST</a>
+   <a class="nav-link dropdown" href="{% url 'datafaculty' %}">REQUEST</a>
 </li>
 <li class="nav-item">
    <a class="nav-link" href="{% url 'datahistory' %}">HISTORY</a>
@@ -29,11 +29,10 @@
                <th scope="col" style="text-align: center;">Type</th>
                <th scope="col" style="text-align: center;">Status</th>
                <th scope="col" style="text-align: center;">Time of Request</th>
-               <th scope="col" style="text-align: center;">Time of Approval</th>
             </tr>
          </thead>
          <tbody>
-            {% for i in data3 %}
+            {% for i in history %}
             <tr>
                <th scope="row" style="text-align: center;">{{ i.names2}}</th>
                <td style="text-align: center;">{{ i.email2 }}</td>

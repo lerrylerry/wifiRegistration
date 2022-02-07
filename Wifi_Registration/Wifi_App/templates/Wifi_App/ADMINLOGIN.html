@@ -12,7 +12,8 @@
         <section class="container-fluid bg" style="background-image: url({% static 'Media/loginbg.jpg' %});">
             <section class="row justify-content-center">
                 <section class="col-12 col-sm-6 col-md-3">
-                    <form class="form-container" action="DATAFACULTY.html" method="post" name="login" onsubmit="return interactiveAdmin()">
+                    <form class="form-container" action="{% url 'datafaculty' %}" method="post" name="login" onsubmit="return interactiveAdmin()">
+                        {% csrf_token %}
                         <h4 style="color: white;" >Admin Login</h4>
                         <div class="form-group">
                             <label for="username" style="color: white;">Username:</label>

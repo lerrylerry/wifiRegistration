@@ -5,7 +5,7 @@
       
 {% block content %}
 <li class="nav-item">
-   <a class="nav-link dropdown" href="{% url 'datarequest' %}">REQUEST</a>
+   <a class="nav-link dropdown" href="{% url 'datastudent' %}">REQUEST</a>
 </li>
 <li class="nav-item">
   <a class="nav-link" href="{% url 'datahistory' %}">HISTORY</a>
@@ -15,7 +15,6 @@
 {% endblock content %}
 
 {% block body %}
-       <script src="faculty.js"></script>
           <div class="jumbotron table-responsive">
              <div class="card-body">
                <h5 class="card-title" style="margin-bottom: 50px;">WIFI REQUEST</h5>
@@ -55,27 +54,28 @@
                    </tr>
                 </thead>
                 <tbody>
-                  {% for i in data %}
+                  {% for var in faculty_request %}
                   <tr>
-                      <th scope="row" style="text-align: center;">{{ i.fnames }}</th>
-                      <td style="text-align: center;">{{ i.fdepartment }}</td>
-                      <td style="text-align: center;">{{ i.fdesignation }}</td>
-                      <td style="text-align: center;">{{ i.fmacadd }}</td>
-                      <td style="text-align: center;">{{ i.fsystem }}</td>
-                      <td style="text-align: center;">{{ i.fothers }}</td>
-                      <td style="text-align: center;">{{ i.femail }}</td>
-                      <td style="text-align: center;">{{ i.fphone }}</td>
-                      <td style="text-align: center;">{{ i.ffacultys }}</td>
-                      <td style="text-align: center;">{{ i.fdate }}</td>
+                      <th scope="row" style="text-align: center;">{{ var.fnames }}</th>
+                      <td style="text-align: center;">{{ var.fdepartment }}</td>
+                      <td style="text-align: center;">{{ var.fdesignation }}</td>
+                      <td style="text-align: center;">{{ var.fmacadd }}</td>
+                      <td style="text-align: center;">{{ var.fsystem }}</td>
+                      <td style="text-align: center;">{{ var.fothers }}</td>
+                      <td style="text-align: center;">{{ var.femail }}</td>
+                      <td style="text-align: center;">{{ var.fphone }}</td>
+                      <td style="text-align: center;">{{ var.ffacultys }}</td>
+                      <td style="text-align: center;">{{ var.fdate }}</td>
                       <td style="text-align: center;">
                         <span >
-                            <a href="/acceptFaculty/{{ add.id }}" class="btn btn-success" style="padding: 10px 24px;">Approve</a>
+                            <a href="/acceptFaculty/{{ var.femail }}" class="btn btn-success" style="padding: 10px 24px;">Approve</a>
                         </span>
                         <span>
-                            <a href="/rejectFaculty/{{ add.id }}" class="btn btn-danger" style="padding: 10px 32px;">Reject</a>
+                            <a href="/rejectFaculty/{{ var.femail }}" class="btn btn-danger" style="padding: 10px 32px;">Reject</a>
                         </span>
                     </td>
                   </tr>
+                  {% endfor %}
               </tbody>
              </table>
             </div>
