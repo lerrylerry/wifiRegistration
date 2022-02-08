@@ -150,7 +150,7 @@ def createStudent(request):
 
 
 # accept faculty
-def acceptFaculty(request, faculty_pk):
+def acceptFaculty(request,faculty_pk):
     try:
         added = Faculty.objects.get(pk=faculty_pk)
         added.fmark = 'Accepted' # changing pending status to 'Accepted'
@@ -185,7 +185,7 @@ def rejectFaculty(request,faculty2_pk):
         pass
 
 #accept student
-def acceptStudent(request, student_pk):
+def acceptStudent(request,student_pk):
     try:
         added = Student.objects.get(pk = student_pk)
         added.smark = 'Accepted' # changing pending status to 'Accepted'
@@ -206,6 +206,7 @@ def rejectStudent(request, student2_pk):
     try:
         removed = Student.objects.get(pk = student2_pk)
         removed.smark = 'Rejected' # changing pending status to 'Rejected'
+        removed.save()
 
         # -------
         forhis = History.objects.get(email2 = removed.semail)

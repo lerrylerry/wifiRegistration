@@ -14,7 +14,7 @@ urlpatterns = [
     #path('createFaculty/', views.createFaculty, name='createFaculty'),
     #path('createStudent/', views.createStudent, name='createStudent'),
     path('acceptFaculty/<faculty_pk>', views.acceptFaculty, name='acceptFaculty'),
-    path('acceptStudent/<student_pk>', views.acceptStudent, name='acceptStudent'),
     path('rejectFaculty/<faculty2_pk>', views.rejectFaculty, name='rejectFaculty'),
+    path('acceptStudent/<student_pk>', views.acceptStudent, name='acceptStudent'),
     path('rejectStudent/<student2_pk>', views.rejectStudent, name='rejectStudent'),
 ]

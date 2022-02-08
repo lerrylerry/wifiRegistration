@@ -206,7 +206,7 @@
                 document.student_form.email.value == "" || document.student_form.residAdd.value == "" ||
                 document.student_form.upload.value == ""
                 ){
-                    alert("Please complete the form!");
+                    alert("Please leave no blank spaces and enter correct details!😭😭😭");
                 }else{
                     alert("Nice one!");
                     window.location.href="/student/success.html/";
@@ -216,8 +216,10 @@
     </script>
     <script>
         $('#names').tooltip({title: "Please fill out this field👍", placement:"top",  trigger: "hover"});
-        $('#department').tooltip({title: "Please fill out this field👍", placement:"top",  trigger: "hover"});
-        $('#designation').tooltip({title: "Please fill out this field👍", placement:"top",  trigger: "hover"});
+        $('#course').tooltip({title: "Please fill out this field👍", placement:"top",  trigger: "hover"});
+        $('#semester').tooltip({title: "Please fill out this field👍", placement:"top",  trigger: "hover"});
+        $('#tupcnum').tooltip({title: "Please fill out this field👍", placement:"top",  trigger: "hover"});
+        $('#orno').tooltip({title: "Please fill out this field👍", placement:"top",  trigger: "hover"});
         $('#macadd').tooltip({title: "Please fill out this field👍", placement:"top",  trigger: "hover"});
         $('#system').tooltip({title: "Please fill out this field👍", placement:"top",  trigger: "hover"});
         $('#others').tooltip({title: "Please fill out this field👍", placement:"top",  trigger: "hover"});
@@ -225,8 +227,9 @@
         $('#phone').tooltip({title: "Please fill out this field👍", placement:"top",  trigger: "hover"});
         $('#system').tooltip({title: "Please select item in the list👍", placement:"top",  trigger: "hover"});
         $('#others').tooltip({title: "Please fill out this field👍", placement:"top",  trigger: "hover"});
-        $('#facultys').tooltip({title: "Please fill out this field👍", placement:"top",  trigger: "hover"});
-        $('#date').tooltip({title: "Enter current date👍", placement:"top",  trigger: "hover"});
+        $('#uname').tooltip({title: "Please fill out this field👍", placement:"top",  trigger: "hover"});
+        $('#pass').tooltip({title: "Please fill out this field👍", placement:"top",  trigger: "hover"});
+        $('#resid').tooltip({title: "Please fill out this field👍", placement:"top",  trigger: "hover"});
         $('#upload').tooltip({title: "Submit image file('png','jpg','jpg')👍", placement:"top",  trigger: "hover"});
 
         $("input[type='file']").click(function () {
