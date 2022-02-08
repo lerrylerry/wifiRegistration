@@ -15,29 +15,12 @@
 {% endblock content %}
 
 {% block body %}
-          <div class="jumbotron table-responsive">
+          <div class="jumbotron table-responsive table table-sortable">
              <div class="card-body">
-               <h5 class="card-title" style="margin-bottom: 50px;">WIFI REQUEST</h5>
-               <div class="search-sort row g-3">
-                   <div class="col-md-4">
-                       <label class="form-check-label" for="search">Search Name:</label>
-                       <input type="text" class="form-control" id="search" placeholder="Search name">
-                   </div>
-                   <div class="col-md-2">
-                    <button class="btn btn-primary" type="submit" style="padding: 10px 24px;">Search</button>
-                   </div>
-                   <div class="col-md-3">
-                       <label for="sort" class="form-check-label">Sort by:</label>
-                       <select id="inputState" class="form-control form-control">
-                          <option selected>Choose...</option>
-                          <option>Name (A-Z)</option>
-                          <option>Name (Z-A)</option>
-                          <option>Type (S-F)</option>
-                          <option>Type (F-S)</option>
-                       </select> 
-                   </div>
-               </div>
-               <table class="table">
+               <h5 class="card-title" style="margin-bottom: 50px;">WIFI REQUEST (STUDENT'S REQUEST)</h5>
+             </div>
+                <script src="{% static 'JavaScript/history.js' %}"></script>
+                <table id="studreq" class="table table-striped table-bordered">
                 <thead class="table-danger">
                     <tr>
                        <th scope="col" style="text-align: center;">Name</th>
