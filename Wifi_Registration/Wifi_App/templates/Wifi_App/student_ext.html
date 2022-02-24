@@ -1,0 +1,226 @@
+{% load static %}
+{% load widget_tweaks %}
+<form class="form" id="form" name="student_form" method="POST"  action="/student/" enctype="multipart/form-data">
+    {% csrf_token %}
+    <div class="row">
+    <!-- left-side -->
+        <div class="col-sm-6">
+            {% if form.is_bound %}
+                {% if form.snames.errors %}
+                    <label><strong>Name:</strong></label><label id="red">*</label>
+                    {% render_field form.snames  class="form-control is-invalid" placeholder="Enter Full Name"%}
+                        <small class="text-danger" id="small">{{ form.snames.errors }}</small>
+                    {% else %}
+                    <label><strong>Name:</strong></label><label id="red">*</label>
+                    {% render_field form.snames  class="form-control is-valid mb-4" placeholder="Enter Full Name"%}
+                    {% endif %}
+                    {% else %}
+                        <label><strong>Name:</strong></label><label id="red">*</label>
+                        {% render_field form.snames class="form-control mb-4" placeholder="Enter Full Name"%}
+                    {% endif %}
+
+            {% if form.is_bound %}
+                {% if form.scourse.errors %}
+                    <label><strong>Course:</strong></label><label id="red">*</label>
+                    {% render_field form.scourse  class="custom-select is-invalid"%}
+                        <small class="text-danger">{{ form.scourse.errors }}</small>
+                    {% else %}
+                    <label><strong>Course:</strong></label><label id="red">*</label>
+                    {% render_field form.scourse  class="custom-select is-valid mb-4"%}
+                    {% endif %}
+                    {% else %}
+                        <label><strong>Course</strong></label><label id="red">*</label>
+                        {% render_field form.scourse class="custom-select mb-4"%}
+                    {% endif %}
+
+                {% if form.is_bound %}
+                    {% if form.ssemester.errors %}
+                        <label><strong>Semester:</strong></label><label id="red">*</label>
+                        {% render_field form.ssemester  class="custom-select is-invalid"%}
+                            <small class="text-danger">{{ form.ssemester.errors }}</small>
+                        {% else %}
+                        <label><strong>Semester:</strong></label><label id="red">*</label>
+                        {% render_field form.ssemester  class="custom-select is-valid mb-4"%}
+                        {% endif %}
+                        {% else %}
+                            <label><strong>Semester:</strong></label><label id="red">*</label>
+                            {% render_field form.ssemester class="custom-select mb-4"%}
+                        {% endif %}
+
+                {% if form.is_bound %}
+                    {% if form.stupid.errors %}
+                        <label><strong>TUPC ID:</strong></label><label id="red">*</label>
+                        {% render_field form.stupid  class="form-control is-invalid" placeholder="TUPC-XX-XXXX"%}
+                            <small class="text-danger" id="small">{{ form.stupid.errors }}</small>
+                        {% else %}
+                        <label><strong>TUPC No:</strong></label><label id="red">*</label>
+                        {% render_field form.stupid  class="form-control is-valid mb-4" placeholder="TUPC-XX-XXXX"%}
+                        {% endif %}
+                        {% else %}
+                        <label><strong>TUPC No:</strong></label><label id="red">*</label>
+                            {% render_field form.stupid class="form-control mb-4" placeholder="TUPC-XX-XXXX"%}
+                        {% endif %}
+
+                {% if form.is_bound %}
+                    {% if form.sornum.errors %}
+                        <label><strong>OR #:</strong></label><label id="red">*</label>
+                        {% render_field form.sornum  class="form-control is-invalid" placeholder="Enter Or number"%}
+                            <small class="text-danger">{{ form.sornum.errors }}</small>
+                        {% else %}
+                        <label><strong>OR #:</strong></label><label id="red">*</label>
+                        {% render_field form.sornum  class="form-control is-valid mb-4" placeholder="Enter Or number"%}
+                        {% endif %}
+                        {% else %}
+                            <label><strong>OR #:</strong></label><label id="red">*</label>
+                            {% render_field form.sornum class="form-control mb-4" placeholder="Enter Or number" %}
+                        {% endif %}
+
+                {% if form.is_bound %}
+                    {% if form.sphone.errors %}
+                        <label><strong>Phone #:</strong></label><label id="red">*</label>
+                        {% render_field form.sphone  class="form-control is-invalid" placeholder="+639xxxxxxxxx"%}
+                            <small class="text-danger">{{ form.sphone.errors }}</small>
+                        {% else %}
+                        <label><strong>Phone #:</strong></label><label id="red">*</label>
+                        {% render_field form.sphone  class="form-control is-valid mb-4" placeholder="+639xxxxxxxxx"%}
+                        {% endif %}
+                        {% else %}
+                            <label><strong>Phone #:</strong></label><label id="red">*</label>
+                            {% render_field form.sphone class="form-control mb-4" placeholder="+639xxxxxxxxx" %}
+                        {% endif %}
+        </div>  
+
+        <!-- right side -->
+        <div class="col-sm-6">
+            {% if form.is_bound %}
+                {% if form.ssystem.errors %}
+                    <label><strong>Device:</strong></label><label id="red">*</label>
+                    {% render_field form.ssystem  class="custom-select is-invalid"%}
+                        <small class="text-danger">{{ form.ssystem.errors }}</small>
+                    {% else %}
+                    <label><strong>Device:</strong></label><label id="red">*</label>
+                    {% render_field form.ssystem  class="custom-select is-valid mb-4"%}
+                    {% endif %}
+                    {% else %}
+                        <label><strong>Device:</strong></label><label id="red">*</label>
+                        {% render_field form.ssystem class="custom-select mb-4"%}
+                    {% endif %}
+
+
+            <!-------------Specify----------------------------------------------------------------------------->
+            <label><strong>Specify:</strong></label>
+            {% render_field form.sothers class="form-control mb-2" placeholder="If others, please specify..." %}
+
+            {% if form.is_bound %}
+                {% if form.smacadd.errors %}
+                    <label><strong>MAC address:</strong></label><label id="red">*</label>
+                    {% render_field form.smacadd  class="form-control is-invalid" placeholder="Enter Mac Address"%}
+                        <small class="text-danger" id="small">{{ form.smacadd.errors }}</small>
+                    {% else %}
+                    <label><strong>MAC address:</strong></label><label id="red">*</label>
+                    {% render_field form.smacadd  class="form-control is-valid mb-4" placeholder="Enter Mac Address"%}
+                    {% endif %}
+                    {% else %}
+                        <label><strong>MAC address:</strong></label><label id="red">*</label>
+                        {% render_field form.smacadd class="form-control mb-4" placeholder="Enter Mac Address"%}
+                    {% endif %}
+
+            {% if form.is_bound %}
+                {% if form.semail.errors %}
+                    <label><strong>Email:</strong></label><label id="red">*</label>
+                    {% render_field form.semail  class="form-control is-invalid" placeholder="...@email.com"%}
+                        <small class="text-danger" id="small">{{ form.semail.errors }}</small>
+                    {% else %}
+                    <label><strong>Email:</strong></label><label id="red">*</label>
+                    {% render_field form.semail  class="form-control is-valid mb-4" placeholder="...@email.com"%}
+                    {% endif %}
+                    {% else %}
+                        <label><strong>Email:</strong></label><label id="red">*</label>
+                        {% render_field form.semail class="form-control mb-4" placeholder="...@email.com"%}
+                    {% endif %}
+
+            {% if form.is_bound %}
+                {% if form.sresidAdd.errors %}
+                    <label><strong>Residence Address:</strong></label><label id="red">*</label>
+                    {% render_field form.sresidAdd  class="form-control is-invalid" placeholder="Enter Address"%}
+                        <small class="text-danger" id="small">{{ form.sresidAdd.errors }}</small>
+                    {% else %}
+                    <label><strong>Residence Address:</strong></label><label id="red">*</label>
+                    {% render_field form.sresidAdd  class="form-control is-valid mb-4" placeholder="Enter Address"%}
+                    {% endif %}
+                    {% else %}
+                        <label><strong>Residence Address:</strong></label><label id="red">*</label>
+                        {% render_field form.sresidAdd class="form-control mb-4" placeholder="Enter Address"%}
+                    {% endif %}
+        </div>
+    </div>
+    <hr>
+
+    <div class="row">
+        <div class="col-sm-12">
+            <a class="card-link" data-toggle="collapse" href="#terms">
+                [Terms and Condition]
+            </a>
+            <div class="collapse show" id="terms" data-parent="#accordion">
+                <p>
+                <i>
+                    I understand that the Wi-Fi connectivity is provided to me for my academic work only.
+                    The above mentioned system solely belongs to me. I have gone through the norms and
+                    Regulation of using the Wi-Fi Connectivity and I abide by it. I will not misuse the facility
+                    by any means.
+                </i>
+                </p>
+            </div>
+            <div class="custom-control custom-checkbox">
+                <input type="checkbox" name="schecked" class="custom-control-input" id="agree" required>
+                <label class="custom-control-label" for="agree" style="color: #0061c8;"><strong>Yes, I agree.</strong></label><label id="red">*</label>
+            </div>
+        </div>
+    </div>
+    <hr>
+    <p>
+    <i>
+        The 1 hour per day Wifi-Connectivity  given to the user is valid from 
+        November  to March, 2022
+    </i>
+    </p>
+
+    <div class="row">
+        <div class="col-sm-6">
+            <h5>Approved by:</h5>
+                <input type="image" id="image1" src="{% static 'Media/white.jpg' %}" alt="UITC Coordinator Signature" width="100%" height="40px"><br>
+                <label for="image1">UITC Coordinator</label><br>
+        </div>
+        <div class="col-sm-6">
+            {% if form.is_multipart %}
+                {% if form.supload.errors %}
+                    <label><strong>Upload image of Signature over printed name:</strong></label><label id="red">*</label>
+                    <div class="custom-file">
+                        {% render_field form.supload  class="form-control custom-file-input is-invalid"%}
+                        <label class="custom-file-label">Choose file</label>
+                            <small class="text-danger">{{ form.supload.errors }}</small>
+                    </div>
+                    {% else %}
+                    <label><strong>Upload image of Signature over printed name:</strong></label><label id="red">*</label>
+                    <div class="custom-file">
+                        {% render_field form.supload  class="form-control custom-file-input is-valid mb-4"%}
+                            <label class="custom-file-label">Choose file</label>
+                    </div>
+                    {% endif %}
+                    {% else %}
+                    <label><strong>Upload image of Signature over printed name:</strong></label><label id="red">*</label>
+                    <div class="custom-file">
+                        {% render_field form.supload class="form-control custom-file-input mb-4"%}
+                            <label class="custom-file-label">Choose file</label>
+                    </div>
+                {% endif %}
+        </div>
+    </div>
+    
+    <div class="row">
+        <div class="col-sm-11"></div>
+        <div class="col-sm-1">
+            <button type="submit" class="btn btn-outline-success" id="confirm">SUBMIT</button>
+        </div>
+    </div>
+</form>

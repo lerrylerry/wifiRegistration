@@ -1,0 +1,22 @@
+{% extends 'Wifi_App/head.html' %}
+{% load static %}
+
+{% block title %}
+<title>FACULTY FORM</title>
+<link rel="stylesheet" href="{% static 'CSS/F-Design.css' %}">
+{% endblock title %}
+
+    {% block content %}
+    <body style="background-image: url({% static 'Media/wifi-signal.png' %});">
+        <div class="container">
+            <div class="header" style="background-image: url({% static 'Media/no-wifi.png' %});">
+                <h2 class="design">WIFI CONNECTIVITY REGISTRATION</h2>
+                <h4 class="design2">for faculty users only</h4>
+            </div>
+
+            {% include 'Wifi_App/faculty_ext.html' %}
+            
+        </div>
+    </body>
+    <script src="{% static 'JavaScript/facultyJQuery.js' %}" defer></script>
+    {% endblock content %}

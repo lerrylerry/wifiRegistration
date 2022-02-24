@@ -106,3 +106,71 @@ def studentDB(Model):
                         </div>   
                     </div>
                 </div>
+
+            <script type="text/javascript">
+        function fornames(){
+            //var na = document.querySelector('#id_fnames');
+            //var filed = document.querySelector('#id_fnames + li');
+
+            if (na.value.length < 10){
+                na.style.borderColor = "#dc3545";
+                na.style.backgroundImage = "none";
+
+            }else{
+                na.style.borderColor = "#28a745";
+                filed.remove();
+            }
+        }
+    </script>
+
+    <script type="text/javascript">
+        const names1 = document.getElementById('id_fnames');
+        const depart1 = document.getElementById('id_fdepartment');
+        const design1 = document.getElementById('id_fdesignation');
+        const macadd1 = document.getElementById('id_fmacadd');
+        const select1 = document.getElementById('id_fsystem');
+        const specify1 = document.getElementById('id_fothers');
+        const mail1 = document.getElementById('id_femail');
+        const cell1 = document.getElementById('id_fphone');
+        const faculty1 = document.getElementById('id_ffacultys');
+        const image1 = document.getElementById('id_fupload');
+
+        const patternAlpha = /^[a-zA-Z ]*$/g;
+        const patternMac = /^([0-9a-f]{2}([:-]|$)){6}$|([0-9a-f]{4}([.]|$)){3}$/gi;
+        const patternEmail = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/;
+        const allowedExtensions = /(\.jpg|\.jpeg|\.png)$/i;
+        const regex = /[0][9][0-9]{9}/g;
+
+        const filed = names1.querySelector('li');
+        const filed2 = depart1.querySelector('li');
+        
+        //fnames
+        names1.addEventListener('input',function (event){
+            if (names1.value.length < 10){
+                invalid(names1);
+            }else if (!names1.value.match(patternAlpha)){
+                invalid(names1);
+            }else{
+                const nie = document.querySelector('li');
+                nie.innerText = "     ";
+            }})
+
+        //fdepartment
+        depart1.addEventListener('input',function (event){
+            if (depart1.value.length < 10){
+                invalid(depart1);
+            }else if (!depart1.value.match(patternAlpha)){
+                invalid(depart1);
+            }else{
+                pass
+            }})
+
+        function invalid(vars){
+            vars.style.borderColor = "#dc3545";
+            vars.style.backgroundImage = "none";
+        }
+
+        function valid(vars,varss){
+            vars.style.borderColor = "#28a745";
+            varss.remove();
+        }

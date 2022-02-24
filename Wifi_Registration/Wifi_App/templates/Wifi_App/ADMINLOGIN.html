@@ -7,6 +7,7 @@
 {% endblock title %}
 
 {% block content %}
+
     <body>
         <script src="{% static 'JavaScript/login.js' %}"></script>
         <section class="container-fluid bg" style="background-image: url({% static 'Media/loginbg.jpg' %});">
@@ -17,12 +18,12 @@
                         <h4 style="color: white;" >Admin Login</h4>
                         <div class="form-group">
                             <label for="username" style="color: white;">Username:</label>
-                            <input type="text" autocomplete="off" class="form-control" name="username" id="username" placeholder="Enter your username" name="user">
+                            <input type="text" autocomplete="off" class="form-control" id="username" placeholder="Enter your username" name="user">
                         </div>
                         <div id="user_error">Incorrect Username</div>
                         <div class="form-group">
                             <label for="Password" style="color: white;">Password:</label>
-                            <input type="password" class="form-control" name="adminpw" id="pword" aria-describedby="pwcaution" placeholder="Enter password" name="password">
+                            <input type="password" class="form-control" id="pword" aria-describedby="pwcaution" placeholder="Enter password" name="password">
                             <small id="pwcaution" class="form-text text-muted">Please don't share your password to anyone.</small>
                         </div>
                         <div id="pass_error">Incorrect Password</div>

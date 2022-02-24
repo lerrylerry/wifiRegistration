@@ -79,17 +79,6 @@ hr{
    visibility: hidden;
    position: absolute;
 }
-.form button{
-   background-color: #6667AB;
-   border: 2px solid #6667AB;
-   border-radius: 4px;
-   color: #fff;
-   display: block;
-   font-family: inherit;
-   font-size: 16px;
-   padding: 10px;
-   width: 100%;
-}
 .form-group.success input{
    border-color: #2ecc71;
 }

@@ -1,24 +1,102 @@
+import re
+from django import forms
+from email import message
+from multiprocessing import context
 from django.shortcuts import render, redirect, get_object_or_404, HttpResponseRedirect
-from Wifi_App.models import Faculty, Student, History
+from Wifi_App.models import Faculty, Student, History, adminlogin
 from django.contrib import messages
+from Wifi_App.forms import facultyform, studentform
+from django.contrib.auth.decorators import login_required
+from django.contrib.auth import authenticate
+from django.urls import reverse
 
 # Buttons===============
+
+def faculty(request):
+    if request.method == 'POST':
+        form = facultyform(request.POST,request.FILES)
+        if form.is_valid():
+            submit = Faculty.objects.create(
+                fnames = request.POST['fnames'],
+                fdepartment = request.POST['fdepartment'],
+                fdesignation = request.POST['fdesignation'],
+                fmacadd = request.POST['fmacadd'],
+                fsystem = request.POST['fsystem'],
+                fothers = request.POST['fothers'],
+                femail = request.POST['femail'],
+                fphone = request.POST['fphone'],
+                fupload = request.FILES['fupload'],
+                ffacultys = request.POST['ffacultys'],
+            )
+            submit.save()
+
+            history = History.objects.create(
+                names2 = request.POST['fnames'],
+                email2 = request.POST['femail'],
+                macadd2 = request.POST['fmacadd'],
+                marked = 'Pending',
+                kind = 'Faculty',
+            )
+            history.save()
+
+            return redirect('/faculty/success.html/')
+        
+        else:
+            print("dont know")
+
+    else:
+        form = facultyform()
+    return render(request, 'Wifi_App/FACULTY2.html', {'form': form})
+
+
+def student(request):
+    if request.method == 'POST':
+        form = studentform(request.POST,request.FILES)
+        if form.is_valid():
+            submit = Student.objects.create(
+                snames = request.POST['snames'],
+                scourse = request.POST['scourse'],
+                ssemester = request.POST['ssemester'],
+                stupid = request.POST['stupid'],
+                sornum = request.POST['sornum'],
+                sphone = request.POST['sphone'],
+                ssystem = request.POST['ssystem'],
+                sothers = request.POST['sothers'],
+                smacadd = request.POST['smacadd'],
+                semail = request.POST['semail'],
+                sresidAdd = request.POST['sresidAdd'],
+                supload = request.FILES['supload'],
+            )
+            submit.save()
+
+            history = History.objects.create(
+                names2 = request.POST['snames'],
+                email2 = request.POST['semail'],
+                macadd2 = request.POST['smacadd'],
+                marked = 'Pending',
+                kind = 'Student',
+
+            )
+            history.save()
+
+            return redirect('/student/success.html/')
+
+        else:
+            print("dont know")
+
+    else:
+        form = studentform()
+    return render(request, 'Wifi_App/STUDENT.html',{'form':form})
 
 def index(request):
     return render(request, 'Wifi_App/HOMEPAGE.html')
 
-def faculty(request):
-    return render(request, 'Wifi_App/FACULTY.html')
-
-def student(request):
-    return render(request, 'Wifi_App/STUDENT.html')
 
 def admin(request):
     return render(request, 'Wifi_App/ADMINLOGIN.html')
 
 # request view of faculty
 def readFaculty(request):
-    #data = Faculty.objects.filter(fmacadd = '44-44-44-44-44').values('fmark').distinct()
     excludes = ['Accepted','Rejected']
     data = Faculty.objects.exclude(fmark__in=excludes)
     context = {"faculty_request" : data}
@@ -44,110 +122,6 @@ def success(request):
     return render(request, 'Wifi_App/success.html')
 
 # CRUD/OTHERS================
-
-#and request.POST.get('checked') == 'off'
-
-# Create a faculty request
-def createFaculty(request):
-    if request.method == 'POST':
-        try:
-            if request.POST.get('fnames') and request.POST.get('fdepartment') and request.POST.get('fdesignation') \
-                and request.POST.get('fmacadd') and request.POST.get('fsystem') and request.POST.get('fothers') \
-                and request.POST.get('femail') and request.POST.get('fphone') \
-                and request.POST.get('ffacultys') and request.POST.get('fupload'):
-
-                submit = Faculty()
-                submit.fnames = request.POST.get('fnames')
-                submit.fdepartment = request.POST.get('fdepartment')
-                submit.fdesignation = request.POST.get('fdesignation')
-                submit.fmacadd = request.POST.get('fmacadd')
-                submit.fsystem = request.POST.get('fsystem')
-                submit.fothers = request.POST.get('fothers')
-                submit.femail = request.POST.get('femail')
-                submit.fphone = request.POST.get('fphone')
-                submit.fupload = request.POST.get('fupload')
-                #submit.fchecked = request.POST.get('fchecked')
-                submit.ffacultys = request.POST.get('ffacultys')
-
-                submit.save()
-
-                # for the faculty history
-                history = History()
-                history.names2 = request.POST.get('fnames')
-                history.email2 = request.POST.get('femail')
-                history.macadd2 = request.POST.get('fmacadd')
-                history.marked = 'Pending'
-                history.kind = 'Faculty'
-
-                history.save()
-                print("win")
-
-                return redirect('/faculty/success.html/')
-                #return redirect('/dh')
-
-            else:
-                print("error2")
-                return render(request, 'Wifi_App/FACULTY.html')
-
-        except:
-            pass
-    else:
-        print("error3")
-        return render(request, 'Wifi_App/FACULTY.html')
-
-
-#and request.POST.get('checked')
-
-# Create a student request
-def createStudent(request):
-    if request.method == 'POST':
-        try:
-            if request.POST.get('snames') and request.POST.get('scourse') and request.POST.get('ssemester') \
-                and request.POST.get('stupid') and request.POST.get('sornum') and request.POST.get('sphone') \
-                and request.POST.get('ssystem') and request.POST.get('sothers') and request.POST.get('smacadd') \
-                and request.POST.get('semail') and request.POST.get('sresidAdd') and request.POST.get('supload') :
-
-                submit = Student()
-                submit.snames = request.POST.get('snames')
-                submit.scourse = request.POST.get('scourse')
-                submit.ssemester = request.POST.get('ssemester')
-                submit.stupid = request.POST.get('stupid')
-                submit.sornum = request.POST.get('sornum')
-                submit.sphone = request.POST.get('sphone')
-                submit.ssystem = request.POST.get('ssystem')
-                submit.sothers = request.POST.get('sothers')
-                submit.smacadd = request.POST.get('smacadd')
-                submit.semail = request.POST.get('semail')
-                submit.sresidAdd = request.POST.get('sresidAdd')
-                submit.supload = request.POST.get('fupload')
-                #submit.schecked = request.POST.get('schecked')
-
-                submit.save()
-
-                # for the student history
-                history = History()
-                history.names2 = request.POST.get('snames')
-                history.email2 = request.POST.get('semail')
-                history.macadd2 = request.POST.get('smacadd')
-                history.marked = 'Pending'
-                history.kind = 'Student'
-
-                history.save()
-                print('win')
-
-                return redirect('/student/success.html/')
-                #return redirect('/dh')
-
-            else:
-                print('error2')
-                return render(request, 'Wifi_App/STUDENT.html')
-
-        except:
-            pass
-    else:
-        print('error3')
-        return render(request, 'Wifi_App/STUDENT.html')
-
 
 # accept faculty
 def acceptFaculty(request,faculty_pk):

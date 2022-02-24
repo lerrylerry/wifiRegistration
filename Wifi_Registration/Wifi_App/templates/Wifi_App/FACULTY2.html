@@ -1,30 +1,28 @@
 {% extends 'Wifi_App/head.html' %}
 {% load static %}
-
 {% block title %}
-<title>STUDENT FORM</title>
-<link rel="stylesheet" href="{% static 'CSS/ST-Design.css' %}">
+<title>FACULTY FORM</title>
+<link rel="stylesheet" href="{% static 'CSS/F-Design.css' %}">
 {% endblock title %}
-        
-{% block content %}
+
+    {% block content %}
     <body style="background-image: url({% static 'Media/wifi-signal.png' %});">
-        <div class="container">
+        <div class="container bg-light">
             <div class="header" style="background-image: url({% static 'Media/no-wifi.png' %});">
                 <h2 class="design">WIFI CONNECTIVITY REGISTRATION</h2>
-                <h4 class="design2">for student users only</h4>
+                <h4 class="design2">for faculty users only</h4>
             </div>
-            {% include 'Wifi_App/student_ext.html' %}
+            {% include 'Wifi_App/faculty_ext.html' %}
         </div>
     </body>
     <script type="text/javascript">
-        // displaying uploaded image name
         $("input[type='file']").click(function () {
-            $("input[id='id_supload']").click();
+            $("input[id='id_fupload']").click();
         });
-        $("input[id='id_supload']").change(function (e) {
+        $("input[id='id_fupload']").change(function (e) {
             var $this = $(this);
             $this.next().html($this.val().split('\\').pop());
         });
     </script>
-    <script src="{% static 'JavaScript/studentJQuery.js' %}" defer></script>
+    <script src="{% static 'JavaScript/facultyJQuery.js' %}" defer></script>
     {% endblock content %}
