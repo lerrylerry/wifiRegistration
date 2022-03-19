@@ -20,7 +20,7 @@ class Faculty(models.Model):
     fothers = models.CharField(max_length=15, null=True, blank=True, default="", verbose_name="Others")
     femail = models.EmailField(max_length=50, unique=True, primary_key=True, verbose_name="Email")
     fphone = models.DecimalField(max_digits=12, decimal_places=0, unique=True, verbose_name="Phone No.")
-    fchecked = models.BooleanField(default=True)
+    fchecked = models.BooleanField(default=False)
     ffacultys = models.CharField(max_length=10, verbose_name="Faculty Name")
     fupload = models.ImageField(verbose_name="Signature", upload_to = "media/")
     #fdate = models.DateTimeField(auto_now_add=True)

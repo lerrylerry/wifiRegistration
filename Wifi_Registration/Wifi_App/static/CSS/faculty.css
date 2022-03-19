@@ -1,0 +1,29 @@
+#red{
+    color: #dc3545;
+}
+
+#no{
+    width: 210;
+    height: 200;
+}
+.tooltip-inner {
+    background-color: #000000 !important;
+    color: #000000 ;
+  }
+  .bs-tooltip-top .arrow::before, .bs-tooltip-auto[x-placement^="top"] .arrow::before {
+    border-top-color: #000000 !important;
+  }
+  
+  .bs-tooltip-right .arrow::before, .bs-tooltip-auto[x-placement^="right"] .arrow::before {
+    border-right-color: #000000 !important;
+  }
+  
+  
+  .bs-tooltip-bottom .arrow::before, .bs-tooltip-auto[x-placement^="bottom"] .arrow::before {
+    border-bottom-color: #000000 !important;
+  }
+  
+  
+  .bs-tooltip-left .arrow::before, .bs-tooltip-auto[x-placement^="left"] .arrow::before {
+    border-left-color: #000000 !important;
+  }

@@ -6,7 +6,7 @@ from django.core.exceptions import ValidationError
 class facultyform(forms.ModelForm):
     class Meta:
         model = Faculty
-        fields = ['fnames','fdepartment','fdesignation','fmacadd','fsystem','fothers','femail','fphone','ffacultys','fupload']
+        fields = ['fnames','fdepartment','fdesignation','fmacadd','fsystem','fothers','fchecked','femail','fphone','ffacultys','fupload']
 
     def clean_fnames(self):
         pattern_with_text = "\\d+"

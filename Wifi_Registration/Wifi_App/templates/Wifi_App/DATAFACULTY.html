@@ -5,10 +5,11 @@
       
 {% block content %}
 <li class="nav-item">
-   <a class="nav-link dropdown" href="{% url 'datastudent' %}">REQUEST</a>
+  <a class="nav-link" href="{% url 'datastudent' %}">STUDENT</a>
 </li>
 <li class="nav-item">
   <a class="nav-link" href="{% url 'datahistory' %}">HISTORY</a>
+</li>
 </li class="nav-item">
   <a class="nav-link" href="{% url 'adminL' %}">LOGOUT</a>
 </li>
@@ -17,7 +18,7 @@
 {% block body %}
           <div class="jumbotron table-responsive table-sortable">
              <div class="card-body">
-               <h5 class="card-title" style="margin-bottom: 50px;">WIFI REQUEST</h5>
+               <h5 class="card-title" style="margin-bottom: 50px;">WIFI REQUEST (FACULTY'S REQUEST)</h5>
              </div>
                <table id="facreq" class="table table-striped table-bordered">
                 <thead class="table-danger">

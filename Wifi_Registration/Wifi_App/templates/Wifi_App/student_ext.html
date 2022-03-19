@@ -1,6 +1,6 @@
 {% load static %}
 {% load widget_tweaks %}
-<form class="form" id="form" name="student_form" method="POST"  action="/student/" enctype="multipart/form-data">
+<form class="form" id="form" name="student_form" method="POST"  action="/student/" enctype="multipart/form-data" novalidate>
     {% csrf_token %}
     <div class="row">
     <!-- left-side -->

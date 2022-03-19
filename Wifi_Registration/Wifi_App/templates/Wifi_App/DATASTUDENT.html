@@ -5,17 +5,18 @@
 
 {% block content %}
 <li class="nav-item">
-   <a class="nav-link dropdown" href="{% url 'datafaculty' %}">REQUEST</a>
+   <a class="nav-link" href="{% url 'datafaculty' %}">FACULTY</a>
 </li>
 <li class="nav-item">
    <a class="nav-link" href="{% url 'datahistory' %}">HISTORY</a>
+</li>
 </li class="nav-item">
    <a class="nav-link" href="{% url 'adminL' %}">LOGOUT</a>
 </li>
 {% endblock content %}
 
 {% block body %}
-          <div class="jumbotron table-responsive table table-sortable">
+          <div class="jumbotron table-responsive table-sortable">
              <div class="card-body">
                <h5 class="card-title" style="margin-bottom: 50px;">WIFI REQUEST (STUDENT'S REQUEST)</h5>
              </div>

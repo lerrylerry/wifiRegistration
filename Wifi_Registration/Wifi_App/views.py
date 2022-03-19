@@ -46,7 +46,7 @@ def faculty(request):
 
     else:
         form = facultyform()
-    return render(request, 'Wifi_App/FACULTY2.html', {'form': form})
+    return render(request, 'Wifi_App/FACULTY.html', {'form': form})
 
 
 def student(request):

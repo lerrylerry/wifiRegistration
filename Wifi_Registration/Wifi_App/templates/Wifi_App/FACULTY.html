@@ -1,189 +1,32 @@
 {% extends 'Wifi_App/head.html' %}
 {% load static %}
-
 {% block title %}
+<link rel="stylesheet" href="{% static 'CSS/faculty.css' %}">
 <title>FACULTY FORM</title>
-<link rel="stylesheet" href="{% static 'CSS/F-Design.css' %}">
+
 {% endblock title %}
 
     {% block content %}
-    <body style="background-image: url({% static 'Media/wifi-signal.png' %});">
-        <div class="container">
-            <div class="header" style="background-image: url({% static 'Media/no-wifi.png' %});">
-                <h2 class="design">WIFI CONNECTIVITY REGISTRATION</h2>
-                <h4 class="design2">for faculty users only</h4>
+    <body class="bg-dark"> 
+        <div class="container my-4">
+            <div class="media border-bottom border-success mb-3 bg-dark sticky-top shadow">
+                <img class="d-flex justify-content-left rounded" src="{% static 'Media/TUP-LOGO.png' %}" alt="wifi" width="100" height="85">  
+                <div class="media-body ml-4">
+                    <h2 class="design text-primary">WIFI CONNECTIVITY REGISTRATION</h2>
+                    <h4 class="design2 text-danger mb-3">for faculty users only</h4>
+                </div>  
             </div>
-            <form class="form" id="form" name="faculty_form" method="POST" action="/createFaculty/" onsubmit="return checkInputs();">
-                {% csrf_token %}
-                <div class="row">
-                <!-- left-side -->          
-                    <div class="col-sm-6">
-
-                        <div class="form-group">
-                            <label><strong>Name:</strong></label><label id="red">*</label>
-                            <input type="text" class="form-control" maxlength="30" placeholder="Enter Full Name" name="fnames" id="names" onkeyup="a()">
-                            <i class="fas fa-check-circle"></i>
-                            <i class="fas fa-exclamation-circle"></i>
-                            <small>Error Message!</small>
-                        </div>
-                        <div class="form-group">
-                            <label><strong>Department:</strong></label><label id="red">*</label>
-                            <input type="text" class="form-control" maxlength="30" placeholder="Enter Department" name="fdepartment" id="department" onkeyup="b()">
-                            <i class="fas fa-check-circle"></i>
-                            <i class="fas fa-exclamation-circle"></i>
-                            <small>Error Message!</small>
-                        </div>
-                        <div class="form-group">
-                            <label><strong>Designation:</strong></label><label id="red">*</label>
-                            <input type="text" class="form-control" maxlength="30" placeholder="Enter Designation" name="fdesignation"  id="designation" onkeyup="c()">
-                            <i class="fas fa-check-circle"></i>
-                            <i class="fas fa-exclamation-circle"></i>
-                            <small>Error Message!</small>
-                        </div>
-                        <div class="form-group">
-                            <label><strong>MAC Address:</strong></label><label id="red">*</label>
-                            <input type="text" class="form-control" maxlength="17" placeholder="xx-xx-xx-xx-xx" name="fmacadd"  id="macadd" onkeyup="d()">
-                            <i class="fas fa-check-circle"></i>
-                            <i class="fas fa-exclamation-circle"></i>
-                            <small>Error Message!</small>
-                        </div>
-                        <p>
-                        <i>
-                            I understand that the Wi-Fi connectivity is provided to me for my academic work only.
-                            The above mentioned system solely belongs to me. I have gone through the norms and
-                            Regulation of using the Wi-Fi Connectivity and I abide by it. I will not misuse the facility
-                            by any means.
-                        </i>
-                        </p>
-                    </div>
-
-                    <!-- right side -->
-                    <div class="col-sm-6">
-                        <div class="form-group">
-                            <label><strong>Device:</strong></label><label id="red">*</label>
-                            <select class="custom-select" name="fsystem" id="system" onchange="e()">
-                                <option value="">Choose</option>
-                                <option value="Smartphone">Smartphone</option>
-                                <option value="Laptop">Laptop</option>
-                                <option value="Tablet">Tablet</option>
-                                <option value="PC">PC</option>
-                                <option value="Desktop">Desktop</option>
-                                <option value="Others">Others...</option>
-                              </select>
-                            <i class="fas fa-check-circle"></i>
-                            <i class="fas fa-exclamation-circle"></i>
-                            <small>Error Message!</small>
-                        </div>
-                        <div class="form-group">
-                            <label><strong>Others:</strong></label><label id="red">*</label>
-                            <input type="text" class="form-control" maxlength="15" placeholder="Others..." name="fothers"  id="others" onkeyup="f()" disabled="">
-                            <i class="fas fa-check-circle"></i>
-                            <i class="fas fa-exclamation-circle"></i>
-                            <small>Error Message!</small>
-                        </div>
-                        <div class="form-group">
-                            <label><strong>Email:</strong></label><label id="red">*</label>
-                            <input type="email" class="form-control" maxlength="30" placeholder="...@gmail.com" name="femail"  id="email" onkeyup="g()">
-                            <i class="fas fa-check-circle"></i>
-                            <i class="fas fa-exclamation-circle"></i>
-                            <small>Error Message!</small>
-                        </div>
-                        <div class="form-group">
-                            <label><strong>Phone #:</strong></label><label id="red">*</label>
-                            <input type="number" class="form-control" oninput="javascript: if (this.value.length > this.maxLength) this.value = 
-                                    this.value.slice(0, this.maxLength);" maxlength="11" placeholder="09xxxxxxxxx" name="fphone"  id="phone" onkeyup="h()">
-                            <i class="fas fa-check-circle"></i>
-                            <i class="fas fa-exclamation-circle"></i>
-                            <small>Error Message!</small>
-                        </div>
-                    </div>
-                </div>
-                <hr>
-
-                <div class="row">
-                    <div class="col-sm-12">
-                        <a class="card-link" data-toggle="collapse" href="#terms">
-                            [Terms and Condition]
-                        </a>
-                        <div class="collapse show" id="terms" data-parent="#accordion">
-                            <p>
-
-                            <i>
-                                I understand that the Wi-Fi connectivity is provided to me for my academic work only.
-                                The above mentioned system solely belongs to me. I have gone through the norms and
-                                Regulation of using the Wi-Fi Connectivity and I abide by it. I will not misuse the facility
-                                by any means.
-                            </i>
-                            </p>
-                        </div>
-                        <div class="custom-control custom-checkbox">
-                            <input type="checkbox" name="fchecked" class="custom-control-input" id="agree">
-                            <label class="custom-control-label" for="agree" style="color: #0061c8;"><strong>Yes, I agree.</strong></label><label id="red">*</label>
-                        </div>
-                    </div>
-                </div>
-                <hr>
-                <p>
-                <i>
-                    The 1 hour per day Wifi-Connectivity  given to the user is valid from 
-                    November  to March, 2022
-                </i>
-                </p>
-
-                <div class="row">
-                    <div class="col-sm-6">
-                        <div class="form-group">
-                            <label><strong>Faculty Name:</strong></label><label id="red">*</label>
-                            <input type="text" class="form-control" maxlength="30" placeholder="Enter Faculty Name" name="ffacultys"  id="facultys" onkeyup="i()">
-                            <i class="fas fa-check-circle"></i>
-                            <i class="fas fa-exclamation-circle"></i>
-                            <small>Error Message!</small>
-                        </div>   
-                    </div>
-                    <div class="col-sm-6">
-                        <div class="form-group">
-                            <label><strong>Upload image of Signature over printed name:</strong></label><label id="red">*</label>
-                            <div class="custom-file">
-                                <input type="file" class="form-control custom-file-input" name="fupload"  id="upload" onchange="j()">
-                                <label class="custom-file-label">Choose file</label>
-                                <i class="fas fa-check-circle"></i>
-                                <i class="fas fa-exclamation-circle"></i>
-                                <small>Error Message!</small>
-                            </div>      
-                        </div>
-                    </div>
-                </div>
-
-                <div class="row">
-                    <div class="col-sm-9"></div>
-                    <div class="col-sm-3">
-                        <br>
-                        <button type="button" class="btn btn-outline-success" id="confirm">SUBMIT</button>
-                    </div>
-                </div>
-            </form>
+            {% include 'Wifi_App/faculty_ext.html' %}
         </div>
     </body>
     <script type="text/javascript">
-        const patternMac = /^([0-9a-f]{2}([:-]|$)){6}$|([0-9a-f]{4}([.]|$)){3}$/gi;
-        const patternEmail = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/;
-        
-        function checkInputs(){
-            if (document.faculty_form.names.value == "" || document.faculty_form.department.value == "" ||
-                document.faculty_form.designation.value == "" || document.faculty_form.macadd.value == "" ||
-                document.faculty_form.system.value == "" && document.faculty_form.others.value == "" || 
-                document.faculty_form.email.value == "" || document.faculty_form.phone.value == "" || 
-                document.faculty_form.agree.value == "" || document.faculty_form.facultys.value == "" ||
-                document.faculty_form.upload.value == ""
-                ){
-                    alert("Please complete the form!");
-                }else{
-                    alert("Nice one!");
-                    window.location.href="/faculty/success.html/";
-                }
-            
-        }
+        $("input[type='file']").click(function () {
+            $("input[id='id_fupload']").click();
+        });
+        $("input[id='id_fupload']").change(function (e) {
+            var $this = $(this);
+            $this.next().html($this.val().split('\\').pop());
+        });
     </script>
-
-
+    <script src="{% static 'JavaScript/fjquery.js' %}" defer></script>
     {% endblock content %}
