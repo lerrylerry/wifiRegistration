@@ -3,14 +3,13 @@
 {% block title %}
 <link rel="stylesheet" href="{% static 'CSS/faculty.css' %}">
 <title>FACULTY FORM</title>
-
 {% endblock title %}
 
-    {% block content %}
+{% block content %}
     <body class="bg-dark"> 
         <div class="container my-4">
-            <div class="media border-bottom border-success mb-3 bg-dark sticky-top shadow">
-                <img class="d-flex justify-content-left rounded" src="{% static 'Media/TUP-LOGO.png' %}" alt="wifi" width="100" height="85">  
+            <div class="media border-0 mb-5 bg-dark sticky-top shadow">
+                <img class="d-flex justify-content-left rounded img-fluid" src="{% static 'Media/TUP-LOGO.png' %}" alt="wifi" width="100" height="100">  
                 <div class="media-body ml-4">
                     <h2 class="design text-primary">WIFI CONNECTIVITY REGISTRATION</h2>
                     <h4 class="design2 text-danger mb-3">for faculty users only</h4>
@@ -29,4 +28,4 @@
         });
     </script>
     <script src="{% static 'JavaScript/fjquery.js' %}" defer></script>
-    {% endblock content %}
+{% endblock content %}

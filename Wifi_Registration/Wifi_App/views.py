@@ -1,13 +1,9 @@
-import re
-from django import forms
-from email import message
-from multiprocessing import context
 from django.shortcuts import render, redirect, get_object_or_404, HttpResponseRedirect
 from Wifi_App.models import Faculty, Student, History, adminlogin
 from django.contrib import messages
 from Wifi_App.forms import facultyform, studentform
 from django.contrib.auth.decorators import login_required
-from django.contrib.auth import authenticate
+from django.contrib.auth import authenticate,login,logout
 from django.urls import reverse
 
 # Buttons===============
@@ -38,6 +34,7 @@ def faculty(request):
                 kind = 'Faculty',
             )
             history.save()
+            
 
             return redirect('/faculty/success.html/')
         
@@ -191,3 +188,22 @@ def rejectStudent(request, student2_pk):
 
     except:
         pass
+'''
+def login_view(request):
+    if request.method == 'POST':
+        form = AuthenticateForm(data=request.POST)
+        if form.is_valid():
+            user = form.get_user()
+            login(request,user)
+            return redirect('/dh')
+
+    else:
+        form = AuthenticateForm()
+
+    return render(request, 'Wifi_App/ADMINLOGIN.html',{'form':form})
+
+def logout_view(request):
+    if request.method == 'POST':
+        logout(request)
+    return redirect('Wifi_App/ADMINLOGIN.html')
+'''

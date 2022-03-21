@@ -8,7 +8,7 @@ class Faculty(models.Model):
     fdesignation = models.CharField(max_length=50, verbose_name="Designation")
     fmacadd = models.CharField(max_length=17, verbose_name="MAC Address")
     Device = [
-                ('' , 'Choose'),
+                ('' , 'Choose device'),
                 ('Smartphone' , 'Smartphone'),
                 ('Laptop' , 'Laptop'),
                 ('Tablet' , 'Tablet'),
@@ -22,7 +22,7 @@ class Faculty(models.Model):
     fphone = models.DecimalField(max_digits=12, decimal_places=0, unique=True, verbose_name="Phone No.")
     fchecked = models.BooleanField(default=False)
     ffacultys = models.CharField(max_length=10, verbose_name="Faculty Name")
-    fupload = models.ImageField(verbose_name="Signature", upload_to = "media/")
+    fupload = models.ImageField(verbose_name="Signature", upload_to='uploads/', blank=False, null=False)
     #fdate = models.DateTimeField(auto_now_add=True)
     ftype = models.CharField(max_length=10)
     fmark = models.CharField(max_length=10)
@@ -31,7 +31,7 @@ class Student(models.Model):
     snames = models.CharField(max_length=50, verbose_name="Name")
     #first column: database // second column: forms
     Course = [
-                ('' , 'Choose'),
+                ('' , 'Choose course'),
                 ('BSCE','BACHELOR OF SCIENCE IN CIVIL ENGINEERING'),
                 ('BSEE','BACHELOR OF SCIENCE IN ELECTRICAL ENGINEERING'),
                 ('BSME','BACHELOR OF SCIENCE IN MECHANICAL ENGINEERING'),
@@ -53,9 +53,9 @@ class Student(models.Model):
 
     scourse = models.CharField(max_length=50, choices=Course, verbose_name="Course")
     Semester = [
-                ('' , 'Choose'),
-                ('First Semester','First Semester'),
-                ('Second Semester','Second Semester'),
+                ('' , 'Choose Semester'),
+                ('First Semester','1st Semmester'),
+                ('Second Semester','2nd Semester'),
                 ('Others...','Others...')
     ]
 
@@ -64,7 +64,7 @@ class Student(models.Model):
     sornum = models.DecimalField(max_digits=8, decimal_places=0,verbose_name="O.R #")
     sphone = models.DecimalField(max_digits=12, decimal_places=0,unique=True, verbose_name="Phone")
     Device = [
-                ('' , 'Choose'),
+                ('' , 'Choose device'),
                 ('Smartphone' , 'Smartphone'),
                 ('Laptop' , 'Laptop'),
                 ('Tablet' , 'Tablet'),
@@ -77,7 +77,7 @@ class Student(models.Model):
     smacadd = models.CharField(max_length=17, verbose_name="MAC Address")
     semail = models.EmailField(max_length=50, unique=True, primary_key=True, verbose_name="Email")
     sresidAdd = models.CharField(max_length=200, verbose_name="Residence Address")
-    supload = models.ImageField(verbose_name="Signature", upload_to="media/")
+    supload = models.ImageField(verbose_name="Signature", upload_to="uploads2/")
     #schecked = models.BooleanField()
     stype = models.CharField(max_length=10)
     smark = models.CharField(max_length=10)
