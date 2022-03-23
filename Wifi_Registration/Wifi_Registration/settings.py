@@ -93,6 +93,19 @@ DATABASES = {
     }
 }
 
+'''
+DATABASES = {
+    'default': {
+        'ENGINE': 'django.db.backends.mysql',
+        'NAME': 'Wifi_Registration',
+        'HOST': '',
+        'PORT': '3306',
+        'USER': '',
+        'PASSWORD': '',
+    }
+}
+'''
+
 # Password validation
 # https://docs.djangoproject.com/en/4.0/ref/settings/#auth-password-validators
 

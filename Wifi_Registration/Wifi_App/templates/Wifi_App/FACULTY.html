@@ -7,16 +7,16 @@
 
 {% block content %}
     <body class="bg-dark"> 
-        <div class="container my-4">
-            <div class="media border-0 mb-5 bg-dark sticky-top shadow">
-                <img class="d-flex justify-content-left rounded img-fluid" src="{% static 'Media/TUP-LOGO.png' %}" alt="wifi" width="100" height="100">  
-                <div class="media-body ml-4">
-                    <h2 class="design text-primary">WIFI CONNECTIVITY REGISTRATION</h2>
-                    <h4 class="design2 text-danger mb-3">for faculty users only</h4>
+        <div class="container-fluid my-4 sticky-top">
+            <div class="media border-bottom mb-5 px-5 bg-dark shadow">
+                <img class="rounded img-fluid" src="{% static 'Media/TUP-LOGO.png' %}" alt="wifi" width="100" height="100">  
+                <div class="media-body ml-4 p-2">
+                    <h2 class="text-primary">WIFI CONNECTIVITY REGISTRATION</h2>
+                    <h4 class="text-danger mb-3">for faculty users only</h4>
                 </div>  
             </div>
-            {% include 'Wifi_App/faculty_ext.html' %}
         </div>
+            {% include 'Wifi_App/faculty_ext.html' %}
     </body>
     <script type="text/javascript">
         $("input[type='file']").click(function () {
@@ -27,5 +27,5 @@
             $this.next().html($this.val().split('\\').pop());
         });
     </script>
-    <script src="{% static 'JavaScript/fjquery.js' %}" defer></script>
+    <script src="{% static 'JavaScript/Fjquery.js' %}" defer></script>
 {% endblock content %}

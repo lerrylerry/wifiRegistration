@@ -1,10 +1,9 @@
-from django.shortcuts import render, redirect, get_object_or_404, HttpResponseRedirect
+from django.shortcuts import render, redirect, get_object_or_404
 from Wifi_App.models import Faculty, Student, History, adminlogin
 from django.contrib import messages
 from Wifi_App.forms import facultyform, studentform
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth import authenticate,login,logout
-from django.urls import reverse
 
 # Buttons===============
 
@@ -13,73 +12,56 @@ def faculty(request):
         form = facultyform(request.POST,request.FILES)
         if form.is_valid():
             submit = Faculty.objects.create(
-                fnames = request.POST['fnames'],
-                fdepartment = request.POST['fdepartment'],
-                fdesignation = request.POST['fdesignation'],
-                fmacadd = request.POST['fmacadd'],
-                fsystem = request.POST['fsystem'],
-                fothers = request.POST['fothers'],
-                femail = request.POST['femail'],
-                fphone = request.POST['fphone'],
-                fupload = request.FILES['fupload'],
-                ffacultys = request.POST['ffacultys'],
+                names = request.POST['names'],
+                department = request.POST['department'],
+                designation = request.POST['designation'],
+                macadd = request.POST['macadd'],
+                device = request.POST['device'],
+                otherDevice = request.POST['otherDevice'],
+                email = request.POST['email'],
+                phoneNum = request.POST['phoneNum'],
+                signature = request.FILES['signature'],
+                facultyName = request.POST['facultyName'],
+                userType = 'Faculty',
             )
             submit.save()
-
-            history = History.objects.create(
-                names2 = request.POST['fnames'],
-                email2 = request.POST['femail'],
-                macadd2 = request.POST['fmacadd'],
-                marked = 'Pending',
-                kind = 'Faculty',
-            )
-            history.save()
             
-
+            # redirect to success page
             return redirect('/faculty/success.html/')
         
         else:
-            print("dont know")
+            messages.error(request, "You're too fast! Please correct the errors first.")
 
     else:
         form = facultyform()
     return render(request, 'Wifi_App/FACULTY.html', {'form': form})
-
 
 def student(request):
     if request.method == 'POST':
         form = studentform(request.POST,request.FILES)
         if form.is_valid():
             submit = Student.objects.create(
-                snames = request.POST['snames'],
-                scourse = request.POST['scourse'],
-                ssemester = request.POST['ssemester'],
-                stupid = request.POST['stupid'],
-                sornum = request.POST['sornum'],
-                sphone = request.POST['sphone'],
-                ssystem = request.POST['ssystem'],
-                sothers = request.POST['sothers'],
-                smacadd = request.POST['smacadd'],
-                semail = request.POST['semail'],
-                sresidAdd = request.POST['sresidAdd'],
-                supload = request.FILES['supload'],
+                names = request.POST['names'],
+                course = request.POST['course'],
+                semester = request.POST['semester'],
+                tupid = request.POST['tupid'],
+                orNum = request.POST['orNum'],
+                phoneNum = request.POST['phoneNum'],
+                device = request.POST['device'],
+                otherDevice = request.POST['otherDevice'],
+                macadd = request.POST['macadd'],
+                email = request.POST['email'],
+                residAdd = request.POST['residAdd'],
+                signature = request.FILES['signature'],
+                userType = 'Student',
             )
             submit.save()
-
-            history = History.objects.create(
-                names2 = request.POST['snames'],
-                email2 = request.POST['semail'],
-                macadd2 = request.POST['smacadd'],
-                marked = 'Pending',
-                kind = 'Student',
-
-            )
-            history.save()
-
+            
+            # redirect to success page
             return redirect('/student/success.html/')
 
         else:
-            print("dont know")
+            messages.error(request, "You're too fast! Please correct the errors first.")
 
     else:
         form = studentform()
@@ -111,8 +93,7 @@ def readStudent(request):
 def readHistory(request):
     history = History.objects.all()
     context = {"history" : history}
-    print("history: " , history)
-    print("context: " , context )
+    print("context: " , context)
     return render(request, 'Wifi_App/DATAHISTORY.html', context)
 
 def success(request):
@@ -124,11 +105,12 @@ def success(request):
 def acceptFaculty(request,faculty_pk):
     try:
         added = Faculty.objects.get(pk=faculty_pk)
-        added.fmark = 'Accepted' # changing pending status to 'Accepted'
+        added.fmark = 'Accepted'
         added.save()
 
         # -------
         forhis = History.objects.get(email2 = added.femail)
+        # changing pending status to 'Accepted'
         forhis.marked = 'Accepted'
         forhis.save()
 
