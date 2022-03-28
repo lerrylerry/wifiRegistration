@@ -3,7 +3,7 @@ from django.db import models
 # Create your models here.
 
 class Faculty(models.Model):
-    names = models.CharField(max_length=50, verbose_name="Name")
+    names = models.CharField(max_length=50, unique=True, verbose_name="Name")
     department = models.CharField(max_length=50, verbose_name="Department")
     designation = models.CharField(max_length=50, verbose_name="Designation")
     Device = [
@@ -16,18 +16,22 @@ class Faculty(models.Model):
             ]
 
     device = models.CharField(max_length=15, choices=Device, verbose_name="Device")
-    otherDevice = models.CharField(max_length=15, null=True, blank=True, default="If others, please specify.", verbose_name="Others")
+    otherDevice = models.CharField(max_length=15, null=True, blank=True, verbose_name="Others")
     email = models.EmailField(max_length=50, unique=True, primary_key=True, verbose_name="Email")
     macadd = models.CharField(max_length=17, unique=True, verbose_name="MAC Address")
     phoneNum = models.DecimalField(max_digits=15, decimal_places=0, unique=True, verbose_name="Phone No.")
     facultyName = models.CharField(max_length=10, verbose_name="Faculty Name")
     signature = models.ImageField(verbose_name="Signature", upload_to='uploads/', blank=False, null=False)
     agreement = models.BooleanField(default=False)  
+    decision = models.CharField(max_length=10)
     dateCreated = models.DateTimeField(auto_now_add=True)
     userType = models.CharField(max_length=10)
 
+    def __str__(self):
+        return self.names + '-->' + self.email
+
 class Student(models.Model):
-    names = models.CharField(max_length=50, verbose_name="Name")
+    names = models.CharField(max_length=50, unique=True, verbose_name="Name")
     Course = [#first column: database // second column: forms
                 ('' , 'Choose course'),
                 ('BSCE','BACHELOR OF SCIENCE IN CIVIL ENGINEERING'),
@@ -66,7 +70,7 @@ class Student(models.Model):
             ]
 
     device = models.CharField(max_length=15, choices=Device, verbose_name="Device")
-    otherDevice = models.CharField(max_length=15, null=True, blank=True, default="If others, please specify.", verbose_name="Others")
+    otherDevice = models.CharField(max_length=15, null=True, blank=True, verbose_name="Others")
     email = models.EmailField(max_length=50, unique=True, primary_key=True, verbose_name="Email")
     macadd = models.CharField(max_length=17, unique=True, verbose_name="MAC Address")
     phoneNum = models.DecimalField(max_digits=15, decimal_places=0, unique=True, verbose_name="Phone No.")
@@ -76,14 +80,20 @@ class Student(models.Model):
     residAdd = models.CharField(max_length=200, verbose_name="Residence Address")
     signature = models.ImageField(verbose_name="Signature", upload_to='uploads/', blank=False, null=False)
     agreement = models.BooleanField(default=False)  
+    userType = models.CharField(max_length=10)
+    decision = models.CharField(max_length=10)
     dateCreated = models.DateTimeField(auto_now_add=True)
+
+    def __str__(self):
+        return self.names + '-->' + self.email
     
 class History(models.Model):  
-    desicion = models.CharField(max_length=10)
-    dateEvaluated = models.DateTimeField(auto_now_add=True)
-    data_of_Faculty = models.ManyToManyField(Faculty)
-    data_of_Student = models.ManyToManyField(Student)
-
-class adminlogin(models.Model):
-    username = models.CharField(max_length=50, default="admin")
-    adminpw = models.CharField(max_length=20, default=1234)
+    names = models.CharField(max_length=50)
+    email = models.EmailField(max_length=50)
+    macadd = models.CharField(max_length=17)
+    userType = models.CharField(max_length=10)
+    decision = models.CharField(max_length=10)
+    dateCreated = models.DateTimeField(auto_now_add=True)
+    dateEvaluated = models.DateTimeField(blank=True,null=True)
+    #data_of_Faculty = models.ManyToManyField(Faculty)
+    #data_of_Student = models.ManyToManyField(Student)

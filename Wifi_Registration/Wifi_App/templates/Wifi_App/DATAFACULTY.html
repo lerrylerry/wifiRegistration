@@ -4,15 +4,18 @@
 {% block title %}DATA FACULTY{% endblock title %}
       
 {% block content %}
-<li class="nav-item">
-  <a class="nav-link" href="{% url 'datastudent' %}">STUDENT</a>
-</li>
-<li class="nav-item">
-  <a class="nav-link" href="{% url 'datahistory' %}">HISTORY</a>
-</li>
-</li class="nav-item">
-  <a class="nav-link" href="{% url 'adminL' %}">LOGOUT</a>
-</li>
+<div class="dropdown show">
+  <a class="btn btn-success dropdown-toggle" href="#" role="button" 
+  id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+    {{ user.username }}
+  </a>
+  <div class="dropdown-menu dropdown-menu-right bg-light" aria-labelledby="dropdownMenuLink">
+    <a class="dropdown-item text-primary" href="{% url 'datastudent' %}">STUDENT</a>
+    <a class="dropdown-item text-primary" href="{% url 'datahistory' %}">HISTORY</a>
+    <div class="dropdown-divider m-0"></div>
+    <a class="dropdown-item text-danger" href="{% url 'logout' %}">LOGOUT</a>
+  </div>
+</div>
 {% endblock content %}
 
 {% block body %}
@@ -40,23 +43,23 @@
                 <tbody>
                   {% for var in faculty_request %}
                   <tr>
-                      <th scope="row" style="text-align: center;">{{ var.fnames }}</th>
-                      <td style="text-align: center;">{{ var.fdepartment }}</td>
-                      <td style="text-align: center;">{{ var.fdesignation }}</td>
-                      <td style="text-align: center;">{{ var.fmacadd }}</td>
-                      <td style="text-align: center;">{{ var.fsystem }}</td>
-                      <td style="text-align: center;">{{ var.fothers }}</td>
-                      <td style="text-align: center;">{{ var.femail }}</td>
-                      <td style="text-align: center;">{{ var.fphone }}</td>
-                      <td style="text-align: center;">{{ var.ffacultys }}</td>
-                      <td style="text-align: center;">{{ var.fdate }}</td>
-                      <td style="text-align: center;"><img class="rounded" src="{{ var.fupload.url }}" width="150" height="100" alt="{{ var.fupload }}"></td>
+                      <th scope="row" style="text-align: center;">{{ var.names }}</th>
+                      <td style="text-align: center;">{{ var.department }}</td>
+                      <td style="text-align: center;">{{ var.designation }}</td>
+                      <td style="text-align: center;">{{ var.macadd }}</td>
+                      <td style="text-align: center;">{{ var.device }}</td>
+                      <td style="text-align: center;">{{ var.otherDevice }}</td>
+                      <td style="text-align: center;">{{ var.email }}</td>
+                      <td style="text-align: center;">{{ var.phoneNum }}</td>
+                      <td style="text-align: center;">{{ var.facultyName }}</td>
+                      <td style="text-align: center;">{{ var.dateCreated }}</td>
+                      <td style="text-align: center;"><img class="rounded" src="{{ var.signature.url }}" width="150" height="100" alt="{{ var.signature }}"></td>
                       <td style="text-align: center;">
                         <span >
-                            <a href="/acceptFaculty/{{ var.femail }}" class="btn btn-success mb-1" style="padding: 10px 24px;">Approve</a>
+                            <a href="/acceptFaculty/{{ var.email }}" class="btn btn-success mb-1" style="padding: 10px 24px;">Approve</a>
                         </span>
                         <span>
-                            <a href="/rejectFaculty/{{ var.femail }}" class="btn btn-danger" style="padding: 10px 32px;">Reject</a>
+                            <a href="/rejectFaculty/{{ var.email }}" class="btn btn-danger" style="padding: 10px 32px;">Reject</a>
                         </span>
                     </td>
                   </tr>

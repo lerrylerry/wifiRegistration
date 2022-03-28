@@ -146,19 +146,19 @@
                         {% if form.phoneNum.errors %}
                             <div class="input-group mb-3">
                                 <span class="input-group-text"><i class="fa-solid fa-phone" id="icon8"></i></span>
-                                {% render_field form.phoneNum  class="form-control is-invalid" placeholder="+63xxxxxxxxxx"%}
+                                {% render_field form.phoneNum  class="form-control is-invalid" placeholder="+09xxxxxxxxx"%}
                             </div>
                             <small class="text-danger">{{ form.phoneNum.errors }}</small>
                             {% else %}
                             <div class="input-group mb-5">
                                 <span class="input-group-text"><i class="fa-solid fa-phone" id="icon8"></i></span>
-                                {% render_field form.phoneNum  class="form-control is-valid" placeholder="+63xxxxxxxxxx"%}
+                                {% render_field form.phoneNum  class="form-control is-valid" placeholder="+09xxxxxxxxx"%}
                             </div>
                             {% endif %}
                             {% else %}
                             <div class="input-group mb-5">
                                 <span class="input-group-text"><i class="fa-solid fa-phone" id="icon8"></i></span>
-                                {% render_field form.phoneNum  class="form-control" placeholder="+63xxxxxxxxxx"%}
+                                {% render_field form.phoneNum  class="form-control" placeholder="+09xxxxxxxxx"%}
                             </div>
                             {% endif %}
         
@@ -310,7 +310,7 @@
     <div class="container px-0 mb-5">
         <div class="row">
             <div class="col-sm-6">
-                <a href="{% url 'index' %}" class="btn btn-success btn-md" data-toggle="tooltip" data-placement="top" title="Return to homepage" id="backF">
+                <a href="{% url 'home' %}" class="btn btn-success btn-md" data-toggle="tooltip" data-placement="top" title="Return to homepage" id="backF">
                     <i class="fa-solid fa-circle-arrow-left" id="icon"></i> BACK</a>
             </div>
             <div class="col-sm-6 d-flex justify-content-end">

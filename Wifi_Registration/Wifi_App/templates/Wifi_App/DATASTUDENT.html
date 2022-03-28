@@ -4,15 +4,18 @@
 {% block title %}DATA STUDENT{% endblock title %}
 
 {% block content %}
-<li class="nav-item">
-   <a class="nav-link" href="{% url 'datafaculty' %}">FACULTY</a>
-</li>
-<li class="nav-item">
-   <a class="nav-link" href="{% url 'datahistory' %}">HISTORY</a>
-</li>
-</li class="nav-item">
-   <a class="nav-link" href="{% url 'adminL' %}">LOGOUT</a>
-</li>
+<div class="dropdown show">
+   <a class="btn btn-success dropdown-toggle" href="#" role="button" 
+   id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+     {{ user.username }}
+   </a>
+   <div class="dropdown-menu dropdown-menu-right bg-light" aria-labelledby="dropdownMenuLink">
+     <a class="dropdown-item text-primary" href="{% url 'datafaculty' %}">FACULTY</a>
+     <a class="dropdown-item text-primary" href="{% url 'datahistory' %}">HISTORY</a>
+     <div class="dropdown-divider m-0"></div>
+     <a class="dropdown-item text-danger" href="{% url 'logout' %}">LOGOUT</a>
+   </div>
+ </div>
 {% endblock content %}
 
 {% block body %}
@@ -41,24 +44,24 @@
                  <tbody>
                    {% for i in student_request %}
                    <tr>
-                       <th scope="row" style="text-align: center;">{{ i.snames }}</th>
-                       <td style="text-align: center;">{{ i.scourse }}</td>
-                       <td style="text-align: center;">{{ i.ssemester }}</td>
-                       <td style="text-align: center;">{{ i.stupid }}</td>
-                       <td style="text-align: center;">{{ i.sornum }}</td>
-                       <td style="text-align: center;">{{ i.sphone }}</td>
-                       <td style="text-align: center;">{{ i.ssystem }}</td>
-                       <td style="text-align: center;">{{ i.sothers }}</td>
-                       <td style="text-align: center;">{{ i.smacadd }}</td>
-                       <td style="text-align: center;">{{ i.semail }}</td>
-                       <td style="text-align: center;">{{ i.sresidAdd }}</td>
-                       <td style="text-align: center;"><img class="rounded" src="{{ i.supload.url }}" width="150" height="100" alt="{{ i.supload }}"></td>
+                       <th scope="row" style="text-align: center;">{{ i.names }}</th>
+                       <td style="text-align: center;">{{ i.course }}</td>
+                       <td style="text-align: center;">{{ i.semester }}</td>
+                       <td style="text-align: center;">{{ i.tupid }}</td>
+                       <td style="text-align: center;">{{ i.orNum }}</td>
+                       <td style="text-align: center;">{{ i.phoneNum }}</td>
+                       <td style="text-align: center;">{{ i.device }}</td>
+                       <td style="text-align: center;">{{ i.otherDevice }}</td>
+                       <td style="text-align: center;">{{ i.macadd }}</td>
+                       <td style="text-align: center;">{{ i.email }}</td>
+                       <td style="text-align: center;">{{ i.residAdd }}</td>
+                       <td style="text-align: center;"><img class="rounded" src="{{ i.signature.url }}" width="150" height="100" alt="{{ i.signature }}"></td>
                        <td style="text-align: center;">
                          <span >
-                             <a href="/acceptStudent/{{ i.semail }}" class="btn btn-success mb-1" style="padding: 10px 24px;">Approve</a>
+                             <a href="/acceptStudent/{{ i.email }}" class="btn btn-success mb-1" style="padding: 10px 24px;">Approve</a>
                          </span>
                          <span>
-                             <a href="/rejectStudent/{{ i.semail }}" class="btn btn-danger" style="padding: 10px 32px;">Reject</a>
+                             <a href="/rejectStudent/{{ i.email }}" class="btn btn-danger" style="padding: 10px 32px;">Reject</a>
                          </span>
                      </td>
                    </tr>

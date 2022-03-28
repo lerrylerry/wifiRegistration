@@ -4,23 +4,35 @@
 {% block title %}DATA HISTORY{% endblock title %}
       
 {% block content %}
-<li class="nav-item">
-   <a class="nav-link" href="{% url 'datastudent' %}">STUDENT</a>
-</li>
-<li class="nav-item">
-   <a class="nav-link" href="{% url 'datafaculty' %}">FACULTY</a>
-</li>
-</li class="nav-item">
-   <a class="nav-link" href="{% url 'adminL' %}">LOGOUT</a>
-</li>
+<a class="btn" href="{% url 'Ppdf' %}">PRINT</a>
+<div class="dropdown show">
+   <a class="btn btn-success dropdown-toggle" href="#" role="button" 
+   id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+     {{ user.username }}
+   </a>
+   <div class="dropdown-menu dropdown-menu-right bg-light" aria-labelledby="dropdownMenuLink">
+     <a class="dropdown-item text-primary" href="{% url 'datastudent' %}">STUDENT</a>
+     <a class="dropdown-item text-primary" href="{% url 'datafaculty' %}">FACULTY</a>
+     <div class="dropdown-divider m-0"></div>
+        <a class="dropdown-item text-danger" href="{% url 'logout' %}">LOGOUT</a>
+   </div>
+</div>
 {% endblock content %}
 
 {% block body %}
+      <div class="container-fluid p-0 my-3">
+         <div class="alert alert-dismissible alert-success" role="alert">
+            <small class="text-body">You're successfully logged in <strong>{{ user.username }}!</strong></small>
+            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+               <span aria-hidden="true">x</span>
+            </button>
+            {{ message }}
+         </div>
+      </div>
    <div class="jumbotron table-responsive table-sortable mt-3 rounded">
       <div class="card-body">
          <h4 class="card-title" style="margin-bottom: 50px;">HISTORY OF APPROVAL</h4>
       </div>
-      <script src="{% static 'JavaScript/history.js' %}"></script>
       <table id="historydata" class="table table-striped table-bordered">
          <thead class="table-danger">
             <tr>
@@ -30,20 +42,33 @@
                <th scope="col" style="text-align: center;">Type</th>
                <th scope="col" style="text-align: center;">Status</th>
                <th scope="col" style="text-align: center;">Time of Request</th>
+               <th scope="col" style="text-align: center;">Time of Evaluation</th>
             </tr>
          </thead>
          <tbody>
             {% for i in history %}
             <tr>
-               <th scope="row" style="text-align: center;">{{ i.names2}}</th>
-               <td style="text-align: center;">{{ i.email2 }}</td>
-               <td style="text-align: center;">{{ i.macadd2 }}</td>
-               <td style="text-align: center;">{{ i.kind }}</td>
-               <td style="text-align: center;">{{ i.marked }}</td>
-               <td style="text-align: center;">{{ i.timed }}</td>
+               <th scope="row" style="text-align: center;">{{ i.names}}</th>
+               <td style="text-align: center;">{{ i.email }}</td>
+               <td style="text-align: center;">{{ i.macadd }}</td>
+               <td style="text-align: center;">{{ i.userType }}</td>
+               <td style="text-align: center;">{{ i.decision }}</td>
+               <td style="text-align: center;">{{ i.dateCreated }}</td>
+               <td style="text-align: center;">{{ i.dateEvaluated }}</td>
             </tr>
             {% endfor %}
          </tbody>
       </table>
    </div>
+
+   <script>
+         $(document).ready(function() {
+            $('#historydata').DataTable({
+               scrollY: 400,
+               scrollCollapse: true,
+               paging : false,
+            })})
+   </script>
+
+  
 {% endblock body %}

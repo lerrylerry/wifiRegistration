@@ -11,6 +11,7 @@ https://docs.djangoproject.com/en/4.0/ref/settings/
 """
 import os
 from pathlib import Path
+from django.urls import reverse_lazy
 from django.contrib.messages import constants as messages
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
@@ -49,6 +50,7 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'widget_tweaks',
+    "crispy_forms",
     'Wifi_App',
 ]
 
@@ -147,9 +149,12 @@ MEDIA_ROOT = os.path.join(BASE_DIR, 'media/')
 
 STATIC_URL = '/static/'
 STATIC_ROOT = os.path.join(BASE_DIR, 'static')
-#STATICFILES_DIRS = [os.path.join(BASE_DIR, 'static')]
-#LOGIN_REDIRECT_URL = 'datahistory'
-#LOGIN_URL = '/al/'
+
+LOGIN_REDIRECT_URL = reverse_lazy('datahistory')
+LOGOUT_REDIRECT_URL = reverse_lazy("login")
+LOGIN_URL = reverse_lazy('login')
+
+CRISPY_TEMPLATE_PACK = 'bootstrap4'
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/4.0/ref/settings/#default-auto-field

@@ -20,9 +20,9 @@
     </body>
     <script type="text/javascript">
         $("input[type='file']").click(function () {
-            $("input[id='id_fupload']").click();
+            $("input[id='id_signature']").click();
         });
-        $("input[id='id_fupload']").change(function (e) {
+        $("input[id='id_signature']").change(function (e) {
             var $this = $(this);
             $this.next().html($this.val().split('\\').pop());
         });

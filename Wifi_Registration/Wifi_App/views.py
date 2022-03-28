@@ -1,11 +1,24 @@
 from django.shortcuts import render, redirect, get_object_or_404
-from Wifi_App.models import Faculty, Student, History, adminlogin
+from Wifi_App.models import Faculty, Student, History
 from django.contrib import messages
-from Wifi_App.forms import facultyform, studentform
+from Wifi_App.forms import facultyform, studentform 
 from django.contrib.auth.decorators import login_required
-from django.contrib.auth import authenticate,login,logout
+from django.http import FileResponse
+from reportlab.pdfgen import canvas
+import datetime
+import io
 
-# Buttons===============
+#username = lerry123, password = wifi123
+
+#unfinished task
+def print_view(request):
+    buffer = io.BytesIO()
+    p = canvas.Canvas(buffer)
+    p.drawString(100, 100, "Hello World")
+    p.showPage()
+    p.save()
+    buffer.seek(0)
+    return FileResponse(buffer, as_attachment=True, filename="lerry.pdf")
 
 def faculty(request):
     if request.method == 'POST':
@@ -22,10 +35,22 @@ def faculty(request):
                 phoneNum = request.POST['phoneNum'],
                 signature = request.FILES['signature'],
                 facultyName = request.POST['facultyName'],
+                decision = 'Pending',
                 userType = 'Faculty',
             )
+            if submit.otherDevice == '':
+                submit.otherDevice = "-"
             submit.save()
             
+            logged = History.objects.create(
+                names = request.POST['names'],
+                macadd = request.POST['macadd'],
+                email = request.POST['email'],
+                userType = 'Faculty',
+                decision = 'Pending',
+            )
+            logged.save()
+
             # redirect to success page
             return redirect('/faculty/success.html/')
         
@@ -53,10 +78,22 @@ def student(request):
                 email = request.POST['email'],
                 residAdd = request.POST['residAdd'],
                 signature = request.FILES['signature'],
+                decision = 'Pending',
                 userType = 'Student',
             )
+            if submit.otherDevice == '':
+                submit.otherDevice = "-"
             submit.save()
             
+            logged = History.objects.create(
+                names = request.POST['names'],
+                macadd = request.POST['macadd'],
+                email = request.POST['email'],
+                userType = 'Faculty',
+                decision = 'Pending',
+            )
+            logged.save()
+
             # redirect to success page
             return redirect('/student/success.html/')
 
@@ -67,29 +104,26 @@ def student(request):
         form = studentform()
     return render(request, 'Wifi_App/STUDENT.html',{'form':form})
 
-def index(request):
-    return render(request, 'Wifi_App/HOMEPAGE.html')
-
-
-def admin(request):
-    return render(request, 'Wifi_App/ADMINLOGIN.html')
-
 # request view of faculty
+@login_required(login_url='/login/')
 def readFaculty(request):
     excludes = ['Accepted','Rejected']
-    data = Faculty.objects.exclude(fmark__in=excludes)
+    data = Faculty.objects.exclude(decision__in=excludes)
     context = {"faculty_request" : data}
+    print(context)
     return render(request, 'Wifi_App/DATAFACULTY.html', context)
 
 # request view of student
+@login_required(login_url='/login/')
 def readStudent(request):
     excludes = ['Accepted','Rejected']
-    data2 = Student.objects.exclude(smark__in=excludes)
+    data2 = Student.objects.exclude(decision__in=excludes)
     context = {"student_request" : data2}
     print(context)
     return render(request, 'Wifi_App/DATASTUDENT.html', context)
 
 # data history view
+@login_required(login_url='/login/')
 def readHistory(request):
     history = History.objects.all()
     context = {"history" : history}
@@ -105,13 +139,14 @@ def success(request):
 def acceptFaculty(request,faculty_pk):
     try:
         added = Faculty.objects.get(pk=faculty_pk)
-        added.fmark = 'Accepted'
+        added.decision = 'Accepted'
         added.save()
 
         # -------
-        forhis = History.objects.get(email2 = added.femail)
+        forhis = History.objects.get(email = added.email)
         # changing pending status to 'Accepted'
-        forhis.marked = 'Accepted'
+        forhis.decision = 'Accepted'
+        forhis.dateEvaluated = datetime.datetime.now()
         forhis.save()
 
         return redirect('/df')
@@ -123,13 +158,14 @@ def acceptFaculty(request,faculty_pk):
 def rejectFaculty(request,faculty2_pk):
     try:
         removed = Faculty.objects.get(pk=faculty2_pk)
-        removed.fmark = 'Rejected' # changing pending status to 'Rejected'
+        removed.decision = 'Rejected' # changing pending status to 'Rejected'
         removed.save()
 
 
         # -------
-        forhis = History.objects.get(email2 = removed.femail)
-        forhis.marked = 'Rejected'
+        forhis = History.objects.get(email = removed.email)
+        forhis.decision = 'Rejected'
+        forhis.dateEvaluated = datetime.datetime.now()
         forhis.save()
 
         return redirect('/df')
@@ -141,12 +177,12 @@ def rejectFaculty(request,faculty2_pk):
 def acceptStudent(request,student_pk):
     try:
         added = Student.objects.get(pk = student_pk)
-        added.smark = 'Accepted' # changing pending status to 'Accepted'
+        added.decision = 'Accepted' # changing pending status to 'Accepted'
         added.save()
 
         # -------
-        forhis = History.objects.get(email2 = added.semail)
-        forhis.marked = 'Accepted'
+        forhis = History.objects.get(email = added.email)
+        forhis.decision = 'Accepted'
         forhis.save()
 
         return redirect('/ds')
@@ -158,34 +194,15 @@ def acceptStudent(request,student_pk):
 def rejectStudent(request, student2_pk):
     try:
         removed = Student.objects.get(pk = student2_pk)
-        removed.smark = 'Rejected' # changing pending status to 'Rejected'
+        removed.decision = 'Rejected' # changing pending status to 'Rejected'
         removed.save()
 
         # -------
-        forhis = History.objects.get(email2 = removed.semail)
-        forhis.marked = 'Rejected'
+        forhis = History.objects.get(email = removed.email)
+        forhis.decision = 'Rejected'
         forhis.save()
 
         return redirect('/ds')
 
     except:
         pass
-'''
-def login_view(request):
-    if request.method == 'POST':
-        form = AuthenticateForm(data=request.POST)
-        if form.is_valid():
-            user = form.get_user()
-            login(request,user)
-            return redirect('/dh')
-
-    else:
-        form = AuthenticateForm()
-
-    return render(request, 'Wifi_App/ADMINLOGIN.html',{'form':form})
-
-def logout_view(request):
-    if request.method == 'POST':
-        logout(request)
-    return redirect('Wifi_App/ADMINLOGIN.html')
-'''

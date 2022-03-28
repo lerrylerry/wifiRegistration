@@ -16,19 +16,19 @@
                     {% if form.names.errors %}
                         <div class="input-group mb-3">
                             <span class="input-group-text"><i class="fa-solid fa-user" id="icon"></i></span>
-                            {% render_field form.names  class="form-control form-control is-invalid" placeholder="Enter Full Name"%}
+                            {% render_field form.names  class="form-control is-invalid" placeholder="Enter Full Name"%}
                         </div>
                         <small class="text-danger" id="small">{{ form.names.errors }}</small>
                         {% else %}
                         <div class="input-group mb-5">
                             <span class="input-group-text"><i class="fa-solid fa-user" id="icon"></i></span>
-                            {% render_field form.names  class="form-control form-control is-valid" placeholder="Enter Full Name"%}
+                            {% render_field form.names  class="form-control is-valid" placeholder="Enter Full Name"%}
                         </div>
                         {% endif %}
                         {% else %}
                         <div class="input-group mb-5">
                             <span class="input-group-text"><i class="fa-solid fa-user" id="icon"></i></span>
-                            {% render_field form.names class="form-control form-control" placeholder="Enter Full Name"%}
+                            {% render_field form.names class="form-control" placeholder="Enter Full Name"%}
                         </div>
                         {% endif %}
         
@@ -36,19 +36,19 @@
                     {% if form.department.errors %}
                         <div class="input-group mb-3">
                             <span class="input-group-text"><i class="fa-solid fa-building-columns" id="icon2"></i></span>
-                            {% render_field form.department class="form-control form-control is-invalid" placeholder="Enter Department" %}
+                            {% render_field form.department class="form-control is-invalid" placeholder="Enter Department" %}
                         </div>
                             <small class="text-danger">{{ form.department.errors }}</small>
                         {% else %}
                         <div class="input-group mb-5">
                             <span class="input-group-text"><i class="fa-solid fa-building-columns" id="icon2"></i></span>
-                            {% render_field form.department class="form-control form-control is-valid" placeholder="Enter Department" %}
+                            {% render_field form.department class="form-control is-valid" placeholder="Enter Department" %}
                         </div>
                         {% endif %}
                         {% else %}
                         <div class="input-group mb-5">
                             <span class="input-group-text"><i class="fa-solid fa-building-columns" id="icon2"></i></span>
-                            {% render_field form.department class="form-control form-control" placeholder="Enter Department" %}
+                            {% render_field form.department class="form-control" placeholder="Enter Department" %}
                         </div>
                         {% endif %}
         
@@ -56,19 +56,19 @@
                     {% if form.designation.errors %}
                         <div class="input-group mb-3">
                             <span class="input-group-text"><i class="fa-solid fa-arrows-turn-to-dots" id="icon3"></i></span>
-                            {% render_field form.designation  class="form-control form-control is-invalid" placeholder="Enter Designation"%}
+                            {% render_field form.designation  class="form-control is-invalid" placeholder="Enter Designation"%}
                         </div>
                             <small class="text-danger">{{ form.designation.errors }}</small>
                         {% else %}
                         <div class="input-group mb-5">
                             <span class="input-group-text"><i class="fa-solid fa-arrows-turn-to-dots" id="icon3"></i></span>
-                            {% render_field form.designation  class="form-control form-control is-valid" placeholder="Enter Designation"%}
+                            {% render_field form.designation  class="form-control is-valid" placeholder="Enter Designation"%}
                         </div>
                         {% endif %}
                         {% else %}
                         <div class="input-group mb-5">
                             <span class="input-group-text"><i class="fa-solid fa-arrows-turn-to-dots" id="icon3"></i></span>
-                            {% render_field form.designation class="form-control form-control" placeholder="Enter Designation" %}
+                            {% render_field form.designation class="form-control" placeholder="Enter Designation" %}
                         </div>
                         {% endif %}
                         
@@ -76,19 +76,19 @@
                     {% if form.macadd.errors %}
                         <div class="input-group mb-3">
                             <span class="input-group-text"><i class="fa-brands fa-apple" id="icon4"></i></span>
-                            {% render_field form.macadd  class="form-control form-control is-invalid" placeholder="Enter Mac Address"%}
+                            {% render_field form.macadd  class="form-control is-invalid" placeholder="Enter Mac Address"%}
                         </div>
                             <small class="text-danger">{{ form.macadd.errors }}</small>
                         {% else %}
                         <div class="input-group mb-5">
                             <span class="input-group-text"><i class="fa-brands fa-apple" id="icon4"></i></span>
-                            {% render_field form.macadd  class="form-control form-control is-valid" placeholder="Enter Mac Address"%}
+                            {% render_field form.macadd  class="form-control is-valid" placeholder="Enter Mac Address"%}
                         </div>
                         {% endif %}
                         {% else %}
                         <div class="input-group mb-5">
                             <span class="input-group-text"><i class="fa-brands fa-apple" id="icon4"></i></span>
-                            {% render_field form.macadd class="form-control form-control" placeholder="Enter Mac Address" %}
+                            {% render_field form.macadd class="form-control" placeholder="Enter Mac Address" %}
                         </div>
                         {% endif %}
                 </div>
@@ -99,19 +99,19 @@
                         {% if form.email.errors %}
                             <div class="input-group mb-3">
                                 <span class="input-group-text"><i class="fa-solid fa-at" id="icon5"></i></span>
-                                {% render_field form.email  class="form-control form-control is-invalid" placeholder="...@email.com"%}
+                                {% render_field form.email  class="form-control is-invalid" placeholder="...@email.com"%}
                             </div>
                                 <small class="text-danger">{{ form.email.errors }}</small>
                             {% else %}
                             <div class="input-group mb-5">
                                 <span class="input-group-text"><i class="fa-solid fa-at" id="icon5"></i></span>
-                                {% render_field form.email  class="form-control form-control is-valid" placeholder="...@email.com"%}
+                                {% render_field form.email  class="form-control is-valid" placeholder="...@email.com"%}
                             </div>
                             {% endif %}
                             {% else %}
                             <div class="input-group mb-5">
                                 <span class="input-group-text"><i class="fa-solid fa-at" id="icon5"></i></span>
-                                {% render_field form.email class="form-control form-control" placeholder="...@email.com"%}
+                                {% render_field form.email class="form-control" placeholder="...@email.com"%}
                             </div>    
                             {% endif %}
         
@@ -119,19 +119,19 @@
                         {% if form.phoneNum.errors %}
                             <div class="input-group mb-3">
                                 <span class="input-group-text"><i class="fa-solid fa-phone" id="icon6"></i></span>
-                                {% render_field form.phoneNum  class="form-control form-control is-invalid" placeholder="+639xxxxxxxxx"%}
+                                {% render_field form.phoneNum  class="form-control is-invalid" placeholder="+09xxxxxxxxx"%}
                             </div>
                                 <small class="text-danger">{{ form.phoneNum.errors }}</small>
                             {% else %}
                             <div class="input-group mb-5">
                                 <span class="input-group-text"><i class="fa-solid fa-phone" id="icon6"></i></span>
-                                {% render_field form.phoneNum  class="form-control form-control is-valid" placeholder="+639xxxxxxxxx"%}
+                                {% render_field form.phoneNum  class="form-control is-valid" placeholder="+09xxxxxxxxx"%}
                             </div>
                             {% endif %}
                             {% else %}
                             <div class="input-group mb-5">
                                 <span class="input-group-text"><i class="fa-solid fa-phone" id="icon6"></i></span>
-                                {% render_field form.phoneNum class="form-control form-control" placeholder="+639xxxxxxxxx" %}
+                                {% render_field form.phoneNum class="form-control" placeholder="+09xxxxxxxxx" %}
                             </div>
                             {% endif %}
         
@@ -139,26 +139,26 @@
                         {% if form.device.errors %}
                             <div class="input-group mb-3">
                                 <span class="input-group-text"><i class="fa-solid fa-computer" id="icon7"></i></span>
-                                {% render_field form.device  class="custom-select custom-select is-invalid"%}
+                                {% render_field form.device  class="custom-select is-invalid"%}
                             </div>
                             <small class="text-danger">{{ form.device.errors }}</small>
                             {% else %}
                             <div class="input-group mb-5">
                                 <span class="input-group-text"><i class="fa-solid fa-computer" id="icon7"></i></span>
-                                {% render_field form.device  class="custom-select custom-select is-valid"%}
+                                {% render_field form.device  class="custom-select is-valid"%}
                             </div>
                             {% endif %}
                             {% else %} 
                             <div class="input-group mb-5">
                                 <span class="input-group-text"><i class="fa-solid fa-computer" id="icon7"></i></span>
-                                {% render_field form.device class="custom-select custom-select"%}
+                                {% render_field form.device class="custom-select"%}
                             </div>
                             {% endif %}
                         
                             <!-------------Specify----------------------------------------------------------------------------->
                             <div class="input-group mb-3">
                                 <span class="input-group-text"><i class="fa-solid fa-ellipsis" id="icon8"></i></span>
-                                {% render_field form.otherDevice class="form-control form-control" placeholder="If others, please specify..." %}
+                                {% render_field form.otherDevice class="form-control" placeholder="If others, please specify..." %}
                             </div>
                             
                 </div>
@@ -211,19 +211,19 @@
                     {% if form.facultyName.errors %}
                         <div class="input-group mb-3">
                             <span class="input-group-text"><i class="fa-solid fa-building" id="icon9"></i></span>
-                            {% render_field form.facultyName  class="form-control form-control is-invalid" placeholder="Enter Faculty Name"%}
+                            {% render_field form.facultyName  class="form-control is-invalid" placeholder="Enter Faculty Name"%}
                         </div>
                         <small class="text-danger">{{ form.facultyName.errors }}</small>
                         {% else %}
                         <div class="input-group mb-5">
                             <span class="input-group-text"><i class="fa-solid fa-building" id="icon9"></i></span>
-                            {% render_field form.facultyName  class="form-control form-control is-valid" placeholder="Enter Faculty Name"%}
+                            {% render_field form.facultyName  class="form-control is-valid" placeholder="Enter Faculty Name"%}
                         </div>
                         {% endif %}
                         {% else %}
                         <div class="input-group mb-5">
                             <span class="input-group-text"><i class="fa-solid fa-building" id="icon9"></i></span>
-                            {% render_field form.facultyName class="form-control form-control" placeholder="Enter Faculty Name"%}
+                            {% render_field form.facultyName class="form-control" placeholder="Enter Faculty Name"%}
                         </div>
                         {% endif %}
                 </div>
@@ -263,7 +263,7 @@
     <div class="container px-0 mb-5">
         <div class="row">
             <div class="col-sm-6">
-                <a href="{% url 'index' %}" class="btn btn-success btn-md" data-toggle="tooltip" data-placement="top" title="Return to homepage" id="backF">
+                <a href="{% url 'home' %}" class="btn btn-success btn-md" data-toggle="tooltip" data-placement="top" title="Return to homepage" id="backF">
                     <i class="fa-solid fa-circle-arrow-left" id="icon"></i> BACK</a>
             </div>
             <div class="col-sm-6 d-flex justify-content-end">

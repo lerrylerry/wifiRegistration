@@ -102,13 +102,15 @@ class facultyform(forms.ModelForm):
         return data5
     
     def clean_phoneNum(self):
-        pattern_with_phone = "[6][3][9][0-9]{9}"
+        pattern_with_phone = "[0][9][0-9]{9}"
         data6 = self.cleaned_data['phoneNum']
-        if len(str(data6)) <= 11:
+        zero = '0' + str(data6)
+        print(zero)
+        if len(str(zero)) <= 10:
             raise ValidationError("Insufficient numbers")
-        if not re.match(pattern_with_phone,str(data6)):
+        if not re.match(pattern_with_phone,str(zero)):
             raise ValidationError("Please enter PH numbers")
-        return data6
+        return zero
 
     def clean_facultyName(self):
         pattern_with_text = "\\d+"
@@ -118,14 +120,7 @@ class facultyform(forms.ModelForm):
         if re.findall(pattern_with_text,data8):
             raise ValidationError("Faculty Name must contain A-Z/a-z")
         return data8
-'''
-    def clean_fupload(self):
-        pattern_with_upload = "(\.jpg|\.jpeg|\.png)$"
-        data9 = self.cleaned_data['fupload']
-        if not re.match(pattern_with_upload,data9):
-            raise ValidationError("Please submit an image file")
-        return data9        
-'''
+
 
 class studentform(forms.ModelForm):
     names = forms.CharField(error_messages={'required': "Name is required."})
@@ -171,14 +166,14 @@ class studentform(forms.ModelForm):
         return data5
 
     def clean_phoneNum(self):
-        pattern_with_phone = "[6][3][9][0-9]{9}"
+        pattern_with_phone = "[0][9][0-9]{9}"
         data6 = self.cleaned_data['phoneNum'] 
-
-        if len(str(data6)) <= 11:
+        zero = '0' + str(data6)
+        if len(str(zero)) <= 10:
             raise ValidationError("Insufficient numbers")
-        if not re.search(pattern_with_phone,str(data6)):
+        if not re.search(pattern_with_phone,str(zero)):
             raise ValidationError("Please enter valid PH number")
-        return data6
+        return zero
 
     def clean_macadd(self):
         pattern_with_mac = "^(?:[0-9A-Fa-f]{2}[:-]){5}(?:[0-9A-Fa-f]{2})$"
@@ -197,16 +192,6 @@ class studentform(forms.ModelForm):
 
     def clean_residAdd(self):
         data11 = self.cleaned_data['names'] 
-
         if len(data11) < 15:
             raise ValidationError("Name must be 15 characters long")
         return data11
-
-'''
-    def clean_signature(self):
-        pattern_with_upload = "(\.jpg|\.jpeg|\.png)$"
-        data12 = self.cleaned_data['signature']
-        if not re.match(pattern_with_upload,data9):
-            raise ValidationError("Please submit an image file")
-        return data12        
-'''

@@ -21,9 +21,9 @@
     <script type="text/javascript">
         // displaying uploaded image name
         $("input[type='file']").click(function () {
-            $("input[id='id_supload']").click();
+            $("input[id='id_signature']").click();
         });
-        $("input[id='id_supload']").change(function (e) {
+        $("input[id='id_signature']").change(function (e) {
             var $this = $(this);
             $this.next().html($this.val().split('\\').pop());
         });
