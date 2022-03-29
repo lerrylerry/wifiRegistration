@@ -109,7 +109,8 @@ def student(request):
 def readFaculty(request):
     excludes = ['Accepted','Rejected']
     data = Faculty.objects.exclude(decision__in=excludes)
-    context = {"faculty_request" : data}
+    count = Student.objects.exclude(decision__in=excludes).count()
+    context = {"faculty_request" : data, "count" :count}
     print(context)
     return render(request, 'Wifi_App/DATAFACULTY.html', context)
 
@@ -118,15 +119,19 @@ def readFaculty(request):
 def readStudent(request):
     excludes = ['Accepted','Rejected']
     data2 = Student.objects.exclude(decision__in=excludes)
-    context = {"student_request" : data2}
+    count = Faculty.objects.exclude(decision__in=excludes).count()
+    context = {"student_request" : data2, "count" :count}
     print(context)
     return render(request, 'Wifi_App/DATASTUDENT.html', context)
 
 # data history view
 @login_required(login_url='/login/')
 def readHistory(request):
+    excludes = ['Accepted','Rejected']
     history = History.objects.all()
-    context = {"history" : history}
+    countA = Student.objects.exclude(decision__in=excludes).count()
+    countB = Faculty.objects.exclude(decision__in=excludes).count()
+    context = {"history" : history, "countA" :countA, "countB" :countB}
     print("context: " , context)
     return render(request, 'Wifi_App/DATAHISTORY.html', context)
 
