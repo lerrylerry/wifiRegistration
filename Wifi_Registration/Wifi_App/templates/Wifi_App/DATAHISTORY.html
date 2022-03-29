@@ -4,23 +4,34 @@
 {% block title %}DATA HISTORY{% endblock title %}
       
 {% block content %}
-<li>
-   <a class="btn btn-block text-success" href="{% url 'datastudent' %}">STUDENT {% if countA == 0 %}<i class="fa-regular fa-circle-check"></i>
-      {% else %}<span class="badge badge-danger">{{ countA }}</span>{% endif %}</a>
-</li>
-<li>
-   <a class="btn btn-block text-success" href="{% url 'datafaculty' %}">FACULTY {% if countB == 0 %}<i class="fa-regular fa-circle-check"></i>
-      {% else %}<span class="badge badge-danger">{{ countB }}</span>{% endif %}</a>
 </li>
 <div class="dropdown show">
-   <a class="btn btn-outline-success dropdown-toggle" href="#" role="button" 
+   {% if countA != 0 or  countB != 0%}
+   <a class="dropdown-toggle text-danger" href="#" role="button" id="dropdownMenuLink" 
+   data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+   {% else %}
+   <a class="dropdown-toggle btn text-success" href="#" role="button" id="dropdownMenuLink" 
+   data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+   {% endif %}
+   {% if countA != 0 or  countB != 0%}<i class="fa-solid fa-circle-exclamation"></i>{% else %}<i class="fa-solid fa-bell"></i>{% endif %}</a>
+   <div class="dropdown-menu" id="drop" aria-labelledby="dropdownMenuLink">
+      <a class="btn btn-block text-success" href="{% url 'datastudent' %}">STUDENT {% if countA == 0 %}<i class="fa-regular fa-circle-check"></i>
+         {% else %}<span class="badge badge-danger">{{ countA }}</span>{% endif %}</a>
+      <div class="dropdown-divider m-0"></div>
+      <a class="btn btn-block text-success" href="{% url 'datafaculty' %}">FACULTY {% if countB == 0 %}<i class="fa-regular fa-circle-check"></i>
+         {% else %}<span class="badge badge-danger">{{ countB }}</span>{% endif %}</a>
+   </div>
+</div>
+
+<div class="dropdown show">
+   <a class="dropdown-toggle ml-3 text-success" href="#" role="button" 
    id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-   <strong>{{ user.username }}</strong> 
+   <strong>{{ user.username }}<i class="fa-solid fa-bell-school"></i></strong> 
    </a>
-   <div class="dropdown-menu dropdown-menu-right bg-light" aria-labelledby="dropdownMenuLink">
+   <div class="dropdown-menu dropdown-menu-right" id="drop" aria-labelledby="dropdownMenuLink">
      <a class="dropdown-item text-primary" href="{% url 'Ppdf' %}">download as <em><strong>PDF</strong></em></a>
      <a class="dropdown-item text-primary" href="">download as <em><strong>CSV</strong></em></a>
-     <div class="dropdown-divider m-0"></div>
+     <div class="dropdown-divider m-0 bg-body"></div>
         <a class="dropdown-item text-danger" href="{% url 'logout' %}">LOGOUT</a>
    </div>
 </div>
@@ -72,7 +83,6 @@
    <script>
          $(document).ready(function() {
             $('#historydata').DataTable({
-               scrollY: 400,
                scrollCollapse: true,
                paging : false,
             })})
