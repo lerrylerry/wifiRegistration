@@ -65,6 +65,10 @@ def faculty(request):
             submit.save()
             thisName = submit.names
             print(thisName)
+
+            filed = open("media/file.txt","w")
+            filed.write(thisName)
+            filed.close()
             
             logged = History.objects.create(
                 names = request.POST['names'],
@@ -111,6 +115,10 @@ def student(request):
             submit.save()
             thisName = submit.names
             print(thisName)
+
+            filed = open("media/file.txt","w")
+            filed.write(thisName)
+            filed.close()
 
             logged = History.objects.create(
                 names = request.POST['names'],
@@ -163,7 +171,10 @@ def readHistory(request):
     return render(request, 'Wifi_App/DATAHISTORY.html', context)
 
 def success(request):
-    return render(request, "Wifi_App/success.html")
+    filed = open("media/file.txt","r")
+    nameOf = filed.read()
+    context = {"yname":nameOf}
+    return render(request, "Wifi_App/success.html", context)
 
 # CRUD/OTHERS================
 
