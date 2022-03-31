@@ -28,4 +28,30 @@
         });
     </script>
     <script src="{% static 'JavaScript/Fjquery.js' %}" defer></script>
+    <script type="text/javascript">
+        $(document).on('submit','form',function(e){
+            e.preventDefault();
+
+            $.ajax({
+                type: 'POST',
+                url: '/faculty/',
+                data: {
+                    id_names:$('#id_names').val(),
+                    id_department:$('#id_department').val(),
+                    id_designation:$('#id_designation').val(),
+                    id_device:$('#id_device').val(),
+                    id_otherDevice:$('#id_otherDevice').val(),
+                    id_email:$('#id_email').val(),
+                    id_macadd:$('#id_macadd').val(),
+                    id_phoneNum:$('#id_phoneNum').val(),
+                    id_facultyName:$('#id_facultyName').val(),
+                    id_signature:$('#id_signature').val(),
+                    csrfmiddlewaretoken:$('input[name=csrfmiddlewaretoken]').val()
+                },
+                success:function(){
+                    alert("message check?");
+                }
+            });
+        });
+    </script>
 {% endblock content %}

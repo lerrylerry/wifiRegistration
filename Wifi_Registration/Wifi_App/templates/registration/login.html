@@ -30,6 +30,7 @@
             <section class="row justify-content-center">
                 <section class="col-12 col-sm-6 col-md-3">
                     <form method="post" name="login" novalidate>
+                        {% csrf_token %}
                         <div class="form-container">
                                     <h4 style="color: white;" >Admin Login</h4>
                                     <div class="text-white">{{ form|crispy }}</div>
@@ -39,9 +40,6 @@
                                         <label class="form-check-label" for="RmbrME" style="color: white;">Remember me</label>
                                     </div>
                                     <button type="submit" class="btn btn-primary mx-auto d-block">LOG IN</button>
-
-                        {% csrf_token %}
-                        
                     </form>
                 </section>
             </section>

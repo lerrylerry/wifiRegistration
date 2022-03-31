@@ -12,7 +12,7 @@
   <a class="dropdown-toggle text-success" href="#" role="button" id="dropdownMenuLink" 
   data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
   {% endif %}
-  {% if count != 0%}<i class="fa-solid fa-circle-exclamation"></i>{% else %}<i class="fa-solid fa-bell"></i>{% endif %}</a>
+  {% if count != 0%}<i class="fa-solid fa-person-circle-exclamation"></i>{% else %}<i class="fa-solid fa-person-circle-check"></i>{% endif %}</a>
   <div class="dropdown-menu" id="drop" aria-labelledby="dropdownMenuLink">
     <a class="btn btn-block text-success" href="{% url 'datastudent' %}">STUDENT {% if count == 0 %}<i class="fa-regular fa-circle-check"></i>
     {% else %}<span class="badge badge-danger">{{ count }}</span>{% endif %}</a>
@@ -21,18 +21,6 @@
   </div>
 </div>
 
-<div class="dropdown show">
-  <a class="ml-3 text-success dropdown-toggle" href="#" role="button" 
-  id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-  <strong>{{ user.username }}</strong>
-  </a>
-  <div class="dropdown-menu dropdown-menu-right" id="drop" aria-labelledby="dropdownMenuLink">
-    <a class="dropdown-item text-primary" href="">download as <em><strong>PDF</strong></em></a>
-    <a class="dropdown-item text-primary" href="">download as <em><strong>CSV</strong></em></a>
-    <div class="dropdown-divider m-0"></div>
-    <a class="dropdown-item text-danger" href="{% url 'logout' %}">LOGOUT</a>
-  </div>
-</div>
 {% endblock content %}
 
 {% block body %}
@@ -80,11 +68,7 @@
                         </span>
                     </td>
                   </tr>
-              </tbody>
-             </table>
-          </div>
-
-              <!-- The Modal -->
+                  <!-- The Modal -->
     <div class="modal fade" id="myModal">
       <div class="modal-dialog modal-dialog-centered">
           <div class="modal-content">
@@ -123,7 +107,11 @@
           </div>
       </div>
   </div>
-  {% endfor %}
+                  {% endfor %}
+              </tbody>
+             </table>
+          </div>
+        </div>
           
           <script>
             $(document).ready(function() {

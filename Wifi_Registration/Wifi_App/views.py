@@ -3,9 +3,10 @@ from Wifi_App.models import Faculty, Student, History
 from django.contrib import messages
 from Wifi_App.forms import facultyform, studentform 
 from django.contrib.auth.decorators import login_required
-from django.http import FileResponse
+from django.http import FileResponse, HttpResponse
 from reportlab.pdfgen import canvas
 import datetime
+import csv
 import io
 
 #username = lerry123, password = wifi123
@@ -19,6 +20,27 @@ def print_view(request):
     p.save()
     buffer.seek(0)
     return FileResponse(buffer, as_attachment=True, filename="lerry.pdf")
+
+def csv_view(request):
+    # object
+    response = HttpResponse(
+        content_type = 'text/csv',
+        headers = {'Content-Disposition': 'attachment; filename = "lerry.csv"'},
+    )
+    # instance
+    writer = csv.writer(response)
+
+    # data to be inputted
+    count = History.objects.all().count()
+    context = History.objects.all()
+    writer.writerow(['Name', 'Email', 'Mac Address','User Type', 'Decision', 'Date Created', 'Date Evaluated'])
+    for data in range(count):
+        #writer.writerow([context[data].names, context[data].department, context[data].designation , context[data].device, context[data].otherDevice, context[data].phoneNum, 
+        #                context[data].email, context[data].macadd, context[data].facultyName, context[data].signature])
+
+        writer.writerow([context[data].names, context[data].email, context[data].macadd, context[data].userType, 
+                        context[data].decision, context[data].dateCreated, context[data].dateEvaluated])
+    return response
 
 def faculty(request):
     if request.method == 'POST':
@@ -41,6 +63,8 @@ def faculty(request):
             if submit.otherDevice == '':
                 submit.otherDevice = "-"
             submit.save()
+            thisName = submit.names
+            print(thisName)
             
             logged = History.objects.create(
                 names = request.POST['names'],
@@ -51,7 +75,7 @@ def faculty(request):
             )
             logged.save()
 
-            # redirect to success page
+            #return render(request, 'Wifi_App/success.html', {'submit': thisName})
             return redirect('/faculty/success.html/')
         
         else:
@@ -60,6 +84,7 @@ def faculty(request):
     else:
         form = facultyform()
     return render(request, 'Wifi_App/FACULTY.html', {'form': form})
+
 
 def student(request):
     if request.method == 'POST':
@@ -84,17 +109,19 @@ def student(request):
             if submit.otherDevice == '':
                 submit.otherDevice = "-"
             submit.save()
-            
+            thisName = submit.names
+            print(thisName)
+
             logged = History.objects.create(
                 names = request.POST['names'],
                 macadd = request.POST['macadd'],
                 email = request.POST['email'],
-                userType = 'Faculty',
+                userType = 'Student',
                 decision = 'Pending',
             )
             logged.save()
 
-            # redirect to success page
+            #return render(request, 'Wifi_App/success.html', {'submit': thisName})
             return redirect('/student/success.html/')
 
         else:
@@ -136,7 +163,7 @@ def readHistory(request):
     return render(request, 'Wifi_App/DATAHISTORY.html', context)
 
 def success(request):
-    return render(request, 'Wifi_App/success.html')
+    return render(request, "Wifi_App/success.html")
 
 # CRUD/OTHERS================
 

@@ -11,6 +11,9 @@ urlpatterns = [
     path('ds/', views.readStudent, name='datastudent'),
     path('df/', views.readFaculty, name='datafaculty'),
     path('dh/', views.readHistory, name='datahistory'),
+
+    path('to_csv/', views.csv_view, name='csv'),
+
     path('faculty/success.html/', views.success, name='success'),
     path('student/success.html/', views.success, name='success'),
     path('acceptFaculty/<faculty_pk>', views.acceptFaculty, name='acceptFaculty'),

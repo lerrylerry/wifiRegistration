@@ -2,10 +2,24 @@
     <head>
         <title>CONFIRMATION</title>
     </head>
+    <style type="text/css">
+        .center {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            background-color: #d4edda;
+        }
+        #color{
+            background-color: #d4edda;
+        }
+    </style>
 
-    <body>
-        <div class="alert alert-success">
-            <strong>Congrats!</strong> You Have Successfully Submitted The Form✨🥳🎉
+    <body id="color">
+        <div class="card center shadow-lg">
+        <h4 class="card-body text-body">
+            Congratulations! <strong>{{ submit }}</strong>, You Have Successfully Submitted The Form✨🥳🎉
+        </h4>
         </div>
     </body>
 </html>
