@@ -1,11 +1,13 @@
 from django.db import models
+from django.contrib.auth.forms import UserCreationForm
 
 # Create your models here.
 
-class Faculty(models.Model):
+    
+class Person(models.Model):
     names = models.CharField(max_length=50, unique=True, verbose_name="Name")
-    department = models.CharField(max_length=50, verbose_name="Department")
-    designation = models.CharField(max_length=50, verbose_name="Designation")
+    department = models.CharField(max_length=50, verbose_name="Department", blank=True)
+    designation = models.CharField(max_length=50, verbose_name="Designation", blank=True)
     Device = [
                 ('' , 'Choose device'),
                 ('Smartphone' , 'Smartphone'),
@@ -17,21 +19,11 @@ class Faculty(models.Model):
 
     device = models.CharField(max_length=15, choices=Device, verbose_name="Device")
     otherDevice = models.CharField(max_length=15, null=True, blank=True, verbose_name="Others")
-    email = models.EmailField(max_length=50, unique=True, primary_key=True, verbose_name="Email")
+    email = models.EmailField(max_length=50, unique=True, primary_key=True, verbose_name="Email")#PK
     macadd = models.CharField(max_length=17, unique=True, verbose_name="MAC Address")
     phoneNum = models.DecimalField(max_digits=15, decimal_places=0, unique=True, verbose_name="Phone No.")
-    facultyName = models.CharField(max_length=10, verbose_name="Faculty Name")
-    signature = models.ImageField(verbose_name="Signature", upload_to='uploads/', blank=False, null=False)
-    agreement = models.BooleanField(default=False)  
-    decision = models.CharField(max_length=10)
-    dateCreated = models.DateTimeField(auto_now_add=True)
-    userType = models.CharField(max_length=10)
-
-    def __str__(self):
-        return self.names + '-->' + self.email
-
-class Student(models.Model):
-    names = models.CharField(max_length=50, unique=True, verbose_name="Name")
+    facultyName = models.CharField(max_length=10, verbose_name="Faculty Name", blank=True)
+    signature = models.ImageField(verbose_name="Signature", upload_to='uploads/')
     Course = [#first column: database // second column: forms
                 ('' , 'Choose course'),
                 ('BSCE','BACHELOR OF SCIENCE IN CIVIL ENGINEERING'),
@@ -53,47 +45,29 @@ class Student(models.Model):
                 ('BET-CP','BTTE-COMPUTER PROGRAMMING')
     ]
 
-    course = models.CharField(max_length=50, choices=Course, verbose_name="Course")
+    course = models.CharField(max_length=50, choices=Course, verbose_name="Course", blank=True)
     Semester = [
                 ('' , 'Choose Semester'),
                 ('First Semester','1st Semmester'),
                 ('Second Semester','2nd Semester'),
                 ('Others...','Others...')
     ]
-    Device = [
-                ('' , 'Choose device'),
-                ('Smartphone' , 'Smartphone'),
-                ('Laptop' , 'Laptop'),
-                ('Tablet' , 'Tablet'),
-                ('PC' , 'PC'),
-                ('Desktop' , 'Desktop')
-            ]
-
-    device = models.CharField(max_length=15, choices=Device, verbose_name="Device")
-    otherDevice = models.CharField(max_length=15, null=True, blank=True, verbose_name="Others")
-    email = models.EmailField(max_length=50, unique=True, primary_key=True, verbose_name="Email")
-    macadd = models.CharField(max_length=17, unique=True, verbose_name="MAC Address")
-    phoneNum = models.DecimalField(max_digits=15, decimal_places=0, unique=True, verbose_name="Phone No.")
-    semester = models.CharField(max_length=20, choices=Semester, verbose_name="Semester")
-    tupid = models.CharField(max_length=12, verbose_name="Student No")
-    orNum = models.DecimalField(max_digits=8, decimal_places=0, unique=True, verbose_name="O.R #")
-    residAdd = models.CharField(max_length=200, verbose_name="Residence Address")
-    signature = models.ImageField(verbose_name="Signature", upload_to='uploads/', blank=False, null=False)
+    semester = models.CharField(max_length=20, choices=Semester, verbose_name="Semester", blank=True)
+    tupid = models.CharField(max_length=12, verbose_name="Student No", blank=True)
+    orNum = models.DecimalField(max_digits=8, decimal_places=0, unique=True, verbose_name="O.R #", blank=True)
+    residAdd = models.CharField(max_length=200, verbose_name="Residence Address", blank=True)
     agreement = models.BooleanField(default=False)  
-    userType = models.CharField(max_length=10)
     decision = models.CharField(max_length=10)
-    dateCreated = models.DateTimeField(auto_now_add=True)
+    userType = models.CharField(max_length=10)
+    #dateCreated = models.DateTimeField(auto_now_add=True)
 
     def __str__(self):
-        return self.names + '-->' + self.email
-    
-class History(models.Model):  
-    names = models.CharField(max_length=50)
-    email = models.EmailField(max_length=50)
-    macadd = models.CharField(max_length=17)
-    userType = models.CharField(max_length=10)
-    decision = models.CharField(max_length=10)
+        return self.names
+
+class History(models.Model):
+    emails = models.ForeignKey(Person, on_delete=models.CASCADE)
     dateCreated = models.DateTimeField(auto_now_add=True)
     dateEvaluated = models.DateTimeField(blank=True,null=True)
-    #data_of_Faculty = models.ManyToManyField(Faculty)
-    #data_of_Student = models.ManyToManyField(Student)
+    
+class Accounts(UserCreationForm):
+    pass

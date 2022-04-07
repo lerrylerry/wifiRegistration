@@ -1,6 +1,6 @@
 import re
 from django import forms
-from Wifi_App.models import Faculty, Student
+from Wifi_App.models import Person
 from django.core.exceptions import ValidationError
 
 Course = [#first column: database // second column: forms
@@ -39,18 +39,18 @@ Device = [
             ]
 
 class facultyform(forms.ModelForm):
-    names = forms.CharField(error_messages={'required': "Name is required."})
-    department = forms.CharField(error_messages={'required': "Department is required."})
-    designation = forms.CharField(error_messages={'required': "Designation is required."})
-    macadd = forms.CharField(error_messages={'required': "Mac Address is required."})
-    device = forms.ChoiceField(error_messages={'required': "Device is required."},choices=Device)
-    agreement = forms.BooleanField(error_messages={'required': "required."})
-    email = forms.EmailField(error_messages={'required': "Email is required."})
-    phoneNum = forms.DecimalField(error_messages={'required': "Phone No. is required."})
-    facultyName = forms.CharField(error_messages={'required': "Faculty Name is required."})
-    signature = forms.ImageField(error_messages={'required': "Signature is required."})
+    names = forms.CharField(required=True,error_messages={'required': "Name is required."})
+    department = forms.CharField(required=True,error_messages={'required': "Department is required."})
+    designation = forms.CharField(required=True,error_messages={'required': "Designation is required."})
+    macadd = forms.CharField(required=True,error_messages={'required': "Mac Address is required."})
+    device = forms.ChoiceField(required=True,error_messages={'required': "Device is required."},choices=Device)
+    agreement = forms.BooleanField(required=True,error_messages={'required': "required."})
+    email = forms.EmailField(required=True,error_messages={'required': "Email is required."})
+    phoneNum = forms.DecimalField(required=True,error_messages={'required': "Phone No. is required."})
+    facultyName = forms.CharField(required=True,error_messages={'required': "Faculty Name is required."})
+    signature = forms.ImageField(required=True,error_messages={'required': "Signature is required."})
     class Meta:
-        model = Faculty
+        model = Person
         fields = ['names','department','designation','macadd','device','otherDevice','agreement','email','phoneNum','facultyName','signature']
 
     def clean_agreement(self):
@@ -89,7 +89,7 @@ class facultyform(forms.ModelForm):
 
     def clean_macadd(self):
         pattern_with_mac = "^(?:[0-9A-Fa-f]{2}[:-]){5}(?:[0-9A-Fa-f]{2})$"
-        data4 = self.cleaned_data['macadd']
+        data4 = self.cleaned_data['macadd'].upper()
         if not re.search(pattern_with_mac,data4):
             raise ValidationError("Please use valid mac address")
         return data4
@@ -123,20 +123,20 @@ class facultyform(forms.ModelForm):
 
 
 class studentform(forms.ModelForm):
-    names = forms.CharField(error_messages={'required': "Name is required."})
-    course = forms.ChoiceField(error_messages={'required': "Course is required."},choices=Course)
-    semester = forms.ChoiceField(error_messages={'required': "Semester is required."},choices=Semester)
-    macadd = forms.CharField(error_messages={'required': "Mac Address is required."})
-    device = forms.ChoiceField(error_messages={'required': "Device is required."},choices=Device)
-    agreement = forms.BooleanField(error_messages={'required': "required."})
-    email = forms.EmailField(error_messages={'required': "Email is required."})
-    phoneNum = forms.DecimalField(error_messages={'required': "Phone No. is required."})
-    tupid = forms.CharField(error_messages={'required': "TUPC-ID is required."})
-    orNum= forms.DecimalField(error_messages={'required': "OR No. is required."})
-    resiAdd = forms.CharField(error_messages={'required': "Residence Address is required."})
-    signature = forms.ImageField(error_messages={'required': "Signature is required."})
+    names = forms.CharField(required=True,error_messages={'required': "Name is required."})
+    course = forms.ChoiceField(required=True,error_messages={'required': "Course is required."},choices=Course)
+    semester = forms.ChoiceField(required=True,error_messages={'required': "Semester is required."},choices=Semester)
+    macadd = forms.CharField(required=True,error_messages={'required': "Mac Address is required."})
+    device = forms.ChoiceField(required=True,error_messages={'required': "Device is required."},choices=Device)
+    agreement = forms.BooleanField(required=True,error_messages={'required': "required."})
+    email = forms.EmailField(required=True,error_messages={'required': "Email is required."})
+    phoneNum = forms.DecimalField(required=True,error_messages={'required': "Phone No. is required."})
+    tupid = forms.CharField(required=True,error_messages={'required': "TUPC-ID is required."})
+    orNum= forms.DecimalField(required=True,error_messages={'required': "OR No. is required."})
+    residAdd = forms.CharField(required=True,error_messages={'required': "Residence Address is required."})
+    signature = forms.ImageField(required=True,error_messages={'required': "Signature is required."})
     class Meta:
-        model = Student
+        model = Person
         fields = ['names','course','semester','tupid','orNum','phoneNum','device', 'agreement' ,'otherDevice','macadd','email','residAdd','signature']
         
     def clean_names(self):
@@ -177,7 +177,7 @@ class studentform(forms.ModelForm):
 
     def clean_macadd(self):
         pattern_with_mac = "^(?:[0-9A-Fa-f]{2}[:-]){5}(?:[0-9A-Fa-f]{2})$"
-        data9 = self.cleaned_data['macadd'] 
+        data9 = self.cleaned_data['macadd'].upper()
 
         if not re.search(pattern_with_mac,data9):
             raise ValidationError("Please use valid mac address")

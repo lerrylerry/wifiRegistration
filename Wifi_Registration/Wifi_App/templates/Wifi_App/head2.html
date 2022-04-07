@@ -35,7 +35,7 @@
                                 <strong>{{ user.username }}</strong>
                                 </a>
                                 <div class="dropdown-menu dropdown-menu-right" id="drop" aria-labelledby="dropdownMenuLink">
-                                  <a class="dropdown-item text-primary" href="">download as <em><strong>PDF</strong></em></a>
+                                  <a class="dropdown-item text-primary" href="{% url 'pdf' %}">download as <em><strong>PDF</strong></em></a>
                                   <a class="dropdown-item text-primary" href="{% url 'csv' %}">download as <em><strong>CSV</strong></em></a>
                                   <div class="dropdown-divider m-0"></div>
                                   <a class="dropdown-item text-danger" href="{% url 'logout' %}">LOGOUT</a>

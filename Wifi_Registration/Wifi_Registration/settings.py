@@ -50,7 +50,7 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'widget_tweaks',
-    "crispy_forms",
+    'crispy_forms',
     'Wifi_App',
 ]
 
@@ -95,19 +95,18 @@ DATABASES = {
     }
 }
 
-'''
+'''PHPmyadmin
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.mysql',
         'NAME': 'Wifi_Registration',
-        'HOST': '',
-        'PORT': '3306',
-        'USER': '',
+        'USER': 'root',
         'PASSWORD': '',
+        'HOST': '127.0.0.1',
+        'PORT': '3306',
     }
 }
 '''
-
 # Password validation
 # https://docs.djangoproject.com/en/4.0/ref/settings/#auth-password-validators
 
