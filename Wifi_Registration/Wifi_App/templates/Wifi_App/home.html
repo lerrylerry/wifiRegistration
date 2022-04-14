@@ -1,9 +1,11 @@
-{% extends 'base.html' %}
+{% extends 'Wifi_App/head.html' %}
 {% load static %}
 
 {% block title %}
 <title>WIFIHOMEPAGE</title>
 <link rel="stylesheet" href="{% static 'CSS/hompagedesign.css' %}">
+<link rel="stylesheet" href="https://cdn.datatables.net/1.11.3/css/dataTables.bootstrap4.min.css">
+<script src="https://code.jquery.com/jquery-3.5.1.js"></script>
 {% endblock title %}
       
 {% block content %}
@@ -16,22 +18,27 @@
                 <span class="navbar-toggler-icon"></span>
             </button>    
             <div class="collapse navbar-collapse" id="navbarResponsive">
-                <ul class="navbar-nav ml-auto">
+                <ul class="navbar-nav ml-auto">       
                     <li class="nav-item">
-                        <a class="nav-link text-body dropdown" href="{% url 'faculty' %}">FACULTY</a>
-                    </li>
-                    <li class="nav-item">
-                       <a class="nav-link text-body" href="{% url 'student' %}">STUDENT</a>
-                   </li>
-                    <li class="nav-item">
-                        <a class="nav-link text-body" href="{% url 'login' %}">REGISTER</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link text-body" href="{% url 'login' %}">LOGIN</a>
+                        <a class="nav-link text-body" href="{% url 'login_user' %}">ADMIN</a>
                     </li>
                    <li class="nav-item">
                        <a class="nav-link text-body" href="#">CONTACT US</a>
                    </li>
+                   <li class="nav-item mt-2">
+                       <span class="dropdown show">
+                            <a class="dropdown-toggle text-body" href="#" role="button" 
+                            id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">REGISTER</a>
+                            <div class="dropdown-menu" id="drop" aria-labelledby="dropdownMenuLink">
+                            <a class="dropdown-item text-primary" href="{% url 'register_student' %}">STUDENT</a>
+                            <a class="dropdown-item text-primary" href="{% url 'register_faculty' %}">FACULTY</a>
+                            </div>
+                       </span>
+                   </li>
+                   
+                    <li class="nav-item">
+                        <a class="nav-link text-body" href="{% url 'login_user' %}">LOGIN</a>
+                    </li>
                 </ul>
             </div>
         </div>
@@ -50,8 +57,8 @@
 
                   <p class="sub-text">Welcome to the online wifi registration of TUP-Cavite</p>
                   <p class="banner-btn">
-                      <a href="{% url 'student' %}" >STUDENT</a>
-                      <a href="{% url 'faculty' %}" >FACULTY</a>
+                      <a href="{% url 'login_user' %}" >STUDENT</a>
+                      <a href="{% url 'login_user' %}" >FACULTY</a>
                   </p>
               </div>
           </div>

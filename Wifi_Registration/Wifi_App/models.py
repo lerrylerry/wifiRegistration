@@ -1,10 +1,15 @@
 from django.db import models
-from django.contrib.auth.forms import UserCreationForm
+from django.db.models import Model
+from django.contrib.auth.models import AbstractUser
 
 # Create your models here.
+class CustomUser(AbstractUser):
+    tupid = models.CharField(max_length=12, verbose_name="Student No", unique=True, null=True)
+    email = models.EmailField(max_length=50, unique=True, verbose_name="Email")
+    userType = models.CharField(max_length=10, blank=True)
+    decision = models.CharField(max_length=10)
 
-    
-class Person(models.Model):
+class Person(Model):
     names = models.CharField(max_length=50, unique=True, verbose_name="Name")
     department = models.CharField(max_length=50, verbose_name="Department", blank=True)
     designation = models.CharField(max_length=50, verbose_name="Designation", blank=True)
@@ -19,9 +24,8 @@ class Person(models.Model):
 
     device = models.CharField(max_length=15, choices=Device, verbose_name="Device")
     otherDevice = models.CharField(max_length=15, null=True, blank=True, verbose_name="Others")
-    email = models.EmailField(max_length=50, unique=True, primary_key=True, verbose_name="Email")#PK
     macadd = models.CharField(max_length=17, unique=True, verbose_name="MAC Address")
-    phoneNum = models.DecimalField(max_digits=15, decimal_places=0, unique=True, verbose_name="Phone No.")
+    phoneNum = models.BigIntegerField(unique=True, verbose_name="Phone No.")
     facultyName = models.CharField(max_length=10, verbose_name="Faculty Name", blank=True)
     signature = models.ImageField(verbose_name="Signature", upload_to='uploads/')
     Course = [#first column: database // second column: forms
@@ -53,21 +57,15 @@ class Person(models.Model):
                 ('Others...','Others...')
     ]
     semester = models.CharField(max_length=20, choices=Semester, verbose_name="Semester", blank=True)
-    tupid = models.CharField(max_length=12, verbose_name="Student No", blank=True)
-    orNum = models.DecimalField(max_digits=8, decimal_places=0, unique=True, verbose_name="O.R #", blank=True)
+    orNum = models.IntegerField(verbose_name="O.R #",unique=True, blank=True, null=True)
     residAdd = models.CharField(max_length=200, verbose_name="Residence Address", blank=True)
     agreement = models.BooleanField(default=False)  
-    decision = models.CharField(max_length=10)
-    userType = models.CharField(max_length=10)
-    #dateCreated = models.DateTimeField(auto_now_add=True)
+    user = models.OneToOneField(CustomUser, on_delete=models.CASCADE, primary_key=True)
 
     def __str__(self):
-        return self.names
+        return self.user
 
-class History(models.Model):
-    emails = models.ForeignKey(Person, on_delete=models.CASCADE)
+class History(Model):
+    macs = models.ForeignKey(Person, on_delete=models.CASCADE)
     dateCreated = models.DateTimeField(auto_now_add=True)
     dateEvaluated = models.DateTimeField(blank=True,null=True)
-    
-class Accounts(UserCreationForm):
-    pass

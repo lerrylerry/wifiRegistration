@@ -1,0 +1,51 @@
+<div class="modal fade" id="myModal">
+    <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+    
+            <!-- Modal Header -->
+            <div class="modal-header">
+                <h5 class="modal-title">INFORMATION:</h5>
+            </div>
+
+             <!-- Modal body -->
+             <div class="modal-body">
+                <!--*AJAX DATA MUST GOES HERE!*-->
+             </div>
+            
+            <!-- Modal footer -->
+            <div class="modal-footer d-flex justify-content-left">
+                <button type="button" class="btn btn-danger" data-dismiss="modal">BACK</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<?php 
+   $query = "select * from Person";
+   $result = mysqli_query($con,$query);
+   while($row = mysqli_fetch_array($result)){
+     $id = $row['id'];
+     $names = $row['names'];
+     $department = $row['department'];
+     $designation = $row['designation'];
+     $device = $row['device'];
+     $otherDevice = $row['otherDevice'];
+     $email = $row['email'];
+     $macadd= $row['macadd'];
+     $phoneNum = $row['phoneNum'];
+     $facultyName = $row['facultyName'];
+
+     echo "<tr>";
+     echo "<td>".$names."</td>";
+     echo "<td>".$department."</td>";
+     echo "<td>".$designation."</td>";
+     echo "<td>".$device."</td>";
+     echo "<td>".$otherDevice."</td>";
+     echo "<td>".$email."</td>";
+     echo "<td>".$macadd."</td>";
+     echo "<td>".$phoneNum."</td>";
+     echo "<td>".$facultyName."</td>";
+     echo "<td><button data-id='".$id."' class='userinfo'>Info</button></td>";
+     echo "</tr>";
+   }
+   ?>

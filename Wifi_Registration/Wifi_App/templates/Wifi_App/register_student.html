@@ -1,0 +1,54 @@
+{% extends 'Wifi_App/head.html' %}
+{% load widget_tweaks %}
+{% load static %}
+
+{% block title %}
+<title>REGISTER_STUDENT</title>
+<link rel="stylesheet" href="{% static 'CSS/adminlogin.css' %}">
+
+<style type="text/css">
+    .asteriskField{
+        display: none;
+    }
+    
+    form .alert ul li{
+        list-style: none;
+    }
+
+    form .alert ul{
+        margin: 0;
+        padding: 0;
+    }
+    form #hint_id_password1{
+        display: none;
+    }
+</style>
+{% endblock title %}
+
+{% load crispy_forms_tags %}
+
+{% block content %}
+    <body>
+        <!--script src="{% static 'JavaScript/login.js' %}"></script-->
+        <section class="container-fluid bg" style="background-image: url({% static 'Media/loginbg.jpg' %});">
+            <section class="row justify-content-center">
+                <section class="col-12 col-sm-6 col-md-3">
+                    <form method="post" name="login" novalidate>
+                        {% csrf_token %}
+                        <span class="text-white" style="visibility:hidden">{{ form.userType|as_crispy_field }}Student</span>
+                        <div class="form-container">
+                            <h4 style="color: white;" >REGISTER</h4>
+                            {% include  'Wifi_App/error.html'%}
+                            <div class="text-white">{{ form.username|as_crispy_field }}</div>
+                            <div class="text-white">{{ form.tupid|as_crispy_field }}</div>
+                            <div class="text-white">{{ form.email|as_crispy_field }}</div>
+                            <div class="text-white">{{ form.password1|as_crispy_field }}</div>
+                            <div class="text-white">{{ form.password2|as_crispy_field }}</div>
+                            
+                            <button type="submit" class="btn btn-primary mx-auto d-block">REGISTER</button>
+                    </form>
+                </section>
+            </section>
+        </section>
+    </body>
+{% endblock content %}

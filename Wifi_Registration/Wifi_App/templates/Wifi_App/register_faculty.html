@@ -1,10 +1,11 @@
-{% extends 'base.html' %}
+{% extends 'Wifi_App/head.html' %}
 {% load widget_tweaks %}
 {% load static %}
 
 {% block title %}
-<title>ADMINLOGIN</title>
+<title>REGISTER_FACULTY</title>
 <link rel="stylesheet" href="{% static 'CSS/adminlogin.css' %}">
+
 <style type="text/css">
     .asteriskField{
         display: none;
@@ -17,6 +18,9 @@
     form .alert ul{
         margin: 0;
         padding: 0;
+    }
+    form #hint_id_password1{
+        display: none;
     }
 </style>
 {% endblock title %}
@@ -31,15 +35,16 @@
                 <section class="col-12 col-sm-6 col-md-3">
                     <form method="post" name="login" novalidate>
                         {% csrf_token %}
+                        <span class="text-white" style="visibility:hidden">{{ form.userType|as_crispy_field }}</span>
                         <div class="form-container">
-                                    <h4 style="color: white;" >Admin Login</h4>
-                                    <div class="text-white">{{ form|crispy }}</div>
-                                    <small id="pwcaution" class="form-text text-muted">Please don't share your password to anyone.</small>
-                                    <div class="form-group form-check mt-3">
-                                        <input type="checkbox" class="form-check-input" id="RmbrME">
-                                        <label class="form-check-label" for="RmbrME" style="color: white;">Remember me</label>
-                                    </div>
-                                    <button type="submit" class="btn btn-primary mx-auto d-block">LOG IN</button>
+                            <h4 style="color: white;" >REGISTER</h4>
+                            {% include  'Wifi_App/error.html'%}
+                            <div class="text-white">{{ form.username|as_crispy_field }}</div>
+                            <div class="text-white">{{ form.email|as_crispy_field }}</div>
+                            <div class="text-white">{{ form.password1|as_crispy_field }}</div>
+                            <div class="text-white">{{ form.password2|as_crispy_field }}</div>
+                            
+                            <button type="submit" class="btn btn-primary mx-auto d-block">REGISTER</button>
                     </form>
                 </section>
             </section>

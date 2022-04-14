@@ -47,7 +47,7 @@
                <th scope="col" style="text-align: center;">Time of Request</th>
                <th scope="col" style="text-align: center;">Time of Evaluation</th>
             </tr>
-         </thead>
+         </thead>            
          <tbody>
             {% for i in history %}
             <tr>
@@ -55,13 +55,34 @@
                {% if i.emails %}
                   {% if i.emails.decision == 'Accepted' %}<a href="#" class="text-success" data-toggle="modal" data-target="#myModal2">{{ i.emails.email}}</a>
                   {% elif i.emails.decision == 'Rejected' %}<a href="#" class="text-danger" data-toggle="modal" data-target="#myModal2">{{ i.emails.email}}</a>
-                  {% else %}<a href="#" class="text-body" data-toggle="modal" data-target="#myModal2">{{ i.emails.email}}</a>
+                  {% else %}<a href="#" class="text-body" data-toggle="modal" data-target="#myModal">{{ i.emails.email}}</a>
                   {% endif %}
                {% endif %}
                </th>
-               <td style="text-align: center;">{{ i.userType }}</td>
+               <td style="text-align: center;">{{ i.emails.userType }}</td>
                <td style="text-align: center;">{{ i.dateCreated }}</td>
                <td style="text-align: center;">{{ i.dateEvaluated }}</td>
+               <div class="modal fade" id="myModal">
+                  <div class="modal-dialog modal-dialog-centered">
+                      <div class="modal-content">
+                  
+                          <!-- Modal Header -->
+                          <div class="modal-header">
+                              <h5 class="modal-title">INFORMATION:</h5>
+                          </div>
+              
+                           <!-- Modal body -->
+                           <div class="modal-body">
+                              <!--*AJAX DATA MUST GOES HERE!*-->
+                           </div>
+                          
+                          <!-- Modal footer -->
+                          <div class="modal-footer d-flex justify-content-left">
+                              <button type="button" class="btn btn-danger" data-dismiss="modal">BACK</button>
+                          </div>
+                      </div>
+                  </div>
+              </div>
             </tr>
             {% endfor %}
          </tbody>

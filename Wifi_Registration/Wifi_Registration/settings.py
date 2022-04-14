@@ -150,10 +150,12 @@ STATIC_URL = '/static/'
 STATIC_ROOT = os.path.join(BASE_DIR, 'static')
 
 LOGIN_REDIRECT_URL = reverse_lazy('datahistory')
-LOGOUT_REDIRECT_URL = reverse_lazy("login")
-LOGIN_URL = reverse_lazy('login')
+LOGOUT_REDIRECT_URL = reverse_lazy("home")
+LOGIN_URL = reverse_lazy('login_user')
 
 CRISPY_TEMPLATE_PACK = 'bootstrap4'
+
+AUTH_USER_MODEL = 'Wifi_App.CustomUser'
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/4.0/ref/settings/#default-auto-field

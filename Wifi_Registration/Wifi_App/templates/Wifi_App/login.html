@@ -1,0 +1,54 @@
+{% extends 'Wifi_App/head.html' %}
+{% load widget_tweaks %}
+{% load static %}
+
+{% block title %}
+<title>LOGIN</title>
+<link rel="stylesheet" href="{% static 'CSS/adminlogin.css' %}">
+<style type="text/css">
+    .asteriskField{
+        display: none;
+    }
+    
+    form .alert ul li{
+        list-style: none;
+    }
+
+    form .alert ul{
+        margin: 0;
+        padding: 0;
+    }
+</style>
+{% endblock title %}
+
+{% load crispy_forms_tags %}
+
+{% block content %}
+    <body>
+        <!--script src="{% static 'JavaScript/login.js' %}"></script-->
+        <section class="container-fluid bg" style="background-image: url({% static 'Media/loginbg.jpg' %});">
+            <section class="row justify-content-center">
+                <section class="col-12 col-sm-6 col-md-3">
+                    <form  method="post" name="login" novalidate>
+                        {% csrf_token %}
+                        <div class="form-container">
+                                    <h4 style="color: white;" >LOGIN</h4>
+                                    {% include 'Wifi_App/error.html' %}
+                                    <div class="text-white">{{ form|crispy }}</div>
+                                    <div class="form-group">
+                                        <label for="username" class="text-light">Username:</label>
+                                        <input class="form-control" type="text" name="username">
+                                        <label for="password" class="text-light">Password:</label>
+                                        <input class="form-control" type="text" name="password">
+                                    </div>
+                                    <div class="form-group form-check mt-3">
+                                        <input type="checkbox" class="form-check-input" id="RmbrME">
+                                        <label class="form-check-label" for="RmbrME" style="color: white;">Remember me</label>
+                                    </div>
+                                    <button type="submit" class="btn btn-primary mx-auto d-block">LOG IN</button>
+                    </form>
+                </section>
+            </section>
+        </section>
+    </body>
+{% endblock content %}

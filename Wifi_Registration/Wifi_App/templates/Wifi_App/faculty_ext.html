@@ -8,7 +8,7 @@
         visibility: hidden;
       }
 </style>
-<form class="form" id="form" name="faculty_form" method="POST" action="/faculty/" enctype="multipart/form-data" novalidate>
+<form class="form" id="form" name="faculty_form" method="POST" action="/facultyWifi/" enctype="multipart/form-data" novalidate>
     {% csrf_token %}
     <div class="container px-0 bg-dark">
         {% include 'Wifi_App/error.html' %}
@@ -106,27 +106,6 @@
                 
                 <!-- right side -->
                 <div class="col-sm-6">
-                    {% if form.is_bound %}
-                        {% if form.email.errors %}
-                            <div class="input-group mt-3 mb-2">
-                                <span class="input-group-text"><i class="fa-solid fa-at" id="icon5"></i></span>
-                                {% render_field form.email  class="form-control is-invalid" style="border-left: hidden;" placeholder="...@email.com"%}
-                            </div>
-                                <small class="text-danger">{{ form.email.errors }}</small>
-                            {% else %}
-                            <div class="input-group mt-3 mb-2">
-                                <span class="input-group-text"><i class="fa-solid fa-at" id="icon5"></i></span>
-                                {% render_field form.email  class="form-control is-valid" placeholder="...@email.com"%}
-                            </div>
-                            <small><ul><li id="text">required</li></ul></small>
-                            {% endif %}
-                            {% else %}
-                            <div class="input-group mt-3 mb-2">
-                                <span class="input-group-text"><i class="fa-solid fa-at" id="icon5"></i></span>
-                                {% render_field form.email class="form-control" placeholder="...@email.com"%}
-                            </div>
-                            <small><ul><li id="text">required</li></ul></small>
-                            {% endif %}
         
                     {% if form.is_bound %}
                         {% if form.phoneNum.errors %}
