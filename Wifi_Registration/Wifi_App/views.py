@@ -1,4 +1,4 @@
-from django.shortcuts import render, redirect
+from django.shortcuts import render, redirect, get_object_or_404
 from Wifi_App.models import *
 from django.contrib import messages
 from django.contrib.auth import authenticate, login, logout
@@ -48,6 +48,7 @@ def register_student(request):
         if student_account.is_valid():
             user = student_account.save(commit=False)
             user.userType = 'STUDENT'
+            user.decision = 'PENDING'
             user.save()
             #messages.success(request, 'Account created successfully')
             return redirect('/login_user')
@@ -143,7 +144,7 @@ def csv_view(request):
 def facultyWifi(request):
     if request.method == 'POST':
         form = facultyform(request.POST,request.FILES)
-        account = CustomUser.objects.get(pk=request.user.id)
+        account = get_object_or_404(CustomUser, pk=request.user.id)
         if form.is_valid():
             submit = Person.objects.create(
                 names = request.POST['names'],
@@ -182,6 +183,7 @@ def facultyWifi(request):
 def studentWifi(request):
     if request.method == 'POST':
         form = studentform(request.POST,request.FILES)
+        account = get_object_or_404(CustomUser, pk=request.user.id)
         if form.is_valid():
             submit = Person.objects.create(
                 names = request.POST['names'],
@@ -209,15 +211,6 @@ def studentWifi(request):
                 macs=stud,
             )
             logged.save(force_insert=True)
-
-            email = None
-            if request.user.is_authenticated:
-                email = request.user.email
-                users = CustomUser.objects.get(email=email)
-                account = Person(
-                    user = users,
-                )
-                account.save(force_insert=True)
 
             return redirect('/student/success/')
 
