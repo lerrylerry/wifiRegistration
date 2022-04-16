@@ -4,15 +4,13 @@ from django.contrib.auth.models import AbstractUser
 
 # Create your models here.
 class CustomUser(AbstractUser):
-    tupid = models.CharField(max_length=12, verbose_name="Student No", unique=True, null=True)
-    email = models.EmailField(max_length=50, unique=True, verbose_name="Email")
+    tupid = models.CharField(max_length=12, verbose_name="Student No", unique=True, null=True)#Primary Key is the tupid
+    email = models.EmailField(max_length=50, unique=True, verbose_name="Email", primary_key=True)
     userType = models.CharField(max_length=10, blank=True)
-    decision = models.CharField(max_length=10)
+    decision = models.CharField(max_length=10, blank=True)
 
 class Person(Model):
     names = models.CharField(max_length=50, unique=True, verbose_name="Name")
-    department = models.CharField(max_length=50, verbose_name="Department", blank=True)
-    designation = models.CharField(max_length=50, verbose_name="Designation", blank=True)
     Device = [
                 ('' , 'Choose device'),
                 ('Smartphone' , 'Smartphone'),
@@ -26,7 +24,6 @@ class Person(Model):
     otherDevice = models.CharField(max_length=15, null=True, blank=True, verbose_name="Others")
     macadd = models.CharField(max_length=17, unique=True, verbose_name="MAC Address")
     phoneNum = models.BigIntegerField(unique=True, verbose_name="Phone No.")
-    facultyName = models.CharField(max_length=10, verbose_name="Faculty Name", blank=True)
     signature = models.ImageField(verbose_name="Signature", upload_to='uploads/')
     Course = [#first column: database // second column: forms
                 ('' , 'Choose course'),
@@ -60,12 +57,17 @@ class Person(Model):
     orNum = models.IntegerField(verbose_name="O.R #",unique=True, blank=True, null=True)
     residAdd = models.CharField(max_length=200, verbose_name="Residence Address", blank=True)
     agreement = models.BooleanField(default=False)  
-    user = models.OneToOneField(CustomUser, on_delete=models.CASCADE, primary_key=True)
+    department = models.CharField(max_length=50, verbose_name="Department", blank=True)
+    designation = models.CharField(max_length=50, verbose_name="Designation", blank=True)
+    facultyName = models.CharField(max_length=10, verbose_name="Faculty Name", blank=True)
+    userType = models.CharField(max_length=10)
+    decision = models.CharField(max_length=10)
+    user = models.OneToOneField(CustomUser, on_delete=models.CASCADE, primary_key=True)#Primary key/OneToOneField with the Student Tupid
 
     def __str__(self):
         return self.user
 
 class History(Model):
-    macs = models.ForeignKey(Person, on_delete=models.CASCADE)
+    person = models.ForeignKey(Person, on_delete=models.CASCADE, blank=True, related_name='persons')#
     dateCreated = models.DateTimeField(auto_now_add=True)
     dateEvaluated = models.DateTimeField(blank=True,null=True)

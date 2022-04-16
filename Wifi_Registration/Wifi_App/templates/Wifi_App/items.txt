@@ -130,3 +130,47 @@ class History(models.Model):
     #email = models.ForeignKey(Faculty, on_delete=models.CASCADE)
     #data_of_Faculty = models.ManyToManyField(Faculty)
     #data_of_Student = models.ManyToManyField(Student)
+
+                    {% if form.is_bound %}
+                        {% if form.email.errors %}
+                            <div class="input-group mt-4 mb-2">
+                                <span class="input-group-text"><i class="fa-solid fa-at" id="icon10"></i></span>
+                                {% render_field form.email  class="form-control is-invalid" style="border-left: hidden;" placeholder="...@email.com"%}
+                            </div>
+                            <small class="text-danger" id="small">{{ form.email.errors }}</small>
+                            {% else %}
+                            <div class="input-group mt-4 mb-2">
+                                <span class="input-group-text"><i class="fa-solid fa-at" id="icon10"></i></span>
+                                {% render_field form.email  class="form-control is-valid" placeholder="...@email.com"%}
+                            </div>
+                            <small><ul><li id="text">required</li></ul></small>
+                            {% endif %}
+                            {% else %}
+                            <div class="input-group mt-4 mb-2">
+                                <span class="input-group-text"><i class="fa-solid fa-at" id="icon10"></i></span>
+                                {% render_field form.email  class="form-control" placeholder="...@email.com"%}
+                            </div>
+                            <small><ul><li id="text">required</li></ul></small>
+                            {% endif %}
+
+                                            {% if form.is_bound %}
+                            {% if form.tupid.errors %}
+                                <div class="input-group mt-4 mb-2">
+                                    <span class="input-group-text"><i class="fa-solid fa-id-card" id="icon4"></i></span>
+                                    {% render_field form.tupid  class="form-control is-invalid" style="border-left: hidden;" placeholder="TUPC-XX-XXXX"%}
+                                </div>
+                                <small class="text-danger" id="small">{{ form.tupid.errors }}</small>
+                                {% else %}
+                                <div class="input-group mt-4 mb-2">
+                                    <span class="input-group-text"><i class="fa-solid fa-id-card" id="icon4"></i></span>
+                                    {% render_field form.tupid  class="form-control is-valid" placeholder="TUPC-XX-XXXX"%}
+                                </div>
+                                <small><ul><li id="text">required</li></ul></small>
+                                {% endif %}
+                                {% else %}
+                                <div class="input-group mt-4 mb-2">
+                                    <span class="input-group-text"><i class="fa-solid fa-id-card" id="icon4"></i></span>
+                                    {% render_field form.tupid  class="form-control" placeholder="TUPC-XX-XXXX"%}
+                                </div>
+                                <small><ul><li id="text">required</li></ul></small>
+                                {% endif %}

@@ -2,7 +2,7 @@ from django.shortcuts import render, redirect, get_object_or_404
 from Wifi_App.models import *
 from django.contrib import messages
 from django.contrib.auth import authenticate, login, logout
-from Wifi_App.forms import LoginForm, facultyform, studentform, SignUpFormStudent, SignUpFormFaculty
+from Wifi_App.forms import FacultyForm, StudentForm, SignUpFormStudent, SignUpFormFaculty, LoginForm
 from django.contrib.auth.decorators import login_required
 from django.http import HttpResponse
 from PyPDF2 import PdfFileWriter, PdfFileReader
@@ -17,11 +17,10 @@ import io
 def index(request):
     return render(request, 'Wifi_App/home.html')
 
-def portal_student(request):
-    return render(request, 'Wifi_App/student_portal.html')
 
-def portal_faculty(request):
-    return render(request, 'Wifi_App/faculty_portal.html')
+@login_required(login_url='/login_user/')
+def portal(request):
+    return render(request, 'Wifi_App/portal.html')
 
 def register_faculty(request):
     if request.method == 'POST':
@@ -31,7 +30,6 @@ def register_faculty(request):
             user.userType = 'FACULTY'
             user.decision = 'PENDING'
             user.save()
-
             #messages.success(request, 'Account created successfully')
             return redirect('/login_user')
         else:
@@ -76,17 +74,16 @@ def login_user(request):
                 login(request, user)
                 return redirect('/student/portal')
             else:
-                #messages.error(request, 'Account not found')
+                messages.error(request, 'Account not found')
                 return render(request, 'Wifi_App/login.html',{'form':form})
         
     else:
         form = LoginForm()
-        #messages.error(request, 'Something went wrong!')
         return render(request, 'Wifi_App/login.html',{'form':form})
 
 def logout_user(request):
     logout(request)
-    #messages.success(request, 'You have successfully logout')
+    messages.success(request, 'You have successfully logout')
     return redirect('home')
 
 #unfinished task
@@ -143,8 +140,8 @@ def csv_view(request):
 @login_required(login_url='/login_user/')
 def facultyWifi(request):
     if request.method == 'POST':
-        form = facultyform(request.POST,request.FILES)
-        account = get_object_or_404(CustomUser, pk=request.user.id)
+        form = FacultyForm(request.POST,request.FILES)
+        account = get_object_or_404(CustomUser, pk=request.user.email)
         if form.is_valid():
             submit = Person.objects.create(
                 names = request.POST['names'],
@@ -157,7 +154,9 @@ def facultyWifi(request):
                 phoneNum = request.POST['phoneNum'],
                 signature = request.FILES['signature'],
                 facultyName = request.POST['facultyName'],
-                user = account
+                user = account,
+                userType = account.userType,
+                decision = account.decision,
             )
             if submit.otherDevice == '':
                 submit.otherDevice = "-"
@@ -165,7 +164,7 @@ def facultyWifi(request):
 
             facs = Person.objects.get(user=submit.user)
             logged = History(
-                macs=facs,
+                person=facs,
             )
             logged.save(force_insert=True)
 
@@ -175,32 +174,32 @@ def facultyWifi(request):
             messages.error(request, "You're too fast! Please correct the errors first.")
 
     else:
-        form = facultyform()
+        form = FacultyForm()
     return render(request, 'Wifi_App/FACULTY.html', {'form': form})
 
 # ----------------------------------------------------------------STUDENT FORM----------------------------------------------------------------------
 @login_required(login_url='/login_user/')
 def studentWifi(request):
     if request.method == 'POST':
-        form = studentform(request.POST,request.FILES)
-        account = get_object_or_404(CustomUser, pk=request.user.id)
+        form = StudentForm(request.POST,request.FILES)
+        account = get_object_or_404(CustomUser, pk=request.user.email)
         if form.is_valid():
             submit = Person.objects.create(
                 names = request.POST['names'],
                 course = request.POST['course'],
                 semester = request.POST['semester'],
-                tupid = request.POST['tupid'],
+                #tupid = request.POST['tupid'],
                 orNum = request.POST['orNum'],
                 phoneNum = request.POST['phoneNum'],
                 device = request.POST['device'],
                 otherDevice = request.POST['otherDevice'],
                 macadd = request.POST['macadd'],
-                email = request.POST['email'],
+                #email = request.POST['email'],
                 residAdd = request.POST['residAdd'],
                 signature = request.FILES['signature'],
-                decision = 'PENDING',
                 user = account,
-                userType='STUDENT',
+                userType = account.userType,
+                decision = account.decision,
             )
             if submit.otherDevice == '':
                 submit.otherDevice = "-"
@@ -208,7 +207,7 @@ def studentWifi(request):
 
             stud = Person.objects.get(user=submit.user)
             logged = History(
-                macs=stud,
+                person=stud,
             )
             logged.save(force_insert=True)
 
@@ -218,33 +217,33 @@ def studentWifi(request):
             messages.error(request, "You're too fast! Please correct the errors first.")
 
     else:
-        form = studentform()
+        form = StudentForm()
     return render(request, 'Wifi_App/STUDENT.html',{'form':form})
 
 # ====================================================================TABLES=================================================================
 
 # ------------------------------------------------------------request view of faculty--------------------------------------------------------
-@login_required(login_url='/login_user/')
+#@login_required(login_url='/login_user/')
 def readFaculty(request):
-    allowed_faculty = CustomUser.objects.filter(userType = 'FACULTY',decision = 'PENDING')
-    student_count = CustomUser.objects.filter(userType = 'STUDENT',decision = 'PENDING').count()
+    allowed_faculty = Person.objects.filter(userType='FACULTY',decision='PENDING',agreement=0)
+    student_count = Person.objects.filter(userType='STUDENT',decision='PENDING',agreement=0).count()
     context = {"faculty_request" : allowed_faculty, "count" :student_count}
     return render(request, 'Wifi_App/DATAFACULTY.html', context)
 
 # ------------------------------------------------------------request view of student--------------------------------------------------------
-@login_required(login_url='/login_user/')
+#@login_required(login_url='/login_user/')
 def readStudent(request):
-    allowed_student = CustomUser.objects.filter(userType = 'STUDENT',decision = 'PENDING')
-    faculty_count = CustomUser.objects.filter(userType = 'FACULTY',decision = 'PENDING').count()
+    allowed_student = Person.objects.filter(userType='STUDENT',decision='PENDING',agreement=0)
+    faculty_count = Person.objects.filter(userType='FACULTY',decision='PENDING',agreement=0).count()
     context = {"student_request" : allowed_student, "count" : faculty_count}
     return render(request, 'Wifi_App/DATASTUDENT.html', context)
 
 # ------------------------------------------------------------data history view--------------------------------------------------------------
-@login_required(login_url='/login_user/')
+#@login_required(login_url='/login_user/')
 def readHistory(request):
     history = History.objects.all()
-    student_count = CustomUser.objects.filter(userType = 'STUDENT',decision = 'PENDING').count()
-    faculty_count = CustomUser.objects.filter(userType = 'FACULTY',decision = 'PENDING').count()
+    student_count = Person.objects.filter(userType='STUDENT',decision='PENDING',agreement=0).count()
+    faculty_count = Person.objects.filter(userType='FACULTY',decision='PENDING',agreement=0).count()
     context = {"history" : history, "countA" :student_count, "countB" :faculty_count}
     return render(request, 'Wifi_App/DATAHISTORY.html', context)
 
@@ -253,65 +252,60 @@ def success(request):
 
 # ====================================================================CRUD===================================================================
 
-# ****************************************************************accept faculty*************************************************************
+# ***********************************************************ACCEPT / REJECT FACULTY*********************************************************
 def acceptFaculty(request,faculty_pk):
     try:
-        added = Person.objects.get(pk=faculty_pk)
-        added.decision = 'ACCEPTED'
-        added.save()
-        # -------
-        forhis = History.objects.get(emails=added.email)
-        forhis.dateEvaluated = datetime.datetime.now()
-        forhis.save()
-
+        add_faculty = get_object_or_404(CustomUser, pk=faculty_pk)
+        add_faculty.decision = 'ACCEPTED'
+        add_faculty.save()
+        # ____________________________________________________________
+        history = get_object_or_404(History, faculty=add_faculty.email)
+        history.dateEvaluated = datetime.datetime.now()
+        history.save()
         return redirect('/faculty_request')
 
     except:
         pass
 
-# ****************************************************************reject faculty*************************************************************
 def rejectFaculty(request,faculty_pk):
     try:
-        removed = Person.objects.get(pk=faculty_pk)
-        removed.decision = 'REJECTED' # changing pending status to 'REJECTED'
-        removed.save()
-
-        forhis = History.objects.get(emails=removed.email)
-        forhis.dateEvaluated = datetime.datetime.now()
-        forhis.save()
-
+        destroy_faculty = get_object_or_404(CustomUser, pk=faculty_pk)
+        destroy_faculty.decision = 'REJECTED' # changing pending status to 'REJECTED'
+        destroy_faculty.save()
+        # ________________________________________________________________
+        history = get_object_or_404(History, emails=destroy_faculty.email)
+        history.dateEvaluated = datetime.datetime.now()
+        history.save()
         return redirect('/faculty_request')
          
     except:
         pass
+    
 
-# ****************************************************************accept student*************************************************************
+# ***********************************************************ACCEPT / REJECT STUDENT*********************************************************
 def acceptStudent(request,student_pk):
     try:
-        added = Person.objects.get(pk = student_pk)
-        added.decision = 'ACCEPTED' # changing pending status to 'ACCEPTED'
-        added.save()
-        # -------
-        forhis = History.objects.get(emails=added.email)
-        forhis.dateEvaluated = datetime.datetime.now()
-        forhis.save()
-
+        add_student = get_object_or_404(CustomUser, pk=student_pk)
+        add_student.decision = 'ACCEPTED' # changing pending status to 'ACCEPTED'
+        add_student.save()
+        # ____________________________________________________________
+        history = get_object_or_404(History, emails=add_student.email)
+        history.dateEvaluated = datetime.datetime.now()
+        history.save()
         return redirect('/student_request')
 
     except:
         pass
 
-# ****************************************************************reject student*************************************************************
-def rejectStudent(request, student2_pk):
+def rejectStudent(request, student_pk):
     try:
-        removed = Person.objects.get(pk = student2_pk)
-        removed.decision = 'REJECTED' # changing pending status to 'REJECTED'
-        removed.save()
-        # -------
-        forhis = History.objects.get(emails=removed.email)
-        forhis.dateEvaluated = datetime.datetime.now()
-        forhis.save()
-
+        destroy_faculty = get_object_or_404(CustomUser, pk=student_pk)
+        destroy_faculty.decision = 'REJECTED' # changing pending status to 'REJECTED'
+        destroy_faculty.save()
+        # ________________________________________________________________
+        history = get_object_or_404(History, emails=destroy_faculty.email)
+        history.dateEvaluated = datetime.datetime.now()
+        history.save()
         return redirect('/student_request')
 
     except:
