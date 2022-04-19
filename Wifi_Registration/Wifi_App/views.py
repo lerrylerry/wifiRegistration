@@ -2,7 +2,7 @@ from django.shortcuts import render, redirect, get_object_or_404
 from Wifi_App.models import *
 from django.contrib import messages
 from django.contrib.auth import authenticate, login, logout
-from Wifi_App.forms import FacultyForm, StudentForm, SignUpFormStudent, SignUpFormFaculty, LoginForm
+from Wifi_App.forms import FacultyForm, StudentForm, SignUpFormStudent, SignUpFormFaculty
 from django.contrib.auth.decorators import login_required
 from django.http import HttpResponse
 from PyPDF2 import PdfFileWriter, PdfFileReader
@@ -17,7 +17,6 @@ import io
 def index(request):
     return render(request, 'Wifi_App/home.html')
 
-
 @login_required(login_url='/login_user/')
 def portal(request):
     return render(request, 'Wifi_App/portal.html')
@@ -31,7 +30,7 @@ def register_faculty(request):
             user.decision = 'PENDING'
             user.save()
             #messages.success(request, 'Account created successfully')
-            return redirect('/login_user')
+            return redirect('/login_user/')
         else:
             messages.warning(request, 'Invalid account')
 
@@ -49,7 +48,7 @@ def register_student(request):
             user.decision = 'PENDING'
             user.save()
             #messages.success(request, 'Account created successfully')
-            return redirect('/login_user')
+            return redirect('/login_user/')
         else:
             messages.warning(request, 'Invalid account')
 
@@ -58,9 +57,7 @@ def register_student(request):
     return render(request, 'Wifi_App/register_student.html', {'form': student_account})
 
 def login_user(request):
-    form = LoginForm(request.POST or None)
     if request.method == "POST":
-        if form.is_valid():
             username = request.POST['username']
             password = request.POST['password']
             user = authenticate(request, username=username, password=password)
@@ -75,11 +72,10 @@ def login_user(request):
                 return redirect('/student/portal')
             else:
                 messages.error(request, 'Account not found')
-                return render(request, 'Wifi_App/login.html',{'form':form})
+                return render(request, 'Wifi_App/login.html')
         
     else:
-        form = LoginForm()
-        return render(request, 'Wifi_App/login.html',{'form':form})
+        return render(request, 'Wifi_App/login.html')
 
 def logout_user(request):
     logout(request)
@@ -143,7 +139,7 @@ def facultyWifi(request):
         form = FacultyForm(request.POST,request.FILES)
         account = get_object_or_404(CustomUser, pk=request.user.email)
         if form.is_valid():
-            submit = Person.objects.create(
+            submit = Faculty.objects.create(
                 names = request.POST['names'],
                 department = request.POST['department'],
                 designation = request.POST['designation'],
@@ -162,13 +158,13 @@ def facultyWifi(request):
                 submit.otherDevice = "-"
             submit.save()
 
-            facs = Person.objects.get(user=submit.user)
+            facs = Faculty.objects.get(user=submit.user)
             logged = History(
-                person=facs,
+                faculty=facs,
             )
             logged.save(force_insert=True)
 
-            return redirect('/faculty/success/')
+            return redirect('/faculty-portal/facultyWifi/success/')
         
         else:
             messages.error(request, "You're too fast! Please correct the errors first.")
@@ -184,7 +180,7 @@ def studentWifi(request):
         form = StudentForm(request.POST,request.FILES)
         account = get_object_or_404(CustomUser, pk=request.user.email)
         if form.is_valid():
-            submit = Person.objects.create(
+            submit = Student.objects.create(
                 names = request.POST['names'],
                 course = request.POST['course'],
                 semester = request.POST['semester'],
@@ -205,13 +201,13 @@ def studentWifi(request):
                 submit.otherDevice = "-"
             submit.save()
 
-            stud = Person.objects.get(user=submit.user)
+            stud = Student.objects.get(user=submit.user)
             logged = History(
-                person=stud,
+                student=stud,
             )
             logged.save(force_insert=True)
 
-            return redirect('/student/success/')
+            return redirect('/student-portal/facultyWifi/success/')
 
         else:
             messages.error(request, "You're too fast! Please correct the errors first.")
@@ -225,16 +221,16 @@ def studentWifi(request):
 # ------------------------------------------------------------request view of faculty--------------------------------------------------------
 #@login_required(login_url='/login_user/')
 def readFaculty(request):
-    allowed_faculty = Person.objects.filter(userType='FACULTY',decision='PENDING',agreement=0)
-    student_count = Person.objects.filter(userType='STUDENT',decision='PENDING',agreement=0).count()
+    allowed_faculty = Faculty.objects.filter(userType='FACULTY',decision='PENDING',agreement=0)
+    student_count = Student.objects.filter(userType='STUDENT',decision='PENDING',agreement=0).count()
     context = {"faculty_request" : allowed_faculty, "count" :student_count}
     return render(request, 'Wifi_App/DATAFACULTY.html', context)
 
 # ------------------------------------------------------------request view of student--------------------------------------------------------
 #@login_required(login_url='/login_user/')
 def readStudent(request):
-    allowed_student = Person.objects.filter(userType='STUDENT',decision='PENDING',agreement=0)
-    faculty_count = Person.objects.filter(userType='FACULTY',decision='PENDING',agreement=0).count()
+    allowed_student = Student.objects.filter(userType='STUDENT',decision='PENDING',agreement=0)
+    faculty_count = Faculty.objects.filter(userType='FACULTY',decision='PENDING',agreement=0).count()
     context = {"student_request" : allowed_student, "count" : faculty_count}
     return render(request, 'Wifi_App/DATASTUDENT.html', context)
 
@@ -242,8 +238,8 @@ def readStudent(request):
 #@login_required(login_url='/login_user/')
 def readHistory(request):
     history = History.objects.all()
-    student_count = Person.objects.filter(userType='STUDENT',decision='PENDING',agreement=0).count()
-    faculty_count = Person.objects.filter(userType='FACULTY',decision='PENDING',agreement=0).count()
+    student_count = Student.objects.filter(userType='STUDENT',decision='PENDING',agreement=0).count()
+    faculty_count = Faculty.objects.filter(userType='FACULTY',decision='PENDING',agreement=0).count()
     context = {"history" : history, "countA" :student_count, "countB" :faculty_count}
     return render(request, 'Wifi_App/DATAHISTORY.html', context)
 

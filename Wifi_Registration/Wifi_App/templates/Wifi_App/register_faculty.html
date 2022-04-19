@@ -35,7 +35,6 @@
                 <section class="col-12 col-sm-6 col-md-3">
                     <form method="post" name="login" novalidate>
                         {% csrf_token %}
-                        <span class="text-white" style="visibility:hidden">{{ form.userType|as_crispy_field }}</span>
                         <div class="form-container">
                             <h4 style="color: white;" >REGISTER</h4>
                             {% include  'Wifi_App/error.html'%}
@@ -44,7 +43,8 @@
                             <div class="text-white">{{ form.password1|as_crispy_field }}</div>
                             <div class="text-white">{{ form.password2|as_crispy_field }}</div>
                             
-                            <button type="submit" class="btn btn-primary mx-auto d-block">REGISTER</button>
+                            <button type="submit" class="btn btn-primary mx-auto d-block">
+                                <i class="fa-solid fa-user-plus"></i> REGISTER</button>
                     </form>
                 </section>
             </section>

@@ -80,61 +80,83 @@
                                 </div>
                                 <small><ul><li id="text">required</li></ul></small>
                                 {% endif %}
-        
+
                         {% if form.is_bound %}
-                            {% if form.device.errors %}
+                            {% if form.orNum.errors %}
                                 <div class="input-group mt-4 mb-2">
-                                    <span class="input-group-text"><i class="fa-solid fa-user" id="icon5"></i></span>
-                                    {% render_field form.device  class="custom-select is-invalid" style="border-left: hidden;"%}
+                                    <span class="input-group-text"><i class="fa-solid fa-hashtag" id="icon7"></i></span>
+                                    {% render_field form.orNum  class="form-control is-invalid" style="border-left: hidden;" placeholder="Enter OR number"%}
                                 </div>
-                                <small class="text-danger">{{ form.device.errors }}</small>                        
+                                <small class="text-danger">{{ form.orNum.errors }}</small>
                                 {% else %}
                                 <div class="input-group mt-4 mb-2">
-                                    <span class="input-group-text"><i class="fa-solid fa-user" id="icon5"></i></span>
-                                    {% render_field form.device  class="custom-select is-valid"%}
+                                    <span class="input-group-text"><i class="fa-solid fa-hashtag" id="icon7"></i></span>
+                                    {% render_field form.orNum  class="form-control is-valid" placeholder="Enter OR number"%}
                                 </div>
                                 <small><ul><li id="text">required</li></ul></small>
                                 {% endif %}
                                 {% else %}
                                 <div class="input-group mt-4 mb-2">
-                                    <span class="input-group-text"><i class="fa-solid fa-user" id="icon5"></i></span>
-                                    {% render_field form.device  class="custom-select"%}
+                                    <span class="input-group-text"><i class="fa-solid fa-hashtag" id="icon7"></i></span>
+                                    {% render_field form.orNum  class="form-control" placeholder="Enter OR number"%}
                                 </div>
                                 <small><ul><li id="text">required</li></ul></small>
                                 {% endif %}
-        
-        
-                        <!-------------Specify----------------------------------------------------------------------------->
-                        <div class="input-group mt-4 mb-2">
-                            <span class="input-group-text"><i class="fa-solid fa-ellipsis" id="icon6"></i></span>
-                            {% render_field form.otherDevice  class="form-control" placeholder="If others, please specify..."%}
-                        </div>
+
+                        {% if form.is_bound %}
+                            {% if form.macadd.errors %}
+                                <div class="input-group mt-4 mb-2">
+                                    <span class="input-group-text"><i class="fa-brands fa-apple" id="icon9"></i></span>
+                                    {% render_field form.macadd  class="form-control is-invalid" style="border-left: hidden;" placeholder="Enter Mac Address"%}
+                                </div>
+                                <small class="text-danger" id="small">{{ form.macadd.errors }}</small>
+                                {% else %}
+                                <div class="input-group mt-4 mb-2">
+                                    <span class="input-group-text"><i class="fa-brands fa-apple" id="icon9"></i></span>
+                                    {% render_field form.macadd  class="form-control is-valid" placeholder="Enter Mac Address"%}
+                                </div>
+                                <small><ul><li id="text">required</li></ul></small>
+                                {% endif %}
+                                {% else %}
+                                <div class="input-group mt-4 mb-2">
+                                    <span class="input-group-text"><i class="fa-brands fa-apple" id="icon9"></i></span>
+                                    {% render_field form.macadd class="form-control" placeholder="Enter Mac Address"%}
+                                </div>
+                                <small><ul><li id="text">required</li></ul></small>
+                                {% endif %}
                 </div>  
         
-                <!-- right side -->
+                <!-- right side -->                        
                 <div class="col-sm-6">
                     {% if form.is_bound %}
-                        {% if form.orNum.errors %}
+                        {% if form.device.errors %}
                             <div class="input-group mt-3 mb-2">
-                                <span class="input-group-text"><i class="fa-solid fa-hashtag" id="icon7"></i></span>
-                                {% render_field form.orNum  class="form-control is-invalid" style="border-left: hidden;" placeholder="Enter OR number"%}
+                                <span class="input-group-text"><i class="fa-solid fa-user" id="icon5"></i></span>
+                                {% render_field form.device  class="custom-select is-invalid" style="border-left: hidden;"%}
                             </div>
-                            <small class="text-danger">{{ form.orNum.errors }}</small>
+                            <small class="text-danger">{{ form.device.errors }}</small>                        
                             {% else %}
                             <div class="input-group mt-3 mb-2">
-                                <span class="input-group-text"><i class="fa-solid fa-hashtag" id="icon7"></i></span>
-                                {% render_field form.orNum  class="form-control is-valid" placeholder="Enter OR number"%}
+                                <span class="input-group-text"><i class="fa-solid fa-user" id="icon5"></i></span>
+                                {% render_field form.device  class="custom-select is-valid"%}
                             </div>
                             <small><ul><li id="text">required</li></ul></small>
                             {% endif %}
                             {% else %}
                             <div class="input-group mt-3 mb-2">
-                                <span class="input-group-text"><i class="fa-solid fa-hashtag" id="icon7"></i></span>
-                                {% render_field form.orNum  class="form-control" placeholder="Enter OR number"%}
+                                <span class="input-group-text"><i class="fa-solid fa-user" id="icon5"></i></span>
+                                {% render_field form.device  class="custom-select"%}
                             </div>
                             <small><ul><li id="text">required</li></ul></small>
                             {% endif %}
-        
+
+                            <!-------------Specify----------------------------------------------------------------------------->
+                            <div class="input-group mt-4 mb-2">
+                                <span class="input-group-text"><i class="fa-solid fa-ellipsis" id="icon6"></i></span>
+                                {% render_field form.otherDevice  class="form-control" placeholder="If others, please specify..."%}
+                            </div>
+                            <small><ul><li id="text">required</li></ul></small>
+
                     {% if form.is_bound %}
                         {% if form.phoneNum.errors %}
                             <div class="input-group mt-4 mb-2">
@@ -153,28 +175,6 @@
                             <div class="input-group mt-4 mb-2">
                                 <span class="input-group-text"><i class="fa-solid fa-phone" id="icon8"></i></span>
                                 {% render_field form.phoneNum  class="form-control" placeholder="+09xxxxxxxxx"%}
-                            </div>
-                            <small><ul><li id="text">required</li></ul></small>
-                            {% endif %}
-        
-                    {% if form.is_bound %}
-                        {% if form.macadd.errors %}
-                            <div class="input-group mt-4 mb-2">
-                                <span class="input-group-text"><i class="fa-brands fa-apple" id="icon9"></i></span>
-                                {% render_field form.macadd  class="form-control is-invalid" style="border-left: hidden;" placeholder="11-22-33-44-55"%}
-                            </div>
-                            <small class="text-danger" id="small">{{ form.macadd.errors }}</small>
-                            {% else %}
-                            <div class="input-group mt-4 mb-2">
-                                <span class="input-group-text"><i class="fa-brands fa-apple" id="icon9"></i></span>
-                                {% render_field form.macadd  class="form-control is-valid" placeholder="11-22-33-44-55"%}
-                            </div>
-                            <small><ul><li id="text">required</li></ul></small>
-                            {% endif %}
-                            {% else %}
-                            <div class="input-group mt-4 mb-2">
-                                <span class="input-group-text"><i class="fa-brands fa-apple" id="icon9"></i></span>
-                                {% render_field form.macadd class="form-control" placeholder="11-22-33-44-55"%}
                             </div>
                             <small><ul><li id="text">required</li></ul></small>
                             {% endif %}

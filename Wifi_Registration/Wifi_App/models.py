@@ -1,16 +1,16 @@
 from django.db import models
-from django.db.models import Model
 from django.contrib.auth.models import AbstractUser
 
 # Create your models here.
+
 class CustomUser(AbstractUser):
-    tupid = models.CharField(max_length=12, verbose_name="Student No", unique=True, null=True)#Primary Key is the tupid
+    tupid = models.CharField(max_length=12, verbose_name="Student No", unique=True, null=True)
     email = models.EmailField(max_length=50, unique=True, verbose_name="Email", primary_key=True)
     userType = models.CharField(max_length=10, blank=True)
     decision = models.CharField(max_length=10, blank=True)
 
-class Person(Model):
-    names = models.CharField(max_length=50, unique=True, verbose_name="Name")
+class CommonInfo(models.Model):
+    names = models.CharField(max_length=50, verbose_name="Name",unique=True)
     Device = [
                 ('' , 'Choose device'),
                 ('Smartphone' , 'Smartphone'),
@@ -22,9 +22,21 @@ class Person(Model):
 
     device = models.CharField(max_length=15, choices=Device, verbose_name="Device")
     otherDevice = models.CharField(max_length=15, null=True, blank=True, verbose_name="Others")
-    macadd = models.CharField(max_length=17, unique=True, verbose_name="MAC Address")
-    phoneNum = models.BigIntegerField(unique=True, verbose_name="Phone No.")
+    macadd = models.CharField(max_length=17, verbose_name="MAC Address", unique=True)
+    phoneNum = models.BigIntegerField(verbose_name="Phone No.", unique=True)
     signature = models.ImageField(verbose_name="Signature", upload_to='uploads/')
+    agreement = models.BooleanField(default=False)  
+    userType = models.CharField(max_length=10)
+    decision = models.CharField(max_length=10)
+    user = models.OneToOneField(CustomUser, on_delete=models.CASCADE, primary_key=True)
+
+    def __str__(self):
+        return self.user
+
+    class Meta:
+        abstract = True
+
+class Student(CommonInfo):
     Course = [#first column: database // second column: forms
                 ('' , 'Choose course'),
                 ('BSCE','BACHELOR OF SCIENCE IN CIVIL ENGINEERING'),
@@ -46,28 +58,24 @@ class Person(Model):
                 ('BET-CP','BTTE-COMPUTER PROGRAMMING')
     ]
 
-    course = models.CharField(max_length=50, choices=Course, verbose_name="Course", blank=True)
+    course = models.CharField(max_length=50, choices=Course, verbose_name="Course")
     Semester = [
                 ('' , 'Choose Semester'),
                 ('First Semester','1st Semmester'),
                 ('Second Semester','2nd Semester'),
                 ('Others...','Others...')
     ]
-    semester = models.CharField(max_length=20, choices=Semester, verbose_name="Semester", blank=True)
-    orNum = models.IntegerField(verbose_name="O.R #",unique=True, blank=True, null=True)
-    residAdd = models.CharField(max_length=200, verbose_name="Residence Address", blank=True)
-    agreement = models.BooleanField(default=False)  
-    department = models.CharField(max_length=50, verbose_name="Department", blank=True)
-    designation = models.CharField(max_length=50, verbose_name="Designation", blank=True)
-    facultyName = models.CharField(max_length=10, verbose_name="Faculty Name", blank=True)
-    userType = models.CharField(max_length=10)
-    decision = models.CharField(max_length=10)
-    user = models.OneToOneField(CustomUser, on_delete=models.CASCADE, primary_key=True)#Primary key/OneToOneField with the Student Tupid
+    semester = models.CharField(max_length=20, choices=Semester, verbose_name="Semester")
+    orNum = models.IntegerField(verbose_name="O.R #",unique=True)
+    residAdd = models.CharField(max_length=200, verbose_name="Residence Address")
 
-    def __str__(self):
-        return self.user
+class Faculty(CommonInfo):
+    department = models.CharField(max_length=50, verbose_name="Department")
+    designation = models.CharField(max_length=50, verbose_name="Designation")
+    facultyName = models.CharField(max_length=10, verbose_name="Faculty Name")
 
-class History(Model):
-    person = models.ForeignKey(Person, on_delete=models.CASCADE, blank=True, related_name='persons')#
+class History(models.Model):
+    student = models.ForeignKey(Student, on_delete=models.CASCADE, blank=True, related_name='students', null=True)
+    faculty = models.ForeignKey(Faculty, on_delete=models.CASCADE, blank=True, related_name='faculties', null=True)
     dateCreated = models.DateTimeField(auto_now_add=True)
     dateEvaluated = models.DateTimeField(blank=True,null=True)
