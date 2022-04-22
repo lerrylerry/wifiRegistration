@@ -5,20 +5,6 @@
 {% block title %}
 <title>LOGIN</title>
 <link rel="stylesheet" href="{% static 'CSS/adminlogin.css' %}">
-<style type="text/css">
-    .asteriskField{
-        display: none;
-    }
-    
-    form .alert ul li{
-        list-style: none;
-    }
-
-    form .alert ul{
-        margin: 0;
-        padding: 0;
-    }
-</style>
 {% endblock title %}
 
 {% load crispy_forms_tags %}
@@ -29,27 +15,28 @@
         <section class="container-fluid bg" style="background-image: url({% static 'Media/loginbg.jpg' %});">
             <section class="row justify-content-center">
                 <section class="col-12 col-sm-6 col-md-3">
-                    <form  method="post" name="login" novalidate>
+                    <form  method="post" name="login" action="/login_user/" novalidate>
                         {% csrf_token %}
                         <div class="form-container">
-                                    <h4 style="color: white;" class="mb-2" >LOGIN</h4>
-                                    {% include 'Wifi_App/error.html' %}
-                                    <div class="input-group">
-                                        <span class="input-group-text"><i class="fa-solid fa-user"></i></span>
-                                        <input class="form-control" type="text" name="username" placeholder="Username">
-                                    </div>
-                                    <br>
-                                    <div class="input-group">
-                                        <span class="input-group-text"><i class="fa-solid fa-key"></i></span>
-                                        <input class="form-control" type="text" name="password" placeholder="Password">
-                                    </div>
-                                    <div class="form-group form-check mt-3">
-                                        <input type="checkbox" class="form-check-input" id="RmbrME">
-                                        <label class="form-check-label" for="RmbrME" style="color: white;">Remember me</label>
-                                    </div>
-                                    <button type="submit" class="btn btn-primary mx-auto d-block">
-                                        <i class="fa-solid fa-arrow-right-to-bracket"></i> LOG IN</button>
-                                    <p class="text-white">Need an account? create <a href="{% url 'home' %}">here.</a></p>
+                            <h4 style="color: white;" class="mb-2" >LOGIN</h4>
+                            {% include 'Wifi_App/error.html' %}
+                            <div class="input-group">
+                                <span class="input-group-text"><i class="fa-solid fa-user"></i></span>
+                                <input class="form-control" type="text" name="username" placeholder="Username">
+                            </div>
+                            <br>
+                            <div class="input-group">
+                                <span class="input-group-text"><i class="fa-solid fa-key"></i></span>
+                                <input class="form-control" type="text" name="password" placeholder="Password">
+                            </div>
+                            <div class="form-group form-check mt-3">
+                                <input type="checkbox" class="form-check-input" id="RmbrME">
+                                <label class="form-check-label" for="RmbrME" style="color: white;">Remember me</label>
+                            </div>
+                            <button type="submit" class="btn btn-primary mx-auto d-block">
+                                <i class="fa-solid fa-arrow-right-to-bracket"></i> LOG IN</button>
+                            <p class="text-muted">Need an account? create <a href="{% url 'home' %}" style="text-decoration: underline;">here.</a></p>
+                        </div>
                     </form>
                 </section>
             </section>

@@ -4,15 +4,10 @@ from .models import CustomUser, Student, Faculty
 from django.core.exceptions import ValidationError
 from django.contrib.auth.forms import UserCreationForm
 
-class SignUpFormStudent(UserCreationForm):
+class SignUpForm(UserCreationForm):
     class Meta:
         model = CustomUser
-        fields = ('username','tupid','email','userType')
-
-class SignUpFormFaculty(UserCreationForm):
-    class Meta:
-        model = CustomUser
-        fields = ('username','email','userType')
+        fields = ('username', 'email' ,'userType')
 
 Course = [#first column: database // second column: forms
                 ('' , 'Choose course'),
@@ -50,14 +45,14 @@ Device = [
             ]
 
 class FacultyForm(forms.ModelForm):
-    names = forms.CharField(error_messages={'required': "Name is required."})
+    names = forms.CharField(error_messages={'required': "Name is required.",'unique':"A user with this name already exists"})
     department = forms.CharField(error_messages={'required': "Department is required."})
     designation = forms.CharField(error_messages={'required': "Designation is required."})
     macadd = forms.CharField(error_messages={'required': "Mac Address is required."})
     device = forms.ChoiceField(error_messages={'required': "Device is required."},choices=Device)
     agreement = forms.BooleanField(error_messages={'required': "required."})
     #email = forms.EmailField(error_messages={'required': "Email is required."})
-    phoneNum = forms.DecimalField(error_messages={'required': "Phone No. is required."})
+    phoneNum = forms.IntegerField(error_messages={'required': "Phone No. is required."})
     facultyName = forms.CharField(error_messages={'required': "Faculty Name is required."})
     signature = forms.ImageField(error_messages={'required': "Signature is required."})
     class Meta:
@@ -135,14 +130,14 @@ class StudentForm(forms.ModelForm):
     device = forms.ChoiceField(error_messages={'required': "Device is required."},choices=Device)
     agreement = forms.BooleanField(error_messages={'required': "required."})
     #email = forms.EmailField(error_messages={'required': "Email is required."})
-    phoneNum = forms.DecimalField(error_messages={'required': "Phone No. is required."})
-    #tupid = forms.CharField(error_messages={'required': "TUPC-ID is required."})
-    orNum= forms.DecimalField(error_messages={'required': "OR No. is required."})
+    phoneNum = forms.IntegerField(error_messages={'required': "Phone No. is required."})
+    tupid = forms.CharField(error_messages={'required': "TUPC-ID is required."})
+    orNum= forms.IntegerField(error_messages={'required': "OR No. is required."})
     residAdd = forms.CharField(error_messages={'required': "Residence Address is required."})
     signature = forms.ImageField(error_messages={'required': "Signature is required."})
     class Meta:
         model = Student
-        fields = ['names','course','semester','phoneNum','device', 'agreement' ,'otherDevice','macadd','residAdd','signature']
+        fields = ['names','course','semester','phoneNum','device','orNum', 'agreement' ,'otherDevice','tupid','macadd','residAdd','signature']
         
     def clean_names(self):
         pattern_with_text = "\\d+"

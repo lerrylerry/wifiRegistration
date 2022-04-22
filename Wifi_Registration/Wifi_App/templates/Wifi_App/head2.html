@@ -13,6 +13,7 @@
         <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
         <script src="https://kit.fontawesome.com/45bc2c0fb9.js" crossorigin="anonymous"></script>
+        <link rel="icon" type="image/x-icon" href="{% static 'Media/001-wifi-signal.ico' %}">
     </head>
 
     <body class="bg-light">
@@ -20,7 +21,7 @@
             <nav class="navbar navbar-expand-sm navbar-light sticky-top rounded" style="background: rgb(248, 209, 215);">
                 <div class="container-fluid">
                     <a class="navbar-brand text-body" href="#"><img class="rounded-circle" src="{% static 'Media/TUP-LOGO.png' %}" height="75px" width="75px">
-                        <span style="margin-left: 10px;" class="text-success">ADMIN HOMEPAGE</span></a>
+                        <span style="margin-left: 10px;" class="text-dark">ADMIN HOMEPAGE</span></a>
                     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive">
                         <span class="navbar-toggler-icon"></span>
                     </button>    
@@ -35,10 +36,7 @@
                                 <strong>{{ user.username }}</strong>
                                 </a>
                                 <div class="dropdown-menu dropdown-menu-right" id="drop" aria-labelledby="dropdownMenuLink">
-                                  <a class="dropdown-item text-primary" href="{% url 'pdf' %}">download as <em><strong>PDF</strong></em></a>
-                                  <a class="dropdown-item text-primary" href="{% url 'csv' %}">download as <em><strong>CSV</strong></em></a>
-                                  <div class="dropdown-divider m-0"></div>
-                                  <a class="dropdown-item text-danger" href="{% url 'logout_user' %}">LOGOUT</a>
+                                  <a class="dropdown-item" href="{% url 'logout_user' %}"><i class="fa-solid fa-arrow-right-from-bracket"></i>   LOGOUT</a>
                                 </div>
                               </div>
                         </ul>

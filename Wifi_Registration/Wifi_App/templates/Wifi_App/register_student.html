@@ -33,20 +33,19 @@
         <section class="container-fluid bg" style="background-image: url({% static 'Media/loginbg.jpg' %});">
             <section class="row justify-content-center">
                 <section class="col-12 col-sm-6 col-md-3">
-                    <form method="post" name="login" novalidate>
+                    <form method="post" name="login" action="/register_student/" novalidate>
                         {% csrf_token %}
-                        <span class="text-white" style="visibility:hidden">{{ form.userType|as_crispy_field }}Student</span>
                         <div class="form-container">
                             <h4 style="color: white;" >REGISTER</h4>
                             {% include  'Wifi_App/error.html'%}
                             <div class="text-white">{{ form.username|as_crispy_field }}</div>
-                            <div class="text-white">{{ form.tupid|as_crispy_field }}</div>
                             <div class="text-white">{{ form.email|as_crispy_field }}</div>
                             <div class="text-white">{{ form.password1|as_crispy_field }}</div>
                             <div class="text-white">{{ form.password2|as_crispy_field }}</div>
                             
                             <button type="submit" class="btn btn-primary mx-auto d-block">
                                 <i class="fa-solid fa-user-plus"></i> REGISTER</button>
+                            <p class="text-muted">Already have an account? Log in <a href="{% url 'login_user' %}" style="text-decoration: underline;">here.</a></p>
                     </form>
                 </section>
             </section>

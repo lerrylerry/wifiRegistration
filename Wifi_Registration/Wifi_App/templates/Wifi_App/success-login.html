@@ -1,0 +1,10 @@
+{% include 'Wifi_App/head.html' %}
+<div class="container-fluid p-0 my-3">
+    <div class="alert alert-dismissible alert-success" role="alert">
+       <small class="text-body">You're successfully logged in <strong>{{ user.username }}!</strong></small>
+       <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+          <span aria-hidden="true">x</span>
+       </button>
+       {{ message }}
+    </div>
+</div>

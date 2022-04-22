@@ -8,7 +8,7 @@
         visibility: hidden;
       }
 </style>
-<form class="form" id="form" name="faculty_form" method="POST" action="/facultyWifi/" enctype="multipart/form-data" novalidate>
+<form class="form" id="form" name="faculty_form" method="POST" action="/faculty-portal/facultyWifi/" enctype="multipart/form-data" novalidate>
     {% csrf_token %}
     <div class="container px-0 bg-dark">
         {% include 'Wifi_App/error.html' %}
@@ -106,29 +106,28 @@
                 
                 <!-- right side -->
                 <div class="col-sm-6">
-        
                     {% if form.is_bound %}
                         {% if form.phoneNum.errors %}
-                            <div class="input-group mt-4 mb-2">
+                            <div class="input-group mt-3 mb-2">
                                 <span class="input-group-text"><i class="fa-solid fa-phone" id="icon6"></i></span>
                                 {% render_field form.phoneNum  class="form-control is-invalid" style="border-left: hidden;" placeholder="+09xxxxxxxxx"%}
                             </div>
                                 <small class="text-danger">{{ form.phoneNum.errors }}</small>
                             {% else %}
-                            <div class="input-group mt-4 mb-2">
+                            <div class="input-group mt-3 mb-2">
                                 <span class="input-group-text"><i class="fa-solid fa-phone" id="icon6"></i></span>
                                 {% render_field form.phoneNum  class="form-control is-valid" placeholder="+09xxxxxxxxx"%}
                             </div>
                             <small><ul><li id="text">required</li></ul></small>
                             {% endif %}
                             {% else %}
-                            <div class="input-group mt-4 mb-2">
+                            <div class="input-group mt-3 mb-2">
                                 <span class="input-group-text"><i class="fa-solid fa-phone" id="icon6"></i></span>
                                 {% render_field form.phoneNum class="form-control" placeholder="+09xxxxxxxxx" %}
                             </div>
                             <small><ul><li id="text">required</li></ul></small>
                             {% endif %}
-        
+
                     {% if form.is_bound %}
                         {% if form.device.errors %}
                             <div class="input-group mt-4 mb-2">

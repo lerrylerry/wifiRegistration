@@ -13,11 +13,11 @@
   data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
   {% endif %}
   {% if count != 0%}<i class="fa-solid fa-person-circle-exclamation"></i>{% else %}<i class="fa-solid fa-person-circle-check"></i>{% endif %}</a>
-  <div class="dropdown-menu" id="drop" aria-labelledby="dropdownMenuLink">
-    <a class="btn btn-block text-success" href="{% url 'datafaculty' %}">FACULTY {% if count == 0 %}<i class="fa-regular fa-circle-check"></i>
+  <div class="dropdown-menu dropdown-menu-right" id="drop" aria-labelledby="dropdownMenuLink">
+    <a class="btn btn-block" href="{% url 'datafaculty' %}"><i class="fa-solid fa-user-group"></i> FACULTY {% if count == 0 %}<i class="fa-regular fa-circle-check"></i>
       {% else %}<span class="badge badge-danger">{{ count }}</span>{% endif %}</a>
      <div class="dropdown-divider m-0"></div>
-     <a class="btn btn-block text-success" href="{% url 'datahistory' %}">HISTORY</a>
+     <a class="btn btn-block" href="{% url 'datahistory' %}"><i class="fa-solid fa-clock-rotate-left"></i>   HISTORY</a>
   </div>
 </div>
 {% endblock content %}
@@ -46,20 +46,20 @@
                     </tr>
                  </thead>
                  <tbody>
-                   {% for i in student_request %}
+                   {% for obj in student_request %}
                    <tr>
-                       <th scope="row" style="text-align: center;">{{ i.names }}</th>
-                       <td style="text-align: center;">{{ i.course }}</td>
-                       <td style="text-align: center;">{{ i.semester }}</td>
-                       <td style="text-align: center;">{{ i.tupid }}</td>
-                       <td style="text-align: center;">{{ i.orNum }}</td>
-                       <td style="text-align: center;">0{{ i.phoneNum }}</td>
-                       <td style="text-align: center;">{{ i.device }}</td>
-                       <td style="text-align: center;">{{ i.otherDevice }}</td>
-                       <td style="text-align: center;">{{ i.macadd }}</td>
-                       <td style="text-align: center;">{{ i.email }}</td>
-                       <td style="text-align: center;">{{ i.residAdd }}</td>
-                       <td style="text-align: center;"><img class="rounded" src="{{ i.signature.url }}" width="150" height="100" alt="{{ i.signature }}"></td>
+                       <th scope="row" style="text-align: center;">{{ obj.names }}</th>
+                       <td style="text-align: center;">{{ obj.course }}</td>
+                       <td style="text-align: center;">{{ obj.semester }}</td>
+                       <td style="text-align: center;">{{ obj.tupid }}</td>
+                       <td style="text-align: center;">{{ obj.orNum }}</td>
+                       <td style="text-align: center;">0{{ obj.phoneNum }}</td>
+                       <td style="text-align: center;">{{ obj.device }}</td>
+                       <td style="text-align: center;">{{ obj.otherDevice }}</td>
+                       <td style="text-align: center;">{{ obj.macadd }}</td>
+                       <td style="text-align: center;">{{ obj.emails }}</td>
+                       <td style="text-align: center;">{{ obj.residAdd }}</td>
+                       <td style="text-align: center;"><img class="rounded" src="{{ obj.signature.url }}" width="150" height="100" alt="{{ obj.signature }}"></td>
                        <td style="text-align: center;">
                          <span >
                              <a data-toggle="modal" data-target="#myModal"  class="btn btn-success mb-1" style="padding: 10px 24px;">Approve</a>
@@ -82,7 +82,7 @@
               
               <!-- Modal footer -->
               <div class="modal-footer d-flex justify-content-left">
-                <a href="/acceptStudent/{{ i.email }}" class="btn btn-success">YES</a>
+                <a href="/acceptStudent/{{ obj.tupid }}" class="btn btn-success">YES</a>
                   <button type="button" class="btn text-muted" data-dismiss="modal">NO</button>
               </div>
           </div>
@@ -102,7 +102,7 @@
               
               <!-- Modal footer -->
               <div class="modal-footer d-flex justify-content-left">
-                <a href="/rejectStudent/{{ i.email }}" class="btn btn-success">YES</a>
+                <a href="/rejectStudent/{{ obj.tupid }}" class="btn btn-success">YES</a>
                   <button type="button" class="btn text-muted" data-dismiss="modal">NO</button>
               </div>
           </div>

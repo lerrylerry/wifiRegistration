@@ -19,10 +19,13 @@
                 <p>{{user.username}}</p>
             </div>
         </nav>
+        {% if user. == 0 %}
+
+        {% endif %}
         {% if user.userType == 'STUDENT' %}
-        <a href="/studentWifi/" class="btn btn-primary">REGISTER TO WIFI</a>
+        <a href="/student-portal/studentWifi/" class="btn btn-primary">REGISTER TO WIFI</a>
         {% else %}
-        <a href="/facultyWifi/" class="btn btn-primary">REGISTER TO WIFI</a>
+        <a href="/faculty-portal/facultyWifi/" class="btn btn-primary">REGISTER TO WIFI</a>
         {% endif %}
         <a href="/logout_user/" class="btn btn-primary">Logout</a>
 {% endblock content %}
