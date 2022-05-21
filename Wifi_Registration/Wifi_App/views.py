@@ -26,25 +26,6 @@ def register_faculty(request):
         if form.is_valid():
             form.save()
             return redirect('/facultyWifi/success.html/')
-        else:
-            messages.error(request, "You're too fast! Please correct the errors first.")
-
-    else:
-        form = FacultyForm()
-    return render(request, 'Wifi_App/FACULTY.html', {'form': form})
-
-'''STUDENT REQUEST'''
-def register_student(request):
-    if request.method == 'POST':
-        form = StudentForm(request.POST,request.FILES)
-        if form.is_valid():
-            form.save()
-            return redirect('/studentWifi/success.html/')
-        else:
-            messages.error(request, "You're too fast! Please correct the errors first.")
-
-    else:
-        form = StudentForm()
     return render(request, 'Wifi_App/STUDENT.html', {'form': form})
 
 '''CREATE A STAFF'''
@@ -188,7 +169,7 @@ def acceptStudent(request,user_pk):
 
     except:
         pass
-
+        
 '''APPROVED FACULTY'''
 def acceptFaculty(request, user_pk):
     try:
