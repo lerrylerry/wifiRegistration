@@ -11,6 +11,7 @@ https://docs.djangoproject.com/en/4.0/ref/settings/
 """
 import os
 from pathlib import Path
+from django.urls import reverse_lazy
 from django.contrib.messages import constants as messages
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
@@ -49,6 +50,7 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'widget_tweaks',
+    'crispy_forms',
     'Wifi_App',
 ]
 
@@ -93,19 +95,18 @@ DATABASES = {
     }
 }
 
-'''
+'''PHPmyadmin
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.mysql',
         'NAME': 'Wifi_Registration',
-        'HOST': '',
-        'PORT': '3306',
-        'USER': '',
+        'USER': 'root',
         'PASSWORD': '',
+        'HOST': '127.0.0.1',
+        'PORT': '3306',
     }
 }
 '''
-
 # Password validation
 # https://docs.djangoproject.com/en/4.0/ref/settings/#auth-password-validators
 
@@ -147,9 +148,21 @@ MEDIA_ROOT = os.path.join(BASE_DIR, 'media/')
 
 STATIC_URL = '/static/'
 STATIC_ROOT = os.path.join(BASE_DIR, 'static')
-#STATICFILES_DIRS = [os.path.join(BASE_DIR, 'static')]
-#LOGIN_REDIRECT_URL = 'datahistory'
-#LOGIN_URL = '/al/'
+
+LOGIN_REDIRECT_URL = reverse_lazy('datahistory')
+LOGOUT_REDIRECT_URL = reverse_lazy("home")
+LOGIN_URL = reverse_lazy('login_user')
+
+CRISPY_TEMPLATE_PACK = 'bootstrap4'
+
+AUTH_USER_MODEL = 'Wifi_App.CustomUser'
+
+EMAIL_BACKEND ='django.core.mail.backends.smtp.EmailBackend'
+EMAIL_HOST = 'smtp.gmail.com'
+EMAIL_USE_TLS = True
+EMAIL_PORT = 587
+EMAIL_HOST_USER = 'wcr.tup.cavite@gmail.com'
+EMAIL_HOST_PASSWORD = 'tupcavite'
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/4.0/ref/settings/#default-auto-field

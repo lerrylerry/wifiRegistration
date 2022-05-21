@@ -1,7 +1,23 @@
 import re
 from django import forms
-from Wifi_App.models import Faculty, Student
+from .models import Contact, CustomUser, Student, Faculty, Time
 from django.core.exceptions import ValidationError
+from django.contrib.auth.forms import UserCreationForm
+
+class ContactForm(forms.ModelForm):
+    class Meta:
+        model = Contact
+        fields = "__all__"
+
+class TimeForm(forms.ModelForm):
+    class Meta:
+        model = Time
+        fields = "__all__"
+
+class SignUpForm(UserCreationForm):
+    class Meta:
+        model = CustomUser
+        fields = ('username', 'email' ,'userType')
 
 Course = [#first column: database // second column: forms
                 ('' , 'Choose course'),
@@ -38,20 +54,20 @@ Device = [
                 ('Desktop' , 'Desktop')
             ]
 
-class facultyform(forms.ModelForm):
-    names = forms.CharField(error_messages={'required': "Name is required."})
+class FacultyForm(forms.ModelForm):
+    names = forms.CharField(error_messages={'required': "Name is required.",'unique':"A user with this name already exists"})
     department = forms.CharField(error_messages={'required': "Department is required."})
     designation = forms.CharField(error_messages={'required': "Designation is required."})
     macadd = forms.CharField(error_messages={'required': "Mac Address is required."})
     device = forms.ChoiceField(error_messages={'required': "Device is required."},choices=Device)
     agreement = forms.BooleanField(error_messages={'required': "required."})
     email = forms.EmailField(error_messages={'required': "Email is required."})
-    phoneNum = forms.DecimalField(error_messages={'required': "Phone No. is required."})
+    phoneNum = forms.IntegerField(error_messages={'required': "Phone No. is required."})
     facultyName = forms.CharField(error_messages={'required': "Faculty Name is required."})
     signature = forms.ImageField(error_messages={'required': "Signature is required."})
     class Meta:
         model = Faculty
-        fields = ['names','department','designation','macadd','device','otherDevice','agreement','email','phoneNum','facultyName','signature']
+        fields = ['names','department','designation','macadd','device', 'email','otherDevice','agreement','phoneNum','facultyName','signature']
 
     def clean_agreement(self):
         dat = self.cleaned_data['agreement']
@@ -93,22 +109,19 @@ class facultyform(forms.ModelForm):
         if not re.search(pattern_with_mac,data4):
             raise ValidationError("Please use valid mac address")
         return data4
-
-    def clean_email(self):
-        pattern_with_email = '^[a-zA-Z0-9.!#$%&’*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$'
-        data5 = self.cleaned_data['email']
-        if not re.search(pattern_with_email,data5):
-            raise ValidationError("Please use valid email")
-        return data5
     
     def clean_phoneNum(self):
-        pattern_with_phone = "[6][3][9][0-9]{9}"
+        pattern_with_phone = "[0][9][0-9]{9}"
         data6 = self.cleaned_data['phoneNum']
-        if len(str(data6)) <= 11:
+        zero = '0' + str(data6)
+        print(zero)
+        if len(str(zero)) < 11:
             raise ValidationError("Insufficient numbers")
-        if not re.match(pattern_with_phone,str(data6)):
+        if len(str(zero)) > 11:
+            raise ValidationError("Limit exceeds")
+        if not re.match(pattern_with_phone,str(zero)):
             raise ValidationError("Please enter PH numbers")
-        return data6
+        return zero
 
     def clean_facultyName(self):
         pattern_with_text = "\\d+"
@@ -118,16 +131,8 @@ class facultyform(forms.ModelForm):
         if re.findall(pattern_with_text,data8):
             raise ValidationError("Faculty Name must contain A-Z/a-z")
         return data8
-'''
-    def clean_fupload(self):
-        pattern_with_upload = "(\.jpg|\.jpeg|\.png)$"
-        data9 = self.cleaned_data['fupload']
-        if not re.match(pattern_with_upload,data9):
-            raise ValidationError("Please submit an image file")
-        return data9        
-'''
 
-class studentform(forms.ModelForm):
+class StudentForm(forms.ModelForm):
     names = forms.CharField(error_messages={'required': "Name is required."})
     course = forms.ChoiceField(error_messages={'required': "Course is required."},choices=Course)
     semester = forms.ChoiceField(error_messages={'required': "Semester is required."},choices=Semester)
@@ -135,14 +140,14 @@ class studentform(forms.ModelForm):
     device = forms.ChoiceField(error_messages={'required': "Device is required."},choices=Device)
     agreement = forms.BooleanField(error_messages={'required': "required."})
     email = forms.EmailField(error_messages={'required': "Email is required."})
-    phoneNum = forms.DecimalField(error_messages={'required': "Phone No. is required."})
+    phoneNum = forms.IntegerField(error_messages={'required': "Phone No. is required."})
     tupid = forms.CharField(error_messages={'required': "TUPC-ID is required."})
-    orNum= forms.DecimalField(error_messages={'required': "OR No. is required."})
-    resiAdd = forms.CharField(error_messages={'required': "Residence Address is required."})
+    orNum= forms.IntegerField(error_messages={'required': "OR No. is required."})
+    residAdd = forms.CharField(error_messages={'required': "Residence Address is required."})
     signature = forms.ImageField(error_messages={'required': "Signature is required."})
     class Meta:
         model = Student
-        fields = ['names','course','semester','tupid','orNum','phoneNum','device', 'agreement' ,'otherDevice','macadd','email','residAdd','signature']
+        fields = ['names','course','semester','phoneNum','device','orNum', 'agreement', 'email' ,'otherDevice','tupid','macadd','residAdd','signature']
         
     def clean_names(self):
         pattern_with_text = "\\d+"
@@ -168,21 +173,25 @@ class studentform(forms.ModelForm):
 
         if len(str(data5)) < 6:
             raise ValidationError("OR number must be 6 digits long")
+        if len(str(data5)) > 10:
+            raise ValidationError("Limit exceeds")
         return data5
 
     def clean_phoneNum(self):
-        pattern_with_phone = "[6][3][9][0-9]{9}"
+        pattern_with_phone = "[0][9][0-9]{9}"
         data6 = self.cleaned_data['phoneNum'] 
-
-        if len(str(data6)) <= 11:
+        zero = '0' + str(data6)
+        if len(str(zero)) < 11:
             raise ValidationError("Insufficient numbers")
-        if not re.search(pattern_with_phone,str(data6)):
+        if len(str(zero)) > 11:
+            raise ValidationError("Limit exceeds")
+        if not re.search(pattern_with_phone,str(zero)):
             raise ValidationError("Please enter valid PH number")
-        return data6
+        return zero
 
     def clean_macadd(self):
         pattern_with_mac = "^(?:[0-9A-Fa-f]{2}[:-]){5}(?:[0-9A-Fa-f]{2})$"
-        data9 = self.cleaned_data['macadd'] 
+        data9 = self.cleaned_data['macadd']
 
         if not re.search(pattern_with_mac,data9):
             raise ValidationError("Please use valid mac address")
@@ -197,16 +206,6 @@ class studentform(forms.ModelForm):
 
     def clean_residAdd(self):
         data11 = self.cleaned_data['names'] 
-
         if len(data11) < 15:
             raise ValidationError("Name must be 15 characters long")
         return data11
-
-'''
-    def clean_signature(self):
-        pattern_with_upload = "(\.jpg|\.jpeg|\.png)$"
-        data12 = self.cleaned_data['signature']
-        if not re.match(pattern_with_upload,data9):
-            raise ValidationError("Please submit an image file")
-        return data12        
-'''

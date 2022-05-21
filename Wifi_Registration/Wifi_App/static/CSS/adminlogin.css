@@ -55,3 +55,19 @@
     }
 }
 
+.asteriskField{
+    display: none;
+}
+
+form .alert ul li{
+    list-style: none;
+}
+
+form .alert ul{
+    margin: 0;
+    padding: 0;
+}
+
+form #hint_id_password1{
+    display: none;
+}

@@ -1,0 +1,12 @@
+{% load static %}
+{% include 'Wifi_App/head.html' %}
+<body class="bg-light">
+   <div class="container-fluid p-0">
+    <div class="alert alert-dismissible alert-success shadow-sm" role="alert">
+       <small class="text-body d-flex justify-content-center my-3"><strong><i class="fa-solid fa-circle-check text-success"></i>&nbsp;Congratulations, You have successfully submitted the request. </small>
+       {{ message }}
+    </div>
+    <br>
+   <img class="d-block mx-auto" src="{% static 'Media/success.svg' %}" alt="success-image">
+ </div>
+</body>

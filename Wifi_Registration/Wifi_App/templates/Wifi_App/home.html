@@ -1,0 +1,73 @@
+{% extends 'Wifi_App/head.html' %}
+{% load static %}
+
+{% block title %}
+<title>WIFIHOMEPAGE</title>
+<link rel="stylesheet" href="{% static 'CSS/hompagedesign.css' %}">
+<link rel="stylesheet" href="https://cdn.datatables.net/1.11.3/css/dataTables.bootstrap4.min.css">
+<script src="https://code.jquery.com/jquery-3.5.1.js"></script>
+{% endblock title %}
+      
+{% block content %}
+   <body>
+       <!--- NAVIGATION BAR -->
+       <nav class="navbar navbar-expand-sm navbar-light bg-light sticky-top">
+        <div class="container-fluid">
+            <a class="navbar-brand" href="#"><img class="rounded-circle" src="{% static 'Media/TUP-LOGO.png' %}" height="75px" width="75px"></a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive">
+                <span class="navbar-toggler-icon"></span>
+            </button>    
+            <div class="collapse navbar-collapse" id="navbarResponsive">
+                <ul class="navbar-nav ml-auto">       
+                    <li class="nav-item">
+                        <a class="nav-link text-body" href="{% url 'login_user' %}">
+                            <i class="fa-solid fa-user-secret"></i> ADMIN</a>
+                    </li>
+                   <li class="nav-item">
+                       <a class="nav-link text-body" href="{% url 'contactUs' %}">
+                        <i class="fa-solid fa-phone"></i> CONTACT US</a>
+                   </li>
+                   <li class="nav-item mt-2">
+                       <span class="dropdown show">
+                            <a class="dropdown-toggle text-body" href="#" role="button" 
+                            id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                <i class="fa-solid fa-user-plus"></i> <strong>REGISTER</strong></a>
+                            <div class="dropdown-menu" id="drop" aria-labelledby="dropdownMenuLink">
+                            <a class="dropdown-item text-primary" href="{% url 'register_student' %}">
+                                <i class="fa-solid fa-graduation-cap"></i> <em>STUDENT</em></a>
+                            <a class="dropdown-item text-primary" href="{% url 'register_faculty' %}">
+                                <i class="fa-solid fa-user-group"></i> <em>FACULTY</em></a>
+                            </div>
+                       </span>
+                   </li>
+                   
+                    <li class="nav-item">
+                        <a class="nav-link text-body" href="{% url 'login_user' %}">
+                            <i class="fa-solid fa-arrow-right-to-bracket"></i> <strong>LOGIN</strong></a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+      </nav>
+      
+      <!--- BACKGROUND-->
+      <header style="background-image: url({% static 'Media/wifibg.jpg' %});">
+          <div class="container">
+              <div class="banner-text">
+                  <div class="text-area">
+                      <span>Welcome</span>&nbsp;
+                      <span>to</span><br>
+                      <span>Wifi</span>&nbsp;
+                      <span>Registration</span>
+                  </div>
+
+                  <p class="sub-text">Welcome to the online wifi registration of TUP-Cavite</p>
+                  <p class="banner-btn">
+                      <a href="{% url 'login_user' %}" ><i class="fa-solid fa-graduation-cap"></i> STUDENT</a>
+                      <a href="{% url 'login_user' %}" ><i class="fa-solid fa-user-group"></i> FACULTY</a>
+                  </p>
+              </div>
+          </div>
+      </header>
+   </body>
+{% endblock content %}

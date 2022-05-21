@@ -4,75 +4,186 @@
 {% block title %}DATA STUDENT{% endblock title %}
 
 {% block content %}
+
+{% if request.user.userType == "ADMIN" %}
 <li class="nav-item">
-   <a class="nav-link" href="{% url 'datafaculty' %}">FACULTY</a>
+  <a class="nav-link btn btn-block text-primary" href="{% url 'viewCalendar' %}"><i class="fa-solid fa-calendar-days"></i>&nbsp;CALENDAR</a>
 </li>
 <li class="nav-item">
-   <a class="nav-link" href="{% url 'datahistory' %}">HISTORY</a>
+  <a class="nav-link btn btn-block text-primary" href="{% url 'createStaff' %}"><i class="fa-solid fa-user-plus"></i>&nbsp;STAFF</a>
 </li>
-</li class="nav-item">
-   <a class="nav-link" href="{% url 'adminL' %}">LOGOUT</a>
+<li class="nav-item">
+  <a class="nav-link active btn btn-block" href="{% url 'datastudent' %}"><i class="fa-solid fa-user-graduate"></i>&nbsp;STUDENT</a>
 </li>
+<li class="nav-item">
+  <a class="nav-link btn btn-block text-primary" href="{% url 'datafaculty' %}"><i class="fa-solid fa-user-group"></i>&nbsp;FACULTY</a>
+</li>
+<li class="nav-item">
+  <a class="nav-link btn btn-block text-primary" href="{% url 'logout_user' %}"><i class="fa-solid fa-arrow-right-from-bracket"></i>&nbsp;LOGOUT</a>
+</li>
+{% else %}
+<li class="nav-item">
+  <a class="nav-link active btn btn-block text-primary" href="{% url 'datastudent' %}"><i class="fa-solid fa-user-graduate"></i>&nbsp;STUDENT</a>
+</li>
+<li class="nav-item">
+  <a class="nav-link btn btn-block text-primary" href="{% url 'datafaculty' %}"><i class="fa-solid fa-user-group"></i>&nbsp;FACULTY</a>
+</li>
+<li class="nav-item">
+  <a class="nav-link btn btn-block text-primary" href="{% url 'logout_user' %}"><i class="fa-solid fa-arrow-right-from-bracket"></i>&nbsp;LOGOUT</a>
+</li>
+{% endif %}   
+
 {% endblock content %}
 
+
 {% block body %}
-          <div class="jumbotron table-responsive table-sortable mt-3 rounded">
-             <div class="card-body">
-               <h4 class="card-title" style="margin-bottom: 50px;">WIFI REQUEST (STUDENT'S REQUEST)</h4>
-             </div>
-                <table id="studreq" class="table table-striped table-bordered">
-                <thead class="table-danger">
-                    <tr>
-                       <th scope="col" style="text-align: center;">Name</th>
-                       <th scope="col" style="text-align: center;">Course</th>
-                       <th scope="col" style="text-align: center;">Semester</th>
-                       <th scope="col" style="text-align: center;">TUPC-ID</th>
-                       <th scope="col" style="text-align: center;">Or No.</th>
-                       <th scope="col" style="text-align: center;">Phone No.</th>
-                       <th scope="col" style="text-align: center;">System</th>
-                       <th scope="col" style="text-align: center;">Others</th>
-                       <th scope="col" style="text-align: center;">Mac Address</th>
-                       <th scope="col" style="text-align: center;">Email</th>
-                       <th scope="col" style="text-align: center;">Home Address</th>
-                       <th scope="col" style="text-align: center;">Signature</th>
-                       <th scope="col" style="text-align: center;">Approval</th>
-                    </tr>
-                 </thead>
-                 <tbody>
-                   {% for i in student_request %}
-                   <tr>
-                       <th scope="row" style="text-align: center;">{{ i.snames }}</th>
-                       <td style="text-align: center;">{{ i.scourse }}</td>
-                       <td style="text-align: center;">{{ i.ssemester }}</td>
-                       <td style="text-align: center;">{{ i.stupid }}</td>
-                       <td style="text-align: center;">{{ i.sornum }}</td>
-                       <td style="text-align: center;">{{ i.sphone }}</td>
-                       <td style="text-align: center;">{{ i.ssystem }}</td>
-                       <td style="text-align: center;">{{ i.sothers }}</td>
-                       <td style="text-align: center;">{{ i.smacadd }}</td>
-                       <td style="text-align: center;">{{ i.semail }}</td>
-                       <td style="text-align: center;">{{ i.sresidAdd }}</td>
-                       <td style="text-align: center;"><img class="rounded" src="{{ i.supload.url }}" width="150" height="100" alt="{{ i.supload }}"></td>
-                       <td style="text-align: center;">
-                         <span >
-                             <a href="/acceptStudent/{{ i.semail }}" class="btn btn-success mb-1" style="padding: 10px 24px;">Approve</a>
-                         </span>
-                         <span>
-                             <a href="/rejectStudent/{{ i.semail }}" class="btn btn-danger" style="padding: 10px 32px;">Reject</a>
-                         </span>
-                     </td>
-                   </tr>
-                   {% endfor %}
-               </tbody>
-             </table>
-            </div>
-          </div>
-          <script>
-             $(document).ready(function() {
-                  $('#studreq').DataTable({
-                        scrollY: 400,
-                        scrollCollapse: true,
-                        paging : false,
-                  })})
-          </script>
+
+{% if request.user.userType == "ADMIN" %}
+<div class="jumbotron table-responsive table-sortable mt-3 rounded bg-light shadow-lg">
+  <nav>
+    <div class="nav nav-tabs" id="nav-tab" role="tablist">
+      <a class="nav-item nav-link active" id="request-tab" data-toggle="tab" href="#request" role="tab" aria-controls="request" aria-selected="true"><div class="badge badge-danger">1</div>REQUEST</a>
+      <a class="nav-item nav-link" id="approved-tab" data-toggle="tab" href="#approved" role="tab" aria-controls="approved" aria-selected="false"><i class="fa-solid fa-person-circle-check"></i>&nbsp;APPROVED</a>
+      <a class="nav-item nav-link" id="history-tab" data-toggle="tab" href="#history" role="tab" aria-controls="history" aria-selected="false"><i class="fa-solid fa-clock-rotate-left"></i>&nbsp;HISTORY</a>
+    </div>
+  </nav>
+  <!--FIRST-->
+  <div class="tab-content" id="nav-tabContent">
+    <div class="tab-pane fade show active" id="request" role="tabpanel" aria-labelledby="request-tab">
+      <div class="card-body">
+        <h3 class="card-title d-flex justify-content-center mt-3 font-weight-bold">WIFI REQUEST (STUDENT'S REQUEST)</h3>
+      </div>
+        <table id="studreq" class="table table-striped table-bordered">
+          <thead class="table-danger">
+            <tr class="text-center">
+                <th class="text-danger no-wrap" scope="col">Name</th>
+                <th class="text-danger no-wrap" scope="col">Course</th>
+                <th class="text-danger no-wrap" scope="col">Semester</th>
+                <th class="text-danger no-wrap" scope="col">TUPC-ID</th>
+                <th class="text-danger no-wrap" scope="col">O.R. #</th>
+                <th class="text-danger no-wrap" scope="col">Phone #</th>
+                <th class="text-danger no-wrap" scope="col">System</th>
+                <th class="text-danger no-wrap" scope="col">Others</th>
+                <th class="text-danger no-wrap" scope="col">Mac</th>
+                <th class="text-danger no-wrap" scope="col">Email</th>
+                <th class="text-danger no-wrap" scope="col">Address</th>
+                <th class="text-danger no-wrap" scope="col">Signature</th>
+                <th class="text-danger no-wrap" scope="col">Action</th>
+            </tr>
+          </thead>
+          <tbody>
+            {% for obj in student_request %}
+            <tr class="text-center">
+              <th scope="row">{{ obj.names }}</th>
+              <td>{{ obj.course }}</td>
+              <td>{{ obj.semester }}</td>
+              <td>{{ obj.tupid }}</td>
+              <td>{{ obj.orNum }}</td>
+              <td>0{{ obj.phoneNum }}</td>
+              <td>{{ obj.device }}</td>
+              <td>{{ obj.otherDevice }}</td>
+              <td>{{ obj.macadd }}</td>
+              <td>{{ obj.email }}</td>
+              <td>{{ obj.residAdd }}</td>
+              <td><img class="rounded" src="{{ obj.signature.url }}" width="150" height="100" alt="{{ obj.signature }}"></td>
+              <td>
+                <span >
+                    <a data-toggle="modal" data-target="#myModal"  class="btn btn-success mb-1" style="padding: 10px 24px;">Approve</a>
+                </span>
+                <span>
+                    <a data-toggle="modal" data-target="#myModal2"  class="btn btn-danger" style="padding: 10px 32px;">Reject</a>
+                </span>
+              </td>
+            </tr>
+            {% endfor %}
+          </tbody>
+        </table>
+    </div>
+    <!--SECOND-->
+    <div class="tab-pane fade" id="approved" role="tabpanel" aria-labelledby="approved-tab">
+      <div class="card-body">
+        <h3 class="card-title d-flex justify-content-center mt-3">APPROVED STUDENTS</h3>
+      </div>
+        <table id="studreq" class="table table-striped table-bordered">
+          <thead class="table-danger">
+            <tr class="text-center">
+                <th class="text-danger no-wrap" scope="col">Name</th>
+                <th class="text-danger no-wrap" scope="col">Course</th>
+                <th class="text-danger no-wrap" scope="col">Semester</th>
+                <th class="text-danger no-wrap" scope="col">TUPC-ID</th>
+                <th class="text-danger no-wrap" scope="col">O.R. #</th>
+                <th class="text-danger no-wrap" scope="col">Phone #</th>
+                <th class="text-danger no-wrap" scope="col">System</th>
+                <th class="text-danger no-wrap" scope="col">Others</th>
+                <th class="text-danger no-wrap" scope="col">Mac</th>
+                <th class="text-danger no-wrap" scope="col">Email</th>
+                <th class="text-danger no-wrap" scope="col">Address</th>
+                <th class="text-danger no-wrap" scope="col">Signature</th>
+                <th class="text-danger no-wrap" scope="col">Action</th>
+            </tr>
+          </thead>
+          <tbody>
+            {% for obj in approved_student %}
+            <tr class="text-center">
+              <th scope="row">{{ obj.names }}</th>
+              <td>{{ obj.course }}</td>
+              <td>{{ obj.semester }}</td>
+              <td>{{ obj.tupid }}</td>
+              <td>{{ obj.orNum }}</td>
+              <td>0{{ obj.phoneNum }}</td>
+              <td>{{ obj.device }}</td>
+              <td>{{ obj.otherDevice }}</td>
+              <td>{{ obj.macadd }}</td>
+              <td>{{ obj.email }}</td>
+              <td>{{ obj.residAdd }}</td>
+            </tr>
+            {% endfor %}
+          </tbody>
+        </table>
+    </div>
+
+    <!--THIRD-->
+    <div class="tab-pane fade" id="history" role="tabpanel" aria-labelledby="history-tab">
+      <div class="card-body">
+        <h3 class="card-title d-flex justify-content-center mt-3">HISTORY OF STUDENT'S REQUEST</h3>
+      </div>
+        <table id="studreq" class="table table-striped table-bordered">
+          <thead class="table-danger">
+            <tr class="text-center">
+                <th class="text-danger no-wrap" scope="col">Name</th>
+                <th class="text-danger no-wrap" scope="col">TUPC-ID</th>
+                <th class="text-danger no-wrap" scope="col">Mac</th>
+                <th class="text-danger no-wrap" scope="col">Email</th>
+                <th class="text-danger no-wrap" scope="col">Agenda</th>
+                <th class="text-danger no-wrap" scope="col">Time Stamp</th>
+            </tr>
+          </thead>
+          <tbody>
+            {% for obj in history %}
+            <tr class="text-center">
+              <th scope="row">{{ obj.names }}</th>
+              <td>{{ obj.tupid }}</td>
+              <td>{{ obj.orNum }}</td>
+              <td>{{ obj.macadd }}</td>
+              <td>{{ obj.email }}</td>
+              <td>{{ obj.agenda }}</td>
+              <td>{{ obj.timeStamp }}</td>
+            </tr>
+            {% endfor %}
+          </tbody>
+        </table>
+    </div>
+  </div>
+</div>
+{% else %}
+
+{% endif %}
+<!--------------------------------------------------------------------------------------END------------------------------------------------------------------------------->
+<script>
+  $(document).ready(function() {
+    $('#studreq').DataTable({
+      scrollCollapse: true,
+      paging : false,
+  })})
+</script>
 {% endblock body %}

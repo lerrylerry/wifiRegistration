@@ -12,14 +12,30 @@
         <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.bundle.min.js"></script>
         <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
-    </head>
+        <script src="https://kit.fontawesome.com/45bc2c0fb9.js" crossorigin="anonymous"></script>
+        <link rel="icon" type="image/x-icon" href="{% static 'Media/001-wifi-signal.ico' %}">
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <!-- jQuery -->
+        <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
 
-    <body class="bg-light">
+        <!-- Fengyuan Chen's Datepicker -->
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/datepicker/0.6.5/datepicker.min.css" integrity="sha256-b88RdwbRJEzRx95nCuuva+hO5ExvXXnpX+78h8DjyOE=" crossorigin="anonymous" />
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/datepicker/0.6.5/datepicker.min.js" integrity="sha256-/7FLTdzP6CfC1VBAj/rsp3Rinuuu9leMRGd354hvk0k=" crossorigin="anonymous"></script>
+        <link href="https://fonts.googleapis.com/css2?family=Roboto+Condensed:ital,wght@0,300;0,400;0,700;1,300;1,400;1,700&display=swap" rel="stylesheet">
+    </head>
+    <style>
+        *{
+          font-family: 'Roboto Condensed', sans-serif;
+        }
+     </style>
+
+    <body style="background-image: url({% static 'Media/server-stands.jpg' %});">
         <div class="container-fluid">
-            <nav class="navbar navbar-expand-sm navbar-light sticky-top rounded" style="background: rgb(248, 209, 215);">
+            <nav class="navbar navbar-expand-sm navbar-light sticky-top rounded bg-light shadow" style="background: rgb(248, 209, 215);">
                 <div class="container-fluid">
                     <a class="navbar-brand text-body" href="#"><img class="rounded-circle" src="{% static 'Media/TUP-LOGO.png' %}" height="75px" width="75px">
-                        <span style="margin-left: 10px;">ADMIN HOMEPAGE</span></a>
+                        <span class="font-weight-bold" style="color: maroon;">ADMIN HOMEPAGE</span></a>
                     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive">
                         <span class="navbar-toggler-icon"></span>
                     </button>    
@@ -38,3 +54,13 @@
         </div>
     </body>
 </html>
+<script>
+    $('.dropdown').hover(function() { 
+        $(this).addClass('show'); 
+           $(this).find('.dropdown-menu').addClass('show');
+        }, 
+        function() {
+           $(this).removeClass('show'); 
+              $(this).find('.dropdown-menu').removeClass('show');
+           });
+  </script>

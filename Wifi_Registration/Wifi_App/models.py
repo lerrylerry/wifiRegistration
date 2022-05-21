@@ -1,33 +1,18 @@
 from django.db import models
+from django.contrib.auth.models import AbstractUser
+from django.forms import DateTimeField
 
 # Create your models here.
 
-class Faculty(models.Model):
-    names = models.CharField(max_length=50, verbose_name="Name")
-    department = models.CharField(max_length=50, verbose_name="Department")
-    designation = models.CharField(max_length=50, verbose_name="Designation")
-    Device = [
-                ('' , 'Choose device'),
-                ('Smartphone' , 'Smartphone'),
-                ('Laptop' , 'Laptop'),
-                ('Tablet' , 'Tablet'),
-                ('PC' , 'PC'),
-                ('Desktop' , 'Desktop')
-            ]
+class CustomUser(AbstractUser):
+    userType = models.CharField(max_length=10, default="ADMIN")
+    email = models.EmailField(max_length=50, unique=True, verbose_name="Email")
+    
+    def __str__(self):
+        return self.username
 
-    device = models.CharField(max_length=15, choices=Device, verbose_name="Device")
-    otherDevice = models.CharField(max_length=15, null=True, blank=True, default="If others, please specify.", verbose_name="Others")
-    email = models.EmailField(max_length=50, unique=True, primary_key=True, verbose_name="Email")
-    macadd = models.CharField(max_length=17, unique=True, verbose_name="MAC Address")
-    phoneNum = models.DecimalField(max_digits=15, decimal_places=0, unique=True, verbose_name="Phone No.")
-    facultyName = models.CharField(max_length=10, verbose_name="Faculty Name")
-    signature = models.ImageField(verbose_name="Signature", upload_to='uploads/', blank=False, null=False)
-    agreement = models.BooleanField(default=False)  
-    dateCreated = models.DateTimeField(auto_now_add=True)
-    userType = models.CharField(max_length=10)
-
-class Student(models.Model):
-    names = models.CharField(max_length=50, verbose_name="Name")
+class Student(models.Model):    
+    tupid = models.CharField(max_length=50, primary_key=True, verbose_name="Student No.")
     Course = [#first column: database // second column: forms
                 ('' , 'Choose course'),
                 ('BSCE','BACHELOR OF SCIENCE IN CIVIL ENGINEERING'),
@@ -56,6 +41,10 @@ class Student(models.Model):
                 ('Second Semester','2nd Semester'),
                 ('Others...','Others...')
     ]
+    semester = models.CharField(max_length=20, choices=Semester, verbose_name="Semester")
+    orNum = models.IntegerField(verbose_name="O.R #",unique=True)
+    residAdd = models.CharField(max_length=200, verbose_name="Residence Address")
+    names = models.CharField(max_length=50, verbose_name="Name",unique=True)
     Device = [
                 ('' , 'Choose device'),
                 ('Smartphone' , 'Smartphone'),
@@ -66,24 +55,79 @@ class Student(models.Model):
             ]
 
     device = models.CharField(max_length=15, choices=Device, verbose_name="Device")
-    otherDevice = models.CharField(max_length=15, null=True, blank=True, default="If others, please specify.", verbose_name="Others")
-    email = models.EmailField(max_length=50, unique=True, primary_key=True, verbose_name="Email")
-    macadd = models.CharField(max_length=17, unique=True, verbose_name="MAC Address")
-    phoneNum = models.DecimalField(max_digits=15, decimal_places=0, unique=True, verbose_name="Phone No.")
-    semester = models.CharField(max_length=20, choices=Semester, verbose_name="Semester")
-    tupid = models.CharField(max_length=12, verbose_name="Student No")
-    orNum = models.DecimalField(max_digits=8, decimal_places=0, unique=True, verbose_name="O.R #")
-    residAdd = models.CharField(max_length=200, verbose_name="Residence Address")
-    signature = models.ImageField(verbose_name="Signature", upload_to='uploads/', blank=False, null=False)
+    otherDevice = models.CharField(max_length=15, null=True, blank=True, verbose_name="Others")
+    macadd = models.CharField(max_length=17, verbose_name="MAC Address", unique=True)
+    phoneNum = models.BigIntegerField(verbose_name="Phone No.", unique=True)
+    signature = models.ImageField(verbose_name="Signature", upload_to='uploads/')
     agreement = models.BooleanField(default=False)  
+    email = models.EmailField(max_length=50, unique=True, verbose_name="Email")
+    status = models.CharField(max_length=10, default='PENDING')
     dateCreated = models.DateTimeField(auto_now_add=True)
-    
-class History(models.Model):  
-    desicion = models.CharField(max_length=10)
-    dateEvaluated = models.DateTimeField(auto_now_add=True)
-    data_of_Faculty = models.ManyToManyField(Faculty)
-    data_of_Student = models.ManyToManyField(Student)
+    dateEvaluated = models.DateTimeField(blank=True,null=True)
 
-class adminlogin(models.Model):
-    username = models.CharField(max_length=50, default="admin")
-    adminpw = models.CharField(max_length=20, default=1234)
+    def __str__(self):
+        return self.names
+
+    class Meta:
+        ordering = ['-dateCreated']
+
+class HistoryStudent(models.Model):
+    names = models.CharField(max_length=50)
+    tupid = models.CharField(max_length=50)
+    email = models.EmailField(max_length=50)
+    macadd = models.CharField(max_length=17)
+    agenda = models.CharField(max_length=10)
+    timeStamp = models.DateTimeField(auto_now_add=True)
+
+    class Meta:
+        ordering = ['-timeStamp']
+
+class HistoryFaculty(models.Model):
+    names = models.CharField(max_length=50)
+    email = models.EmailField(max_length=50)
+    macadd = models.CharField(max_length=17)
+    agenda = models.CharField(max_length=10)
+    timeStamp = models.DateTimeField(auto_now_add=True)
+
+    class Meta:
+        ordering = ['-timeStamp']
+
+class Faculty(models.Model):
+    department = models.CharField(max_length=50, verbose_name="Department")
+    designation = models.CharField(max_length=50, verbose_name="Designation")
+    facultyName = models.CharField(max_length=50, verbose_name="Faculty Name")
+    names = models.CharField(max_length=50, verbose_name="Name",unique=True)
+    Device = [
+                ('' , 'Choose device'),
+                ('Smartphone' , 'Smartphone'),
+                ('Laptop' , 'Laptop'),
+                ('Tablet' , 'Tablet'),
+                ('PC' , 'PC'),
+                ('Desktop' , 'Desktop')
+            ]
+
+    device = models.CharField(max_length=15, choices=Device, verbose_name="Device")
+    otherDevice = models.CharField(max_length=15, null=True, blank=True, verbose_name="Others")
+    macadd = models.CharField(max_length=17, verbose_name="MAC Address", unique=True)
+    phoneNum = models.BigIntegerField(verbose_name="Phone No.", unique=True)
+    signature = models.ImageField(verbose_name="Signature", upload_to='uploads/')
+    agreement = models.BooleanField(default=False)  
+    email = models.EmailField(max_length=50, unique=True, verbose_name="Email", primary_key=True)
+    status = models.CharField(max_length=10, default='PENDING')
+    dateCreated = models.DateTimeField(auto_now_add=True)
+    dateEvaluated = models.DateTimeField(blank=True,null=True)
+
+    def __str__(self):
+        return self.names
+
+    class Meta:
+        ordering = ['-dateCreated']
+
+class Time(models.Model):
+    start = DateTimeField()
+    end = DateTimeField()
+
+class Contact(models.Model):
+    names = models.CharField(max_length=50 ,verbose_name="Name:")
+    subject = models.CharField(max_length=50 ,verbose_name="Subject:")
+    content = models.TextField(max_length=250, verbose_name="Content:")

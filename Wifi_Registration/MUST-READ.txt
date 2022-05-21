@@ -1,0 +1,18 @@
+***(Top Priority)***
+#1 ----> Sa 'register' at 'login' di sya responsive sa center ung form, nagkakaroon din ng bug sa baba ng background image kapag mahaba ung sa login,
+        paayos na rin 'UI'
+
+#2 ----> Inalis ko ung "scrolly = 400" ata kasi ung table kapag mahaba na ung 'thead' hindi nag momove ung 'tbody' lang. Kaya inalis ko ngaun sa right side
+        naman ung problema nakasagad sa jumbotron. Pedeng alisin ung jumbotron at lagyan ng bagong design or ayusin mo na lang spacing. 
+        pa improve na rin ng 'UI'
+
+#3 ----> Need ng 'portal' or 'home' para sa 'Student' and 'Faculty'. Kaya naman gawan ng paraan sa pag render ng template. Ang pinakakailangan makita ng user anong
+        status ng request niya, button para sa wifi registration, logout button, request button para kung na reject ung user makahingi sya ng parang chance
+        (optional lang pero parang pede), and kung ano pa pwedeng ilagay.
+
+***(Least Priority)***
+#4 ----> Template para sa 'Contact Us'
+
+#5 ----> Gawing readable ung sa 'FACULTY.html' at 'STUDENT.html' kung di readable or may better design.
+
+#6 ----> Plain lang ung success page(success.html)

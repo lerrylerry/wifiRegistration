@@ -1,0 +1,291 @@
+    <a class="dropdown-item text-primary" href="">download as <em><strong>PDF</strong></em></a>
+    <a class="dropdown-item text-primary" href="">download as <em><strong>CSV</strong></em></a>
+
+        <script type="text/javascript">
+        $(document).on('submit','form',function(e){
+            e.preventDefault();
+
+            $.ajax({
+                type: 'POST',
+                url: '/faculty/',
+                data: {
+                    id_names:$('#id_names').val(),
+                    id_department:$('#id_department').val(),
+                    id_designation:$('#id_designation').val(),
+                    id_device:$('#id_device').val(),
+                    id_otherDevice:$('#id_otherDevice').val(),
+                    id_email:$('#id_email').val(),
+                    id_macadd:$('#id_macadd').val(),
+                    id_phoneNum:$('#id_phoneNum').val(),
+                    id_facultyName:$('#id_facultyName').val(),
+                    id_signature:$('#id_signature').val(),
+                    csrfmiddlewaretoken:$('input[name=csrfmiddlewaretoken]').val()
+                },
+                success:function(){
+                    alert("message check?");
+                }
+            });
+        });
+    </script>
+
+    filed = open("media/","r")
+            nameOf = filed.read()
+            context = {"yname":nameOf}
+
+
+
+            '''
+class Faculty(models.Model):
+    names = models.CharField(max_length=50, unique=True, verbose_name="Name")
+    department = models.CharField(max_length=50, verbose_name="Department")
+    designation = models.CharField(max_length=50, verbose_name="Designation")
+    Device = [
+                ('' , 'Choose device'),
+                ('Smartphone' , 'Smartphone'),
+                ('Laptop' , 'Laptop'),
+                ('Tablet' , 'Tablet'),
+                ('PC' , 'PC'),
+                ('Desktop' , 'Desktop')
+            ]
+
+    device = models.CharField(max_length=15, choices=Device, verbose_name="Device")
+    otherDevice = models.CharField(max_length=15, null=True, blank=True, verbose_name="Others")
+    email = models.EmailField(max_length=50, unique=True, primary_key=True, verbose_name="Email")#PK
+    macadd = models.CharField(max_length=17, unique=True, verbose_name="MAC Address")
+    phoneNum = models.DecimalField(max_digits=15, decimal_places=0, unique=True, verbose_name="Phone No.")
+    facultyName = models.CharField(max_length=10, verbose_name="Faculty Name")
+    signature = models.ImageField(verbose_name="Signature", upload_to='uploads/', blank=False, null=False)
+    agreement = models.BooleanField(default=False)  
+    decision = models.CharField(max_length=10)
+    dateCreated = models.DateTimeField(auto_now_add=True)
+    userType = models.CharField(max_length=10)
+
+    def __str__(self):
+        return self.names + ' --> ' + self.email
+
+class Student(models.Model):
+    names = models.CharField(max_length=50, unique=True, verbose_name="Name")
+    Course = [#first column: database // second column: forms
+                ('' , 'Choose course'),
+                ('BSCE','BACHELOR OF SCIENCE IN CIVIL ENGINEERING'),
+                ('BSEE','BACHELOR OF SCIENCE IN ELECTRICAL ENGINEERING'),
+                ('BSME','BACHELOR OF SCIENCE IN MECHANICAL ENGINEERING'),
+                ('BET-ET','BET-ELECTRICAL TECHNOLOGY'),
+                ('BET-ESET','BET-INDUSTRIAL AUTOMATION TECHNOLOGY'),
+                ('BET-COET','BET-COMPUTER ENGINEERING TECHNOLOGY'),
+                ('BET-CT','BET-CIVIL TECHNOLOGY'),
+                ('BET-AT','BET-AUTOMOTIVE TECHNOLOGY'),
+                ('BET-MT','BET-MECHANICAL ENGINEERING TECHNOLOGY'),
+                ('BET-PPT','BET-POWER PLANT TECHNOLOGY'),
+                ('BET-ICT','BSIE-INFORMATION COMPUTER TECHNOLOGY'),
+                ('BET-HE','BSIE-HOME ECONOMICS'),
+                ('BET-AU','BTTE-AUTOMOTIVE'),
+                ('BET-EI','BTTE-ELECTRICAL'),
+                ('BET-E','BTTE-ELECTRONICS'),
+                ('BET-HVACT','BTTE-AIR CONDITIONING'),
+                ('BET-CP','BTTE-COMPUTER PROGRAMMING')
+    ]
+
+    course = models.CharField(max_length=50, choices=Course, verbose_name="Course")
+    Semester = [
+                ('' , 'Choose Semester'),
+                ('First Semester','1st Semmester'),
+                ('Second Semester','2nd Semester'),
+                ('Others...','Others...')
+    ]
+    Device = [
+                ('' , 'Choose device'),
+                ('Smartphone' , 'Smartphone'),
+                ('Laptop' , 'Laptop'),
+                ('Tablet' , 'Tablet'),
+                ('PC' , 'PC'),
+                ('Desktop' , 'Desktop')
+            ]
+
+    device = models.CharField(max_length=15, choices=Device, verbose_name="Device")
+    otherDevice = models.CharField(max_length=15, null=True, blank=True, verbose_name="Others")
+    email = models.EmailField(max_length=50, unique=True, primary_key=True, verbose_name="Email")#PK
+    macadd = models.CharField(max_length=17, unique=True, verbose_name="MAC Address")
+    phoneNum = models.DecimalField(max_digits=15, decimal_places=0, unique=True, verbose_name="Phone No.")
+    semester = models.CharField(max_length=20, choices=Semester, verbose_name="Semester")
+    tupid = models.CharField(max_length=12, verbose_name="Student No")
+    orNum = models.DecimalField(max_digits=8, decimal_places=0, unique=True, verbose_name="O.R #")
+    residAdd = models.CharField(max_length=200, verbose_name="Residence Address")
+    signature = models.ImageField(verbose_name="Signature", upload_to='uploads/', blank=False, null=False)
+    agreement = models.BooleanField(default=False)  
+    userType = models.CharField(max_length=10)
+    decision = models.CharField(max_length=10)
+    dateCreated = models.DateTimeField(auto_now_add=True)
+
+    def __str__(self):
+        return self.names + ' --> ' + self.email
+'''
+class History(models.Model):  
+    names = models.CharField(max_length=50)
+    email = models.EmailField(max_length=50)
+    macadd = models.CharField(max_length=17)
+    userType = models.CharField(max_length=10)
+    decision = models.CharField(max_length=10)
+    dateCreated = models.DateTimeField(auto_now_add=True)
+    #email = models.ForeignKey(Faculty, on_delete=models.CASCADE)
+    #data_of_Faculty = models.ManyToManyField(Faculty)
+    #data_of_Student = models.ManyToManyField(Student)
+
+                    {% if form.is_bound %}
+                        {% if form.email.errors %}
+                            <div class="input-group mt-4 mb-2">
+                                <span class="input-group-text"><i class="fa-solid fa-at" id="icon10"></i></span>
+                                {% render_field form.email  class="form-control is-invalid" style="border-left: hidden;" placeholder="...@email.com"%}
+                            </div>
+                            <small class="text-danger" id="small">{{ form.email.errors }}</small>
+                            {% else %}
+                            <div class="input-group mt-4 mb-2">
+                                <span class="input-group-text"><i class="fa-solid fa-at" id="icon10"></i></span>
+                                {% render_field form.email  class="form-control is-valid" placeholder="...@email.com"%}
+                            </div>
+                            <small><ul><li id="text">required</li></ul></small>
+                            {% endif %}
+                            {% else %}
+                            <div class="input-group mt-4 mb-2">
+                                <span class="input-group-text"><i class="fa-solid fa-at" id="icon10"></i></span>
+                                {% render_field form.email  class="form-control" placeholder="...@email.com"%}
+                            </div>
+                            <small><ul><li id="text">required</li></ul></small>
+                            {% endif %}
+
+                        {% if form.is_bound %}
+                            {% if form.tupid.errors %}
+                                <div class="input-group mt-4 mb-2">
+                                    <span class="input-group-text"><i class="fa-solid fa-id-card" id="icon4"></i></span>
+                                    {% render_field form.tupid  class="form-control is-invalid" style="border-left: hidden;" placeholder="TUPC-XX-XXXX"%}
+                                </div>
+                                <small class="text-danger" id="small">{{ form.tupid.errors }}</small>
+                                {% else %}
+                                <div class="input-group mt-4 mb-2">
+                                    <span class="input-group-text"><i class="fa-solid fa-id-card" id="icon4"></i></span>
+                                    {% render_field form.tupid  class="form-control is-valid" placeholder="TUPC-XX-XXXX"%}
+                                </div>
+                                <small><ul><li id="text">required</li></ul></small>
+                                {% endif %}
+                                {% else %}
+                                <div class="input-group mt-4 mb-2">
+                                    <span class="input-group-text"><i class="fa-solid fa-id-card" id="icon4"></i></span>
+                                    {% render_field form.tupid  class="form-control" placeholder="TUPC-XX-XXXX"%}
+                                </div>
+                                <small><ul><li id="text">required</li></ul></small>
+                                {% endif %}
+
+
+
+                                #unfinished task
+def print_view(request):
+    packet = io.BytesIO()#
+    can = canvas.Canvas(packet, pagesize=letter)#
+    can.setFillColorRGB(1, 0, 0)
+    can.setFont("Times-Roman", 14)
+    can.drawString(70, 655, "Hello from Python")
+    #can.showPage()#
+    can.save()#
+    packet.seek(0)#
+
+    new_pdf = PdfFileReader(packet)
+    existing_pdf = PdfFileReader(open("Wifi_App/files/TUPC-F-OCD-OIT-04 (WIFI-CONNECTIVITY REGISTRATION FORM STUDENT).pdf", "rb"))
+    output = PdfFileWriter()
+
+    page = existing_pdf.getPage(0)
+    page.mergePage(new_pdf.getPage(0))
+    output.addPage(page)
+
+    outputStream = open("Wifi_App/files/Your.pdf", "wb")
+    output.write(outputStream)
+    outputStream.close()
+
+    with open("Wifi_App/files/Your.pdf", 'rb') as pdf:
+        response = HttpResponse(pdf.read(), content_type='application/pdf')
+        response['Content-Disposition'] = 'attachment; filename=form_request.pdf'
+        return response
+    #return FileResponse(packet, as_attachment=True, filename="form_request.pdf")#
+
+def csv_view(request):
+    # object
+    response = HttpResponse(
+        content_type = 'text/csv',
+        headers = {'Content-Disposition': 'attachment; filename = "lerry.csv"'},
+    )
+    # instance
+    writer = csv.writer(response)
+
+    # data to be inputted
+    count = History.objects.all().count()
+    context = History.objects.all()
+    writer.writerow(['Name', 'Email', 'Mac Address','User Type', 'Decision', 'Date Created', 'Date Evaluated'])
+    for data in range(count):
+        #writer.writerow([context[data].names, context[data].department, context[data].designation , context[data].device, context[data].otherDevice, context[data].phoneNum, 
+        #                context[data].email, context[data].macadd, context[data].facultyName, context[data].signature])
+
+        writer.writerow([context[data].names, context[data].email, context[data].macadd, context[data].userType, 
+                        context[data].decision, context[data].dateCreated, context[data].dateEvaluated])
+    return response
+'''ADMIN & STAFF LOGOUT'''
+#@login_required(login_url='/login_user/')
+def facultyWifi(request):
+    if request.method == 'POST':
+        form = FacultyForm(request.POST,request.FILES)
+        if form.is_valid():
+            account = get_object_or_404(CustomUser, pk=request.user.email)
+            userInfo = form.save(commit=False)
+            userInfo.emails = account
+            userInfo.status = 'PENDING'
+            userInfo.dateCreated = datetime.datetime.now()            
+            userInfo.save()
+            facs = Faculty.objects.get(emails=userInfo.emails)
+            history = History(faculty=facs,)
+            history.save(force_insert=True)
+
+            return redirect('/faculty-portal')
+        
+        else:
+            messages.error(request, "You're too fast! Please correct the errors first.")
+
+    else:
+        form = FacultyForm()
+    return render(request, 'Wifi_App/FACULTY.html', {'form': form})
+
+# ----------------------------------------------------------------STUDENT FORM----------------------------------------------------------------------
+#@login_required(login_url='/login_user/')
+def studentWifi(request):
+    if request.method == 'POST':
+        form = StudentForm(request.POST,request.FILES)
+        if form.is_valid():
+            account = get_object_or_404(CustomUser, pk=request.user.email)
+            userInfo = form.save(commit=False)
+            userInfo.emails = account
+            userInfo.status = 'PENDING'
+            userInfo.dateCreated = datetime.datetime.now()
+            userInfo.save()
+
+            stud = Student.objects.get(tupid=userInfo.tupid)
+            history = History(student=stud,)
+            history.save(force_insert=True)
+            
+            return redirect('/student-portal')
+
+        else:
+            messages.error(request, "You're too fast! Please correct the errors first.")
+
+    else:
+        form = StudentForm()
+    return render(request, 'Wifi_App/STUDENT.html',{'form':form})
+
+
+# ------------------------------------------------------------data history view--------------------------------------------------------------
+#@login_required(login_url='/login_user/')
+def readHistory(request):
+    history = History.objects.all()
+    student_count = Student.objects.filter(status='PENDING',agreement=1).count()
+    faculty_count = Faculty.objects.filter(status='PENDING',agreement=1).count()
+    context = {"history" : history, "countA" :student_count, "countB" :faculty_count}
+    return render(request, 'Wifi_App/DATAHISTORY.html', context)
+
+def success(request):
+    return render(request, 'Wifi_App/success-form.html')

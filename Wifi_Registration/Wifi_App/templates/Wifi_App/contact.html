@@ -1,0 +1,112 @@
+{% extends 'Wifi_App/head.html' %}
+{% load static %}
+{% load widget_tweaks %}
+
+{% block title %}
+<title>CONTACT US</title>
+{% endblock title %}
+
+{% block content %}
+<body class="bg-info"> 
+    <form action="/contact_us/" method="POST" novalidate>
+        {% csrf_token %}
+        <div class="row mr-0 my-5 ml-3">
+            <div class="col-sm-6">
+                <div class="container bg-light">
+                    <div class="row">
+                        <div class="media border-bottom border-success w-100 mx-3 mb-3 mt-2">
+                            <img class="rounded img-fluid" src="{% static 'Media/TUP-LOGO.png' %}" alt="wifi" width="100" height="100">  
+                            <div class="media-body ml-4 p-2">
+                                <h2 class="font-weight-bold" style="color: maroon;">WIFI CONNECTIVITY REGISTRATION</h2>
+                                <h4 class="font-weight-bold" style="color: maroon;">CONTACT US</h4>
+                            </div>  
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-sm-12">
+                            {% if form.is_bound %}
+                                {% if form.names.errors %}
+                                    <div class="form-group mt-3 mb-2">
+                                        {{form.names.label_tag}}
+                                        {% render_field form.names  class="form-control is-invalid" %}
+                                    </div>
+                                    {% else %}
+                                    <div class="form-group mt-3 mb-2">
+                                        {{form.names.label_tag}}
+                                        {% render_field form.names  class="form-control is-valid" %}
+                                    </div>
+                                    {% endif %}
+                                    {% else %}
+                                    <div class="form-group mt-3 mb-2">
+                                        {{form.names.label_tag}}
+                                        {% render_field form.names class="form-control" %}
+                                    </div>
+                                    {% endif %}
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-sm-12">
+                            {% if form.is_bound %}
+                                {% if form.names.errors %}
+                                    <div class="form-group mt-3 mb-2">
+                                        {{form.subject.label_tag}}
+                                        {% render_field form.subject  class="form-control is-invalid" %}
+                                    </div>
+                                    {% else %}
+                                    <div class="form-group mt-3 mb-2">
+                                        {{form.subject.label_tag}}
+                                        {% render_field form.subject  class="form-control is-valid" %}
+                                    </div>
+                                    {% endif %}
+                                    {% else %}
+                                    <div class="form-group mt-3 mb-2">
+                                        {{form.subject.label_tag}}
+                                        {% render_field form.subject class="form-control" %}
+                                    </div>
+                                    {% endif %}
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-sm-12">
+                            {% if form.is_bound %}
+                                {% if form.names.errors %}
+                                    <div class="form-group mt-3 mb-2">
+                                        {{form.content.label_tag}}
+                                        {% render_field form.content  class="form-control is-invalid" placeholder="Write something here..." %}
+                                    </div>
+                                    {% else %}
+                                    <div class="form-group mt-3 mb-2">
+                                        {{form.content.label_tag}}
+                                        {% render_field form.content  class="form-control is-valid" placeholder="Write something here..." %}
+                                    </div>
+                                    {% endif %}
+                                    {% else %}
+                                    <div class="form-group mt-3 mb-2">
+                                        {{form.content.label_tag}}
+                                        {% render_field form.content class="form-control" placeholder="Write something here..." %}
+                                    </div>
+                                    {% endif %}
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-sm-6">
+                            <div class="d-flex justify-content-start">
+                                <button class="btn btn-danger my-3"><i class="fa-solid fa-circle-arrow-left"></i>&nbsp;BACK</button>
+                            </div>
+                        </div>
+                        <div class="col-sm-6">
+                            <div class="d-flex justify-content-end">
+                                <button class="btn btn-success my-3"><i class="fa-solid fa-paper-plane"></i>&nbsp;SEND</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-sm-6 my-auto">
+                <img class="w-100" src="{% static 'Media/contact.svg' %}" alt="wifi-image">
+            </div>
+        </div>
+    </form>
+    
+</body>
+{% endblock content %}
