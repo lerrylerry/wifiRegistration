@@ -4,16 +4,12 @@ from django.contrib import messages
 from django.contrib.auth import authenticate, login, logout
 from Wifi_App.forms import *
 from django.contrib.auth.decorators import login_required
-from django.http import HttpResponse
 from PyPDF2 import PdfFileWriter, PdfFileReader
 from reportlab.pdfgen import canvas
 from reportlab.lib.pagesizes import letter
 import datetime, csv , io
 from django.conf import settings
 from django.core.mail import send_mail
-
-def secret1(request):
-    return render(request, "Wifi_App/data-stud.html")
 
 '''HOMEPAGE'''
 def index(request):
@@ -25,15 +21,53 @@ def register_faculty(request):
         form = FacultyForm(request.POST,request.FILES)
         if form.is_valid():
             form.save()
-            return redirect('/facultyWifi/success.html/')
-    return render(request, 'Wifi_App/STUDENT.html', {'form': form})
+
+            history = HistoryFaculty.objects.create(
+                names = request.POST['names'],
+                email = request.POST['email'],
+                macadd = request.POST['macadd'],
+                agenda = request.POST['agenda'],
+                timeStamp = request.POST['timeStamp'],
+            )
+            history.save()
+
+            return redirect('/register_faculty/success.html')
+    else:
+        form = FacultyForm
+    time = Time.objects.get(id=1)
+    context = {'form': form, 'time':time}
+    return render(request, 'Wifi_App/FACULTY.html', context)
+
+'''STUDENT REQUEST'''
+def register_student(request):
+    if request.method == 'POST':
+        form = StudentForm(request.POST,request.FILES)
+        if form.is_valid():
+            form.save()
+
+            history = HistoryStudent.objects.create(
+                names = request.POST['names'],
+                tupid = request.POST['tupid'],
+                email = request.POST['email'],
+                macadd = request.POST['macadd'],
+                agenda = request.POST['agenda'],
+                timeStamp = request.POST['timeStamp'],
+            )
+            history.save()
+
+            return redirect('/register_student/success.html')
+    else:
+        form = StudentForm
+    time = Time.objects.get(id=1)
+    context = {'form': form, 'time':time}
+    return render(request, 'Wifi_App/STUDENT.html', context)
 
 '''CREATE A STAFF'''
 def createStaff(request):
     if request.method == 'POST':
-        staff = SignUpForm(request.POST)
-        if staff.is_valid():
-            user = staff.save(commit=False)
+        form = SignUpForm(request.POST)
+        if form.is_valid():
+            user = form.save(commit=False)
             user.userType = "STAFF"
             user.save()
             return redirect('/admin1/student_request/')
@@ -41,8 +75,8 @@ def createStaff(request):
             messages.error(request, 'Invalid Account')
 
     else:
-        staff = FacultyForm()
-    return render(request, 'Wifi_App/create_staff.html', {'form': staff})
+        form = SignUpForm()
+    return render(request, 'Wifi_App/create_staff.html', {'form': form})
 
 '''ADMIN & STAFF LOGIN'''
 def login_user(request):
@@ -70,26 +104,24 @@ def logout_user(request):
 
 '''VIEW CALENDAR'''
 def viewCalendar(request):
-    return render(request, 'Wifi_App/calendar.html')
+    time = get_object_or_404(Time, id=1)
+    return render(request, 'Wifi_App/calendar.html', {'time': time})
 
 '''EDIT CALENDAR'''
 def editCalendar(request, id):
-    time = get_object_or_404(TimeForm, id=1)
-    if request.method == 'POST':
-        time = TimeForm(request.POST)
-        if time.is_valid():
-            time.save()
-            return redirect('/admin1/student_request/')
-        else:
-            messages.error(request, 'Invalid Account')
-
-    else:
-        time = TimeForm()
-    return render(request, 'Wifi_App/create_staff.html', {'form': time})
+    time = get_object_or_404(Time, id=id)
+    return render(request, 'Wifi_App/editCalendar.html', {'time': time})
 
 '''UPDATE CALENDAR'''
-def updateCalendar(request):
-    pass
+def updateCalendar(request, id):
+    time = get_object_or_404(Time, id=id)
+    time.start = request.POST.get('first')
+    time.end = request.POST.get('second')
+    if time.start == "" or time.end == "":
+        return redirect("/editCalendar/1")
+    else:
+        time.save()
+        return redirect("/viewCalendar")
 
 '''Send username and password'''
 def verified(request):

@@ -1,10 +1,56 @@
 {% extends 'Wifi_App/head.html' %}
 {% load static %}
+{% load crispy_forms_tags %}
 
 {% block title %}
 <title>CREATE STAFF</title>
+<link rel="stylesheet" href="{% static 'CSS/adminlogin.css' %}">
+<style type="text/css">
+    .asteriskField{
+        display: none;
+    }
+    
+    form .alert ul li{
+        list-style: none;
+    }
+
+    form .alert ul{
+        margin: 0;
+        padding: 0;
+    }
+    form #hint_id_username{
+        display: none;
+    }
+    form #hint_id_password1{
+        display: none;
+    }
+</style>
 {% endblock title %}
 
 {% block content %}
+    <body style="background: url({% static 'Media/loginbg.jpg' %}) no-repeat center center fixed;background-size: cover;">
+        <section class="container-fluid bg" style="background-image: url({% static 'Media/loginbg.jpg' %});">
+            <section class="row justify-content-center">
+                <section class="col-12 col-sm-6 col-md-3">
+                    <form method="post" name="login" action="/createStaff/" novalidate>
+                        {% csrf_token %}
+                        <div class="form-container my-3">
+                            <h4 class="text-white">STAFF</h4>
+                            {% include  'Wifi_App/error.html' %}
+
+                            <div class="text-white">{{ form.username|as_crispy_field }}</div>
+                            <div class="text-white">{{ form.email|as_crispy_field }}</div>
+                            <div class="text-white">{{ form.password1|as_crispy_field }}</div>
+                            <div class="text-white">{{ form.password2|as_crispy_field }}</div>
                             
+                            <div class="form-inline">
+                                <a class="mx-auto d-block" href="{% url 'datastudent' %}">BACK</a>
+                                <button type="submit" class="btn btn-primary mx-auto d-block"><i class="fa-solid fa-user-plus"></i>&nbsp;CREATE</button>
+                            </div>
+                            
+                    </form>
+                </section>
+            </section>
+        </section>
+    </body>
 {% endblock content %}

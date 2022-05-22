@@ -1,6 +1,5 @@
 from django.db import models
 from django.contrib.auth.models import AbstractUser
-from django.forms import DateTimeField
 
 # Create your models here.
 
@@ -63,7 +62,6 @@ class Student(models.Model):
     email = models.EmailField(max_length=50, unique=True, verbose_name="Email")
     status = models.CharField(max_length=10, default='PENDING')
     dateCreated = models.DateTimeField(auto_now_add=True)
-    dateEvaluated = models.DateTimeField(blank=True,null=True)
 
     def __str__(self):
         return self.names
@@ -115,7 +113,6 @@ class Faculty(models.Model):
     email = models.EmailField(max_length=50, unique=True, verbose_name="Email", primary_key=True)
     status = models.CharField(max_length=10, default='PENDING')
     dateCreated = models.DateTimeField(auto_now_add=True)
-    dateEvaluated = models.DateTimeField(blank=True,null=True)
 
     def __str__(self):
         return self.names
@@ -124,10 +121,10 @@ class Faculty(models.Model):
         ordering = ['-dateCreated']
 
 class Time(models.Model):
-    start = DateTimeField()
-    end = DateTimeField()
+    start = models.DateField()
+    end = models.DateField()
 
 class Contact(models.Model):
-    names = models.CharField(max_length=50 ,verbose_name="Name:")
+    names = models.CharField(max_length=50 ,verbose_name="Name:", default="anonymous" , blank=True)
     subject = models.CharField(max_length=50 ,verbose_name="Subject:")
     content = models.TextField(max_length=250, verbose_name="Content:")

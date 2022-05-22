@@ -10,6 +10,9 @@ class ContactForm(forms.ModelForm):
         fields = "__all__"
 
 class TimeForm(forms.ModelForm):
+    start = forms.DateTimeField(input_formats=['%d/%m/%Y'])
+    end = forms.DateTimeField(input_formats=['%d/%m/%Y'])
+
     class Meta:
         model = Time
         fields = "__all__"
@@ -17,7 +20,7 @@ class TimeForm(forms.ModelForm):
 class SignUpForm(UserCreationForm):
     class Meta:
         model = CustomUser
-        fields = ('username', 'email' ,'userType')
+        fields = ('username', 'email')
 
 Course = [#first column: database // second column: forms
                 ('' , 'Choose course'),

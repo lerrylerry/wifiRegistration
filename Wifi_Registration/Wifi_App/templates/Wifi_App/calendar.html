@@ -36,23 +36,15 @@
 {% endblock content %}
 
 {% block body %}
-<div class="jumbotron mt-3 rounded bg-light shadow-lg">
+<div class="jumbotron mt-3 rounded bg-warning shadow-lg">
   <div class="d-flex justify-content-center">
-    <h3 class="text-danger mr-3">START TIME</h3><h4>to</h4><h3 class="text-danger ml-3">START END</h3> 
+    <h3 class="text-danger mr-3">{{time.start}}</h3><h4>to</h4><h3 class="text-danger ml-3">{{time.end}}</h3> 
   </div>
   <div class="d-flex justify-content-center">
     <img src="{% static 'Media/calendar.svg' %}" alt="calendar-image">
   </div>
   <div class="d-flex justify-content-center">
-    <a href="/editCalendar/{{obj.id}}" class="btn btn-danger mt-3">CHANGE</a>
+    <a href="/editCalendar/{{time.id}}" class="btn btn-danger mt-3"><i class="fa-solid fa-pen-to-square"></i>&nbsp;CHANGE</a>
   </div>
 </div>
-<!--------------------------------------------------------------------------------------END------------------------------------------------------------------------------->
-<script>
-  $(function () {
-    $("#datepicker").datepicker();
-  });
-</script>
 {% endblock body %}
-
-

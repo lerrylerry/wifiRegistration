@@ -142,6 +142,28 @@
                                                 </div>
                                                 <small><ul><li id="text">required</li></ul></small>
                                                 {% endif %}
+
+                                        {% if form.is_bound %}
+                                            {% if form.email.errors %}
+                                                <div class="input-group mt-4 mb-2">
+                                                    <span class="input-group-text"><i class="fa-solid fa-at" id="icon10"></i></span>
+                                                    {% render_field form.email  class="form-control is-invalid" style="border-left: hidden;" placeholder="...@email.com"%}
+                                                </div>
+                                                <small class="text-danger" id="small">{{ form.email.errors }}</small>
+                                                {% else %}
+                                                <div class="input-group mt-4 mb-2">
+                                                    <span class="input-group-text"><i class="fa-solid fa-at" id="icon10"></i></span>
+                                                    {% render_field form.email  class="form-control is-valid" placeholder="...@email.com"%}
+                                                </div>
+                                                <small><ul><li id="text">required</li></ul></small>
+                                                {% endif %}
+                                                {% else %}
+                                                <div class="input-group mt-4 mb-2">
+                                                    <span class="input-group-text"><i class="fa-solid fa-at" id="icon10"></i></span>
+                                                    {% render_field form.email  class="form-control" placeholder="...@email.com"%}
+                                                </div>
+                                                <small><ul><li id="text">required</li></ul></small>
+                                                {% endif %}
                                 </div>  
                         
                                 <!-- right side -->     
@@ -279,7 +301,7 @@
                             <p>
                             <em class="text-info text-justify">
                                 The 1 hour per day Wifi-Connectivity  given to the user is valid from 
-                                November  to March, 2022
+                                {{time.start}}&nbsp;to&nbsp;{{time.end}}
                             </em>
                             </p>
                     
@@ -329,11 +351,11 @@
                             <div class="container px-0">
                                 <div class="row">
                                     <div class="col-sm-6">
-                                        <a href="{% url 'home' %}" class="btn btn-outline-secondary btn-lg text-success mt-2 mb-5" data-toggle="tooltip" data-placement="top" title="Return to homepage" id="backF" style="border-radius: 45px;">
+                                        <a href="{% url 'home' %}" class="btn btn-outline-dark btn-lg text-success mt-2 mb-5" data-toggle="tooltip" data-placement="top" title="Return to homepage" id="backF" style="border-radius: 45px;">
                                             <i class="fa-solid fa-circle-arrow-left" id="icon"></i><strong> BACK</strong></a>
                                     </div>
                                     <div class="col-sm-6 d-flex justify-content-end">
-                                        <button type="button" class="btn btn-outline-secondary btn-lg text-success mt-2 mb-5" data-toggle="modal" data-target="#myModal" id="confirm" style="border-radius: 45px;"><strong> SUBMIT</strong> <i class="fa-solid fa-circle-arrow-right" id="icon"></i></button>
+                                        <button type="button" class="btn btn-outline-dark btn-lg text-success mt-2 mb-5" data-toggle="modal" data-target="#myModal" id="confirm" style="border-radius: 45px;"><strong> SUBMIT</strong> <i class="fa-solid fa-circle-arrow-right" id="icon"></i></button>
                                     </div>
                                 </div>
                             </div>

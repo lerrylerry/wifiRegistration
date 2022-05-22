@@ -24,7 +24,7 @@ urlpatterns = [
     path('register_faculty/success.html', views.success, name='success'),
     path('register_student/success.html', views.success, name='success'),
     path('contact_us/success.html', views.success, name='success'),
-
+    
     #path('to_pdf/', views.print_view, name='pdf'),
     #path('to_csv/', views.csv_view, name='csv'),
 
