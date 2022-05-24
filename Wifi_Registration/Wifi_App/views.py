@@ -195,7 +195,6 @@ def notifyUserStudent(request, user_pk):
         attachment.save(force_insert=True)
 
         link = attachment.attach.file.name
-        print(link)
         
         msg = EmailMessage(
             'WIFI REGISTRATION ACCOUNT',
@@ -206,7 +205,7 @@ def notifyUserStudent(request, user_pk):
         msg.content_subtype = "html"  
         msg.attach_file(link)
         msg.send()
-        return redirect('/email_sent/success.html')
+        return redirect('/email_sent/s/success.html')
 
     else:
         return HttpResponseForbidden()
@@ -225,7 +224,6 @@ def notifyUserFaculty(request, user_pk):
         attachment.save(force_insert=True)
 
         link = attachment.attach.file.name
-        print(link)
         
         msg = EmailMessage(
             'WIFI REGISTRATION ACCOUNT',
@@ -236,15 +234,18 @@ def notifyUserFaculty(request, user_pk):
         msg.content_subtype = "html"  
         msg.attach_file(link)
         msg.send()
-        #success page
-        return redirect('/email_sent/success.html')
+        return redirect('/email_sent/f/success.html')
 
     else:
         return HttpResponseForbidden()
 
-'''email sent success'''
-def emailSuccess(request):
-    return render(request, 'Wifi_App/success_mail.html')
+'''email sent success student'''
+def emailSuccessS(request):
+    return render(request, 'Wifi_App/success-mail-student.html')
+
+'''email sent success faculty'''
+def emailSuccessF(request):
+    return render(request, 'Wifi_App/success-mail-faculty.html')
 
 '''Faculty table'''
 @login_required(login_url='/login_user/')
@@ -260,7 +261,8 @@ def readFaculty(request):
     else:
         approved_faculty = Faculty.objects.filter(status='APPROVED', done=0)
         history = HistoryFaculty.objects.all()
-        context = {"approved_faculty":approved_faculty, "history":history}
+        received = Faculty.objects.filter(status='APPROVED', done=1)
+        context = {"approved_faculty":approved_faculty, "history":history, "received":received}
         return render(request, 'Wifi_App/DATAFACULTY.html', context)
 
 '''Student table'''
@@ -277,11 +279,12 @@ def readStudent(request):
     else:
         approved_student = Student.objects.filter(status='APPROVED', done=0)
         history = HistoryStudent.objects.all()
-        context = {"approved_student":approved_student, "history":history}
+        received = Student.objects.filter(status='APPROVED', done=1)
+        context = {"approved_student":approved_student, "history":history, "received":received}
         return render(request, 'Wifi_App/DATASTUDENT.html', context)
 
 '''APPROVED STUDENT'''
-def acceptStudent(request,user_pk):
+def acceptStudent(request, user_pk):
     if request.user.userType == 'ADMIN':
         add_student = get_object_or_404(Student, pk=user_pk)
         add_student.status = 'APPROVED'
@@ -295,6 +298,12 @@ def acceptStudent(request,user_pk):
             agenda = add_student.status,
         ) 
         logged.save()
+
+        subject = "WIFI CONNECTIVITY REGISTRATION"
+        message = "We have approved your registration. Please wait for further anoouncements!"
+        email_from = settings.EMAIL_HOST_USER
+        recipient_list = [add_student.email]
+        send_mail(subject, message, email_from, recipient_list)
         return redirect('/admin1/student_request')
 
     else:
@@ -314,6 +323,12 @@ def acceptFaculty(request, user_pk):
             agenda = add_faculty.status,
         )
         logged.save()
+
+        subject = "WIFI CONNECTIVITY REGISTRATION"
+        message = "We have approved your registration. Please wait for further anoouncements!"
+        email_from = settings.EMAIL_HOST_USER
+        recipient_list = [add_faculty.email]
+        send_mail(subject, message, email_from, recipient_list)
         return redirect('/admin1/faculty_request')
 
     else:
@@ -323,9 +338,6 @@ def acceptFaculty(request, user_pk):
 def rejectStudent(request, user_pk):
     if request.user.userType == 'ADMIN':
         destroy_student = get_object_or_404(Student, pk=user_pk)
-        destroy_student.status = 'REJECTED'
-        destroy_student.save()
-        # ________________________________________________________________
         logged = HistoryStudent.objects.create(
             names = destroy_student.names,
             tupid = destroy_student.tupid,
@@ -334,6 +346,15 @@ def rejectStudent(request, user_pk):
             agenda = destroy_student.status,
         ) 
         logged.save()
+        
+        destroy_student.delete()
+        # ________________________________________________________________
+
+        subject = "WIFI CONNECTIVITY REGISTRATION"
+        message = "Sorry, your request for wifi has been declined. Please make sure you pass a valid information. You can submit another request. Thank You!"
+        email_from = settings.EMAIL_HOST_USER
+        recipient_list = [destroy_student.email]
+        send_mail(subject, message, email_from, recipient_list)
         return redirect('/admin1/student_request')
 
     else:
@@ -343,9 +364,6 @@ def rejectStudent(request, user_pk):
 def rejectFaculty(request, user_pk):
     if request.user.userType == 'ADMIN':
         destroy_faculty = get_object_or_404(Faculty, pk=user_pk)
-        destroy_faculty.status = 'REJECTED'
-        destroy_faculty.save()
-        # ________________________________________________________________
         logged = HistoryFaculty.objects.create(
             names = destroy_faculty.names,
             macadd = destroy_faculty.macadd,
@@ -353,6 +371,15 @@ def rejectFaculty(request, user_pk):
             agenda = destroy_faculty.status,
         ) 
         logged.save()
+
+        destroy_faculty.delete()
+        # ________________________________________________________________
+
+        subject = "WIFI CONNECTIVITY REGISTRATION"
+        message = "Sorry, your request for wifi has been declined. Please make sure you pass a valid information. You can submit another request. Thank You!"
+        email_from = settings.EMAIL_HOST_USER
+        recipient_list = [destroy_faculty.email]
+        send_mail(subject, message, email_from, recipient_list)
         return redirect('/admin1/faculty_request')
 
     else:

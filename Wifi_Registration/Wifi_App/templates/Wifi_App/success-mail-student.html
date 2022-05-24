@@ -1,0 +1,16 @@
+{% load static %}
+{% include 'Wifi_App/head.html' %}
+<title>CONFIRMATION</title>
+<body class="bg-light">
+   <div class="container-fluid p-0">
+    <div class="alert alert-dismissible alert-success shadow-sm" role="alert">
+       <small class="text-body d-flex justify-content-center my-3"><strong>
+           <i class="fa-solid fa-circle-check text-success"></i>&nbsp;The email has been sent</small>
+    </div>
+    <br>
+   <img class="d-block mx-auto" src="{% static 'Media/mail-sent.svg' %}" alt="success-image">
+   <div class="d-flex justify-content-center">
+      <a href="{% url 'datastudent' %}" class="btn btn-primary text my-3"><i class="fa-solid fa-arrow-right-from-bracket"></i>&nbsp;GO&nbsp;BACK</a>
+   </div>  
+ </div>
+</body>

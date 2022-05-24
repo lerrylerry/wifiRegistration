@@ -23,14 +23,12 @@ urlpatterns = [
     path('createStaff/', views.createStaff, name='createStaff'),
     path('register_faculty/success.html', views.success, name='success'),
     path('register_student/success.html', views.success, name='success'),
-    path('email_sent/success.html', views.emailSuccess, name='emailSuccess'),
+    path('email_sent/s/success.html', views.emailSuccessS, name='emailSuccessS'),
+    path('email_sent/f/success.html', views.emailSuccessF, name='emailSuccessF'),
 
     path('generatePDF/', views.generatePDF, name='generatePDF'),
     path('notifyUserStudent/<user_pk>', views.notifyUserStudent, name='notifyUserStudent'),
     path('notifyUserFaculty/<user_pk>', views.notifyUserFaculty, name='notifyUserFaculty'),
-    
-    #path('to_pdf/', views.print_view, name='pdf'),
-    #path('to_csv/', views.csv_view, name='csv'),
 
     path('acceptFaculty/<user_pk>', views.acceptFaculty, name='acceptFaculty'),
     path('rejectFaculty/<user_pk>', views.rejectFaculty, name='rejectFaculty'),

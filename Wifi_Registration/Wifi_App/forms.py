@@ -208,7 +208,7 @@ class StudentForm(forms.ModelForm):
         return data10
 
     def clean_residAdd(self):
-        data11 = self.cleaned_data['names'] 
+        data11 = self.cleaned_data['residAdd'] 
         if len(data11) < 15:
-            raise ValidationError("Name must be 15 characters long")
+            raise ValidationError("Address must be 15 characters long")
         return data11
