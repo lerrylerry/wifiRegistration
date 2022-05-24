@@ -36,6 +36,9 @@
 {% endblock content %}
 
 {% block body %}
+<div class="p-3 mt-3 rounded bg-light shadow">
+  <h5 class="text-center font-weight-bold">Hi <strong class="text-success">{{request.user.username}}</strong>, Welcome back!</h5>
+</div>
 <form action="/updateCalendar/{{time.id}}" method="post" novalidate>
   {% csrf_token %}
   <div class="jumbotron mt-3 rounded bg-info shadow-lg">

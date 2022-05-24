@@ -36,6 +36,10 @@
 {% endblock content %}
 
 {% block body %}
+<div class="p-3 mt-3 rounded bg-light shadow">
+  <h5 class="text-center font-weight-bold">Hi <strong class="text-success">{{request.user.username}}</strong>, Welcome back!</h5>
+</div>
+
 <div class="jumbotron mt-3 rounded bg-warning shadow-lg">
   <div class="d-flex justify-content-center">
     <h3 class="text-danger mr-3">{{time.start}}</h3><h4>to</h4><h3 class="text-danger ml-3">{{time.end}}</h3> 

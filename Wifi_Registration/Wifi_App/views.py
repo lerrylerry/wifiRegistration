@@ -4,12 +4,15 @@ from django.contrib import messages
 from django.contrib.auth import authenticate, login, logout
 from Wifi_App.forms import *
 from django.contrib.auth.decorators import login_required
-from PyPDF2 import PdfFileWriter, PdfFileReader
+from django.http import FileResponse, HttpResponse, HttpResponseForbidden
 from reportlab.pdfgen import canvas
 from reportlab.lib.pagesizes import letter
 import datetime, csv , io
 from django.conf import settings
 from django.core.mail import send_mail
+from django.core.mail import EmailMessage
+
+'''username: lerry / password: akosilerry (admin account) // optional = email: sample@gmail.com'''
 
 '''HOMEPAGE'''
 def index(request):
@@ -26,8 +29,6 @@ def register_faculty(request):
                 names = request.POST['names'],
                 email = request.POST['email'],
                 macadd = request.POST['macadd'],
-                agenda = request.POST['agenda'],
-                timeStamp = request.POST['timeStamp'],
             )
             history.save()
 
@@ -50,8 +51,6 @@ def register_student(request):
                 tupid = request.POST['tupid'],
                 email = request.POST['email'],
                 macadd = request.POST['macadd'],
-                agenda = request.POST['agenda'],
-                timeStamp = request.POST['timeStamp'],
             )
             history.save()
 
@@ -63,20 +62,25 @@ def register_student(request):
     return render(request, 'Wifi_App/STUDENT.html', context)
 
 '''CREATE A STAFF'''
+@login_required(login_url='/login_user/')
 def createStaff(request):
-    if request.method == 'POST':
-        form = SignUpForm(request.POST)
-        if form.is_valid():
-            user = form.save(commit=False)
-            user.userType = "STAFF"
-            user.save()
-            return redirect('/admin1/student_request/')
+    if request.user.userType == 'ADMIN':
+        if request.method == 'POST':
+            form = SignUpForm(request.POST)
+            if form.is_valid():
+                user = form.save(commit=False)
+                user.userType = "STAFF"
+                user.save()
+                return redirect('/admin1/student_request/')
+            else:
+                messages.error(request, 'Invalid Account')
+
         else:
-            messages.error(request, 'Invalid Account')
+            form = SignUpForm()
+        return render(request, 'Wifi_App/create_staff.html', {'form': form})
 
     else:
-        form = SignUpForm()
-    return render(request, 'Wifi_App/create_staff.html', {'form': form})
+        return HttpResponseForbidden()
 
 '''ADMIN & STAFF LOGIN'''
 def login_user(request):
@@ -89,7 +93,7 @@ def login_user(request):
             return redirect('/admin1/student_request')
         elif user is not None and user.userType == 'STAFF':
             login(request, user)
-            return redirect('/faculty-portal')
+            return redirect('/admin1/student_request')
         else:
             messages.error(request, 'Account not found')
             return render(request, 'Wifi_App/login.html')
@@ -103,29 +107,39 @@ def logout_user(request):
     return redirect('home')
 
 '''VIEW CALENDAR'''
+@login_required(login_url='/login_user/')
 def viewCalendar(request):
-    time = get_object_or_404(Time, id=1)
-    return render(request, 'Wifi_App/calendar.html', {'time': time})
+    if request.user.userType == 'ADMIN':
+        time = get_object_or_404(Time, id=1)
+        return render(request, 'Wifi_App/calendar.html', {'time': time})
+
+    else:
+        return HttpResponseForbidden()
 
 '''EDIT CALENDAR'''
+@login_required(login_url='/login_user/')
 def editCalendar(request, id):
-    time = get_object_or_404(Time, id=id)
-    return render(request, 'Wifi_App/editCalendar.html', {'time': time})
+    if request.user.userType == 'ADMIN':
+        time = get_object_or_404(Time, id=id)
+        return render(request, 'Wifi_App/editCalendar.html', {'time': time})
+
+    else:
+        return HttpResponseForbidden()
 
 '''UPDATE CALENDAR'''
+@login_required(login_url='/login_user/')
 def updateCalendar(request, id):
-    time = get_object_or_404(Time, id=id)
-    time.start = request.POST.get('first')
-    time.end = request.POST.get('second')
-    if time.start == "" or time.end == "":
-        return redirect("/editCalendar/1")
+    if request.user.userType == 'ADMIN':
+        time = get_object_or_404(Time, id=id)
+        time.start = request.POST.get('first')
+        time.end = request.POST.get('second')
+        if time.start == "" or time.end == "":
+            return redirect("/editCalendar/1")
+        else:
+            time.save()
+            return redirect("/viewCalendar")
     else:
-        time.save()
-        return redirect("/viewCalendar")
-
-'''Send username and password'''
-def verified(request):
-    pass
+        return HttpResponseForbidden()
 
 '''Success page'''
 def success(request):
@@ -141,14 +155,99 @@ def contactUs(request):
             email_from = settings.EMAIL_HOST_USER
             recipient_list = ["johnlerry.laungayan@gsfe.tupcavite.edu.ph",]
             send_mail(subject, message, email_from, recipient_list)
-            return redirect('/contact_us/success.html')
+            return redirect('/email_sent/success.html')
 
     else:
         form = ContactForm()
     return render(request, 'Wifi_App/contact.html', {'form': form})
 
+'''GENERATE PDF'''
+@login_required(login_url='/login_user/')
+def generatePDF(request):
+    if request.user.userType == 'STAFF':
+        names = request.GET['username']
+        namez = names+'.pdf'
+        packet = io.BytesIO()
+        can = canvas.Canvas(packet, pagesize=letter)
+        can.setFillColorRGB(1, 0, 0)
+        can.setFont("Times-Roman", 16)
+        can.drawString(270, 450, "username"+ ' : ' +request.GET['username'])
+        can.drawString(270, 400, "password"+ ' : ' +request.GET['password'])
+        can.showPage()
+        can.save()
+        packet.seek(0)
+        return FileResponse(packet, as_attachment=True, filename=namez)
+
+    else:
+        return HttpResponseForbidden()
+        
+'''SEND EMAIL PDF STUDENT'''
+@login_required(login_url='/login_user/')
+def notifyUserStudent(request, user_pk):
+    if request.user.userType == 'STAFF':
+        stud = get_object_or_404(Student, pk=user_pk)
+        stud.done = 1
+        stud.save()
+        attachment = AttachmentStudent(
+            student=stud,
+            attach=request.FILES['details']
+            )
+        attachment.save(force_insert=True)
+
+        link = attachment.attach.file.name
+        print(link)
+        
+        msg = EmailMessage(
+            'WIFI REGISTRATION ACCOUNT',
+            'You can now connect to wifi in tup-cavite!',
+            settings.EMAIL_HOST_USER,
+            [stud.email]
+            )
+        msg.content_subtype = "html"  
+        msg.attach_file(link)
+        msg.send()
+        return redirect('/email_sent/success.html')
+
+    else:
+        return HttpResponseForbidden()
+
+'''SEND EMAIL PDF FACULTY'''
+@login_required(login_url='/login_user/')
+def notifyUserFaculty(request, user_pk):
+    if request.user.userType == 'STAFF':
+        facs = get_object_or_404(Faculty, pk=user_pk)
+        facs.done = 1
+        facs.save()
+        attachment = AttachmentFaculty(
+            faculty=facs,
+            attach=request.FILES['details']
+            )
+        attachment.save(force_insert=True)
+
+        link = attachment.attach.file.name
+        print(link)
+        
+        msg = EmailMessage(
+            'WIFI REGISTRATION ACCOUNT',
+            'You can now connect to wifi in tup-cavite!',
+            settings.EMAIL_HOST_USER,
+            [facs.email]
+            )
+        msg.content_subtype = "html"  
+        msg.attach_file(link)
+        msg.send()
+        #success page
+        return redirect('/email_sent/success.html')
+
+    else:
+        return HttpResponseForbidden()
+
+'''email sent success'''
+def emailSuccess(request):
+    return render(request, 'Wifi_App/success_mail.html')
+
 '''Faculty table'''
-#@login_required(login_url='/login_user/')
+@login_required(login_url='/login_user/')
 def readFaculty(request):
     if request.user.userType == 'ADMIN':
         allowed_faculty = Faculty.objects.filter(status='PENDING')
@@ -159,13 +258,13 @@ def readFaculty(request):
         return render(request, 'Wifi_App/DATAFACULTY.html', context)
 
     else:
-        approved_faculty = Faculty.objects.filter(status='APPROVED')
-        all_faculty = Faculty.objects.all()
-        context = {"approved_faculty":approved_faculty, "all_faculty":all_faculty}
+        approved_faculty = Faculty.objects.filter(status='APPROVED', done=0)
+        history = HistoryFaculty.objects.all()
+        context = {"approved_faculty":approved_faculty, "history":history}
         return render(request, 'Wifi_App/DATAFACULTY.html', context)
 
 '''Student table'''
-#@login_required(login_url='/login_user/')
+@login_required(login_url='/login_user/')
 def readStudent(request):
     if request.user.userType == 'ADMIN':
         allowed_student = Student.objects.filter(status='PENDING')
@@ -176,15 +275,15 @@ def readStudent(request):
         return render(request, 'Wifi_App/DATASTUDENT.html', context)
 
     else:
-        approved_student = Student.objects.filter(status='APPROVED')
-        all_student = Student.objects.all()
-        context = {"approved_student":approved_student, "all_faculty":all_student}
+        approved_student = Student.objects.filter(status='APPROVED', done=0)
+        history = HistoryStudent.objects.all()
+        context = {"approved_student":approved_student, "history":history}
         return render(request, 'Wifi_App/DATASTUDENT.html', context)
 
 '''APPROVED STUDENT'''
 def acceptStudent(request,user_pk):
-    try:
-        add_student = get_object_or_404(Student, emails=user_pk)
+    if request.user.userType == 'ADMIN':
+        add_student = get_object_or_404(Student, pk=user_pk)
         add_student.status = 'APPROVED'
         add_student.save()
         # ____________________________________________________________
@@ -194,17 +293,16 @@ def acceptStudent(request,user_pk):
             email = add_student.email,
             macadd = add_student.macadd,
             agenda = add_student.status,
-            timeStamp = datetime.datetime.now()
         ) 
         logged.save()
         return redirect('/admin1/student_request')
 
-    except:
-        pass
+    else:
+        return HttpResponseForbidden()
         
 '''APPROVED FACULTY'''
 def acceptFaculty(request, user_pk):
-    try:
+    if request.user.userType == 'ADMIN':
         add_faculty = get_object_or_404(Faculty, pk=user_pk)
         add_faculty.status = 'APPROVED'
         add_faculty.save()
@@ -214,17 +312,16 @@ def acceptFaculty(request, user_pk):
             macadd = add_faculty.macadd,
             email = add_faculty.email,
             agenda = add_faculty.status,
-            timeStamp = datetime.datetime.now()
         )
         logged.save()
         return redirect('/admin1/faculty_request')
 
-    except:
-        pass
+    else:
+        return HttpResponseForbidden()
 
 '''REJECTED STUDENT'''
 def rejectStudent(request, user_pk):
-    try:
+    if request.user.userType == 'ADMIN':
         destroy_student = get_object_or_404(Student, pk=user_pk)
         destroy_student.status = 'REJECTED'
         destroy_student.save()
@@ -235,17 +332,16 @@ def rejectStudent(request, user_pk):
             email = destroy_student.email,
             macadd = destroy_student.macadd,
             agenda = destroy_student.status,
-            timeStamp = datetime.datetime.now()
         ) 
         logged.save()
         return redirect('/admin1/student_request')
 
-    except:
-        pass
+    else:
+        return HttpResponseForbidden()
         
 '''REJECTED STUDENT'''
 def rejectFaculty(request, user_pk):
-    try:
+    if request.user.userType == 'ADMIN':
         destroy_faculty = get_object_or_404(Faculty, pk=user_pk)
         destroy_faculty.status = 'REJECTED'
         destroy_faculty.save()
@@ -255,10 +351,9 @@ def rejectFaculty(request, user_pk):
             macadd = destroy_faculty.macadd,
             email = destroy_faculty.email,
             agenda = destroy_faculty.status,
-            timeStamp = datetime.datetime.now()
         ) 
         logged.save()
         return redirect('/admin1/faculty_request')
 
-    except:
-        pass
+    else:
+        return HttpResponseForbidden()

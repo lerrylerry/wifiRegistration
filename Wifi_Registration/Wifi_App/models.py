@@ -62,6 +62,7 @@ class Student(models.Model):
     email = models.EmailField(max_length=50, unique=True, verbose_name="Email")
     status = models.CharField(max_length=10, default='PENDING')
     dateCreated = models.DateTimeField(auto_now_add=True)
+    done = models.BooleanField(default=False)
 
     def __str__(self):
         return self.names
@@ -74,7 +75,7 @@ class HistoryStudent(models.Model):
     tupid = models.CharField(max_length=50)
     email = models.EmailField(max_length=50)
     macadd = models.CharField(max_length=17)
-    agenda = models.CharField(max_length=10)
+    agenda = models.CharField(max_length=10, blank=True, default='PENDING')
     timeStamp = models.DateTimeField(auto_now_add=True)
 
     class Meta:
@@ -84,7 +85,7 @@ class HistoryFaculty(models.Model):
     names = models.CharField(max_length=50)
     email = models.EmailField(max_length=50)
     macadd = models.CharField(max_length=17)
-    agenda = models.CharField(max_length=10)
+    agenda = models.CharField(max_length=10, blank=True, default='PENDING')
     timeStamp = models.DateTimeField(auto_now_add=True)
 
     class Meta:
@@ -113,6 +114,7 @@ class Faculty(models.Model):
     email = models.EmailField(max_length=50, unique=True, verbose_name="Email", primary_key=True)
     status = models.CharField(max_length=10, default='PENDING')
     dateCreated = models.DateTimeField(auto_now_add=True)
+    done = models.BooleanField(default=False)
 
     def __str__(self):
         return self.names
@@ -128,3 +130,11 @@ class Contact(models.Model):
     names = models.CharField(max_length=50 ,verbose_name="Name:", default="anonymous" , blank=True)
     subject = models.CharField(max_length=50 ,verbose_name="Subject:")
     content = models.TextField(max_length=250, verbose_name="Content:")
+
+class AttachmentStudent(models.Model):
+    attach = models.FileField(blank=True, null=True, upload_to='studentPDF/')
+    student = models.OneToOneField(Student, on_delete=models.CASCADE, related_name="pdf", null=True)
+
+class AttachmentFaculty(models.Model):
+    attach = models.FileField(blank=True, null=True, upload_to='facultyPDF/')
+    faculty = models.OneToOneField(Faculty, on_delete=models.CASCADE, related_name="pdf", null=True) 
