@@ -338,6 +338,8 @@ def acceptFaculty(request, user_pk):
 def rejectStudent(request, user_pk):
     if request.user.userType == 'ADMIN':
         destroy_student = get_object_or_404(Student, pk=user_pk)
+        #not yet test
+        destroy_student.status = 'REJECTED'
         logged = HistoryStudent.objects.create(
             names = destroy_student.names,
             tupid = destroy_student.tupid,
@@ -364,6 +366,8 @@ def rejectStudent(request, user_pk):
 def rejectFaculty(request, user_pk):
     if request.user.userType == 'ADMIN':
         destroy_faculty = get_object_or_404(Faculty, pk=user_pk)
+        #not yet test
+        destroy_faculty.status = 'REJECTED'
         logged = HistoryFaculty.objects.create(
             names = destroy_faculty.names,
             macadd = destroy_faculty.macadd,
