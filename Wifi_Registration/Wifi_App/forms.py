@@ -152,6 +152,13 @@ class StudentForm(forms.ModelForm):
         model = Student
         fields = ['names','course','semester','phoneNum','device','orNum', 'agreement', 'email' ,'otherDevice','tupid','macadd','residAdd','signature']
         
+
+    def clean_agreement(self):
+        dat = self.cleaned_data['agreement']
+        if not dat:
+            raise forms.ValidationError('This field is required')
+        return dat
+
     def clean_names(self):
         pattern_with_text = "\\d+"
         data = self.cleaned_data['names'] 

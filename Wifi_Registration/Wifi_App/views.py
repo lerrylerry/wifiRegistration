@@ -32,6 +32,21 @@ def register_faculty(request):
             )
             history.save()
 
+            subject = "WIFI CONNECTIVITY REGISTRATION | SUCCESS"
+            message = f'Your Registration has been sent. We will notify once your registration have been approved. Thank You! \n \
+            Registration Details: \n \
+            Name: {request.POST["names"]} \n \
+            Department: {request.POST["department"]} \n \
+            Designation: {request.POST["designation"]} \n \
+            Email: {request.POST["email"]} \n \
+            Mac Address: {request.POST["macadd"]} \n \
+            Device: {request.POST["device"]} \n \
+            Faculty Name: {request.POST["facultyName"]} \n \
+            Phone Number: {request.POST["phoneNum"]}'
+            email_from = settings.EMAIL_HOST_USER
+            recipient_list = [history.email]
+            send_mail(subject, message, email_from, recipient_list)
+
             return redirect('/register_faculty/success.html')
     else:
         form = FacultyForm
@@ -53,6 +68,23 @@ def register_student(request):
                 macadd = request.POST['macadd'],
             )
             history.save()
+
+            subject = "WIFI CONNECTIVITY REGISTRATION | SUCCESS"
+            message = f'Your Registration has been sent. We will notify once your registration have been approved. Thank You! \n \
+            Registration Details: \n \
+            Name: {request.POST["names"]} \n \
+            Tup ID: {request.POST["tupid"]} \n \
+            Course: {request.POST["course"]} \n \
+            Semester: {request.POST["semester"]} \n \
+            Device: {request.POST["device"]} \n \
+            Mac Address: {request.POST["macadd"]} \n \
+            Email: {request.POST["email"]} \n \
+            OR Number: {request.POST["orNum"]} \n \
+            Phone Number: {request.POST["phoneNum"]} \n \
+            Residence Address: {request.POST["residAdd"]}'
+            email_from = settings.EMAIL_HOST_USER
+            recipient_list = [history.email]
+            send_mail(subject, message, email_from, recipient_list)
 
             return redirect('/register_student/success.html')
     else:
@@ -299,8 +331,8 @@ def acceptStudent(request, user_pk):
         ) 
         logged.save()
 
-        subject = "WIFI CONNECTIVITY REGISTRATION"
-        message = "We have approved your registration. Please wait for further anoouncements!"
+        subject = "WIFI CONNECTIVITY REGISTRATION | APPROVED"
+        message = "We have approved your registration. Please wait for further anouncements!"
         email_from = settings.EMAIL_HOST_USER
         recipient_list = [add_student.email]
         send_mail(subject, message, email_from, recipient_list)
@@ -324,8 +356,8 @@ def acceptFaculty(request, user_pk):
         )
         logged.save()
 
-        subject = "WIFI CONNECTIVITY REGISTRATION"
-        message = "We have approved your registration. Please wait for further anoouncements!"
+        subject = "WIFI CONNECTIVITY REGISTRATION | APPROVED"
+        message = "We have approved your registration. Please wait for further anouncements!"
         email_from = settings.EMAIL_HOST_USER
         recipient_list = [add_faculty.email]
         send_mail(subject, message, email_from, recipient_list)
@@ -352,7 +384,7 @@ def rejectStudent(request, user_pk):
         destroy_student.delete()
         # ________________________________________________________________
 
-        subject = "WIFI CONNECTIVITY REGISTRATION"
+        subject = "WIFI CONNECTIVITY REGISTRATION | REJECTED"
         message = "Sorry, your request for wifi has been declined. Please make sure you pass a valid information. You can submit another request. Thank You!"
         email_from = settings.EMAIL_HOST_USER
         recipient_list = [destroy_student.email]
@@ -379,7 +411,7 @@ def rejectFaculty(request, user_pk):
         destroy_faculty.delete()
         # ________________________________________________________________
 
-        subject = "WIFI CONNECTIVITY REGISTRATION"
+        subject = "WIFI CONNECTIVITY REGISTRATION | REJECTED"
         message = "Sorry, your request for wifi has been declined. Please make sure you pass a valid information. You can submit another request. Thank You!"
         email_from = settings.EMAIL_HOST_USER
         recipient_list = [destroy_faculty.email]
