@@ -22,9 +22,9 @@
                     <form class="form" id="form" name="student_form" method="POST" action="/register_student/" enctype="multipart/form-data" novalidate>
                         {% csrf_token %}
                             <div class="row">
-                                <div class="media border-bottom border-success w-100 mx-3 mb-3 mt-2">
+                                <div class="media border-bottom border-success w-100 mx-3 mt-2">
                                     <img class="rounded img-fluid" src="{% static 'Media/TUP-LOGO.png' %}" alt="wifi" width="100" height="100">  
-                                    <div class="media-body ml-4 p-2">
+                                    <div class="media-body ml-4 p-2 mt-1">
                                         <h2 class="font-weight-bold" style="color: maroon;">WIFI CONNECTIVITY REGISTRATION</h2>
                                         <h4 class="font-weight-bold" style="color: maroon;">for student users only</h4>
                                     </div>
@@ -145,20 +145,20 @@
 
                                         {% if form.is_bound %}
                                             {% if form.email.errors %}
-                                                <div class="input-group mt-4 mb-2">
+                                                <div class="input-group mt-4">
                                                     <span class="input-group-text"><i class="fa-solid fa-at" id="icon10"></i></span>
                                                     {% render_field form.email  class="form-control is-invalid" style="border-left: hidden;" placeholder="...@email.com"%}
                                                 </div>
                                                 <small class="text-danger" id="small">{{ form.email.errors }}</small>
                                                 {% else %}
-                                                <div class="input-group mt-4 mb-2">
+                                                <div class="input-group mt-4">
                                                     <span class="input-group-text"><i class="fa-solid fa-at" id="icon10"></i></span>
                                                     {% render_field form.email  class="form-control is-valid" placeholder="...@email.com"%}
                                                 </div>
                                                 <small><ul><li id="text">required</li></ul></small>
                                                 {% endif %}
                                                 {% else %}
-                                                <div class="input-group mt-4 mb-2">
+                                                <div class="input-group mt-4">
                                                     <span class="input-group-text"><i class="fa-solid fa-at" id="icon10"></i></span>
                                                     {% render_field form.email  class="form-control" placeholder="...@email.com"%}
                                                 </div>
@@ -274,7 +274,7 @@
                                         </p>
                                 </div>
                             </div>
-                            <hr class="bg-success">
+                            <hr class="bg-success mt-0">
                     
                             <div class="form-row">
                                 <div class="col-sm-12">
@@ -297,7 +297,7 @@
                                     </div>
                                 </div>
                             </div>
-                            <hr class="bg-success">
+                            <hr class="bg-success mt-0">
                             <p>
                             <em class="text-info text-justify">
                                 The 1 hour per day Wifi-Connectivity  given to the user is valid from 
@@ -307,34 +307,34 @@
                     
                             <div class="form-row">
                                 <div class="col-sm-6">
-                                    <p class="text-info">Approved by:</p>
+                                    <p style="color: maroon;">Approved by:</p>
                                     <img src="{% static 'Media/white.jpg' %}" alt="UITC Coordinator Signature" class="rounded" width="100%" height="40">
-                                    <label class="d-flex justify-content-center text-info mt-3" style="text-decoration: overline;">UITC Coordinator</label>
+                                    <label class="d-flex justify-content-center mt-3" style="text-decoration: overline; color:maroon;">UITC Coordinator</label>
                                 </div>
                         
                                 <div class="col-sm-6">
                                     {% if form.is_multipart %}
                                         {% if form.signature.errors %}
-                                            <label class="mb-3 text-info">Upload image of Signature over printed name</label>
+                                            <label style="color: maroon;" class="mb-3">Upload image of Signature over printed name</label>
                                             <div class="input-group">    
                                                 <div class="custom-file">
-                                                {% render_field form.signature  class="form-control custom-file-input is-invalid" style="border-left: hidden;"%}
+                                                {% render_field form.signature  class="form-control custom-file-input" style="border-left: hidden;"%}
                                                 <label class="custom-file-label">Upload Signature</label>
                                                 </div>
                                             </div>
                                             <small class="text-danger">{{ form.signature.errors }}</small>
                                             {% else %}
-                                            <label class="mb-3 text-info">Upload image of Signature over printed name</label>
+                                            <label style="color: maroon;" class="mb-3">Upload image of Signature over printed name</label>
                                             <div class="input-group">
                                                 <div class="custom-file">
-                                                {% render_field form.signature  class="form-control custom-file-input is-valid"%}
+                                                {% render_field form.signature  class="form-control custom-file-input"%}
                                                 <label class="custom-file-label">Upload Signature</label>
                                                 </div>
                                             </div>
                                             <small><ul><li id="text">required</li></ul></small>
                                             {% endif %}
                                             {% else %}
-                                            <label class="mb-3 text-info">Upload image of Signature over printed name</label>
+                                            <label style="color: maroon;" class="mb-3">Upload image of Signature over printed name</label>
                                             <div class="input-group">
                                                 <div class="custom-file">
                                                 {% render_field form.signature  class="form-control custom-file-input"%}
@@ -348,11 +348,11 @@
                             <div class="container px-0">
                                 <div class="row">
                                     <div class="col-sm-6">
-                                        <a href="{% url 'home' %}" class="btn btn-outline-dark btn-lg text-success mt-2 mb-5" data-toggle="tooltip" data-placement="top" title="Return to homepage" id="backF" style="border-radius: 45px;">
+                                        <a href="{% url 'home' %}" class="btn btn-outline-dark text-success mt-2 mb-5" data-toggle="tooltip" data-placement="top" title="Return to homepage" id="backF" style="border-radius: 45px;">
                                             <i class="fa-solid fa-circle-arrow-left" id="icon"></i><strong> BACK</strong></a>
                                     </div>
                                     <div class="col-sm-6 d-flex justify-content-end">
-                                        <button type="button" class="btn btn-outline-dark btn-lg text-success mt-2 mb-5" data-toggle="modal" data-target="#myModal" id="confirm" style="border-radius: 45px;"><strong> SUBMIT</strong> <i class="fa-solid fa-circle-arrow-right" id="icon"></i></button>
+                                        <button type="button" class="btn btn-outline-dark text-success mt-2 mb-5" data-toggle="modal" data-target="#myModal" id="confirm" style="border-radius: 45px;"><strong> SUBMIT</strong> <i class="fa-solid fa-circle-arrow-right" id="icon"></i></button>
                                     </div>
                                 </div>
                             </div>

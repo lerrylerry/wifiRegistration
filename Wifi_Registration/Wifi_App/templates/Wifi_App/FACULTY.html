@@ -22,9 +22,9 @@
                     <form class="form" id="form" name="faculty_form" method="POST" action="/register_faculty/" enctype="multipart/form-data" novalidate>
                         {% csrf_token %}
                             <div class="row">
-                                <div class="media border-bottom border-success w-100 mx-3 mb-3 mt-2">
+                                <div class="media border-bottom border-success w-100 mx-3 mt-2">
                                     <img class="rounded img-fluid" src="{% static 'Media/TUP-LOGO.png' %}" alt="wifi" width="100" height="100">  
-                                    <div class="media-body ml-4 p-2">
+                                    <div class="media-body ml-4 p-2 mt-1">
                                         <h2 class="font-weight-bold" style="color: maroon;">WIFI CONNECTIVITY REGISTRATION</h2>
                                         <h4 class="font-weight-bold" style="color: maroon;">for faculty users only</h4>
                                     </div>  
@@ -101,20 +101,20 @@
                                             
                                     {% if form.is_bound %}
                                         {% if form.macadd.errors %}
-                                            <div class="input-group mt-4 mb-2">
+                                            <div class="input-group mt-4">
                                                 <span class="input-group-text"><i class="fa-brands fa-apple" id="icon4"></i></span>
                                                 {% render_field form.macadd  class="form-control is-invalid" style="border-left: hidden;" placeholder="Enter Mac Address"%}
                                             </div>
                                                 <small class="text-danger">{{ form.macadd.errors }}</small>
                                             {% else %}
-                                            <div class="input-group mt-4 mb-2">
+                                            <div class="input-group mt-4">
                                                 <span class="input-group-text"><i class="fa-brands fa-apple" id="icon4"></i></span>
                                                 {% render_field form.macadd  class="form-control is-valid" placeholder="Enter Mac Address"%}
                                             </div>
                                             <small><ul><li id="text">required</li></ul></small>
                                             {% endif %}
                                             {% else %}
-                                            <div class="input-group mt-4 mb-2">
+                                            <div class="input-group mt-4">
                                                 <span class="input-group-text"><i class="fa-brands fa-apple" id="icon4"></i></span>
                                                 {% render_field form.macadd class="form-control" placeholder="Enter Mac Address" %}
                                             </div>
@@ -190,7 +190,7 @@
                                                 {% endif %}
                                             
                                                 <!-------------Specify----------------------------------------------------------------------------->
-                                                <div class="input-group mt-4 mb-2">
+                                                <div class="input-group mt-4">
                                                     <span class="input-group-text"><i class="fa-solid fa-ellipsis" id="icon8"></i></span>
                                                     {% render_field form.otherDevice class="form-control" placeholder="If others, please specify..." %}
                                                 </div>
@@ -207,7 +207,7 @@
                                         </p>
                                 </div>
                             </div>
-                            <hr class="bg-success">
+                            <hr class="bg-success mt-0">
                         
                             <div class="form-row">
                                 <div class="col-sm-12">
@@ -231,7 +231,7 @@
                                     </div>
                                 </div>
                             </div>
-                            <hr class="bg-success">
+                            <hr class="bg-success mt-0">
                             <p>
                             <em class="text-info text-justify">
                                 The 1 hour per day Wifi-Connectivity  given to the user is valid from 
@@ -243,20 +243,20 @@
                                 <div class="col-sm-6">
                                 {% if form.is_bound %}
                                     {% if form.facultyName.errors %}
-                                        <div class="input-group mt-4 mb-2">
+                                        <div class="input-group mb-2">
                                             <span class="input-group-text"><i class="fa-solid fa-building" id="icon9"></i></span>
                                             {% render_field form.facultyName  class="form-control is-invalid" style="border-left: hidden;" placeholder="Enter Faculty Name"%}
                                         </div>
                                         <small class="text-danger">{{ form.facultyName.errors }}</small>
                                         {% else %}
-                                        <div class="input-group mt-4 mb-2">
+                                        <div class="input-group mb-2">
                                             <span class="input-group-text"><i class="fa-solid fa-building" id="icon9"></i></span>
                                             {% render_field form.facultyName  class="form-control is-valid" placeholder="Enter Faculty Name"%}
                                         </div>
                                         <small><ul><li id="text">required</li></ul></small>
                                         {% endif %}
                                         {% else %}
-                                        <div class="input-group mt-4 mb-2">
+                                        <div class="input-group mb-2">
                                             <span class="input-group-text"><i class="fa-solid fa-building" id="icon9"></i></span>
                                             {% render_field form.facultyName class="form-control" placeholder="Enter Faculty Name"%}
                                         </div>
@@ -267,24 +267,24 @@
                                 <div class="col-sm-6 text-success">
                                     {% if form.is_multipart %}
                                         {% if form.signature.errors %}
-                                            <div class="input-group mt-4 mb-2">
+                                            <div class="input-group mb-2">
                                                 <div class="custom-file">
-                                                {% render_field form.signature  class="form-control custom-file-input is-invalid" style="border-left: hidden;"%}
+                                                {% render_field form.signature  class="form-control custom-file-input" style="border-left: hidden;"%}
                                                 <label class="custom-file-label">Upload Signature</label>
                                                 </div>
                                             </div>
                                             <small class="text-danger">{{ form.signature.errors }}</small>
                                             {% else %}
-                                            <div class="input-group mt-4 mb-2">
+                                            <div class="input-group mb-2">
                                                 <div class="custom-file">
-                                                {% render_field form.signature  class="form-control custom-file-input is-valid"%}
+                                                {% render_field form.signature  class="form-control custom-file-input"%}
                                                     <label class="custom-file-label">Upload Signature</label>
                                                 </div>
                                             </div>
                                             <small><ul><li id="text">required</li></ul></small>
                                             {% endif %}
                                             {% else %}
-                                            <div class="input-group mt-4 mb-2">
+                                            <div class="input-group mb-2">
                                                 <div class="custom-file">
                                                 {% render_field form.signature class="form-control custom-file-input"%}
                                                     <label class="custom-file-label">Upload Signature</label>
@@ -297,11 +297,11 @@
                             <div class="container px-0">
                                 <div class="row">
                                     <div class="col-sm-6">
-                                        <a href="{% url 'home' %}" class="btn btn-outline-dark btn-lg text-success mt-2 mb-5" data-toggle="tooltip" data-placement="top" title="Return to homepage" id="backF" style="border-radius: 45px;">
+                                        <a href="{% url 'home' %}" class="btn btn-outline-dark text-success mt-2 mb-5" data-toggle="tooltip" data-placement="top" title="Return to homepage" id="backF" style="border-radius: 45px;">
                                             <i class="fa-solid fa-circle-arrow-left" id="icon"></i><strong> BACK</strong></a>
                                     </div>
                                     <div class="col-sm-6 d-flex justify-content-end">
-                                        <button type="button" class="btn btn-outline-dark btn-lg mt-2 mb-5 text-success" data-toggle="modal" data-target="#myModal" id="confirm" style="border-radius: 45px;"><strong> SUBMIT</strong> <i class="fa-solid fa-circle-arrow-right" id="icon"></i></button>
+                                        <button type="button" class="btn btn-outline-dark mt-2 mb-5 text-success" data-toggle="modal" data-target="#myModal" id="confirm" style="border-radius: 45px;"><strong> SUBMIT</strong> <i class="fa-solid fa-circle-arrow-right" id="icon"></i></button>
                                     </div>
                                 </div>
                             </div>
