@@ -9,6 +9,18 @@ class ContactForm(forms.ModelForm):
         model = Contact
         fields = "__all__"
 
+    def clean_phoneNum(self):
+        pattern_with_phone = "[0][9][0-9]{9}"
+        data6 = self.cleaned_data['phoneNum'] 
+        zero = '0' + str(data6)
+        if len(str(zero)) < 11:
+            raise ValidationError("Insufficient numbers")
+        if len(str(zero)) > 11:
+            raise ValidationError("Limit exceeds")
+        if not re.search(pattern_with_phone,str(zero)):
+            raise ValidationError("Please enter valid PH number")
+        return zero
+
 class TimeForm(forms.ModelForm):
     start = forms.DateTimeField(input_formats=['%d/%m/%Y'])
     end = forms.DateTimeField(input_formats=['%d/%m/%Y'])

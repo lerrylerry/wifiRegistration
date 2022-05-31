@@ -24,22 +24,26 @@
                     </div>
                     <div class="row">
                         <div class="col-sm-12">
+                            <div class="form-group mb-2">
+                                {% render_field form.names class="form-control" placeholder="Your Name (optional)" %}
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-sm-12">
                             {% if form.is_bound %}
-                                {% if form.names.errors %}
+                                {% if form.email.errors %}
                                     <div class="form-group mt-3 mb-2">
-                                        {{form.names.label_tag}}
-                                        {% render_field form.names  class="form-control is-invalid" %}
+                                        {% render_field form.email  class="form-control is-invalid" placeholder="Your Email" %}
                                     </div>
                                     {% else %}
                                     <div class="form-group mt-3 mb-2">
-                                        {{form.names.label_tag}}
-                                        {% render_field form.names  class="form-control is-valid" %}
+                                        {% render_field form.email  class="form-control is-valid" placeholder="Your Email" %}
                                     </div>
                                     {% endif %}
                                     {% else %}
                                     <div class="form-group mt-3 mb-2">
-                                        {{form.names.label_tag}}
-                                        {% render_field form.names class="form-control" %}
+                                        {% render_field form.email class="form-control" placeholder="Your Email" %}
                                     </div>
                                     {% endif %}
                         </div>
@@ -47,21 +51,18 @@
                     <div class="row">
                         <div class="col-sm-12">
                             {% if form.is_bound %}
-                                {% if form.names.errors %}
+                                {% if form.phoneNum.errors %}
                                     <div class="form-group mt-3 mb-2">
-                                        {{form.subject.label_tag}}
-                                        {% render_field form.subject  class="form-control is-invalid" %}
+                                        {% render_field form.phoneNum  class="form-control is-invalid" placeholder="Phone Number" %}
                                     </div>
                                     {% else %}
                                     <div class="form-group mt-3 mb-2">
-                                        {{form.subject.label_tag}}
-                                        {% render_field form.subject  class="form-control is-valid" %}
+                                        {% render_field form.phoneNum  class="form-control is-valid" placeholder="Phone Number" %}
                                     </div>
                                     {% endif %}
                                     {% else %}
                                     <div class="form-group mt-3 mb-2">
-                                        {{form.subject.label_tag}}
-                                        {% render_field form.subject class="form-control" %}
+                                        {% render_field form.phoneNum class="form-control" placeholder="Phone Number" %}
                                     </div>
                                     {% endif %}
                         </div>
@@ -69,20 +70,36 @@
                     <div class="row">
                         <div class="col-sm-12">
                             {% if form.is_bound %}
-                                {% if form.names.errors %}
+                                {% if form.subject.errors %}
                                     <div class="form-group mt-3 mb-2">
-                                        {{form.content.label_tag}}
+                                        {% render_field form.subject  class="form-control is-invalid" placeholder="Your Subject" %}
+                                    </div>
+                                    {% else %}
+                                    <div class="form-group mt-3 mb-2">
+                                        {% render_field form.subject  class="form-control is-valid" placeholder="Your Subject" %}
+                                    </div>
+                                    {% endif %}
+                                    {% else %}
+                                    <div class="form-group mt-3 mb-2">
+                                        {% render_field form.subject class="form-control" placeholder="Your Subject" %}
+                                    </div>
+                                    {% endif %}
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-sm-12">
+                            {% if form.is_bound %}
+                                {% if form.content.errors %}
+                                    <div class="form-group mt-3 mb-2">
                                         {% render_field form.content  class="form-control is-invalid" placeholder="Write something here..." %}
                                     </div>
                                     {% else %}
                                     <div class="form-group mt-3 mb-2">
-                                        {{form.content.label_tag}}
                                         {% render_field form.content  class="form-control is-valid" placeholder="Write something here..." %}
                                     </div>
                                     {% endif %}
                                     {% else %}
                                     <div class="form-group mt-3 mb-2">
-                                        {{form.content.label_tag}}
                                         {% render_field form.content class="form-control" placeholder="Write something here..." %}
                                     </div>
                                     {% endif %}
@@ -91,12 +108,12 @@
                     <div class="row">
                         <div class="col-sm-6">
                             <div class="d-flex justify-content-start">
-                                <button class="btn btn-danger my-3"><i class="fa-solid fa-circle-arrow-left"></i>&nbsp;BACK</button>
+                                <a href="{% url 'home' %}" class="btn btn-danger my-3"><i class="fa-solid fa-circle-arrow-left"></i>&nbsp;BACK</a>
                             </div>
                         </div>
                         <div class="col-sm-6">
                             <div class="d-flex justify-content-end">
-                                <button class="btn btn-success my-3"><i class="fa-solid fa-paper-plane"></i>&nbsp;SEND</button>
+                                <button type="submit" class="btn btn-success my-3"><i class="fa-solid fa-paper-plane"></i>&nbsp;SEND</button>
                             </div>
                         </div>
                     </div>

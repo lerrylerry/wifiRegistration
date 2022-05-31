@@ -127,9 +127,11 @@ class Time(models.Model):
     end = models.DateField()
 
 class Contact(models.Model):
-    names = models.CharField(max_length=50 ,verbose_name="Name:", default="anonymous" , blank=True)
-    subject = models.CharField(max_length=50 ,verbose_name="Subject:")
-    content = models.TextField(max_length=250, verbose_name="Content:")
+    names = models.CharField(max_length=50, blank=True)
+    email = models.EmailField(max_length=50)
+    phoneNum = models.BigIntegerField()
+    subject = models.CharField(max_length=50)
+    content = models.TextField(max_length=250)
 
 class AttachmentStudent(models.Model):
     attach = models.FileField(blank=True, null=True, upload_to='studentPDF/')

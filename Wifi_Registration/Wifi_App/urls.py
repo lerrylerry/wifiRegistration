@@ -23,6 +23,7 @@ urlpatterns = [
     path('createStaff/', views.createStaff, name='createStaff'),
     path('register_faculty/success.html', views.success, name='success'),
     path('register_student/success.html', views.success, name='success'),
+    path('email_sent/c/success.html', views.emailSuccessC, name='emailSuccessC'),
     path('email_sent/s/success.html', views.emailSuccessS, name='emailSuccessS'),
     path('email_sent/f/success.html', views.emailSuccessF, name='emailSuccessF'),
 

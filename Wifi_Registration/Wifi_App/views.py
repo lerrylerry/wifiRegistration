@@ -13,6 +13,7 @@ from django.core.mail import send_mail
 from django.core.mail import EmailMessage
 
 '''username: lerry / password: akosilerry (admin account) // optional = email: sample@gmail.com'''
+'''website email = wcr.tup.cavite@gmail.com | website password = wcrtupcavite22'''
 
 '''HOMEPAGE'''
 def index(request):
@@ -182,12 +183,16 @@ def contactUs(request):
     if request.method == 'POST':
         form = ContactForm(request.POST)
         if form.is_valid():
-            subject = request.POST['names'] + ' : ' + request.POST['subject']
+            if request.POST['names'] == '':
+                names = "Anonymous"
+            else:
+                names = request.POST['names']
+            subject = names + ' | ' + request.POST['subject']
             message = request.POST['content']
             email_from = settings.EMAIL_HOST_USER
-            recipient_list = ["johnlerry.laungayan@gsfe.tupcavite.edu.ph",]
+            recipient_list = [settings.EMAIL_HOST_USER,]
             send_mail(subject, message, email_from, recipient_list)
-            return redirect('/email_sent/success.html')
+            return redirect('/email_sent/c/success.html')
 
     else:
         form = ContactForm()
@@ -270,6 +275,10 @@ def notifyUserFaculty(request, user_pk):
 
     else:
         return HttpResponseForbidden()
+
+'''email sent success contact'''
+def emailSuccessC(request):
+    return render(request, 'Wifi_App/success-mail-student.html')
 
 '''email sent success student'''
 def emailSuccessS(request):
