@@ -11,7 +11,6 @@ https://docs.djangoproject.com/en/4.0/ref/settings/
 """
 import os
 from pathlib import Path
-from django.urls import reverse_lazy
 from django.contrib.messages import constants as messages
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
@@ -57,6 +56,7 @@ INSTALLED_APPS = [
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
+    'django_session_timeout.middleware.SessionTimeoutMiddleware',
     'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
     'django.contrib.auth.middleware.AuthenticationMiddleware',
@@ -149,9 +149,9 @@ MEDIA_ROOT = os.path.join(BASE_DIR, 'media/')
 STATIC_URL = '/static/'
 STATIC_ROOT = os.path.join(BASE_DIR, 'static')
 
-LOGIN_REDIRECT_URL = reverse_lazy('datahistory')
-LOGOUT_REDIRECT_URL = reverse_lazy("home")
-LOGIN_URL = reverse_lazy('login_user')
+LOGIN_REDIRECT_URL = 'datahistory'
+LOGOUT_REDIRECT_URL = 'home'
+LOGIN_URL = 'login_user'
 
 CRISPY_TEMPLATE_PACK = 'bootstrap4'
 
@@ -162,7 +162,12 @@ EMAIL_HOST = 'smtp.gmail.com'
 EMAIL_USE_TLS = True
 EMAIL_PORT = 587
 EMAIL_HOST_USER = 'wcr.tup.cavite@gmail.com'
-EMAIL_HOST_PASSWORD = 'wcrtupcavite22'
+EMAIL_HOST_PASSWORD = 'jpimudjhgcpejezi' #'wcrtupcavite22'
+
+SESSION_EXPIRE_SECONDS = 300  # Expire after 5 minutes
+SESSION_EXPIRE_AFTER_LAST_ACTIVITY = True
+SESSION_TIMEOUT_REDIRECT = '/login_user/'
+SESSION_EXPIRE_AT_BROWSER_CLOSE = True # Invalid session after browser is closed'
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/4.0/ref/settings/#default-auto-field

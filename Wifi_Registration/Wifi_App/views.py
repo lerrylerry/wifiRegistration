@@ -190,7 +190,8 @@ def contactUs(request):
             subject = names + ' | ' + request.POST['subject']
             message = request.POST['content']
             email_from = settings.EMAIL_HOST_USER
-            recipient_list = [settings.EMAIL_HOST_USER,]
+            #recipient_list = [settings.EMAIL_HOST_USER,]
+            recipient_list = ['baybaynedrick@gmail.com',]
             send_mail(subject, message, email_from, recipient_list)
             return redirect('/email_sent/c/success.html')
 
