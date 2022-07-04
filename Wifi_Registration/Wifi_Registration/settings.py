@@ -24,11 +24,9 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = 'django-insecure-iho=0^ow9p1utyo0f8eyg9epo0qdue#h5iv)9+^#tzw+8l&bw#'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = False
 
-ALLOWED_HOSTS = []
-#ALLOWED_HOSTS = ['localhost','*','127.0.0.1']
-#ALLOWED_HOSTS = ['192.168.1.6','localhost']
+ALLOWED_HOSTS = ["johnlerry.pythonanywhere.com"]
 
 WSGI_APPLICATION = 'Wifi_App.wsgi_windows.application'
 # Application definition
@@ -88,25 +86,24 @@ WSGI_APPLICATION = 'Wifi_Registration.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/4.0/ref/settings/#databases
 
+'''
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.sqlite3',
         'NAME': BASE_DIR / 'db.sqlite3',
     }
 }
-
-'''PHPmyadmin
+'''
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.mysql',
-        'NAME': 'Wifi_Registration',
-        'USER': 'root',
-        'PASSWORD': '',
-        'HOST': '127.0.0.1',
-        'PORT': '3306',
+        'NAME': 'johnlerry$Wifi_Registration',
+        'USER': 'johnlerry',
+        'PASSWORD': 'akosilerry',
+        'HOST': 'johnlerry.mysql.pythonanywhere-services.com',
     }
 }
-'''
+
 # Password validation
 # https://docs.djangoproject.com/en/4.0/ref/settings/#auth-password-validators
 
