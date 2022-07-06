@@ -91,7 +91,7 @@
               <td>{{ obj.email }}</td>
               <td>0{{ obj.phoneNum }}</td>
               <td>{{ obj.facultyName }}</td>
-              <td><img class="rounded" src="/home/johnlerry/wifiRegistration/Wifi_Registration/media/{{ obj.signature.url }}" width="150" height="100" alt="{{ obj.signature }}"></td>
+              <td><img class="rounded" src="{{ obj.signature.url }}" width="150" height="100" alt="{{ obj.signature }}"></td>
               <td>
                 <span >
                     <a data-toggle="modal" data-target="#myModal"  class="btn btn-success mb-2" style="padding: 10px 26px;">Approve</a>
@@ -372,6 +372,16 @@
     </div>
   </div>
 </form>
+
+<script type="text/javascript">
+  $("input[type='file']").click(function () {
+      $("input[id='signature']").click();
+  });
+  $("input[id='signature']").change(function (e) {
+      var $this = $(this);
+      $this.next().html($this.val().split('\\').pop());
+  });
+</script>
 
 {% endif %}
 <!--------------------------------------------------------------------------------------END------------------------------------------------------------------------------->

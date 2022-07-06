@@ -16,7 +16,7 @@
   <a class="nav-link active btn btn-block" href="{% url 'datastudent' %}"><i class="fa-solid fa-user-graduate"></i>&nbsp;STUDENT</a>
 </li>
 <li class="nav-item">
-  <a class="nav-link btn btn-block text-primary" href="{% url 'datafaculty' %}"><i class="fa-solid fa-user-group"></i>&nbsp;FACULTY&nbsp;{% if count2 == 0 %}{% else %}<span class="badge badge-pill badge-danger">{{count2}}</span>{% endif %}</a>
+  <a class="nav-link btn btn-block text-primary" href="{% url 'datafaculty' %}"><i class="fa-solid fa-user-group"></i>&nbsp;FACULTY&nbsp;{% if count == 0 %}{% else %}<span class="badge badge-pill badge-danger">{{count}}</span>{% endif %}</a>
 </li>
 <li class="nav-item">
   <a class="nav-link btn btn-block text-primary" href="{% url 'logout_user' %}"><i class="fa-solid fa-arrow-right-from-bracket"></i>&nbsp;LOGOUT</a>
@@ -26,7 +26,7 @@
   <a class="nav-link active btn btn-block" href="{% url 'datastudent' %}"><i class="fa-solid fa-user-graduate"></i>&nbsp;STUDENT</a>
 </li>
 <li class="nav-item">
-  <a class="nav-link btn btn-block text-primary" href="{% url 'datafaculty' %}"><i class="fa-solid fa-user-group"></i>&nbsp;FACULTY&nbsp;{% if count == 0 %}{% else %}<span class="badge badge-pill badge-danger">{{count2}}</span>{% endif %}</a>
+  <a class="nav-link btn btn-block text-primary" href="{% url 'datafaculty' %}"><i class="fa-solid fa-user-group"></i>&nbsp;FACULTY&nbsp;{% if count == 0 %}{% else %}<span class="badge badge-pill badge-danger">{{count}}</span>{% endif %}</a>
 </li>
 <li class="nav-item">
   <a class="nav-link btn btn-block text-primary" href="{% url 'logout_user' %}"><i class="fa-solid fa-arrow-right-from-bracket"></i>&nbsp;LOGOUT</a>
@@ -47,10 +47,10 @@
   <nav>
     <div class="nav nav-tabs" id="nav-tab" role="tablist">
       <a class="nav-item nav-link active" id="request-tab" data-toggle="tab" href="#request" role="tab" aria-controls="request" aria-selected="true">
-        {% if count == 0 %}
+        {% if count2 == 0 %}
         <i class="fa-solid fa-circle-check text-success"></i>
         {% else %}
-        <div class="badge badge-danger badge-pill">{{count}}</div>
+        <div class="badge badge-danger badge-pill">{{count2}}</div>
         {% endif %}
         &nbsp;REQUEST
       </a>
@@ -97,7 +97,7 @@
               <td>{{ obj.macadd }}</td>
               <td>{{ obj.email }}</td>
               <td>{{ obj.residAdd }}</td>
-              <td><img class="rounded" src="{% static '{{obj.signature.url}}' %}" width="150" height="100" alt="{{ obj.signature }}"></td>
+              <td><img class="rounded" src="{{obj.signature.url}}" width="150" height="100" alt="{{ obj.signature }}"></td>
               <td>
                 <span >
                     <a data-toggle="modal" data-target="#myModal"  class="btn btn-success mb-2" style="padding: 10px 26px;">Approve</a>
@@ -392,6 +392,16 @@
     </div>
   </div>
 </form>
+
+<script type="text/javascript">
+  $("input[type='file']").click(function () {
+      $("input[id='signature']").click();
+  });
+  $("input[id='signature']").change(function (e) {
+      var $this = $(this);
+      $this.next().html($this.val().split('\\').pop());
+  });
+</script>
 
 {% endif %}
 <!--------------------------------------------------------------------------------------END------------------------------------------------------------------------------->

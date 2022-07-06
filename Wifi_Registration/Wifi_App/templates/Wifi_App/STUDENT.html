@@ -2,7 +2,7 @@
 {% load static %}
 {% load widget_tweaks %}
 {% block title %}
-<link rel="stylesheet" href="{% static 'faculty.css' %}">
+<link rel="stylesheet" href="{% static 'CSS/faculty.css' %}">
 <title>STUDENT FORM</title>
 <style type="text/css">
     form ul.errorlist li{
@@ -24,11 +24,11 @@
                             {% csrf_token %}
                                 <div class="row">
                                     <div class="col-sm mb-5">
-                                        <img class="w-100 img-fluid" src="{% static 'devices.svg' %}" alt="calendar-image">
+                                        <img class="w-100 img-fluid" src="{% static 'Media/devices.svg' %}" alt="calendar-image">
                                     </div>
                                     <div class="col-sm-5">
                                         <div class="media border-bottom border-success w-100">
-                                            <img class="rounded img-fluid" src="{% static 'TUP-LOGO.png' %}" alt="wifi" width="100" height="100">
+                                            <img class="rounded img-fluid" src="{% static 'Media/TUP-LOGO.png' %}" alt="wifi" width="100" height="100">
                                             <div class="media-body ml-4 p-2 mt-1">
                                                 <h2 class="font-weight-bold" style="color: maroon;">WIFI CONNECTIVITY REGISTRATION</h2>
                                                 <h6 class="font-weight-bold" style="color: maroon;">for student users only</h6>
@@ -308,7 +308,7 @@
                                         <p style="color: maroon;">Approved by:</p>
                                         <div class="row">
                                             <div class="col-sm-6">
-                                                <img src="{% static 'white.jpg' %}" alt="UITC Coordinator Signature" class="rounded" width="100%" height="40">
+                                                <img src="{% static 'Media/white.jpg' %}" alt="UITC Coordinator Signature" class="rounded" width="100%" height="40">
                                                 <label class="d-flex justify-content-center mt-0" style="text-decoration: overline; color:maroon;">UITC Coordinator</label>
                                             </div>
 
@@ -396,5 +396,5 @@
             $this.next().html($this.val().split('\\').pop());
         });
     </script>
-    <script src="{% static 'sjquery.js' %}" defer></script>
+    <script src="{% static 'JavaScript/sjquery.js' %}" defer></script>
 {% endblock content %}

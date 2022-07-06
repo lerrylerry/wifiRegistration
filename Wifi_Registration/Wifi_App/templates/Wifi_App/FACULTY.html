@@ -2,7 +2,7 @@
 {% load static %}
 {% load widget_tweaks %}
 {% block title %}
-<link rel="stylesheet" href="{% static 'faculty.css' %}">
+<link rel="stylesheet" href="{% static 'CSS/faculty.css' %}">
 <title>FACULTY FORM</title>
 <style type="text/css">
     form ul.errorlist li{
@@ -22,11 +22,11 @@
                     {% csrf_token %}
                         <div class="row">
                             <div class="col-sm mb-5">
-                                <img class="img-fluid" src="{% static 'devices.svg' %}" alt="calendar-image">
+                                <img class="img-fluid" src="{% static 'Media/devices.svg' %}" alt="calendar-image">
                             </div>
                             <div class="col-sm-5">
                                 <div class="media border-bottom border-success w-100">
-                                    <img class="rounded img-fluid" src="{% static 'TUP-LOGO.png' %}" alt="wifi" width="100" height="100">
+                                    <img class="rounded img-fluid" src="{% static 'Media/TUP-LOGO.png' %}" alt="wifi" width="100" height="100">
                                     <div class="media-body ml-4 p-2 mt-1">
                                         <h2 class="font-weight-bold" style="color: maroon;">WIFI CONNECTIVITY REGISTRATION</h2>
                                         <h6 class="font-weight-bold" style="color: maroon;">for faculty users only</h6>
@@ -342,5 +342,5 @@
         });
     </script>
 
-    <script src="{% static 'Fjquery.js' %}" defer></script>
+    <script src="{% static 'JavaScript/Fjquery.js' %}" defer></script>
 {% endblock content %}

@@ -103,8 +103,8 @@ class FacultyForm(forms.ModelForm):
     def clean_department(self):
         pattern_with_text = "\\d+"
         data2 = self.cleaned_data['department']
-        if len(data2) < 8:
-            raise ValidationError("Department must be 8 characters long")
+        if len(data2) < 4:
+            raise ValidationError("Department must be 4 characters long")
         if re.findall(pattern_with_text,data2):
             raise ValidationError("Department must contain A-Z/a-z")
         return data2
@@ -112,8 +112,8 @@ class FacultyForm(forms.ModelForm):
     def clean_designation(self):
         pattern_with_text = "\\d+"
         data3 = self.cleaned_data['designation']
-        if len(data3) < 8:
-            raise ValidationError("Designation must be 8 characters long")
+        if len(data3) < 4:
+            raise ValidationError("Designation must be 4 characters long")
         if re.findall(pattern_with_text,data3):
             raise ValidationError("Designation must contain A-Z/a-z")
         return data3
@@ -141,8 +141,8 @@ class FacultyForm(forms.ModelForm):
     def clean_facultyName(self):
         pattern_with_text = "\\d+"
         data8 = self.cleaned_data['facultyName']
-        if len(data8) < 8:
-            raise ValidationError("Faculty Name must be 8 characters long")
+        if len(data8) < 6:
+            raise ValidationError("Faculty Name must be 6 characters long")
         if re.findall(pattern_with_text,data8):
             raise ValidationError("Faculty Name must contain A-Z/a-z")
         return data8
@@ -193,8 +193,8 @@ class StudentForm(forms.ModelForm):
         #pattern_with_or = ""
         data5 = self.cleaned_data['orNum'] 
 
-        if len(str(data5)) < 6:
-            raise ValidationError("OR number must be 6 digits long")
+        if len(str(data5)) < 4:
+            raise ValidationError("OR number must be 4 digits long")
         if len(str(data5)) > 10:
             raise ValidationError("Limit exceeds")
         return data5
