@@ -42,10 +42,10 @@
 
 <div class="jumbotron mt-3 rounded bg-warning shadow-lg">
   <div class="d-flex justify-content-center">
-    <h3 class="text-danger mr-3">{{time.start}}</h3><h4>to</h4><h3 class="text-danger ml-3">{{time.end}}</h3> 
+    <h3 class="text-danger mr-3">{{time.start}}</h3><h4>to</h4><h3 class="text-danger ml-3">{{time.end}}</h3>
   </div>
   <div class="d-flex justify-content-center">
-    <img src="{% static 'Media/calendar.svg' %}" alt="calendar-image">
+    <img class="img-fluid" src="{% static 'calendar.svg' %}" alt="calendar-image">
   </div>
   <div class="d-flex justify-content-center">
     <a href="/editCalendar/{{time.id}}" class="btn btn-danger mt-3"><i class="fa-solid fa-pen-to-square"></i>&nbsp;CHANGE</a>

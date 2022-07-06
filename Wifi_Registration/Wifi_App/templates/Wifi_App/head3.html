@@ -5,7 +5,7 @@
       {% block title %}
 
       {% endblock title %}
-      <meta charset="utf-8">      
+      <meta charset="utf-8">
       <meta name="viewport" content="width=device-width, initial-scale=1">
       <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
       <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
@@ -19,23 +19,27 @@
       <link href="https://fonts.googleapis.com/css2?family=Roboto+Condensed:ital,wght@0,300;0,400;0,700;1,300;1,400;1,700&display=swap" rel="stylesheet">
  </head>
  <style>
-    *{
+    .nav-link, .change{
       font-family: 'Roboto Condensed', sans-serif;
+    }
+    .banner-text p{
+      font-family: impact;
+      text-transform: capitalize;
     }
  </style>
 
     {% block content %}
-    
+
     {% endblock content %}
 
 </html>
 <script>
-  $('.dropdown').hover(function() { 
-      $(this).addClass('show'); 
+  $('.dropdown').hover(function() {
+      $(this).addClass('show');
          $(this).find('.dropdown-menu').addClass('show');
-      }, 
+      },
       function() {
-         $(this).removeClass('show'); 
+         $(this).removeClass('show');
             $(this).find('.dropdown-menu').removeClass('show');
          });
 </script>

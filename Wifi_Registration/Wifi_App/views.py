@@ -1,13 +1,13 @@
 from django.shortcuts import render, redirect, get_object_or_404
-from Wifi_App.models import *
+from Wifi_App.models import HistoryFaculty, Time, HistoryStudent, Student, AttachmentStudent, Faculty, AttachmentFaculty
 from django.contrib import messages
 from django.contrib.auth import authenticate, login, logout
-from Wifi_App.forms import *
+from Wifi_App.forms import FacultyForm, StudentForm, SignUpForm, ContactForm
 from django.contrib.auth.decorators import login_required
-from django.http import FileResponse, HttpResponse, HttpResponseForbidden
+from django.http import FileResponse, HttpResponseForbidden
 from reportlab.pdfgen import canvas
 from reportlab.lib.pagesizes import letter
-import datetime, csv , io
+import io
 from django.conf import settings
 from django.core.mail import send_mail
 from django.core.mail import EmailMessage
@@ -130,7 +130,7 @@ def login_user(request):
         else:
             messages.error(request, 'Account not found')
             return render(request, 'Wifi_App/login.html')
-        
+
     else:
         return render(request, 'Wifi_App/login.html')
 
@@ -218,7 +218,7 @@ def generatePDF(request):
 
     else:
         return HttpResponseForbidden()
-        
+
 '''SEND EMAIL PDF STUDENT'''
 @login_required(login_url='/login_user/')
 def notifyUserStudent(request, user_pk):
@@ -233,14 +233,14 @@ def notifyUserStudent(request, user_pk):
         attachment.save(force_insert=True)
 
         link = attachment.attach.file.name
-        
+
         msg = EmailMessage(
             'WIFI REGISTRATION ACCOUNT',
             'You can now connect to wifi in tup-cavite!',
             settings.EMAIL_HOST_USER,
             [stud.email]
             )
-        msg.content_subtype = "html"  
+        msg.content_subtype = "html"
         msg.attach_file(link)
         msg.send()
         return redirect('/email_sent/s/success.html')
@@ -262,14 +262,14 @@ def notifyUserFaculty(request, user_pk):
         attachment.save(force_insert=True)
 
         link = attachment.attach.file.name
-        
+
         msg = EmailMessage(
             'WIFI REGISTRATION ACCOUNT',
             'You can now connect to wifi in tup-cavite!',
             settings.EMAIL_HOST_USER,
             [facs.email]
             )
-        msg.content_subtype = "html"  
+        msg.content_subtype = "html"
         msg.attach_file(link)
         msg.send()
         return redirect('/email_sent/f/success.html')
@@ -295,16 +295,19 @@ def readFaculty(request):
     if request.user.userType == 'ADMIN':
         allowed_faculty = Faculty.objects.filter(status='PENDING')
         student_count = Student.objects.filter(status='PENDING').count()
+        faculty_count = Faculty.objects.filter(status='PENDING').count()
         all_faculty = Faculty.objects.filter(status='APPROVED')
         history = HistoryFaculty.objects.all()
-        context = {"faculty_request" : allowed_faculty, "count" :student_count, "all_faculty":all_faculty, "history":history}
+        context = {"faculty_request" : allowed_faculty, "count" :faculty_count, "count2" : student_count, "all_faculty":all_faculty, "history":history}
         return render(request, 'Wifi_App/DATAFACULTY.html', context)
 
     else:
         approved_faculty = Faculty.objects.filter(status='APPROVED', done=0)
+        faculty_count = Faculty.objects.filter(status='APPROVED', done=0).count()
+        student_count = Student.objects.filter(status='APPROVED', done=0).count()
         history = HistoryFaculty.objects.all()
         received = Faculty.objects.filter(status='APPROVED', done=1)
-        context = {"approved_faculty":approved_faculty, "history":history, "received":received}
+        context = {"approved_faculty":approved_faculty, "history":history, "received":received, "count" : faculty_count, "count2" : student_count}
         return render(request, 'Wifi_App/DATAFACULTY.html', context)
 
 '''Student table'''
@@ -313,16 +316,19 @@ def readStudent(request):
     if request.user.userType == 'ADMIN':
         allowed_student = Student.objects.filter(status='PENDING')
         faculty_count = Faculty.objects.filter(status='PENDING').count()
+        student_count = Student.objects.filter(status='PENDING').count()
         all_student = Student.objects.filter(status='APPROVED')
         history = HistoryStudent.objects.all()
-        context = {"student_request" : allowed_student, "count" : faculty_count, "all_student":all_student , "history":history}
+        context = {"student_request" : allowed_student, "count" : student_count, "count2" :faculty_count, "all_student":all_student , "history":history}
         return render(request, 'Wifi_App/DATASTUDENT.html', context)
 
     else:
         approved_student = Student.objects.filter(status='APPROVED', done=0)
+        faculty_count = Faculty.objects.filter(status='APPROVED', done=0).count()
+        student_count = Student.objects.filter(status='APPROVED', done=0).count()
         history = HistoryStudent.objects.all()
         received = Student.objects.filter(status='APPROVED', done=1)
-        context = {"approved_student":approved_student, "history":history, "received":received}
+        context = {"approved_student":approved_student, "history":history, "received":received, "count" : faculty_count, "count2" : student_count}
         return render(request, 'Wifi_App/DATASTUDENT.html', context)
 
 '''APPROVED STUDENT'''
@@ -338,7 +344,7 @@ def acceptStudent(request, user_pk):
             email = add_student.email,
             macadd = add_student.macadd,
             agenda = add_student.status,
-        ) 
+        )
         logged.save()
 
         subject = "WIFI CONNECTIVITY REGISTRATION | APPROVED"
@@ -350,14 +356,14 @@ def acceptStudent(request, user_pk):
 
     else:
         return HttpResponseForbidden()
-        
+
 '''APPROVED FACULTY'''
 def acceptFaculty(request, user_pk):
     if request.user.userType == 'ADMIN':
         add_faculty = get_object_or_404(Faculty, pk=user_pk)
         add_faculty.status = 'APPROVED'
         add_faculty.save()
-        
+
         logged = HistoryFaculty.objects.create(
             names = add_faculty.names,
             macadd = add_faculty.macadd,
@@ -388,9 +394,9 @@ def rejectStudent(request, user_pk):
             email = destroy_student.email,
             macadd = destroy_student.macadd,
             agenda = destroy_student.status,
-        ) 
+        )
         logged.save()
-        
+
         destroy_student.delete()
         # ________________________________________________________________
 
@@ -403,7 +409,7 @@ def rejectStudent(request, user_pk):
 
     else:
         return HttpResponseForbidden()
-        
+
 '''REJECTED STUDENT'''
 def rejectFaculty(request, user_pk):
     if request.user.userType == 'ADMIN':
@@ -415,7 +421,7 @@ def rejectFaculty(request, user_pk):
             macadd = destroy_faculty.macadd,
             email = destroy_faculty.email,
             agenda = destroy_faculty.status,
-        ) 
+        )
         logged.save()
 
         destroy_faculty.delete()

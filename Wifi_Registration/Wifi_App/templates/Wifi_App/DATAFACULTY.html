@@ -2,7 +2,7 @@
 {% load static %}
 
 {% block title %}DATA FACULTY{% endblock title %}
-      
+
 {% block content %}
 
 {% if request.user.userType == "ADMIN" %}
@@ -13,7 +13,7 @@
   <a class="nav-link btn btn-block text-primary" href="{% url 'createStaff' %}"><i class="fa-solid fa-user-plus"></i>&nbsp;STAFF</a>
 </li>
 <li class="nav-item">
-  <a class="nav-link btn btn-block text-primary" href="{% url 'datastudent' %}"><i class="fa-solid fa-user-graduate"></i>&nbsp;STUDENT</a>
+  <a class="nav-link btn btn-block text-primary" href="{% url 'datastudent' %}"><i class="fa-solid fa-user-graduate"></i>&nbsp;STUDENT&nbsp;{% if count2 == 0 %}{% else %}<span class="badge badge-pill badge-danger">{{count2}}</span>{% endif %}</a>
 </li>
 <li class="nav-item">
   <a class="nav-link active btn btn-block" href="{% url 'datafaculty' %}"><i class="fa-solid fa-user-group"></i>&nbsp;FACULTY</a>
@@ -23,7 +23,7 @@
 </li>
 {% else %}
 <li class="nav-item">
-  <a class="nav-link btn btn-block text-primary" href="{% url 'datastudent' %}"><i class="fa-solid fa-user-graduate"></i>&nbsp;STUDENT</a>
+  <a class="nav-link btn btn-block text-primary" href="{% url 'datastudent' %}"><i class="fa-solid fa-user-graduate"></i>&nbsp;STUDENT&nbsp;{% if count2 == 0 %}{% else %}<span class="badge badge-pill badge-danger">{{count2}}</span>{% endif %}</a>
 </li>
 <li class="nav-item">
   <a class="nav-link active btn-block" href="{% url 'datafaculty' %}"><i class="fa-solid fa-user-group"></i>&nbsp;FACULTY</a>
@@ -31,7 +31,7 @@
 <li class="nav-item">
   <a class="nav-link btn btn-block text-primary" href="{% url 'logout_user' %}"><i class="fa-solid fa-arrow-right-from-bracket"></i>&nbsp;LOGOUT</a>
 </li>
-{% endif %}   
+{% endif %}
 
 {% endblock content %}
 
@@ -49,7 +49,7 @@
         {% if count == 0 %}
         <i class="fa-solid fa-circle-check text-success"></i>
         {% else %}
-        <div class="badge badge-danger">{{count}}</div>
+        <div class="badge badge-danger badge-pill">{{count}}</div>
         {% endif %}
         &nbsp;REQUEST
       <a class="nav-item nav-link" id="approved-tab" data-toggle="tab" href="#approved" role="tab" aria-controls="approved" aria-selected="false"><i class="fa-solid fa-person-circle-check"></i>&nbsp;APPROVED</a>
@@ -91,7 +91,7 @@
               <td>{{ obj.email }}</td>
               <td>0{{ obj.phoneNum }}</td>
               <td>{{ obj.facultyName }}</td>
-              <td><img class="rounded" src="{{ obj.signature.url }}" width="150" height="100" alt="{{ obj.signature }}"></td>
+              <td><img class="rounded" src="/home/johnlerry/wifiRegistration/Wifi_Registration/media/{{ obj.signature.url }}" width="150" height="100" alt="{{ obj.signature }}"></td>
               <td>
                 <span >
                     <a data-toggle="modal" data-target="#myModal"  class="btn btn-success mb-2" style="padding: 10px 26px;">Approve</a>
@@ -107,7 +107,7 @@
           </tbody>
         </table>
       </div>
-        
+
     </div>
     <!--SECOND-->
     <div class="tab-pane fade show" id="approved" role="tabpanel" aria-labelledby="approved-tab">
@@ -146,7 +146,7 @@
           </tbody>
         </table>
       </div>
-        
+
     </div>
     <!--THIRD-->
     <div class="tab-pane fade" id="history" role="tabpanel" aria-labelledby="history-tab">
@@ -177,7 +177,7 @@
           </tbody>
         </table>
       </div>
-        
+
     </div>
   </div>
 </div>
@@ -189,12 +189,18 @@
 <div class="jumbotron table-responsive table-sortable mt-3 rounded bg-light shadow-lg">
   <nav>
     <div class="nav nav-tabs" id="nav-tab" role="tablist">
-      <a class="nav-item nav-link active" id="approved-tab" data-toggle="tab" href="#approved" role="tab" aria-controls="approved" aria-selected="false"><i class="fa-solid fa-person-circle-check"></i>&nbsp;APPROVED</a>
+      <a class="nav-item nav-link active" id="approved-tab" data-toggle="tab" href="#approved" role="tab" aria-controls="approved" aria-selected="false">
+          {% if count == 0 %}
+            <i class="fa-solid fa-person-circle-check text-success"></i>
+          {% else %}
+            <span class="badge badge-pil badge-danger">{{count}}</span>
+          {% endif %}
+          &nbsp;APPROVED</a>
       <a class="nav-item nav-link" id="send-tab" data-toggle="tab" href="#send" role="tab" aria-controls="send" aria-selected="false"><i class="fa-solid fa-person-circle-check"></i>&nbsp;RECEIVED</a>
       <a class="nav-item nav-link" id="history-tab" data-toggle="tab" href="#history" role="tab" aria-controls="history" aria-selected="false"><i class="fa-solid fa-clock-rotate-left"></i>&nbsp;HISTORY</a>
     </div>
   </nav>
-  
+
   <div class="tab-content" id="nav-tabContent">
     <!--FIRST-->
     <div class="tab-pane fade show active" id="approved" role="tabpanel" aria-labelledby="approved-tab">
@@ -242,9 +248,9 @@
                     <h4 id="offcanvasTopLabel" class="text-dark font-weight-bold">SEND DETAILS:</h4>
                     <button type="button" class="btn-close text-reset" data-bs-dismiss="offcanvas" aria-label="Close"></button>
                     </div>
-                    <small class="ml-3">**notify the user through email</small>
+                    <small class="text-white ml-3">**notify the user through email</small>
                     <br>
-                    <small class="ml-3">***please attach the pdf file</small>
+                    <small class="text-white ml-3">***please attach the pdf file</small>
                     <div class="offcanvas-body">
                       <div class="input-group">
                         <div class="custom-file">
@@ -264,7 +270,7 @@
             {% endfor %}
           </tbody>
         </table>
-      </div> 
+      </div>
     </div>
     <!--SECOND-->
     <div class="tab-pane fade show" id="send" role="tabpanel" aria-labelledby="send-tab">
@@ -343,7 +349,7 @@
       <h4 id="offcanvasTopLabel" class="text-dark font-weight-bold">CREATE A PDF:</h4>
       <button type="button" class="btn-close text-reset" data-bs-dismiss="offcanvas" aria-label="Close"></button>
       </div>
-      <small class="ml-3">**generate pdf for details for wifi connection using the given inputs</small>
+      <small class="text-white ml-3">**generate pdf for details for wifi connection using the given inputs</small>
       <div class="offcanvas-body">
         <div class="row mt-3">
           <div class="col-sm-6">

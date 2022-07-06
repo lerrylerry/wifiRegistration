@@ -2,7 +2,7 @@
 {% load static %}
 {% load widget_tweaks %}
 {% block title %}
-<link rel="stylesheet" href="{% static 'CSS/faculty.css' %}">
+<link rel="stylesheet" href="{% static 'faculty.css' %}">
 <title>FACULTY FORM</title>
 <style type="text/css">
     form ul.errorlist li{
@@ -15,330 +15,321 @@
 {% endblock title %}
 
 {% block content %}
-    <body class="bg-info"> 
-        <div class="row my-0 mr-0">
-            <div class="col-sm-6">
-                <div class="container-fluid bg-light">
-                    <form class="form" id="form" name="faculty_form" method="POST" action="/register_faculty/" enctype="multipart/form-data" novalidate>
-                        {% csrf_token %}
-                            <div class="row">
-                                <div class="media border-bottom border-success w-100 mx-3 mt-2">
-                                    <img class="rounded img-fluid" src="{% static 'Media/TUP-LOGO.png' %}" alt="wifi" width="100" height="100">  
+    <body class="bg-success">
+        <div class="container-fluid my-3">
+            <div class="border shadow p-5 bg-light">
+                <form class="form" id="form" name="faculty_form" method="POST" action="/register_faculty/" enctype="multipart/form-data" novalidate>
+                    {% csrf_token %}
+                        <div class="row">
+                            <div class="col-sm mb-5">
+                                <img class="img-fluid" src="{% static 'devices.svg' %}" alt="calendar-image">
+                            </div>
+                            <div class="col-sm-5">
+                                <div class="media border-bottom border-success w-100">
+                                    <img class="rounded img-fluid" src="{% static 'TUP-LOGO.png' %}" alt="wifi" width="100" height="100">
                                     <div class="media-body ml-4 p-2 mt-1">
                                         <h2 class="font-weight-bold" style="color: maroon;">WIFI CONNECTIVITY REGISTRATION</h2>
-                                        <h4 class="font-weight-bold" style="color: maroon;">for faculty users only</h4>
-                                    </div>  
-                                </div>
-                            </div>
-                            {% include 'Wifi_App/error.html' %}
-                            <div class="form-row">
-                                <div class="col-sm-6">
-                                    {% if form.is_bound %}
-                                        {% if form.names.errors %}
-                                            <div class="input-group mt-3 mb-2">
-                                                <span class="input-group-text"><i class="fa-solid fa-user" id="icon"></i></span>
-                                                {% render_field form.names  class="form-control is-invalid" style="border-left: hidden;" placeholder="Enter Full Name"%}
-                                            </div>
-                                            <small class="text-danger" id="small">{{ form.names.errors }}</small>
-                                            {% else %}
-                                            <div class="input-group mt-3 mb-2">
-                                                <span class="input-group-text"><i class="fa-solid fa-user" id="icon"></i></span>
-                                                {% render_field form.names  class="form-control is-valid" placeholder="Enter Full Name"%}
-                                            </div>
-                                            <small><ul><li id="text">required</li></ul></small>
-                                            {% endif %}
-                                            {% else %}
-                                            <div class="input-group mt-3 mb-2">
-                                                <span class="input-group-text"><i class="fa-solid fa-user" id="icon"></i></span>
-                                                {% render_field form.names class="form-control" placeholder="Enter Full Name"%}
-                                            </div>
-                                            <small><ul><li id="text">required</li></ul></small>
-                                            {% endif %}
-                            
-                                    {% if form.is_bound %}
-                                        {% if form.department.errors %}
-                                            <div class="input-group mt-4 mb-2">
-                                                <span class="input-group-text"><i class="fa-solid fa-building-columns" id="icon2"></i></span>
-                                                {% render_field form.department class="form-control is-invalid" style="border-left: hidden;" placeholder="Enter Department" %}
-                                            </div>
-                                                <small class="text-danger">{{ form.department.errors }}</small>
-                                            {% else %}
-                                            <div class="input-group mt-4 mb-2">
-                                                <span class="input-group-text"><i class="fa-solid fa-building-columns" id="icon2"></i></span>
-                                                {% render_field form.department class="form-control is-valid" placeholder="Enter Department" %}
-                                            </div>
-                                            <small><ul><li id="text">required</li></ul></small>
-                                            {% endif %}
-                                            {% else %}
-                                            <div class="input-group mt-4 mb-2">
-                                                <span class="input-group-text"><i class="fa-solid fa-building-columns" id="icon2"></i></span>
-                                                {% render_field form.department class="form-control" placeholder="Enter Department" %}
-                                            </div>
-                                            <small><ul><li id="text">required</li></ul></small>
-                                            {% endif %}
-                            
-                                    {% if form.is_bound %}
-                                        {% if form.designation.errors %}
-                                            <div class="input-group mt-4 mb-2">
-                                                <span class="input-group-text"><i class="fa-solid fa-arrows-turn-to-dots" id="icon3"></i></span>
-                                                {% render_field form.designation  class="form-control is-invalid" style="border-left: hidden;" placeholder="Enter Designation"%}
-                                            </div>
-                                                <small class="text-danger">{{ form.designation.errors }}</small>
-                                            {% else %}
-                                            <div class="input-group mt-4 mb-2">
-                                                <span class="input-group-text"><i class="fa-solid fa-arrows-turn-to-dots" id="icon3"></i></span>
-                                                {% render_field form.designation  class="form-control is-valid" placeholder="Enter Designation"%}
-                                            </div>
-                                            <small><ul><li id="text">required</li></ul></small>
-                                            {% endif %}
-                                            {% else %}
-                                            <div class="input-group mt-4 mb-2">
-                                                <span class="input-group-text"><i class="fa-solid fa-arrows-turn-to-dots" id="icon3"></i></span>
-                                                {% render_field form.designation class="form-control" placeholder="Enter Designation" %}
-                                            </div>
-                                            <small><ul><li id="text">required</li></ul></small>
-                                            {% endif %}
-                                            
-                                    {% if form.is_bound %}
-                                        {% if form.macadd.errors %}
-                                            <div class="input-group mt-4">
-                                                <span class="input-group-text"><i class="fa-brands fa-apple" id="icon4"></i></span>
-                                                {% render_field form.macadd  class="form-control is-invalid" style="border-left: hidden;" placeholder="Enter Mac Address"%}
-                                            </div>
-                                                <small class="text-danger">{{ form.macadd.errors }}</small>
-                                            {% else %}
-                                            <div class="input-group mt-4">
-                                                <span class="input-group-text"><i class="fa-brands fa-apple" id="icon4"></i></span>
-                                                {% render_field form.macadd  class="form-control is-valid" placeholder="Enter Mac Address"%}
-                                            </div>
-                                            <small><ul><li id="text">required</li></ul></small>
-                                            {% endif %}
-                                            {% else %}
-                                            <div class="input-group mt-4">
-                                                <span class="input-group-text"><i class="fa-brands fa-apple" id="icon4"></i></span>
-                                                {% render_field form.macadd class="form-control" placeholder="Enter Mac Address" %}
-                                            </div>
-                                            <small><ul><li id="text">required</li></ul></small>
-                                            {% endif %}
-                                    </div>
-                                    
-                                    <!-- right side -->
-                                    <div class="col-sm-6">
-                                        {% if form.is_bound %}
-                                            {% if form.email.errors %}
-                                                <div class="input-group mt-3 mb-2">
-                                                    <span class="input-group-text"><i class="fa-solid fa-at" id="icon10"></i></span>
-                                                    {% render_field form.email  class="form-control is-invalid" style="border-left: hidden;" placeholder="...@email.com"%}
-                                                </div>
-                                                <small class="text-danger" id="small">{{ form.email.errors }}</small>
-                                                {% else %}
-                                                <div class="input-group mt-3 mb-2">
-                                                    <span class="input-group-text"><i class="fa-solid fa-at" id="icon10"></i></span>
-                                                    {% render_field form.email  class="form-control is-valid" placeholder="...@email.com"%}
-                                                </div>
-                                                <small><ul><li id="text">required</li></ul></small>
-                                                {% endif %}
-                                                {% else %}
-                                                <div class="input-group mt-3 mb-2">
-                                                    <span class="input-group-text"><i class="fa-solid fa-at" id="icon10"></i></span>
-                                                    {% render_field form.email  class="form-control" placeholder="...@email.com"%}
-                                                </div>
-                                                <small><ul><li id="text">required</li></ul></small>
-                                                {% endif %}
-                                        {% if form.is_bound %}
-                                            {% if form.phoneNum.errors %}
-                                                <div class="input-group mt-4 mb-2">
-                                                    <span class="input-group-text"><i class="fa-solid fa-phone" id="icon6"></i></span>
-                                                    {% render_field form.phoneNum  class="form-control is-invalid" style="border-left: hidden;" placeholder="+09xxxxxxxxx"%}
-                                                </div>
-                                                    <small class="text-danger">{{ form.phoneNum.errors }}</small>
-                                                {% else %}
-                                                <div class="input-group mt-4 mb-2">
-                                                    <span class="input-group-text"><i class="fa-solid fa-phone" id="icon6"></i></span>
-                                                    {% render_field form.phoneNum  class="form-control is-valid" placeholder="+09xxxxxxxxx"%}
-                                                </div>
-                                                <small><ul><li id="text">required</li></ul></small>
-                                                {% endif %}
-                                                {% else %}
-                                                <div class="input-group mt-4 mb-2">
-                                                    <span class="input-group-text"><i class="fa-solid fa-phone" id="icon6"></i></span>
-                                                    {% render_field form.phoneNum class="form-control" placeholder="+09xxxxxxxxx" %}
-                                                </div>
-                                                <small><ul><li id="text">required</li></ul></small>
-                                                {% endif %}
-                    
-                                        {% if form.is_bound %}
-                                            {% if form.device.errors %}
-                                                <div class="input-group mt-4 mb-2">
-                                                    <span class="input-group-text"><i class="fa-solid fa-computer" id="icon7"></i></span>
-                                                    {% render_field form.device  class="custom-select is-invalid" style="border-left: hidden;"%}
-                                                </div>
-                                                <small class="text-danger">{{ form.device.errors }}</small>
-                                                {% else %}
-                                                <div class="input-group mt-4 mb-2">
-                                                    <span class="input-group-text"><i class="fa-solid fa-computer" id="icon7"></i></span>
-                                                    {% render_field form.device  class="custom-select is-valid"%}
-                                                </div>
-                                                <small><ul><li id="text">required</li></ul></small>
-                                                {% endif %}
-                                                {% else %} 
-                                                <div class="input-group mt-4 mb-2">
-                                                    <span class="input-group-text"><i class="fa-solid fa-computer" id="icon7"></i></span>
-                                                    {% render_field form.device class="custom-select"%}
-                                                </div>
-                                                <small><ul><li id="text">required</li></ul></small>
-                                                {% endif %}
-                                            
-                                                <!-------------Specify----------------------------------------------------------------------------->
-                                                <div class="input-group mt-4">
-                                                    <span class="input-group-text"><i class="fa-solid fa-ellipsis" id="icon8"></i></span>
-                                                    {% render_field form.otherDevice class="form-control" placeholder="If others, please specify..." %}
-                                                </div>
-                                                
-                                    </div>
-                            </div>
-                            <div class="form-row">
-                                <div class="col-sm-12">
-                                    <p>
-                                        <em class="text-info">
-                                            (Note: To get the MAC address of the laptop, please do the following: Go to Start->Run. Type cmd and enter. Then at the prompt type: 
-                                            ipconfig /all and Note down the “Physical Address for Wireless LAN Adapter” as a MAC Address.) 
-                                        </em>
-                                        </p>
-                                </div>
-                            </div>
-                            <hr class="bg-success mt-0">
-                        
-                            <div class="form-row">
-                                <div class="col-sm-12">
-                                    <a class="card-link text-primary" data-toggle="collapse" href="#terms">
-                                        <p style="color: maroon;">[Terms and Condition]</p>
-                                    </a>
-                                    <div class="collapse show" id="terms" data-parent="#accordion">
-                                        <p>
-                                        <em class="text-info text-justify">
-                                            I understand that the Wi-Fi connectivity is provided to me for my academic work only.
-                                            The above mentioned system solely belongs to me. I have gone through the norms and
-                                            Regulation of using the Wi-Fi Connectivity and I abide by it. I will not misuse the facility
-                                            by any means.
-                                        </em>
-                                        </p>
-                                    </div>
-                        
-                                    <div class="custom-control custom-switch">
-                                        {% render_field form.agreement class="custom-control-input"%}
-                                        <label class="custom-control-label text-white" for="id_agreement"><strong style="color: maroon;">Yes, I agree.</strong></label><label id="red">*</label>
+                                        <h6 class="font-weight-bold" style="color: maroon;">for faculty users only</h6>
                                     </div>
                                 </div>
-                            </div>
-                            <hr class="bg-success mt-0">
-                            <p>
-                            <em class="text-info text-justify">
-                                The 1 hour per day Wifi-Connectivity  given to the user is valid from 
-                                {{time.start}}&nbsp;to&nbsp;{{time.end}}
-                            </em>
-                            </p>
-                        
-                            <div class="form-row">
-                                <div class="col-sm-6">
-                                {% if form.is_bound %}
-                                    {% if form.facultyName.errors %}
-                                        <div class="input-group mb-2">
-                                            <span class="input-group-text"><i class="fa-solid fa-building" id="icon9"></i></span>
-                                            {% render_field form.facultyName  class="form-control is-invalid" style="border-left: hidden;" placeholder="Enter Faculty Name"%}
-                                        </div>
-                                        <small class="text-danger">{{ form.facultyName.errors }}</small>
-                                        {% else %}
-                                        <div class="input-group mb-2">
-                                            <span class="input-group-text"><i class="fa-solid fa-building" id="icon9"></i></span>
-                                            {% render_field form.facultyName  class="form-control is-valid" placeholder="Enter Faculty Name"%}
-                                        </div>
-                                        <small><ul><li id="text">required</li></ul></small>
-                                        {% endif %}
-                                        {% else %}
-                                        <div class="input-group mb-2">
-                                            <span class="input-group-text"><i class="fa-solid fa-building" id="icon9"></i></span>
-                                            {% render_field form.facultyName class="form-control" placeholder="Enter Faculty Name"%}
-                                        </div>
-                                        <small><ul><li id="text">required</li></ul></small>
-                                        {% endif %}
-                                </div>
-                                
-                                <div class="col-sm-6 text-success">
-                                    {% if form.is_multipart %}
-                                        {% if form.signature.errors %}
-                                            <div class="input-group mb-2">
-                                                <div class="custom-file">
-                                                {% render_field form.signature  class="form-control custom-file-input" style="border-left: hidden;"%}
-                                                <label class="custom-file-label">Upload Signature</label>
-                                                </div>
-                                            </div>
-                                            <small class="text-danger">{{ form.signature.errors }}</small>
-                                            {% else %}
-                                            <div class="input-group mb-2">
-                                                <div class="custom-file">
-                                                {% render_field form.signature  class="form-control custom-file-input"%}
-                                                    <label class="custom-file-label">Upload Signature</label>
-                                                </div>
-                                            </div>
-                                            <small><ul><li id="text">required</li></ul></small>
-                                            {% endif %}
-                                            {% else %}
-                                            <div class="input-group mb-2">
-                                                <div class="custom-file">
-                                                {% render_field form.signature class="form-control custom-file-input"%}
-                                                    <label class="custom-file-label">Upload Signature</label>
-                                                </div>
-                                            </div>
-                                            <small><ul><li id="text">required</li></ul></small>
-                                            {% endif %}
-                                </div>
-                            </div>
-                            <div class="container px-0">
+                                {% include 'Wifi_App/error.html' %}
                                 <div class="row">
                                     <div class="col-sm-6">
-                                        <a href="{% url 'home' %}" class="btn btn-outline-dark text-success mt-2 mb-5" data-toggle="tooltip" data-placement="top" title="Return to homepage" id="backF" style="border-radius: 45px;">
-                                            <i class="fa-solid fa-circle-arrow-left" id="icon"></i><strong> BACK</strong></a>
+                                        {% if form.is_bound %}
+                                            {% if form.names.errors %}
+                                                <div class="input-group mt-1">
+                                                    <span class="input-group-text"><i class="fa-solid fa-user" id="icon"></i></span>
+                                                    {% render_field form.names  class="form-control is-invalid" style="border-left: hidden;" placeholder="Enter Full Name"%}
+                                                </div>
+                                                <small class="text-danger" id="small">{{ form.names.errors }}</small>
+                                                {% else %}
+                                                <div class="input-group mt-1">
+                                                    <span class="input-group-text"><i class="fa-solid fa-user" id="icon"></i></span>
+                                                    {% render_field form.names  class="form-control is-valid" placeholder="Enter Full Name"%}
+                                                </div>
+                                                <small><ul><li id="text">required</li></ul></small>
+                                                {% endif %}
+                                                {% else %}
+                                                <div class="input-group mt-1">
+                                                    <span class="input-group-text"><i class="fa-solid fa-user" id="icon"></i></span>
+                                                    {% render_field form.names class="form-control" placeholder="Enter Full Name"%}
+                                                </div>
+                                                <small><ul><li id="text">required</li></ul></small>
+                                                {% endif %}
+
+                                        {% if form.is_bound %}
+                                            {% if form.department.errors %}
+                                                <div class="input-group">
+                                                    <span class="input-group-text"><i class="fa-solid fa-building-columns" id="icon2"></i></span>
+                                                    {% render_field form.department class="form-control is-invalid" style="border-left: hidden;" placeholder="Enter Department" %}
+                                                </div>
+                                                    <small class="text-danger">{{ form.department.errors }}</small>
+                                                {% else %}
+                                                <div class="input-group">
+                                                    <span class="input-group-text"><i class="fa-solid fa-building-columns" id="icon2"></i></span>
+                                                    {% render_field form.department class="form-control is-valid" placeholder="Enter Department" %}
+                                                </div>
+                                                <small><ul><li id="text">required</li></ul></small>
+                                                {% endif %}
+                                                {% else %}
+                                                <div class="input-group">
+                                                    <span class="input-group-text"><i class="fa-solid fa-building-columns" id="icon2"></i></span>
+                                                    {% render_field form.department class="form-control" placeholder="Enter Department" %}
+                                                </div>
+                                                <small><ul><li id="text">required</li></ul></small>
+                                                {% endif %}
+
+                                        {% if form.is_bound %}
+                                            {% if form.designation.errors %}
+                                                <div class="input-group">
+                                                    <span class="input-group-text"><i class="fa-solid fa-arrows-turn-to-dots" id="icon3"></i></span>
+                                                    {% render_field form.designation  class="form-control is-invalid" style="border-left: hidden;" placeholder="Enter Designation"%}
+                                                </div>
+                                                    <small class="text-danger">{{ form.designation.errors }}</small>
+                                                {% else %}
+                                                <div class="input-group">
+                                                    <span class="input-group-text"><i class="fa-solid fa-arrows-turn-to-dots" id="icon3"></i></span>
+                                                    {% render_field form.designation  class="form-control is-valid" placeholder="Enter Designation"%}
+                                                </div>
+                                                <small><ul><li id="text">required</li></ul></small>
+                                                {% endif %}
+                                                {% else %}
+                                                <div class="input-group">
+                                                    <span class="input-group-text"><i class="fa-solid fa-arrows-turn-to-dots" id="icon3"></i></span>
+                                                    {% render_field form.designation class="form-control" placeholder="Enter Designation" %}
+                                                </div>
+                                                <small><ul><li id="text">required</li></ul></small>
+                                                {% endif %}
+
+                                        {% if form.is_bound %}
+                                            {% if form.macadd.errors %}
+                                                <div class="input-group mt-4">
+                                                    <span class="input-group-text"><i class="fa-brands fa-apple" id="icon4"></i></span>
+                                                    {% render_field form.macadd  class="form-control is-invalid" style="border-left: hidden;" placeholder="Enter Mac Address"%}
+                                                </div>
+                                                    <small class="text-danger">{{ form.macadd.errors }}</small>
+                                                {% else %}
+                                                <div class="input-group mt-4">
+                                                    <span class="input-group-text"><i class="fa-brands fa-apple" id="icon4"></i></span>
+                                                    {% render_field form.macadd  class="form-control is-valid" placeholder="Enter Mac Address"%}
+                                                </div>
+                                                <small><ul><li id="text">required</li></ul></small>
+                                                {% endif %}
+                                                {% else %}
+                                                <div class="input-group mt-4">
+                                                    <span class="input-group-text"><i class="fa-brands fa-apple" id="icon4"></i></span>
+                                                    {% render_field form.macadd class="form-control" placeholder="Enter Mac Address" %}
+                                                </div>
+                                                <small><ul><li id="text">required</li></ul></small>
+                                                {% endif %}
+                                        </div>
+
+                                        <!-- right side -->
+                                        <div class="col-sm-6">
+                                            {% if form.is_bound %}
+                                                {% if form.email.errors %}
+                                                    <div class="input-group mt-1">
+                                                        <span class="input-group-text"><i class="fa-solid fa-at" id="icon10"></i></span>
+                                                        {% render_field form.email  class="form-control is-invalid" style="border-left: hidden;" placeholder="...@email.com"%}
+                                                    </div>
+                                                    <small class="text-danger" id="small">{{ form.email.errors }}</small>
+                                                    {% else %}
+                                                    <div class="input-group mt-1">
+                                                        <span class="input-group-text"><i class="fa-solid fa-at" id="icon10"></i></span>
+                                                        {% render_field form.email  class="form-control is-valid" placeholder="...@email.com"%}
+                                                    </div>
+                                                    <small><ul><li id="text">required</li></ul></small>
+                                                    {% endif %}
+                                                    {% else %}
+                                                    <div class="input-group mt-1">
+                                                        <span class="input-group-text"><i class="fa-solid fa-at" id="icon10"></i></span>
+                                                        {% render_field form.email  class="form-control" placeholder="...@email.com"%}
+                                                    </div>
+                                                    <small><ul><li id="text">required</li></ul></small>
+                                                    {% endif %}
+                                            {% if form.is_bound %}
+                                                {% if form.phoneNum.errors %}
+                                                    <div class="input-group">
+                                                        <span class="input-group-text"><i class="fa-solid fa-phone" id="icon6"></i></span>
+                                                        {% render_field form.phoneNum  class="form-control is-invalid" style="border-left: hidden;" placeholder="+09xxxxxxxxx"%}
+                                                    </div>
+                                                        <small class="text-danger">{{ form.phoneNum.errors }}</small>
+                                                    {% else %}
+                                                    <div class="input-group">
+                                                        <span class="input-group-text"><i class="fa-solid fa-phone" id="icon6"></i></span>
+                                                        {% render_field form.phoneNum  class="form-control is-valid" placeholder="+09xxxxxxxxx"%}
+                                                    </div>
+                                                    <small><ul><li id="text">required</li></ul></small>
+                                                    {% endif %}
+                                                    {% else %}
+                                                    <div class="input-group">
+                                                        <span class="input-group-text"><i class="fa-solid fa-phone" id="icon6"></i></span>
+                                                        {% render_field form.phoneNum class="form-control" placeholder="+09xxxxxxxxx" %}
+                                                    </div>
+                                                    <small><ul><li id="text">required</li></ul></small>
+                                                    {% endif %}
+
+                                            {% if form.is_bound %}
+                                                {% if form.device.errors %}
+                                                    <div class="input-group">
+                                                        <span class="input-group-text"><i class="fa-solid fa-computer" id="icon7"></i></span>
+                                                        {% render_field form.device  class="custom-select is-invalid" style="border-left: hidden;"%}
+                                                    </div>
+                                                    <small class="text-danger">{{ form.device.errors }}</small>
+                                                    {% else %}
+                                                    <div class="input-group">
+                                                        <span class="input-group-text"><i class="fa-solid fa-computer" id="icon7"></i></span>
+                                                        {% render_field form.device  class="custom-select is-valid"%}
+                                                    </div>
+                                                    <small><ul><li id="text">required</li></ul></small>
+                                                    {% endif %}
+                                                    {% else %}
+                                                    <div class="input-group">
+                                                        <span class="input-group-text"><i class="fa-solid fa-computer" id="icon7"></i></span>
+                                                        {% render_field form.device class="custom-select"%}
+                                                    </div>
+                                                    <small><ul><li id="text">required</li></ul></small>
+                                                    {% endif %}
+
+                                                    <!-------------Specify----------------------------------------------------------------------------->
+                                                    <div class="input-group mt-4">
+                                                        <span class="input-group-text"><i class="fa-solid fa-ellipsis" id="icon8"></i></span>
+                                                        {% render_field form.otherDevice class="form-control" placeholder="If others, please specify..." %}
+                                                    </div>
+
+                                        </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-sm-12">
+                                        <p>
+                                            <em class="text-info">
+                                                (Note: To get the MAC address of the laptop, please do the following: Go to Start->Run. Type cmd and enter. Then at the prompt type:
+                                                ipconfig /all and Note down the “Physical Address for Wireless LAN Adapter” as a MAC Address.)
+                                            </em>
+                                            </p>
                                     </div>
-                                    <div class="col-sm-6 d-flex justify-content-end">
-                                        <button type="button" class="btn btn-outline-dark mt-2 mb-5 text-success" data-toggle="modal" data-target="#myModal" id="confirm" style="border-radius: 45px;"><strong> SUBMIT</strong> <i class="fa-solid fa-circle-arrow-right" id="icon"></i></button>
+                                </div>
+                                <hr class="bg-success mt-0">
+
+                                <div class="row">
+                                    <div class="col-sm-12">
+                                            <p style="color: maroon;">[Terms and Condition]</p>
+                                            <p>
+                                            <em class="text-info text-justify">
+                                                I understand that the Wi-Fi connectivity is provided to me for my academic work only.
+                                                The above mentioned system solely belongs to me. I have gone through the norms and
+                                                Regulation of using the Wi-Fi Connectivity and I abide by it. I will not misuse the facility
+                                                by any means.
+                                            </em>
+                                            </p>
+
+                                        <div class="custom-control custom-switch">
+                                            {% render_field form.agreement class="custom-control-input"%}
+                                            <label class="custom-control-label text-white" for="id_agreement"><strong style="color: maroon;">Yes, I agree.</strong></label><label id="red">*</label>
+                                        </div>
+                                    </div>
+                                </div>
+                                <hr class="bg-success mt-0">
+                                <p>
+                                <em class="text-info text-justify">
+                                    The 1 hour per day Wifi-Connectivity  given to the user is valid from
+                                    {{time.start}}&nbsp;to&nbsp;{{time.end}}
+                                </em>
+                                </p>
+
+                                <div class="row">
+                                    <div class="col-sm-6">
+                                    {% if form.is_bound %}
+                                        {% if form.facultyName.errors %}
+                                            <div class="input-group mb-2">
+                                                <span class="input-group-text"><i class="fa-solid fa-building" id="icon9"></i></span>
+                                                {% render_field form.facultyName  class="form-control is-invalid" style="border-left: hidden;" placeholder="Enter Faculty Name"%}
+                                            </div>
+                                            <small class="text-danger">{{ form.facultyName.errors }}</small>
+                                            {% else %}
+                                            <div class="input-group mb-2">
+                                                <span class="input-group-text"><i class="fa-solid fa-building" id="icon9"></i></span>
+                                                {% render_field form.facultyName  class="form-control is-valid" placeholder="Enter Faculty Name"%}
+                                            </div>
+                                            <small><ul><li id="text">required</li></ul></small>
+                                            {% endif %}
+                                            {% else %}
+                                            <div class="input-group mb-2">
+                                                <span class="input-group-text"><i class="fa-solid fa-building" id="icon9"></i></span>
+                                                {% render_field form.facultyName class="form-control" placeholder="Enter Faculty Name"%}
+                                            </div>
+                                            <small><ul><li id="text">required</li></ul></small>
+                                            {% endif %}
+                                    </div>
+
+                                    <div class="col-sm-6 text-success">
+                                        {% if form.is_multipart %}
+                                            {% if form.signature.errors %}
+                                                <div class="input-group mb-2">
+                                                    <div class="custom-file">
+                                                    {% render_field form.signature  class="form-control custom-file-input" style="border-left: hidden;"%}
+                                                    <label class="custom-file-label">Upload Signature</label>
+                                                    </div>
+                                                </div>
+                                                <small class="text-danger">{{ form.signature.errors }}</small>
+                                                {% else %}
+                                                <div class="input-group mb-2">
+                                                    <div class="custom-file">
+                                                    {% render_field form.signature  class="form-control custom-file-input"%}
+                                                        <label class="custom-file-label">Upload Signature</label>
+                                                    </div>
+                                                </div>
+                                                <small><ul><li id="text">required</li></ul></small>
+                                                {% endif %}
+                                                {% else %}
+                                                <div class="input-group mb-2">
+                                                    <div class="custom-file">
+                                                    {% render_field form.signature class="form-control custom-file-input"%}
+                                                        <label class="custom-file-label">Upload Signature</label>
+                                                    </div>
+                                                </div>
+                                                <small><ul><li id="text">required</li></ul></small>
+                                                {% endif %}
+                                    </div>
+                                </div>
+                                <div class="d-flex justify-content-between">
+                                    <a href="{% url 'home' %}" class="btn btn-outline-dark text-success" data-toggle="tooltip" data-placement="top" title="Return to homepage" id="backF" style="border-radius: 45px;">
+                                        <i class="fa-solid fa-circle-arrow-left" id="icon"></i><strong> BACK</strong></a>
+                                    <button type="button" class="btn btn-outline-dark text-success" data-toggle="modal" data-target="#myModal" id="confirm" style="border-radius: 45px;"><strong> SUBMIT</strong> <i class="fa-solid fa-circle-arrow-right" id="icon"></i></button>
+                                </div>
+
+                                <!-- The Modal for success-->
+                                <div class="modal fade" id="myModal">
+                                    <div class="modal-dialog modal-dialog-centered">
+                                        <div class="modal-content">
+
+                                            <!-- Modal Header -->
+                                            <div class="modal-header">
+                                                <h5 class="modal-title text-danger font-italic">Faculty says...</h5>
+                                                <button type="button" class="close" data-dismiss="modal"><i class="fa-solid fa-arrow-right-from-bracket" id="back"></i></button>
+                                            </div>
+
+                                            <!-- Modal body -->
+                                            <div class="modal-body">
+                                                <h5 class="modal-title d-flex justify-content-center text-dark">Do you wish to continue
+                                                    <span><i class="fa-solid fa-circle-question" id="question"></i></h5></span>
+                                            </div>
+
+                                            <!-- Modal footer -->
+                                            <div class="modal-footer d-flex justify-content-left">
+                                                <button type="submit" class="btn btn-success" id="confirm">YES</button>
+                                                <button type="button" class="btn text-muted" data-dismiss="modal">NO</button>
+                                            </div>
+
+                                        </div>
                                     </div>
                                 </div>
                             </div>
-                        
-                            <!-- The Modal for success-->
-                            <div class="modal fade" id="myModal">
-                                <div class="modal-dialog modal-dialog-centered">
-                                    <div class="modal-content">
-                                
-                                        <!-- Modal Header -->
-                                        <div class="modal-header">
-                                            <h5 class="modal-title text-danger font-italic">Faculty says...</h5>
-                                            <button type="button" class="close" data-dismiss="modal"><i class="fa-solid fa-arrow-right-from-bracket" id="back"></i></button>
-                                        </div>
-                                        
-                                        <!-- Modal body -->
-                                        <div class="modal-body">
-                                            <h5 class="modal-title d-flex justify-content-center text-dark">Do you wish to continue 
-                                                <span><i class="fa-solid fa-circle-question" id="question"></i></h5></span>
-                                        </div>
-                                        
-                                        <!-- Modal footer -->
-                                        <div class="modal-footer d-flex justify-content-left">
-                                            <button type="submit" class="btn btn-success" id="confirm">YES</button>
-                                            <button type="button" class="btn text-muted" data-dismiss="modal">NO</button>
-                                        </div>
-                                    
-                                    </div>
-                                </div>
-                            </div>
-                    </form>
-                </div>   
-            </div>
-            <div class="col-sm-6 my-auto">
-                <img src="{% static 'Media/researching.svg' %}" alt="wifi-image">
+                        </div>
+                </form>
             </div>
         </div>
+
     </body>
 
     <script type="text/javascript">
@@ -351,5 +342,5 @@
         });
     </script>
 
-    <script src="{% static 'JavaScript/Fjquery.js' %}" defer></script>
+    <script src="{% static 'Fjquery.js' %}" defer></script>
 {% endblock content %}

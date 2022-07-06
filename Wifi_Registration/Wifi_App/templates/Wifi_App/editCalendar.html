@@ -43,10 +43,10 @@
   {% csrf_token %}
   <div class="jumbotron mt-3 rounded bg-info shadow-lg">
     <div class="d-flex justify-content-center">
-      <h3 class="text-warning mr-3">{{time.start}}</h3><h4>to</h4><h3 class="text-warning ml-3">{{time.end}}</h3> 
+      <h3 class="text-warning mr-3">{{time.start}}</h3><h4>to</h4><h3 class="text-warning ml-3">{{time.end}}</h3>
     </div>
     <div class="d-flex justify-content-center">
-      <img src="{% static 'Media/calendar.svg' %}" alt="calendar-image">
+      <img class="img-fluid" src="{% static 'Media/calendar.svg' %}" alt="calendar-image">
     </div>
     <div class="form-inline d-flex justify-content-center mt-3">
       <div class="input-group">
