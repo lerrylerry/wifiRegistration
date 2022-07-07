@@ -12,8 +12,8 @@ from django.conf import settings
 from django.core.mail import send_mail
 from django.core.mail import EmailMessage
 
-'''username: lerry123 / password: akosilerry (admin account) // optional = email: wcr.tupcavite@gmail.com'''
-'''website email = wcr.tupcavite@gmail.com | password = wcrtupcavite22'''
+'''username: lerry123 / password: akosilerry (admin account) // optional = email: wcr.tup.cavite@gmail.com'''
+'''website email = wcr.tup.cavite@gmail.com | password = wcrtupcavite22'''
 
 '''HOMEPAGE'''
 def index(request):

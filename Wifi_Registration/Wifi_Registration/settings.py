@@ -28,7 +28,7 @@ SECRET_KEY = 'django-insecure-iho=0^ow9p1utyo0f8eyg9epo0qdue#h5iv)9+^#tzw+8l&bw#
 DEBUG = False
 #DEBUG = True
 
-ALLOWED_HOSTS = ["johnlerry.pythonanywhere.com"]
+ALLOWED_HOSTS = ["wcrtup.pythonanywhere.com"]
 #ALLOWED_HOSTS = []
 
 WSGI_APPLICATION = 'Wifi_App.wsgi_windows.application'
@@ -101,10 +101,10 @@ DATABASES = {
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.mysql',
-        'NAME': 'johnlerry$Wifi_Registration',
-        'USER': 'johnlerry',
-        'PASSWORD': 'akosilerry',
-        'HOST': 'johnlerry.mysql.pythonanywhere-services.com',
+        'NAME': 'wcrtup$Wifi_Registration',
+        'USER': 'wcrtup',
+        'PASSWORD': 'wcrtup',
+        'HOST': 'wcrtup.mysql.pythonanywhere-services.com',
     }
 }
 
