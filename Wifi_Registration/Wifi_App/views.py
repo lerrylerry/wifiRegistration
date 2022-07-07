@@ -1,3 +1,4 @@
+import io
 from django.shortcuts import render, redirect, get_object_or_404
 from Wifi_App.models import HistoryFaculty, Time, HistoryStudent, Student, AttachmentStudent, Faculty, AttachmentFaculty
 from django.contrib import messages
@@ -7,13 +8,12 @@ from django.contrib.auth.decorators import login_required
 from django.http import FileResponse, HttpResponseForbidden
 from reportlab.pdfgen import canvas
 from reportlab.lib.pagesizes import letter
-import io
 from django.conf import settings
 from django.core.mail import send_mail
 from django.core.mail import EmailMessage
 
-'''username: lerry / password: akosilerry (admin account) // optional = email: wcr.tupcavite@gmail.com'''
-'''website email = wcr.tupcavite@gmail.com | website password = wcrtupcavite22'''
+'''username: lerry123 / password: akosilerry (admin account) // optional = email: wcr.tupcavite@gmail.com'''
+'''website email = wcr.tupcavite@gmail.com | password = wcrtupcavite22'''
 
 '''HOMEPAGE'''
 def index(request):
@@ -319,7 +319,7 @@ def readStudent(request):
         student_count = Student.objects.filter(status='PENDING').count()
         all_student = Student.objects.filter(status='APPROVED')
         history = HistoryStudent.objects.all()
-        context = {"student_request" : allowed_student, "count" : student_count, "count2" :faculty_count, "all_student":all_student , "history":history}
+        context = {"student_request" : allowed_student, "count2" : student_count, "count" :faculty_count, "all_student":all_student , "history":history}
         return render(request, 'Wifi_App/DATASTUDENT.html', context)
 
     else:

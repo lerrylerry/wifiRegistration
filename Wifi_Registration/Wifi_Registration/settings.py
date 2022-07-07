@@ -24,9 +24,12 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = 'django-insecure-iho=0^ow9p1utyo0f8eyg9epo0qdue#h5iv)9+^#tzw+8l&bw#'
 
 # SECURITY WARNING: don't run with debug turned on in production!
+
 DEBUG = False
+#DEBUG = True
 
 ALLOWED_HOSTS = ["johnlerry.pythonanywhere.com"]
+#ALLOWED_HOSTS = []
 
 WSGI_APPLICATION = 'Wifi_App.wsgi_windows.application'
 # Application definition
