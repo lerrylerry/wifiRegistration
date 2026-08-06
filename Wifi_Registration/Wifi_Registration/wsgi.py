@@ -13,9 +13,9 @@ import site
 
 from django.core.wsgi import get_wsgi_application
 
-sys.path.append(r'C:\Users\user\Desktop\wireframe_and_elements\Stored\wifiRegistration\Wifi_Registration')
+# sys.path.append(r'C:\Users\user\Desktop\wireframe_and_elements\Stored\wifiRegistration\Wifi_Registration')
 
-os.environ['DJANGO_SETTINGS_MODULE'] = 'Wifi_Registration.settings'
-os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'Wifi_Registration.settings')
+# os.environ['DJANGO_SETTINGS_MODULE'] = 'Wifi_Registration.settings'
+# os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'Wifi_Registration.settings')
 
 application = get_wsgi_application()

@@ -1,0 +1,12 @@
+# Virtual environment paths
+Wifi_Registration/venv/
+venv/
+ENV/
+.venv/
+
+# Django specific
+db.sqlite3
+staticfiles/
+media/
+*.pyc
+__pycache__/

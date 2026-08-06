@@ -25,13 +25,13 @@ SECRET_KEY = 'django-insecure-iho=0^ow9p1utyo0f8eyg9epo0qdue#h5iv)9+^#tzw+8l&bw#
 
 # SECURITY WARNING: don't run with debug turned on in production!
 
-DEBUG = False
-#DEBUG = True
+# DEBUG = False
+DEBUG = True
 
-ALLOWED_HOSTS = ["wcrtup.pythonanywhere.com"]
-#ALLOWED_HOSTS = []
+# ALLOWED_HOSTS = ["wcrtup.pythonanywhere.com"]
+ALLOWED_HOSTS = ['localhost', '127.0.0.1', '.koyeb.app']
 
-WSGI_APPLICATION = 'Wifi_App.wsgi_windows.application'
+# WSGI_APPLICATION = 'Wifi_App.wsgi_windows.application'
 # Application definition
 
 MESSAGE_TAGS = {
@@ -63,6 +63,7 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    'whitenoise.middleware.WhiteNoiseMiddleware' #for caching CSS, JS, Bootstrap Files
 ]
 
 ROOT_URLCONF = 'Wifi_Registration.urls'
@@ -89,24 +90,24 @@ WSGI_APPLICATION = 'Wifi_Registration.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/4.0/ref/settings/#databases
 
-'''
+
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.sqlite3',
         'NAME': BASE_DIR / 'db.sqlite3',
     }
 }
-'''
 
-DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.mysql',
-        'NAME': 'wcrtup$Wifi_Registration',
-        'USER': 'wcrtup',
-        'PASSWORD': 'wcrtup',
-        'HOST': 'wcrtup.mysql.pythonanywhere-services.com',
-    }
-}
+
+# DATABASES = {
+#     'default': {
+#         'ENGINE': 'django.db.backends.mysql',
+#         'NAME': 'wcrtup$Wifi_Registration',
+#         'USER': 'wcrtup',
+#         'PASSWORD': 'wcrtup',
+#         'HOST': 'wcrtup.mysql.pythonanywhere-services.com',
+#     }
+# }
 
 # Password validation
 # https://docs.djangoproject.com/en/4.0/ref/settings/#auth-password-validators

@@ -1,9 +1,8 @@
-pip install django
-pip install pillow
-pip install django-crispy-forms
-pip install django-session-timeout
-pip install django-widget-tweaks
-pip install reportlab
-
-others:
-python manage.py migrate
+django
+pillow
+django-crispy-forms
+django-session-timeout
+django-widget-tweaks
+reportlab
+gunicorn
+whitenoise
