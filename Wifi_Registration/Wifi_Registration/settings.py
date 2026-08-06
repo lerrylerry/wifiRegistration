@@ -29,7 +29,7 @@ SECRET_KEY = 'django-insecure-iho=0^ow9p1utyo0f8eyg9epo0qdue#h5iv)9+^#tzw+8l&bw#
 DEBUG = True
 
 # ALLOWED_HOSTS = ["wcrtup.pythonanywhere.com"]
-ALLOWED_HOSTS = ['localhost', '127.0.0.1', '.koyeb.app']
+ALLOWED_HOSTS = ['localhost', '127.0.0.1', '.koyeb.app', '.onrender.com',]
 
 # WSGI_APPLICATION = 'Wifi_App.wsgi_windows.application'
 # Application definition
