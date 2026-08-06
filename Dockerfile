@@ -29,3 +29,5 @@ EXPOSE 8000
 
 # Run the entrypoint script
 ENTRYPOINT ["/app/docker-entrypoint.sh"]
+
+CMD ["gunicorn", "Wifi_Registration.wsgi:application", "--env", "DJANGO_SETTINGS_MODULE=Wifi_Registration.settings", "--bind", "0.0.0.0:8000"]
